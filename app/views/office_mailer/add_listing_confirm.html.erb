@@ -1,0 +1,24 @@
+
+<p>Hi <%= @office.contact_name %>,</p>
+
+<h3>Thanks for using tradewinz to share your office!</h3>
+<p>
+  We’ll notify you as soon as someone requests your office – and we’ll highlight the folks that seem to best
+  match your listing criteria.
+  <br><br>
+  We’ll also send you a weekly report on how many people review your listing, so you can assess how much interest there is.
+  <br><br>
+  As part of our commitment to trust and privacy on the site, we will not release any contact information until
+  you tell us that you’d like to communicate with the requestor.
+</p>
+<p>Click <%= link_to 'View', office_url(@office) %> to see your listing, or <%= link_to "Edit", edit_office_url(@office) %> to update your listing</p>
+
+<p>
+  Cheers,<br>
+  The tradewinz team
+</p>
+
+<p>
+  P.S. If you have any concerns or questions, please email us at
+  <a href="mailto:tradewinz@intuit.com?subject=Inquiry">tradewinz@intuit.com</a>
+</p>

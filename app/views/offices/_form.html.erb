@@ -1,0 +1,166 @@
+
+<%= form_for(@office) do |f| %>
+    <% if @office.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@office.errors.count, "error") %> prohibited this listing from being saved:</h2>
+          <ul style="margin-left:10;">
+            <% @office.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="well panel-border">
+      <div class="panel-header-gray">
+        <h3> About your office </h3>
+        <p> Tell potential colleagues why they would want to work in your space.
+          Highlight what makes it productive and <br> convenient - including equipment, storage, parking,
+          kitchen and more.</p>
+      </div>
+      <fieldset class="padtop">
+
+        <div class="control-group">
+          <label class="control-label"> <strong>Title</strong> (Required) </label>
+          <div class="controls"> <%= f.text_field :title %> </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Description</label>
+          <div class="controls"> <%= f.text_area :description %> </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Zip Code</label>
+          <div class="controls"> <%= f.text_field :loc_zip %> </div>
+        </div>
+
+        <!--div class="control-group">
+          <label class="control-label">City</label>
+          <div class="controls"> <%= f.text_field :loc_city %> </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">State</label>
+          <div class="controls"> <%= f.text_field :loc_state %> </div>
+        </div-->
+
+
+        <div class="control-group">
+          <label class="control-label">Upload a Photo</label>
+          <div class="controls"> <%= f.file_field :image1 %> </div>
+        </div>
+
+        <!--div class="control-group">
+          <label class="control-label">Size</label>
+          <div class="controls"> <%= f.text_field :size %> sq. ft. </div>
+        </div>
+
+
+        <div class="control-group">
+          <label class="control-label">Accommodates</label>
+          <div class="controls">  <%= f.text_field :accomodate %>  </div>
+        </div-->
+
+
+
+        <div class="control-group">
+          <label class="control-label">Rent & Availability</label>
+          <div class="controls"> <%= f.text_area :available %> </div>
+        </div>
+
+        <!--div class="control-group">
+          <label class="control-label">Options</label>
+          <div class="controls"><%= f.check_box :insurance %> Renter must have liability insurance </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label"></label>
+          <div class="controls"><%= f.check_box :on_site %> I/Someone will be on-site</div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label"></label>
+          <div class="controls"> <%= f.check_box :swap %> Swap OK</div>
+        </div-->
+
+
+      </fieldset>
+
+      <div class="panel-header-gray">
+        <h3> About You </h3>
+        <p> Tradewinz creates trusted, reliable business connections.
+          Help other people get to know you.
+        </p>
+      </div>
+
+      <fieldset class="padtop">
+        <div class="control-group">
+          <label class="control-label">Company Name </label>
+          <div class="controls"> <%= f.text_field :company_name %> </div>
+        </div>
+
+        <!--div class="control-group">
+          <label class="control-label">Years in Business </label>
+          <div class="controls"> <%= f.number_field :years %></div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Company Website </label>
+          <div class="controls"> <%= f.text_field :company_url %> </div>
+        </div-->
+
+        <div class="control-group">
+          <label class="control-label">Describe your business</label>
+          <div class="controls"> <%= f.text_area :company_desc %> </div>
+        </div>
+
+      </fieldset>
+
+
+      <div class="panel-header-gray">
+        <h3> Your Contact Information (Private) </h3>
+        <p> Tradewinz helps you screen potential guests and prevents spam.
+          We won't release your contact information without your approval.
+        </p>
+      </div>
+
+      <fieldset class="padtop">
+        <div class="control-group">
+          <label class="control-label">Your Name </label>
+          <div class="controls"> <%= f.text_field :contact_name %> </div>
+        </div>
+
+
+        <!--div class="control-group">
+          <label class="control-label">Location Address1 </label>
+          <div class="controls"> <%= f.text_field :loc_addr1 %> </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Location Address2 </label>
+          <div class="controls"> <%= f.text_field :loc_addr2 %> </div>
+        </div-->
+
+        <div class="control-group">
+          <label class="control-label"><strong>Email</strong> (Required) </label>
+          <div class="controls"> <%= f.text_field :contact_email %> </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Phone Number </label>
+          <div class="controls"> <%= f.text_field :contact_phone %> </div>
+        </div>
+
+      </fieldset>
+
+      <div class="panel-header-gray">
+        <div class="row">
+          <div class="span12 jumbotron">
+            <!--%= f.submit "Add Your Listing", :class => "btn btn-large btn-inverse btn-call-to-action" %-->
+            <button class="btn btn-large btn-primary" type="submit" id="saveListingBtn">Save Your Listing</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

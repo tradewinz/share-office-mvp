@@ -1,0 +1,29 @@
+<h2>All Listings</h2>
+<div class="row">
+    <div id="offices" class="span12">
+
+    <% @offices.each do |office| %>
+
+      <div class="row search_result">
+
+        <div class="span2" style="padding: 4px; border: 1px solid #D0D0D0;
+                vertical-align: middle; text-align: center; background-color: #FFFFFF;">
+            <a href= "<%= office_path(office)  %>" >
+                <%= image_tag office.image1_url(:small).to_s, :size=> "130x100", :alt=> "Photo" %>
+            </a>
+        </div>
+
+        <div class="span6">
+            <%= link_to office.title, office %>
+        </div>
+
+        <div class="span3">
+          <%= office.loc_city %>, <%= office.loc_state %>
+        </div>
+
+      </div>
+
+    <% end %>
+    </div>
+  <br>
+</div>

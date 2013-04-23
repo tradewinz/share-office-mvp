@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  rent: 9.99
+  size: MyString
+  title: MyString
+  description: MyText
+  availability: 2013-02-12
+  insurance: false
+  swap: false
+  image1: MyString
+  image2: MyString
+  image3: MyString
+  image4: MyString
+  contact_name: MyString
+  contact_picture: MyString
+  company_desc: MyText
+  company_url: MyString
+  years: 1
+  contact_email: MyString
+  contact_phone: MyString
+
+two:
+  rent: 9.99
+  size: MyString
+  title: MyString
+  description: MyText
+  availability: 2013-02-12
+  insurance: false
+  swap: false
+  image1: MyString
+  image2: MyString
+  image3: MyString
+  image4: MyString
+  contact_name: MyString
+  contact_picture: MyString
+  company_desc: MyText
+  company_url: MyString
+  years: 1
+  contact_email: MyString
+  contact_phone: MyString

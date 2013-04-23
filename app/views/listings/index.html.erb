@@ -1,0 +1,39 @@
+<div class="container">
+<h3> View all listings </h3>
+<table class="table table-striped">  
+  <thead>
+    <tr>
+      <th>Headline</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Picture<th> 
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+<tbody>
+ <% @listings.each do |listing| %>
+  <tr>
+    <td><%= listing.headline %></td>
+    <td><%= listing.description %></td>
+    <td><%= listing.location %></td>
+    <td><%= image_tag listing.image_url(:thumb).to_s, alt: "Picture" %></td>
+
+    <td><%= listing.user.name %></td>
+    <td><%= link_to 'View', listing %>|</td>
+    <td><%= link_to 'Edit', edit_listing_path(listing) %>|</td>
+    <td><%= link_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+ <% end %>
+</tbody>
+
+</table>
+
+<hr>
+<div class="btn btn-medium">
+  <%= link_to 'New Listing', new_listing_path %>
+</div>
+
+</div>

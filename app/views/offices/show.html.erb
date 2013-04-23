@@ -1,0 +1,100 @@
+
+<h2 id="notice"><%= notice %></h2>
+
+<p>
+  <b>Title : </b>
+  <%= @office.title %>
+</p>
+
+<p>
+  <b>Size : </b>
+  <%= @office.size %> sq.ft.
+</p>
+
+<p>
+  <b>Location City : </b>
+  <%= @office.loc_city %>
+</p>
+
+<p>
+  <b>Location State : </b>
+  <%= @office.loc_state %>
+</p>
+
+
+<p>
+  <b>Accommodates : </b>
+  <%= @office.accomodate %>
+</p>
+
+<p>
+  <b>Description : </b>
+  <%= @office.description.gsub("\n", "<br>").html_safe %>
+</p>
+
+
+<p>
+  <b>Rent and Availability : </b>
+  <%= @office.available.gsub("\n", "<br>").html_safe %>
+</p>
+
+
+<p>
+  <b>Photo : </b>
+  <%= image_tag @office.image1_url.to_s, alt: "Photo" %>
+</p>
+
+<p>
+  <b>Require Liability Insurance : </b>
+  <% if @office.insurance %>Yes
+  <% else %>No
+  <% end %>
+</p>
+
+<p>
+  <b>Someone On-Site : </b>
+  <% if @office.on_site %>Yes
+  <% else %>No
+  <% end %>
+
+</p>
+
+<p>
+  <b>Swap OK : </b>
+  <% if @office.swap %>Yes
+  <% else %>No
+  <% end %>
+
+</p>
+
+<p>
+  <b>Company name : </b>
+  <%= @office.company_name %>
+</p>
+
+<p>
+  <b>Years in business : </b>
+  <%= @office.years %>
+</p>
+
+<p>
+  <b>Owner description : </b>
+  <%= @office.company_desc.gsub("\n", "<br>").html_safe %>
+</p>
+
+<p>
+  <b>Company website : </b>
+  <%= @office.company_url %>
+</p>
+
+
+<br>
+
+<h4>If you are interested in renting this space, please email us at
+   <a href="mailto:tradewinz@intuit.com?subject=Interested in renting?" class="btn-link">tradewinz@intuit.com</a> with details about your needs.
+</h4>
+
+<br>
+<%= link_to "Show all listings", offices_path, class: "btn btn-medium" %>
+<br><br>
+
