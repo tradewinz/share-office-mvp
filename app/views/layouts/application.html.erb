@@ -15,7 +15,14 @@
   <title>Office Rental and Sharing by Small Business</title>
 
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300">
+
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+  <!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+  <![endif]-->
+
+  <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -33,11 +40,11 @@
 	<div class="row" style="height: 60px; margin-right: -20px;">
     <div class="span12">
             <ul class="nav nav-pills pull-right">
-                <li><%= link_to "Home", home_path %></li>
                 <li><%= link_to "Listings", offices_path %> </li>
                 <li><%= link_to "List Your office", owners_path, :class=>"btn" %></li>
-                <!--li><%= link_to "How It Works", how_path %></li>
-                <li><%= link_to "About Us", about_path %> </li-->
+                <!--li><%= link_to "Map", how_path %></li-->
+                <!--li><%= link_to "About Us", about_path %> </li-->
+
             </ul>
             <a href="/home">
                 <h3 class="muted" style="margin-top: 12px;">
@@ -123,6 +130,61 @@
 
 </script>
 
+<!-- jQquery validation -->
+<script type="text/javascript">
+
+var map = L.map('map').setView([51.505, -0.09], 13);
+
+L.tileLayer('http://{s}.tile.cloudmade.com/17e8fb6e7c254a09b620f4ee2981e68e/997/256/{z}/{x}/{y}.png', {
+attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+maxZoom: 18
+}).addTo(map);
+
+var marker = L.marker([51.5, -0.09]).addTo(map);
+
+marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+
+function addr_search() {
+    var inp = document.getElementById("addr");
+
+    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + inp.value, function(data) {
+        var items = [];
+
+        $.each(data, function(key, val) {
+            items.push(
+                    "<li><a href='#' onclick='chooseAddr(" +
+                            val.lat + ", " + val.lon + ");return false;'>" + val.display_name +
+                            '</a></li>'
+            );
+        });
+
+    $('#results').empty();
+
+    if (items.length != 0) {
+        $('<p>', { html: "Search results:" }).appendTo('#results');
+        $('<ul/>', {
+            'class': 'my-new-list',
+            html: items.join('')
+        }).appendTo('#results');
+    } else {
+        $('<p>', { html: "No results found" }).appendTo('#results');
+    }
+});
+
+}
+
+function chooseAddr(lat, lng, type) {
+    var location = new L.LatLng(lat, lng);
+    map.panTo(location);
+
+    if (type == 'city' || type == 'administrative') {
+        map.setZoom(11);
+    } else {
+        map.setZoom(13);
+    }
+}
+
+</script>
 
 </body>
 
