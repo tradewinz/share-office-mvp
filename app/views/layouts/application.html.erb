@@ -133,16 +133,16 @@
 <!-- jQquery validation -->
 <script type="text/javascript">
 
-var map = L.map('map').setView([51.505, -0.09], 13);
+var map = L.map('map').setView([37.43, -122.1], 13);
 
 L.tileLayer('http://{s}.tile.cloudmade.com/17e8fb6e7c254a09b620f4ee2981e68e/997/256/{z}/{x}/{y}.png', {
 attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
 maxZoom: 18
 }).addTo(map);
 
-var marker = L.marker([51.5, -0.09]).addTo(map);
+var marker = L.marker([37.43, -122.1]).addTo(map);
 
-marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+//marker.bindPopup("<b>Tradewinz!</b><br>from Intuit Labs.").openPopup();
 
 function addr_search() {
     var inp = document.getElementById("addr");
