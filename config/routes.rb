@@ -1,5 +1,7 @@
 ShareOfficeMvp::Application.routes.draw do
 
+  devise_for :users
+
   match '/home', to: 'landing_pages#home'
 
   match '/renters', to:'landing_pages#renters'
@@ -15,7 +17,7 @@ ShareOfficeMvp::Application.routes.draw do
 
   resources :offices
 
-  # resources :users
+  resources :users
 
 
   # The priority is based upon order of creation:

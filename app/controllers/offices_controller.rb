@@ -1,5 +1,5 @@
 class OfficesController < ApplicationController
-
+  before_filter :authenticate_user!, except: [:index, :show]
   # GET /offices
   # GET /offices.json
   def index
