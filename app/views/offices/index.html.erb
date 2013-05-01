@@ -39,14 +39,12 @@
 
         <div class="span1">         
           <%= link_to 'View', office %>
-          <%= link_to 'Edit', edit_office_path(office) %>
-          <%= link_to 'Delete', office, method: :delete, data: { confirm: 'Are you sure?' } %>
 
-          <% if can? :update, @office %>
+          <% if can? :update, office %>
             <%= link_to 'Edit', edit_office_path(office) %>
           <% end %>
           
-          <% if can? :delete, @office %> 
+          <% if can? :destroy, office %>
             <%= link_to 'Delete', office, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
             
