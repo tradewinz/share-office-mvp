@@ -1,5 +1,6 @@
 class OfficesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
+
   # GET /offices
   # GET /offices.json
   def index
@@ -42,6 +43,7 @@ class OfficesController < ApplicationController
   # POST /offices.json
   def create
     @office = Office.new(params[:office])
+    @office.user = current_user
 
     respond_to do |format|
       if @office.save
@@ -61,6 +63,8 @@ class OfficesController < ApplicationController
   # PUT /offices/1.json
   def update
     @office = Office.find(params[:id])
+   
+    authorize! :update, @office
 
     respond_to do |format|
       if @office.update_attributes(params[:office])
@@ -80,6 +84,9 @@ class OfficesController < ApplicationController
   # DELETE /offices/1.json
   def destroy
     @office = Office.find(params[:id])
+
+    authorize! :destroy, @office
+    
     @office.destroy
 
     respond_to do |format|

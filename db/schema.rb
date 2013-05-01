@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429234208) do
+ActiveRecord::Schema.define(:version => 20130430215906) do
 
   create_table "listings", :force => true do |t|
     t.string   "description"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20130429234208) do
     t.text     "features"
     t.boolean  "on_site"
     t.string   "loc_zip"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

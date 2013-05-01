@@ -87,6 +87,12 @@
   <%= @office.company_url %>
 </p>
 
+<p>
+  <b>User:</b>
+  <% if @office.user %> 
+    <%= @office.user.email %>
+  <% end %>  
+</p>
 
 <br>
 

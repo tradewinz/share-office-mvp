@@ -13,7 +13,7 @@ ShareOfficeMvp::Application.routes.draw do
   match '/about', to:'landing_pages#about'
   
 
-  # resources :listings
+  resources :listings
 
   resources :offices
 

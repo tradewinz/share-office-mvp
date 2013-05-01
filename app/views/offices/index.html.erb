@@ -11,8 +11,7 @@
   <div id="map" class="span12" style="height: 400px"></div>
 
 </div>
-<hr>
-<br>
+
 <br>
 
 <div class="row">
@@ -30,7 +29,7 @@
             </a>
         </div>
 
-        <div class="span6">
+        <div class="span5">
             <%= link_to office.title, office %>
         </div>
 
@@ -38,9 +37,24 @@
           <%= office.loc_city %>, <%= office.loc_state %>
         </div>
 
-      </div>
+        <div class="span1">         
+          <%= link_to 'View', office %>
+          <%= link_to 'Edit', edit_office_path(office) %>
+          <%= link_to 'Delete', office, method: :delete, data: { confirm: 'Are you sure?' } %>
 
+          <% if can? :update, @office %>
+            <%= link_to 'Edit', edit_office_path(office) %>
+          <% end %>
+          
+          <% if can? :delete, @office %> 
+            <%= link_to 'Delete', office, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+            
+        </div>
+      
+      </div>
+    
     <% end %>
-    </div>
+    
   <br>
 </div>

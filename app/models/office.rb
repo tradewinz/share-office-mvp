@@ -3,6 +3,8 @@ class Office < ActiveRecord::Base
                   :contact_picture, :description, :image1, :image2, :image3, :image4, :insurance, :rent, :size, :swap,
                   :title, :years, :accomodate, :available, :loc_zip, :loc_addr1, :loc_addr2, :loc_city, :loc_state,
                   :features, :on_site
+
+  belongs_to :user                  
   validates(:title, presence: true)
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates(:contact_email, presence: true, format: { with: VALID_EMAIL_REGEX })
