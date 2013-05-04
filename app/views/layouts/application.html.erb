@@ -118,11 +118,11 @@
     $("#saveListingBtn").click(function() {
         $("#new_office").validate({
             rules: {
-                "office[contact_email]": {required: true, email: true},
+                "office[loc_zip]": {required: true},
                 "office[title]": {required: true}
             },
             messages: {
-                "office[contact_email]": "Please provide a valid email",
+                "office[loc_zip]": "Please tell us the zip code of your office",
                 "office[title]": "Please provide a title for your listing"
             },
             errorPlacement: function(error, element) {
