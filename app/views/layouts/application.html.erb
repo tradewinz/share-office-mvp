@@ -38,35 +38,30 @@
   <div class="row" style="height: 60px; margin-right: -20px;">
     <div class="span12">
             <ul class="nav nav-pills pull-right">
-                <li><%= link_to "Listings", offices_path %> </li>
-                <li><%= link_to "List Your office", owners_path, :class=>"btn" %></li>
-                <!--li><%= link_to "Map", how_path %></li-->
-                <!--li><%= link_to "About Us", about_path %> </li-->
+                <li><%= link_to "LIST YOUR SPACE", new_office_path, :class=>"btn" %></li>
+                    <% if user_signed_in? %>
+                      <li class="label"><%= current_user.name %></li>
+                      <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                      <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+                    <% else %>
+                        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+                        <li><%= link_to "Log In", new_user_session_path %></li>
+                    <% end %>
+                </li>
 
             </ul>
             <a href="/home">
                 <h3 class="muted" style="margin-top: 12px;">
-                  <%= image_tag("logo.png", alt: "tradewinz logo") %>
+                  <%= image_tag("labs_logo.jpg", alt: "Intuit Labs") %>
                 </h3>
             </a>
+
     </div>
   </div>
 
-  <div id="login_container">
-    <div id="user_nav">
-      <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>.
-          <%= link_to 'Edit profile', edit_user_registration_path %> |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      <% else %>
-          <%= link_to "Sign up", new_user_registration_path %> |
-          <%= link_to "Login", new_user_session_path %>
-      <% end %>
-    </div>
-
-    <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, id: "flash_#{name}" %>
-    <% end %>
+  <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, id: "flash_#{name}" %>
+  <% end %>
 
   </div>
 
