@@ -23,6 +23,7 @@ gem 'jquery-rails', '2.0.2'
 
 group :production do
   gem 'pg', '0.12.2'
+  gem 'newrelic_rpm'
 end
 
 gem "mini_magick"
@@ -33,8 +34,10 @@ gem "carrierwave"
 
 gem "jquery-validation-rails"
 
-gem 'newrelic_rpm'
-
 gem 'devise'
 
 gem 'cancan'
+
+gem 'geocoder'
+
+gem 'gmaps4rails'

@@ -5,6 +5,7 @@ class OfficesController < ApplicationController
   # GET /offices.json
   def index
     @offices = Office.order("created_at desc")
+    @json = Office.all.to_gmaps4rails
 
     respond_to do |format|
       format.html # index.html.erb

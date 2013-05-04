@@ -4,20 +4,11 @@ ShareOfficeMvp::Application.routes.draw do
 
   match '/home', to: 'landing_pages#home'
 
-  match '/renters', to:'landing_pages#renters'
-
   match '/owners', to:'landing_pages#owners'
-
-  match '/how', to:'landing_pages#how'
-
-  match '/about', to:'landing_pages#about'
-  
-
-  resources :listings
 
   resources :offices
 
-  resources :users
+  # resources :users
 
 
   # The priority is based upon order of creation:
