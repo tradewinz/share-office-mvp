@@ -20,10 +20,12 @@
  }
 
 $lightbox: #FFFFFF;
+$fpobg: #baafa4;
 
  .l_search {
 background-color: $lightbox;
 opacity: 0.7;
+width: 700px;
 
  }
 
@@ -37,12 +39,19 @@ opacity: 0.7;
  margin-bottom: 10px;
 
  }
- l_button {
-
+ .l_button {
+padding: 0px;
+padding-top:0px;
+padding-bottom:0px;
+ margin: 0px;
  width: 100%;
  }
 
  .l_input {
  width: 100%;
- height: 50px;
+
+ }
+
+ .l_fpo {
+ background-color: $fpobg;
  }
