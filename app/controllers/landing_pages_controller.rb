@@ -1,8 +1,13 @@
 class LandingPagesController < ApplicationController
-  def home
-  end
 
-  def owners
-  end
+	def index
+	end
+
+	def home
+		puts "***********************************YOO"
+	end
+
+	def owners
+	end
 
 end

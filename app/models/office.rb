@@ -7,8 +7,6 @@ class Office < ActiveRecord::Base
   belongs_to :user                  
 
   validates(:title, presence: true)
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates(:contact_email, presence: true, format: { with: VALID_EMAIL_REGEX })
   validates(:loc_zip, presence: true)
 
   #geocoded_by :loc_zip
