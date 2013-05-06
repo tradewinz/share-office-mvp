@@ -41,3 +41,5 @@ gem 'cancan'
 gem 'geocoder'
 
 gem 'gmaps4rails'
+
+gem 'omniauth-linkedin-oauth2'
