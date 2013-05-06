@@ -1,6 +1,6 @@
 class DropListingsTable < ActiveRecord::Migration
   def up
-    drop_table :listings
+    #drop_table :listings
   end
 
   def down

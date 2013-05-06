@@ -8,6 +8,7 @@ gem 'bootstrap-sass'
 group :development do
   gem 'sqlite3', '1.3.5'
   gem 'thin' # get rid of annoying warns
+  gem 'faker'
 end
 
 

@@ -4,8 +4,12 @@ class LandingPagesController < ApplicationController
 	end
 
 	def home
-		puts "***********************************YOO"
 	end
+
+	def listings
+		redirect_to offices_path
+	end
+
 
 	def owners
 	end

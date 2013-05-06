@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130503195555) do
+ActiveRecord::Schema.define(:version => 20130503222104) do
 
   create_table "offices", :force => true do |t|
     t.decimal  "rent"
