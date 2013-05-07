@@ -15,7 +15,7 @@
   <% end %>
 
   <!--if user is from linkedin no need to enter password to change profile data-->
-  <% if f.object.password_required? %>
+  <% if f.object.encrypted_password.present? %>
       <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, :autocomplete => "off" %></div>
 
