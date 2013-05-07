@@ -1,6 +1,6 @@
 ShareOfficeMvp::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   match '/home', to: 'landing_pages#home'
 
@@ -10,7 +10,7 @@ ShareOfficeMvp::Application.routes.draw do
 
   resources :offices
 
-  # resources :users
+  resources :users
 
 
   # The priority is based upon order of creation:

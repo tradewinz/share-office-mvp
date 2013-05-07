@@ -7,10 +7,10 @@ gem 'bootstrap-sass'
 
 group :development do
   gem 'sqlite3', '1.3.5'
-  gem 'thin' # get rid of annoying warns
   gem 'faker'
 end
 
+gem 'thin' # get rid of annoying warns
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -43,3 +43,5 @@ gem 'cancan'
 gem 'geocoder'
 
 gem 'gmaps4rails'
+
+gem 'omniauth-linkedin-oauth2'
