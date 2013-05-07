@@ -1,8 +1,17 @@
 class LandingPagesController < ApplicationController
-  def home
-  end
 
-  def owners
-  end
+	def index
+	end
+
+	def home
+	end
+
+	def listings
+		redirect_to offices_path
+	end
+
+
+	def owners
+	end
 
 end
