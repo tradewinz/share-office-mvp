@@ -1,17 +1,16 @@
 
-
  body{
  background-image: url('tw/background.png');
  margin: 0;
  background-size: 1594px 1200px;
- background-repeat:no-repeat;
+ background-repeat:repeat;
  display: compact;
 
  }
 
 
  .hero-bg{
- background-image: url('tw/hero_image.jpeg');
+ background-image: url('tw/hero_image.jpg');
  margin: 0;
  background-size: 1594px 1200px;
  background-repeat:no-repeat;
@@ -25,7 +24,7 @@ $fpobg: #baafa4;
  .l_search {
 background-color: $lightbox;
 opacity: 0.7;
-width: 700px;
+width: 800px;
 
  }
 
