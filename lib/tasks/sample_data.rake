@@ -7,7 +7,8 @@ namespace :db do
                  available: "Right away!",
                  company_desc: "Nice company",
                  loc_zip: "94023")
-    99.times do |n|
+    z =["94025","92131","94301","94121","94021"]
+    5.times do |n|
       title  = Faker::Name.name
       email = "example-#{n+1}@intuit.com"
       description = "a nice office"
@@ -16,7 +17,9 @@ namespace :db do
                    description: description,
                    available: "Coming Soon",
                    company_desc: "Very good company",
-                   loc_zip: "94023")
+                   loc_city: "",
+                   loc_state: "California",
+                   loc_zip: z[n])
     end
   end
 end
