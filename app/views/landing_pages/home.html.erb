@@ -1,24 +1,23 @@
-
 <div class="container" style="position:relative">
-  <div class="hero-bg" style="background-image:url(http://localhost:3000/assets/tw/hero_image.jpg); height:442px;background-size: 100%;"> </div>
-        <div class="l_search" style="position:absolute;left:200px; top:200px;">
-          <div class="row">
-            <div class="offset1 span6">
-              <span class="label l_text">Find a space to work</span>
-            </div>
-            <div class="span5"></div>
-          </div>
-          <div class="row">
-            <div class="offset1 span5">
-              <input type="text" class="l_input" placeholder="Enter a city">
-            </div>
-              <div class="span2">
-                <!--%= link_to "SEARCH", offices_path, :class=>"btn btn-large btn-primary btn-inverse btn-call-to-action input-block-level" %-->
-                <%= button_to "SEARCH",{:action => "listings"}, {:class=>"l_button btn btn-large btn-primary"}%>
-            </div>
-            <div class="span2"> </div>
-            </div>
-          </div>
+  <div class="hero-bg" style="background-image:url(http://localhost:3000/assets/tw/hero_image.jpg); height:442px;background-size: 100%;"></div>
+  <div class="l_search" style="position:absolute;left:200px; top:200px;">
+    <div class="row">
+      <div class="offset1 span6">
+        <span class="label l_text">Find a space to work</span>
+      </div>
+      <div class="span5"></div>
+    </div>
+    <div class="row">
+      <div class="offset1 span5">
+        <input type="text" class="l_input" placeholder="Enter a city">
+      </div>
+      <div class="span2">
+        <!--%= link_to "SEARCH", offices_path, :class=>"btn btn-large btn-primary btn-inverse btn-call-to-action input-block-level" %-->
+        <%= button_to "SEARCH", {:action => "listings"}, {:class => "l_button btn btn-large btn-primary"} %>
+      </div>
+      <div class="span2"></div>
+    </div>
+  </div>   <!-- /search -->
 
   <div class="row" style="padding-top:40px; padding-bottom: 40px; background-color: #ffffff; ">
     <div class="span12">
@@ -26,39 +25,44 @@
     </div>
 
 
-      <div class="span4">
-          <div class="span2 offset1"> <%= image_tag("icon-free.png", alt: "icon free") %></div>
-          <div class="span3">
-            <h4>No listing or membership fees</h4>
-            You get 100% of the rent. We are doing this to support small businesses in the USA. We succeed when you succeed.
-          </div>
+    <div class="span4">
+      <div class="span2 offset1"> <%= image_tag("icon-free.png", alt: "icon free") %></div>
+      <div class="span3">
+        <h4>No listing or membership fees</h4>
+        You get 100% of the rent. We are doing this to support small businesses in the USA. We succeed when you succeed.
       </div>
-      <div class="span4">
-          <div class="span2 offset1"> <%= image_tag("icon-screen.png", alt: "icon screen") %></div>
-          <div class="span3">
-            <h4>Get pre-screened applicants</h4>
-            We recruit and screen local, reliable applicants for you, many of whom are like-minded entrepreneurs you may enjoy meeting.
-          </div>
+    </div>
+
+    <div class="span4">
+      <div class="span2 offset1"> <%= image_tag("icon-screen.png", alt: "icon screen") %></div>
+      <div class="span3">
+        <h4>Get pre-screened applicants</h4>
+        We recruit and screen local, reliable applicants for you, many of whom are like-minded entrepreneurs you may
+        enjoy meeting.
       </div>
+    </div>
+
+    <div class="span4">
+      <div class="span2 offset1"> <%= image_tag("icon-free.png", alt: "icon free") %></div>
+      <div class="span3">
+        <h4>No listing or membership fees</h4>
+        You get 100% of the rent. We are doing this to support small businesses in the USA. We succeed when you succeed.
+      </div>
+    </div>
+
+    <!--
+              <div class="row l_fpo">
       <div class="span4">
-          <div class="span2 offset1"> <%= image_tag("icon-free.png", alt: "icon free") %></div>
-          <div class="span3">
-            <h4>No listing or membership fees</h4>
-            You get 100% of the rent. We are doing this to support small businesses in the USA. We succeed when you succeed.
-          </div>
+        <div class="offset3 fpo1"> Yo </div>
       </div>
 
-          <!--
-          <div class="row l_fpo">
-  <div class="span4">
-    <div class="offset3 fpo1"> Yo </div>
-  </div>
+      <div class="span4">
+        <div class="offset3 fpo1"> Yo </div>
+      </div>
+      <div class="span4">
+        <div class="offset3 fpo1"> Yo </div>
+      </div>
+    -->
+  </div>  <!-- /row2 -->
 
-  <div class="span4">
-    <div class="offset3 fpo1"> Yo </div>
-  </div>
-  <div class="span4">
-    <div class="offset3 fpo1"> Yo </div>
-  </div>
--->
 </div> <!-- /container -->
