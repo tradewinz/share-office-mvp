@@ -5,8 +5,16 @@ class OfficesController < ApplicationController
   # GET /offices.json
   def index
     @offices = Office.order("created_at desc")
-    @json = Office.all.to_gmaps4rails
+    #@json = Office.all.to_gmaps4rails
+    @json = @offices.to_gmaps4rails do |office, marker|
 
+      marker.infowindow render_to_string(:partial => "/offices/infowindow", :locals => { :office => office})
+      marker.title "#{office.title}"
+      marker.json({ :description => office.description})
+     # marker.picture({:picture => "http://mapicons.nicolasmollet.com/     wp-content/uploads/mapicons/shape-default/color-3875d7/shapeco     lor-color/shadow-1/border-dark/symbolstyle-contrast/symbolshad     owstyle-dark/gradient-iphone/information.png",
+     #               :width => 32,
+     #               :height => 32})
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @offices }
@@ -17,7 +25,7 @@ class OfficesController < ApplicationController
   # GET /offices/1.json
   def show
     @office = Office.find(params[:id])
-
+    puts "********office is " + @office.to_s
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @office }

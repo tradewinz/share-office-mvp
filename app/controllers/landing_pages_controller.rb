@@ -7,6 +7,7 @@ class LandingPagesController < ApplicationController
 	end
 
 	def listings
+		puts "**********redirecting to " + offices_path
 		redirect_to offices_path
 	end
 
