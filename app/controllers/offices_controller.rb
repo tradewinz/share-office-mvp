@@ -6,11 +6,11 @@ class OfficesController < ApplicationController
   def index
     @offices = Office.order("created_at desc")
     #@json = Office.all.to_gmaps4rails
-    @json = @offices.to_gmaps4rails do |office, marker|
+    @json = Office.all.to_gmaps4rails do |office, marker|
 
       marker.infowindow render_to_string(:partial => "/offices/infowindow", :locals => { :office => office})
       marker.title "#{office.title}"
-      marker.json({ :description => office.description})
+     # marker.json({ :description => office.description})
      # marker.picture({:picture => "http://mapicons.nicolasmollet.com/     wp-content/uploads/mapicons/shape-default/color-3875d7/shapeco     lor-color/shadow-1/border-dark/symbolstyle-contrast/symbolshad     owstyle-dark/gradient-iphone/information.png",
      #               :width => 32,
      #               :height => 32})
