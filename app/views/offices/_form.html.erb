@@ -21,8 +21,13 @@
       <fieldset class="padtop">
 
         <div class="control-group">
+          <label class="control-label">Type of space</label>
+          <div class="controls">  <%= f.text_field :office_type %>  </div>
+        </div>
+
+        <div class="control-group">
           <label class="control-label">Accommodates</label>
-          <div class="controls">  <%= f.text_field :accomodate %>  </div>
+          <div class="controls">  <%= f.number_field :accomodate %>  </div>
         </div>
 
         <div class="control-group">
@@ -30,6 +35,25 @@
           <div class="controls"> <%= f.text_field :size %> sq. ft. </div>
         </div>
 
+
+        <div class="control-group">
+          <label class="control-label">Amenities</label>
+          <div class="controls"><%= f.check_box :wifi %> Wi-fi </div>
+          <div class="controls"><%= f.check_box :confroom %> Conference</div>
+          <div class="controls"> <%= f.check_box :kitchen %> Kitchen</div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label"></label>
+          <div class="controls"> <%= f.check_box :parking %> Parking</div>
+          <div class="controls"> <%= f.check_box :ac %> AC</div>
+          <div class="controls"> <%= f.check_box :printer %> Printer</div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Address</label>
+          <div class="controls"> <%= f.text_field :loc_addr1 %> </div>
+        </div>
 
         <div class="control-group">
           <label class="control-label"><strong>Zip Code</strong> (Required) </label>
@@ -46,50 +70,18 @@
           <div class="controls"> <%= f.text_field :loc_state %> </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-        <!--div class="control-group">
-          <label class="control-label">Options</label>
-          <div class="controls"><!%= f.check_box :insurance %> Renter must have liability insurance </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label"></label>
-          <div class="controls"><!%= f.check_box :on_site %> I/Someone will be on-site</div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label"></label>
-          <div class="controls"> <!%= f.check_box :swap %> Swap OK</div>
-        </div-->
-
-
-      </fieldset>
-
-      <div class="panel-header-gray">
-        <h3> About You </h3>
-        <p> Tradewinz creates trusted, reliable business connections.
-          Help other people get to know you.
-        </p>
-      </div>
-
-      <fieldset class="padtop">
         <div class="control-group">
           <label class="control-label">Upload a Photo</label>
           <div class="controls"> <%= f.file_field :image1 %> </div>
         </div>
 
         <div class="control-group">
-          <label class="control-label">Rent & Availability</label>
-          <div class="controls"> <%= f.text_area :available %> </div>
+          <label class="control-label">Rent</label>
+          <div class="controls"> <%= f.text_area :rent %> </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Rent Type</label>
+          <div class="controls"> <%= f.text_area :rent_type %> </div>
         </div>
 
         <div class="control-group">
@@ -104,7 +96,6 @@
 
 
       </fieldset>
-
 
       <div class="panel-header-gray">
         <div class="row">

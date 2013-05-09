@@ -25,7 +25,7 @@ class OfficesController < ApplicationController
   # GET /offices/1.json
   def show
     @office = Office.find(params[:id])
-    puts "********office is " + @office.to_s
+    # puts "********office is " + @office.to_s
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @office }
