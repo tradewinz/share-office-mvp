@@ -10,11 +10,12 @@
 </div-->
 
 <!--%= gmaps4rails(@json) %-->
+  <div class="span12">
   <%= gmaps("markers" => {"data" => @json},
             "map_options" =>  { "provider" => "google", "provider_key" => "AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE" }
       )
   %>
-
+  </div>
 </div>
 
 <div class="row">

@@ -22,12 +22,14 @@
 
         <div class="control-group">
           <label class="control-label">Type of space</label>
-          <div class="controls">  <%= f.text_field :office_type %>  </div>
+          <div class="controls">
+            <%= f.select(:office_type, [['Office Space', 1], ['Meeting Room', 2], ['Desk', 3]]) %>
+          </div>
         </div>
 
         <div class="control-group">
           <label class="control-label">Accommodates</label>
-          <div class="controls">  <%= f.number_field :accomodate %>  </div>
+          <div class="controls">  <%= f.number_field :accomodate, :value => 1, :in => 1..20 %>  </div>
         </div>
 
         <div class="control-group">

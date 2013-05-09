@@ -1,0 +1,27 @@
+<div class="container">
+
+  <br>
+  <%= link_to "Grid View", listings_path, class: "btn btn-medium" %>
+  <br><br>
+
+<div class ="row">
+
+
+
+<!--div id="map-canvas" style="height: 400px">
+  <div>
+    <input id="address" type="textbox" value="Sydney, NSW">
+    <input type="button" value="Encode" onclick="codeAddress()">
+  </div>
+</div-->
+
+<!--%= gmaps4rails(@json) %-->
+  <div class="span12">
+  <%= gmaps("markers" => {"data" => @json},
+            "map_options" =>  { "provider" => "google", "provider_key" => "AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE" }
+      )
+  %>
+  </div>
+</div>
+
+</div>

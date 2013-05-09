@@ -1,0 +1,52 @@
+<div class="container">
+
+  <br>
+  <%= link_to "Map View", maps_path, class: "btn btn-medium" %>
+  <br><br>
+
+<div class="row">
+
+  <div id="offices" class="span12">
+
+    <% @offices.each do |office| %>
+
+      <div class="row search_result">
+
+        <div class="span2" style="padding: 4px; border: 1px solid #D0D0D0;
+                vertical-align: middle; text-align: center; background-color: #FFFFFF;">
+            <a href= "<%= office_path(office)  %>" >
+                <%= image_tag office.image1_url(:small).to_s, :size=> "130x100", :alt=> "Photo" %>
+            </a>
+        </div>
+
+        <div class="span5">
+            <%= link_to office.title, office %>
+        </div>
+
+        <div class="span3" id="location">
+          <%= office.loc_zip %>
+        </div>
+
+        <div class="span1">
+          <%= link_to 'View', office %>
+
+          <% if can? :update, office %>
+            <%= link_to 'Edit', edit_office_path(office) %>
+          <% end %>
+
+          <% if can? :destroy, office %>
+            <%= link_to 'Delete', office, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+
+        </div>
+
+      </div>
+
+    <% end %>
+
+  <br>
+</div>
+
+</div>
+
+</div>
