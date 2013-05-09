@@ -1,8 +1,8 @@
 class Office < ActiveRecord::Base
-  attr_accessible :availability, :company_name, :company_desc, :company_url, :contact_email, :contact_name, :contact_phone,
-                  :contact_picture, :description, :image1, :image2, :image3, :image4, :insurance, :rent, :size, :swap,
-                  :title, :years, :accomodate, :available, :loc_zip, :loc_addr1, :loc_addr2, :loc_city, :loc_state,
-                  :features, :on_site, :user_id, :latitude, :longitude, :gmaps
+  attr_accessible :office_type, :accomodate, :size, :wifi, :confroom, :kitchen, :parking, :ac, :printer,
+                  :loc_zip, :loc_addr1, :loc_addr2, :loc_city, :loc_state,
+                  :title, :description, :rent, :rent_type, :image1, :image2, :image3, :image4, :available,
+                  :user_id, :latitude, :longitude, :gmaps
 
   belongs_to :user                  
 
@@ -15,7 +15,6 @@ class Office < ActiveRecord::Base
   acts_as_gmappable
 
   mount_uploader :image1, ImageUploader
-  mount_uploader :contact_picture, ImageUploader
 
   def gmaps4rails_address
   #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki

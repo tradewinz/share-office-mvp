@@ -11,43 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506215040) do
+ActiveRecord::Schema.define(:version => 20130509004100) do
 
   create_table "offices", :force => true do |t|
     t.decimal  "rent"
     t.string   "size"
     t.string   "title"
     t.text     "description"
-    t.date     "availability"
-    t.boolean  "insurance"
-    t.boolean  "swap"
     t.string   "image1"
     t.string   "image2"
     t.string   "image3"
     t.string   "image4"
-    t.string   "contact_name"
-    t.string   "contact_picture"
-    t.text     "company_desc"
-    t.string   "company_url"
-    t.integer  "years"
-    t.string   "contact_email"
-    t.string   "contact_phone"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "accomodate"
     t.text     "available"
-    t.string   "company_name"
     t.string   "loc_addr1"
     t.string   "loc_addr2"
     t.string   "loc_city"
     t.string   "loc_state"
-    t.text     "features"
-    t.boolean  "on_site"
     t.string   "loc_zip"
     t.integer  "user_id"
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
+    t.boolean  "wifi"
+    t.boolean  "confroom"
+    t.boolean  "kitchen"
+    t.boolean  "parking"
+    t.boolean  "ac"
+    t.boolean  "printer"
+    t.integer  "office_type"
+    t.integer  "rent_type"
   end
 
   create_table "users", :force => true do |t|
