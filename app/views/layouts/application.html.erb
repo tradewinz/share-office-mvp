@@ -115,6 +115,32 @@
 
 <!-- jQquery validation -->
 <script type="text/javascript">
+
+    $("#continueListingBtn").click(function() {      
+        $("#new_office").validate({
+            rules: {
+                "office[loc_zip]": {required: true},
+                                "office[title]": {required: true}
+
+            },
+            messages: {
+                "office[loc_zip]": "Please tell us the zip code of your office",
+                                "office[title]": "Please provide a title for your listing"
+
+            },
+            errorPlacement: function(error, element) {
+                element.after(error);
+                element.css('border', 'solid red 2px');
+            }
+        });
+        
+        if ($("#new_office").valid()) {
+          _gaq.push(['_trackEvent', 'ContinueListing', 'User completed first page']);
+          $('#second').show(); 
+          $('#first').hide();
+        }
+    });   
+
     $("#saveListingBtn").click(function() {
         $("#new_office").validate({
             rules: {
@@ -130,7 +156,10 @@
                 element.css('border', 'solid red 2px');
             }
         });
+        
+        if ($("#new_office").valid()) {
         _gaq.push(['_trackEvent', 'SaveListing', 'User saves a listing']);
+        }
     });
 
     $("#newListingBtn").click(function() {

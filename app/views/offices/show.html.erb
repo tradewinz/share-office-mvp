@@ -34,7 +34,7 @@
 
   <p>
     <b>Zip Code : </b>
-    <%= @office.loc_city %>
+    <%= @office.loc_zip %>
   </p>
 
   <p>
@@ -53,19 +53,51 @@
   </p>
 
 
-  <!--p>
-    <b>Swap OK : </b>
-    <!--% if @office.swap %>Yes
-    <!--% else %>No
-    <!--% end %>
+  <p>
+    <b>Wifi : </b>
+    <% if @office.wifi %>Yes
+    <% else %>No
+    <% end %>
+  </p>
 
-  </p-->
+  <p>
+    <b>Conference room : </b>
+    <% if @office.confroom %>Yes
+    <% else %>No
+    <% end %>
+  </p>
 
+  <p>
+    <b>Kitchen : </b>
+    <% if @office.kitchen %>Yes
+    <% else %>No
+    <% end %>
+  </p>
+
+  <p>
+    <b>Parking : </b>
+    <% if @office.parking %>Yes
+    <% else %>No
+    <% end %>
+  </p>
+
+  <p>
+    <b>Air Conditioning : </b>
+    <% if @office.ac %>Yes
+    <% else %>No
+    <% end %>
+  </p>
+  <p>
+    <b>Printer : </b>
+    <% if @office.printer %>Yes
+    <% else %>No
+    <% end %>
+  </p>
 
   <p>
     <b>User:</b>
     <% if @office.user %>
-        <%= @office.user.name %>
+    <%= @office.user.name %>
     <% end %>
   </p>
 
@@ -77,7 +109,7 @@
   </h4>
 
   <br>
-  <%= link_to "Show all listings", offices_path, class: "btn btn-medium" %>
+  <%= link_to "Show all listings", listings_path, class: "btn btn-medium" %>
   <br><br>
 
 </div>
