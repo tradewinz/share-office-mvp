@@ -1,115 +1,23 @@
-<div class="container">
+<div class="container-fluid">
 
-  <h2 id="notice"><%= notice %></h2>
-
-  <p>
-    <b>Title : </b>
-    <%= @office.title %>
-  </p>
-
-  <p>
-    <b>Description : </b>
-    <%= @office.description.gsub("\n", "<br>").html_safe %>
-  </p>
-
-  <p>
-    <b>Office type : </b>
-    <%= @office.office_type %>
-  </p>
-
-  <p>
-    <b>Size : </b>
-    <%= @office.size %> sq.ft.
-  </p>
-
-  <p>
-    <b>City : </b>
-    <%= @office.loc_city %>
-  </p>
-
-  <p>
-    <b>State : </b>
-    <%= @office.loc_state %>
-  </p>
-
-  <p>
-    <b>Zip Code : </b>
-    <%= @office.loc_zip %>
-  </p>
-
-  <p>
-    <b>Accommodates : </b>
-    <%= @office.accomodate %>
-  </p>
-
-  <p>
-    <b>Rent : </b>
-    <%= @office.rent %>
-  </p>
-
-  <p>
-    <b>Photo : </b>
-    <%= image_tag @office.image1_url.to_s, alt: "Photo" %>
-  </p>
-
-
-  <p>
-    <b>Wifi : </b>
-    <% if @office.wifi %>Yes
-    <% else %>No
-    <% end %>
-  </p>
-
-  <p>
-    <b>Conference room : </b>
-    <% if @office.confroom %>Yes
-    <% else %>No
-    <% end %>
-  </p>
-
-  <p>
-    <b>Kitchen : </b>
-    <% if @office.kitchen %>Yes
-    <% else %>No
-    <% end %>
-  </p>
-
-  <p>
-    <b>Parking : </b>
-    <% if @office.parking %>Yes
-    <% else %>No
-    <% end %>
-  </p>
-
-  <p>
-    <b>Air Conditioning : </b>
-    <% if @office.ac %>Yes
-    <% else %>No
-    <% end %>
-  </p>
-  <p>
-    <b>Printer : </b>
-    <% if @office.printer %>Yes
-    <% else %>No
-    <% end %>
-  </p>
-
-  <p>
-    <b>User:</b>
-    <% if @office.user %>
-    <%= @office.user.name %>
-    <% end %>
-  </p>
-
-  <br>
-
-  <h4>If you are interested in renting this space, please email us at
-    <a href="mailto:tradewinz@intuit.com?subject=Interested in renting?" class="btn-link">tradewinz@intuit.com</a> with
-    details about your needs.
-  </h4>
-
-  <br>
-  <%= link_to "Show all listings", listings_path, class: "btn btn-medium" %>
-  <br><br>
-
+  <div class="row-fluid">
+    <div class="span8">
+      <img src="/assets/dummyoffice.png">
+    </div>
+    <div class="offset1 span3">
+      About the host--
+      <div class="row-fluid">
+        <div class="span12">
+          About the host
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12">
+          Map area
+        </div>
+      </div>
+   </div>
+ </div>
 </div>
+
+  
