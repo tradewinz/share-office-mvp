@@ -48,8 +48,29 @@
   </p>
 
   <p>
-    <b>Photo : </b>
+    <b>Photo1 : </b>
     <%= image_tag @office.image1_url.to_s, alt: "Photo" %>
+  </p>
+
+  <p>
+  <% if !(@office.image2_url.to_s.ends_with?("default-studio.png") ) %>
+    <b>Photo2 : </b>
+    <%= image_tag @office.image2_url.to_s, alt: "Photo" %>
+  <% end%>
+  </p>
+
+  <p>
+  <% if !(@office.image2_url.to_s.ends_with?("default-studio.png") ) %>
+    <b>Photo3 : </b>
+    <%= image_tag @office.image3_url.to_s, alt: "Photo" %>
+  <% end%>
+  </p>
+
+  <p>
+  <% if !(@office.image2_url.to_s.ends_with?("default-studio.png") ) %>
+    <b>Photo4 : </b>
+    <%= image_tag @office.image4_url.to_s, alt: "Photo" %>
+  <% end%>
   </p>
 
 
