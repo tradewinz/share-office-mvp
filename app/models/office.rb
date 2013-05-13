@@ -6,8 +6,8 @@ class Office < ActiveRecord::Base
 
   belongs_to :user                  
 
-  validates(:title, presence: true)
-  validates(:loc_zip, presence: true)
+  validates :title, :presence => true
+  validates :loc_zip, :presence => true
 
   #geocoded_by :loc_zip
   #after_validation :geocode
@@ -18,6 +18,6 @@ class Office < ActiveRecord::Base
 
   def gmaps4rails_address
   #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
-    "#{self.loc_zip}, #{self.loc_city}, #{self.loc_state}"
+    "#{self.loc_zip}, #{self.loc_addr1}, #{self.loc_city}, #{self.loc_state}"
   end
 end
