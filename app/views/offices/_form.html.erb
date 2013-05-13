@@ -16,11 +16,8 @@
       <div id="first">
 
         <div class="panel-header-gray">
-          <h3> Tell us about your space </h3>
-
-          <p> Tell potential colleagues why they would want to work in your space.
-            Highlight what makes it productive and <br> convenient - including equipment, storage, parking,
-            kitchen and more.</p>
+          <h3 style="text-align: center"> Tell us about your space </h3>
+          
         </div>
 
         <fieldset class="padtop">
@@ -28,53 +25,62 @@
           <div class="control-group">
             <label class="control-label">Type of space</label>
             <div class="controls">
-              <%= f.select(:office_type, [['Office Space', 1], ['Meeting Room', 2], ['Desk', 3]]) %>
+              <%= f.select :office_type, [['Office Space', 1], ['Meeting Room', 2], ['Desk', 3]] %>
             </div>
           </div>
 
           <div class="control-group">
             <label class="control-label">Accommodates</label>
-            <div class="controls">  <%= f.number_field :accomodate, :value => 1, :in => 1..20 %>  </div>
+            <div class="controls">  <%= f.number_field :accomodate, :value => 1, :in => 1..20, :style => "width: 5%" %>  </div>
           </div>
 
           <div class="control-group">
             <label class="control-label">Size</label>
-            <div class="controls"> <%= f.text_field :size %> sq. ft.</div>
+            <div class="controls"> <%= f.text_field :size, :style => "width: 10%" %> sq. ft.</div>
           </div>
 
 
           <div class="control-group">
             <label class="control-label">Amenities</label>
-            <div class="controls"><%= f.check_box :wifi %> Wi-fi</div>
-            <div class="controls"><%= f.check_box :confroom %> Conference</div>
-            <div class="controls"> <%= f.check_box :kitchen %> Kitchen</div>
+            
+            <div class="row">
+              <div class="span2">
+                <label class="checkbox"> <%= f.check_box :wifi %> Wi-fi </label>
+                <label class="checkbox"> <%= f.check_box :parking %> Parking </label>
+              </div>
+
+              <div class="span2">
+                  <label class="checkbox"> <%= f.check_box :confroom %> Conference </label>              
+                  <label class="checkbox"> <%= f.check_box :ac %> AC </label>
+            </div>
+            
+            <div class="span2">
+              <label class="checkbox"> <%= f.check_box :kitchen %> Kitchen </label>
+                <label class="checkbox"> <%= f.check_box :printer %> Printer </label>
+            </div>
+          </div>
+        
+        </div>
+         
+
+          <div class="control-group">
+            <label class="control-label"><strong>Zip Code *</strong></label>
+            <div class="controls"> <%= f.text_field :loc_zip, :placeholder => "required" %> </div>
           </div>
 
           <div class="control-group">
-            <label class="control-label"></label>
-            <div class="controls"> <%= f.check_box :parking %> Parking</div>
-            <div class="controls"> <%= f.check_box :ac %> AC</div>
-            <div class="controls"> <%= f.check_box :printer %> Printer</div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label">Address</label>
-            <div class="controls"> <%= f.text_field :loc_addr1 %> </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label"><strong>Zip Code</strong> (Required) </label>
-            <div class="controls"> <%= f.text_field :loc_zip %> </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label">City</label>
-            <div class="controls"> <%= f.text_field :loc_city %> </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label">State</label>
-            <div class="controls"> <%= f.text_field :loc_state %> </div>
+            <label class="control-label">Location</label>
+            <div class="row">
+              <div class="span3"> 
+                <%= f.text_field :loc_addr1, :placeholder => "Street address", :style => "width: 99%" %> 
+              </div>  
+              <div class="span2"> 
+                <%= f.text_field :loc_city, :placeholder => "City", :style => "width: 99%" %> 
+              </div>
+              <div class="span1">   
+                <%= f.text_field :loc_state, :placeholder => "State", :style => "width: 50%" %> 
+              </div>  
+            </div>
           </div>
 
         </fieldset>
@@ -94,6 +100,10 @@
       <!--second page of wizard -->
 
       <div id="second" style="display: none">
+        <div class="panel-header-gray">
+          <h3 style="text-align: center"> You're almost done!</h3>          
+        </div>
+
        <fieldset class="padtop">
 
         <div class="control-group">
@@ -102,14 +112,11 @@
         </div>
 
         <div class="control-group">
-          <label class="control-label">Rent</label>
-          <div class="controls"> <%= f.text_area :rent %> </div>
+          <label class="control-label">Rent Amount</label>
+          <div class="controls"> <%= f.text_field :rent %> per <%= f.select(:rent_type, [['Monthly', 1], ['Weekly', 2], ['Daily', 3]]) %>
+          </div>
         </div>
-        <div class="control-group">
-          <label class="control-label">Rent Type</label>
-          <div class="controls"> <%= f.text_area :rent_type %> </div>
-        </div>
-
+        
         <div class="control-group">
           <label class="control-label"> <strong>Title</strong> (Required) </label>
           <div class="controls"> <%= f.text_field :title %> </div>
