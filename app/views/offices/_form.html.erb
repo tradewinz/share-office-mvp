@@ -44,7 +44,7 @@
             <label class="control-label">Amenities</label>
             
             <div class="row">
-              <div class="span2">
+              <div class="span2" style="margin-left: 10px">
                 <label class="checkbox"> <%= f.check_box :wifi %> Wi-fi </label>
                 <label class="checkbox"> <%= f.check_box :parking %> Parking </label>
               </div>
@@ -70,8 +70,7 @@
 
           <div class="control-group">
             <label class="control-label">Location</label>
-            <div class="row">
-              <div class="span3"> 
+              <div class="span3">
                 <%= f.text_field :loc_addr1, :placeholder => "Street address", :style => "width: 99%" %> 
               </div>  
               <div class="span2"> 
@@ -80,7 +79,6 @@
               <div class="span1">   
                 <%= f.text_field :loc_state, :placeholder => "State", :style => "width: 50%" %> 
               </div>  
-            </div>
           </div>
 
         </fieldset>

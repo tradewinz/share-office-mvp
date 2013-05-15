@@ -38,7 +38,7 @@
     <div class="navbar" >
       <div class="wrapper">
             <ul class="nav nav-pills pull-right">
-                <li><%= link_to "LIST YOUR SPACE", new_office_path, :class=>"btn btn-primary btn-warning" %></li>
+                <li><%= link_to "+ LIST YOUR SPACE", new_office_path, :class=>"btn btn-warning", :style => "color: #000000; text-shadow: none" %></li>
                     <% if user_signed_in? %>
                       <li class="label" style="margin-top: 10px; margin-left: 5px"><%= current_user.name %></li>
                       <!--li><%= link_to "Edit Profile", edit_user_registration_path %></li-->
