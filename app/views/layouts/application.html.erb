@@ -35,35 +35,32 @@
 </head>
 
 <body>
-<div class = "container" style="background-color: #ffffff;">
     <div class="navbar" >
+      <div class="wrapper">
             <ul class="nav nav-pills pull-right">
-                <li><%= link_to "LIST YOUR SPACE", new_office_path, :class=>"btn" %></li>
+                <li><%= link_to "LIST YOUR SPACE", new_office_path, :class=>"btn btn-primary btn-warning" %></li>
                     <% if user_signed_in? %>
-                      <li class="label"><%= current_user.name %></li>
-                      <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                      <li class="label" style="margin-top: 10px; margin-left: 5px"><%= current_user.name %></li>
+                      <!--li><%= link_to "Edit Profile", edit_user_registration_path %></li-->
                       <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
                     <% else %>
-                        <li><%= link_to "SignIn with LinkedIn", user_omniauth_authorize_path(:linkedin_oauth2) %></li>
-                        <li><%= link_to "SignUp", new_user_registration_path %></li>
+                        <!--li><%= link_to "SignIn with LinkedIn", user_omniauth_authorize_path(:linkedin_oauth2) %></li-->
+                        <!--li><%= link_to "SignUp", new_user_registration_path %></li-->
                         <li><%= link_to "LogIn", new_user_session_path %></li>
                     <% end %>
-                </li>
-
             </ul>
             <a href="/home">
-                <h3 class="muted" style="margin-top: 12px;">
+                <h3 class="muted" style="margin-top: 1px;">
                   <%= image_tag("tw/logo_intuit_labs.gif", alt: "Intuit Labs") %>
                 </h3>
             </a>
+      </div>
 
     </div>
 
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, id: "flash_#{name}" %>
     <% end %>
-
-</div>
 
 
   <%= yield %>
@@ -75,7 +72,7 @@
 
 	</div-->
 
-  <div class="row">
+  <div class="footer">
     <div class="span5 offset4" style="margin-bottom: 30px; padding-top: 24px;">
       <p>© Intuit, Inc. All rights reserved
         <a href="http://security.intuit.com/privacy/">Privacy Policy</a>
