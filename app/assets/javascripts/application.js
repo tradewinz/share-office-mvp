@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.validate
+//= require galleria-1.2.9
+//= require galleria.classic
 //= require_tree .

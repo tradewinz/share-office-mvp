@@ -21,6 +21,9 @@ class OfficesController < ApplicationController
     end
   end
 
+  def reserve
+  end
+
   # GET /offices/new
   # GET /offices/new.json
   def new
