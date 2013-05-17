@@ -44,7 +44,7 @@
             <label class="control-label">Amenities</label>
             
             <div class="row">
-              <div class="span2">
+              <div class="span2" style="margin-left: 10px">
                 <label class="checkbox"> <%= f.check_box :wifi %> Wi-fi </label>
                 <label class="checkbox"> <%= f.check_box :parking %> Parking </label>
               </div>
@@ -70,8 +70,7 @@
 
           <div class="control-group">
             <label class="control-label">Location</label>
-            <div class="row">
-              <div class="span3"> 
+              <div class="span3">
                 <%= f.text_field :loc_addr1, :placeholder => "Street address", :style => "width: 99%" %> 
               </div>  
               <div class="span2"> 
@@ -80,7 +79,6 @@
               <div class="span1">   
                 <%= f.text_field :loc_state, :placeholder => "State", :style => "width: 50%" %> 
               </div>  
-            </div>
           </div>
 
         </fieldset>
@@ -109,22 +107,27 @@
         <div class="control-group">
           <label class="control-label">Upload a Photo</label>
           <div class="controls"> <%= f.file_field :image1 %> </div>
+          <div class="controls"> <%= f.file_field :image2 %> </div>
+          <div class="controls"> <%= f.file_field :image3 %> </div>
+          <div class="controls"> <%= f.file_field :image4 %> </div>
         </div>
 
         <div class="control-group">
           <label class="control-label">Rent Amount</label>
-          <div class="controls"> <%= f.text_field :rent %> per <%= f.select(:rent_type, [['Monthly', 1], ['Weekly', 2], ['Daily', 3]]) %>
+          <div class="controls"> 
+            <%= f.text_field :rent, :placeholder => "$", :width => "20%" %> per 
+            <%= f.select(:rent_type, [['Monthly', 1], ['Weekly', 2], ['Daily', 3]]) %>
           </div>
         </div>
         
         <div class="control-group">
-          <label class="control-label"> <strong>Title</strong> (Required) </label>
-          <div class="controls"> <%= f.text_field :title %> </div>
+          <label class="control-label"> <strong>Title</strong> * </label>
+          <div class="controls"> <%= f.text_field :title, :placeholder => "e.g. Private Office with conference room" %> </div>
         </div>
 
         <div class="control-group">
           <label class="control-label">Description</label>
-          <div class="controls"> <%= f.text_area :description %> </div>
+          <div class="controls"> <%= f.text_area :description, :placeholder => "List availability, rental terms, house rules, additional amenities, etc." %> </div>
         </div>
 
         </fieldset>

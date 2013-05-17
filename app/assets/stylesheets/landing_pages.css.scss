@@ -1,4 +1,14 @@
 
+$lightbox: #FFFFFF;
+$fpobg: #baafa4;
+
+.wrapper {
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  width: 960px;
+}
+
 body{
  background-image: url('tw/background.png');
  margin: 0;
@@ -17,36 +27,39 @@ body{
  display: compact;
  }
 
-$lightbox: #FFFFFF;
-$fpobg: #baafa4;
+ .leftgap {
+   padding-left: 20px;
+   padding-top: 10px;
+ }
+
 
  .l_search {
-background-color: $lightbox;
-opacity: 0.7;
-width: 800px;
-
+  background-color: $lightbox;
+  border-radius: 10px;
+  opacity: 0.8;
+  width: 700px;
  }
 
  .l_text {
- font-family: "Helvetica Neue Bold"; 
- font-size: 30px;
- color: black;
- text-shadow:#FFFFFF;
- background-color: $lightbox;
- margin-top: 10px;
- margin-bottom: 10px;
-
+   font-family: "Helvetica Neue Bold";
+   font-size: 30px;
+   color: black;
+   text-shadow:#FFFFFF;
+   background-color: $lightbox;
+   margin-top: 10px;
+   margin-bottom: 10px;
  }
- .l_button {
 
- width: 100%;
+ .l_button {
+  width: 100%;
+  opacity: 1;
  }
 
  .l_input {
- width: 100%;
-
+  width: 100%;
+  opacity: 1;
  }
 
  .l_fpo {
- background-color: $fpobg;
+  background-color: $fpobg;
  }

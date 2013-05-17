@@ -41,4 +41,5 @@ ShareOfficeMvp::Application.configure do
   config.assets.debug = false
   
   config.serve_static_assets = false
+
 end
