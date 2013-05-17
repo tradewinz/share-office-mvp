@@ -14,6 +14,10 @@
 /log/*.log
 /tmp
 
+# Ignore public/assets as they wll be pre-processed by Heroku
+/public/assets
+/public/uploads
+
 # Ignore other unneeded files.
 doc/
 *.swp

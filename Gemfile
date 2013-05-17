@@ -23,6 +23,8 @@ end
 
 gem 'jquery-rails', '2.0.2'
 
+#Photo Gallery
+
 group :production do
   gem 'pg', '0.12.2'
   gem 'newrelic_rpm'

@@ -1,136 +1,73 @@
+<style>
+#galleria{ width: 700px; height: 550px; background: #000; }
+</style>
+
+
 <div class="container">
 
-  <h2 id="notice"><%= notice %></h2>
-
-  <p>
-    <b>Title : </b>
-    <%= @office.title %>
-  </p>
-
-  <p>
-    <b>Description : </b>
-    <%= @office.description.gsub("\n", "<br>").html_safe %>
-  </p>
-
-  <p>
-    <b>Office type : </b>
-    <%= @office.office_type %>
-  </p>
-
-  <p>
-    <b>Size : </b>
-    <%= @office.size %> sq.ft.
-  </p>
-
-  <p>
-    <b>City : </b>
-    <%= @office.loc_city %>
-  </p>
-
-  <p>
-    <b>State : </b>
-    <%= @office.loc_state %>
-  </p>
-
-  <p>
-    <b>Zip Code : </b>
-    <%= @office.loc_zip %>
-  </p>
-
-  <p>
-    <b>Accommodates : </b>
-    <%= @office.accomodate %>
-  </p>
-
-  <p>
-    <b>Rent : </b>
-    <%= @office.rent %>
-  </p>
-
-  <p>
-    <b>Photo1 : </b>
-    <%= image_tag @office.image1_url.to_s, alt: "Photo" %>
-  </p>
-
-  <p>
-  <% if !(@office.image2_url.to_s.ends_with?("default-studio.png") ) %>
-    <b>Photo2 : </b>
-    <%= image_tag @office.image2_url.to_s, alt: "Photo" %>
-  <% end%>
-  </p>
-
-  <p>
-  <% if !(@office.image2_url.to_s.ends_with?("default-studio.png") ) %>
-    <b>Photo3 : </b>
-    <%= image_tag @office.image3_url.to_s, alt: "Photo" %>
-  <% end%>
-  </p>
-
-  <p>
-  <% if !(@office.image2_url.to_s.ends_with?("default-studio.png") ) %>
-    <b>Photo4 : </b>
-    <%= image_tag @office.image4_url.to_s, alt: "Photo" %>
-  <% end%>
-  </p>
+  <div class="row">
+    <div class="offset1 span7 officetitle">
+      Private office + conference room
+    </div>
+    <div class="offset1 span3 officecost">
+      $500/month
+    </div>
+  </div>
 
 
-  <p>
-    <b>Wifi : </b>
-    <% if @office.wifi %>Yes
-    <% else %>No
-    <% end %>
-  </p>
+  <div class="row">
+    <div class="offset8 span4 officelocation">
+      2 people . Office space. 250 sq. ft.
+    </div>
+  </div>
 
-  <p>
-    <b>Conference room : </b>
-    <% if @office.confroom %>Yes
-    <% else %>No
-    <% end %>
-  </p>
 
-  <p>
-    <b>Kitchen : </b>
-    <% if @office.kitchen %>Yes
-    <% else %>No
-    <% end %>
-  </p>
+  <div class="row">
+    <div class="offset1 span7" id="galleria">
+      <img src=<%=@office.image1_url.to_s%> /img>
+      <img src=<%=@office.image1_url.to_s%> /img>
+    </div>
+    <div class="span3">
+      <div class="row officereserve ">
+        <div class="span12 text-align:center">
+          <%= button_to "Reserve this space", {:action => "reserve"}, {:class => "l_button btn btn-large btn-warning"} %>     
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <p>
-    <b>Parking : </b>
-    <% if @office.parking %>Yes
-    <% else %>No
-    <% end %>
-  </p>
+      <div class="row officehost">
+        About the host
+      </div>
 
-  <p>
-    <b>Air Conditioning : </b>
-    <% if @office.ac %>Yes
-    <% else %>No
-    <% end %>
-  </p>
-  <p>
-    <b>Printer : </b>
-    <% if @office.printer %>Yes
-    <% else %>No
-    <% end %>
-  </p>
+      <div class="row officehostphoto">
 
-  <p>
-    <b>User:</b>
-    <% if @office.user %>
-    <%= @office.user.name %>
-    <% end %>
-  </p>
+      </div>
 
-  <br>
+    </div>
 
-  <h4>If you are interested in renting this space, please email us at
-    <a href="mailto:tradewinz@intuit.com?subject=Interested in renting?" class="btn-link">tradewinz@intuit.com</a> with
-    details about your needs.
-  </h4>
 
-  <br>
-  <%= link_to "Show all listings", listings_path, class: "btn btn-medium" %>
-  <br><br>
+  <div class="row">
+    <div class="span12">
+      Map area
+    </div>
+  </div>
 
 </div>
+
+
+<script>
+
+function galleria(){
+//alert ("YOO");
+ //Galleria.loadTheme('galleria/themes/classic/galleria.classic.js');
+ Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
+ if (Galleria) { 
+  //$("body").text('*************Galleria works');
+  //alert("TYio");
+  Galleria.run('#galleria');
+}
+}
+galleria();
+</script>
+

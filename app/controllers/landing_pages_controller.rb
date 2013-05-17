@@ -17,7 +17,6 @@ class LandingPagesController < ApplicationController
 	end
 
   def maps
-    #	puts "**********redirecting to " + offices_path
     #	redirect_to offices_path
     @json = Office.all.to_gmaps4rails do |office, marker|
 
