@@ -10,137 +10,182 @@
         </div>
     <% end %>
 
-    <div class="well panel-border">
-
+    <div class="row">
       <!-- first page of wizard -->
-      <div id="first">
+      <div id="first" class="span10 offset1">
 
-        <div class="panel-header-gray">
-          <h3 style="text-align: center"> Tell us about your space </h3>
-          
+        <div class="row">
+          <div class="span4 offset3">
+            <h3> Tell us about your space </h3>
+          </div>
         </div>
 
-        <fieldset class="padtop">
+        <div class="row panel panel-border">
+          <fieldset class="padtop padbottom">
 
-          <div class="control-group">
-            <label class="control-label">Type of space</label>
-            <div class="controls">
-              <%= f.select :office_type, [['Office Space', 1], ['Meeting Room', 2], ['Desk', 3]] %>
+            <div class="control-group">
+              <label class="control-label">Type of space</label>
+
+              <div class="controls">
+                <%= f.select :office_type, [['Office Space', 1], ['Meeting Room', 2], ['Desk', 3]] %>
+              </div>
             </div>
-          </div>
 
-          <div class="control-group">
-            <label class="control-label">Accommodates</label>
-            <div class="controls">  <%= f.number_field :accomodate, :value => 1, :in => 1..20, :style => "width: 5%" %>  </div>
-          </div>
+            <div class="control-group">
+              <label class="control-label">Accommodates</label>
 
-          <div class="control-group">
-            <label class="control-label">Size</label>
-            <div class="controls"> <%= f.text_field :size, :style => "width: 10%" %> sq. ft.</div>
-          </div>
+              <div class="controls">  <%= f.number_field :accomodate, :in => 0..20, :style => "width: 10%" %>  </div>
+            </div>
 
+            <div class="control-group">
+              <label class="control-label">Size</label>
 
-          <div class="control-group">
-            <label class="control-label">Amenities</label>
-            
-            <div class="row">
-              <div class="span2" style="margin-left: 10px">
-                <label class="checkbox"> <%= f.check_box :wifi %> Wi-fi </label>
-                <label class="checkbox"> <%= f.check_box :parking %> Parking </label>
+              <div class="controls"> <%= f.text_field :size, :style => "width: 10%" %> sq. ft.</div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Amenities</label>
+
+              <div class="row">
+                <div class="span2">
+                  <label class="checkbox"> <%= f.check_box :wifi %> Wi-fi </label>
+                  <label class="checkbox"> <%= f.check_box :parking %> Parking </label>
+                </div>
+
+                <div class="span3">
+                  <label class="checkbox"> <%= f.check_box :confroom %> Conference Room</label>
+                  <label class="checkbox"> <%= f.check_box :ac %> Air Conditioning </label>
+                </div>
+
+                <div class="span2">
+                  <label class="checkbox"> <%= f.check_box :kitchen %> Kitchen </label>
+                  <label class="checkbox"> <%= f.check_box :printer %> Printer </label>
+                </div>
+
               </div>
 
-              <div class="span2">
-                  <label class="checkbox"> <%= f.check_box :confroom %> Conference </label>              
-                  <label class="checkbox"> <%= f.check_box :ac %> AC </label>
             </div>
-            
-            <div class="span2">
-              <label class="checkbox"> <%= f.check_box :kitchen %> Kitchen </label>
-                <label class="checkbox"> <%= f.check_box :printer %> Printer </label>
-            </div>
-          </div>
-        
-        </div>
-         
 
-          <div class="control-group">
-            <label class="control-label"><strong>Zip Code *</strong></label>
-            <div class="controls"> <%= f.text_field :loc_zip, :placeholder => "required" %> </div>
-          </div>
+            <div class="control-group">
+              <label class="control-label">Location</label>
 
-          <div class="control-group">
-            <label class="control-label">Location</label>
-              <div class="span3">
-                <%= f.text_field :loc_addr1, :placeholder => "Street address", :style => "width: 99%" %> 
-              </div>  
-              <div class="span2"> 
-                <%= f.text_field :loc_city, :placeholder => "City", :style => "width: 99%" %> 
+              <div class="row">
+                <div class="span3">
+                  <%= f.text_field :loc_addr1, :placeholder => "Street address", :style => "width: 220px" %>
+                </div>
+                <div class="span2">
+                  <%= f.text_field :loc_city, :placeholder => "City", :style => "width: 140px" %>
+                </div>
+                <div class="span1">
+                  <%= f.text_field :loc_state, :placeholder => "State", :style => "width: 70px" %>
+                </div>
               </div>
-              <div class="span1">   
-                <%= f.text_field :loc_state, :placeholder => "State", :style => "width: 50%" %> 
-              </div>  
-          </div>
+            </div>
 
-        </fieldset>
-        
-        <div class="panel-header-gray">
+            <div class="control-group">
+              <label class="control-label"><strong>Zip Code * </strong></label>
+
+              <div class="controls"> <%= f.text_field :loc_zip,
+                                                      :placeholder => "required", :style => "width: 109px" %>
+              </div>
+            </div>
+
+          </fieldset>
+
+
           <div class="row">
             <div class="span8 offset4">
-              <button class="btn btn-large btn-primary" type="button" id="continueListingBtn">Continue</button>
-              <!--a href="#" class="btn btn-large btn-primary">Continue</a-->
-              <!--%= button_to "Continue", {:action => "new"}, {:class => "l_button btn btn-large btn-primary"} %-->
+              <button class="btn btn-large btn-primary" type="button" id="continueListingBtn">CONTINUE</button>
             </div>
           </div>
+
         </div>
-                
+        <!-- end white box -->
+
       </div>
+
 
       <!--second page of wizard -->
 
-      <div id="second" style="display: none">
-        <div class="panel-header-gray">
-          <h3 style="text-align: center"> You're almost done!</h3>          
-        </div>
+      <div id="second" style="display: none" class="span10 offset1">
 
-       <fieldset class="padtop">
-
-        <div class="control-group">
-          <label class="control-label">Upload a Photo</label>
-          <div class="controls"> <%= f.file_field :image1 %> </div>
-          <div class="controls"> <%= f.file_field :image2 %> </div>
-          <div class="controls"> <%= f.file_field :image3 %> </div>
-          <div class="controls"> <%= f.file_field :image4 %> </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label">Rent Amount</label>
-          <div class="controls"> 
-            <%= f.text_field :rent, :placeholder => "$", :width => "20%" %> per 
-            <%= f.select(:rent_type, [['Monthly', 1], ['Weekly', 2], ['Daily', 3]]) %>
+        <div class="row">
+          <div class="span4 offset3">
+            <h3> You're almost done! </h3>
           </div>
         </div>
-        
-        <div class="control-group">
-          <label class="control-label"> <strong>Title</strong> * </label>
-          <div class="controls"> <%= f.text_field :title, :placeholder => "e.g. Private Office with conference room" %> </div>
-        </div>
 
-        <div class="control-group">
-          <label class="control-label">Description</label>
-          <div class="controls"> <%= f.text_area :description, :placeholder => "List availability, rental terms, house rules, additional amenities, etc." %> </div>
-        </div>
+        <div class="row panel panel-border">
 
-        </fieldset>
+          <fieldset class="padtop padbottom">
 
-        <div class="panel-header-gray">
+            <div class="control-group">
+              <label class="control-label">Upload a Photo</label>
+
+              <div class="controls"> <%= f.file_field :image1 %>
+                  <% if @office.image1? %>
+                      <%= image_tag(@office.image1_url(:thumb).to_s, :class => "img-polaroid img-edit" ) %>
+                      <%= f.check_box :remove_image1 %>Remove photo1
+                  <% end %>
+              </div>
+              <div class="controls"> <%= f.file_field :image2 %>
+                <% if @office.image2? %>
+                    <%= image_tag(@office.image2_url(:thumb).to_s, :class => "img-polaroid img-edit" ) %>
+                    <%= f.check_box :remove_image1 %>Remove photo2
+                <% end %>
+              </div>
+              <div class="controls"> <%= f.file_field :image3 %>
+                <% if @office.image3? %>
+                    <%= image_tag(@office.image3_url(:thumb).to_s, :class => "img-polaroid img-edit" ) %>
+                    <%= f.check_box :remove_image1 %>Remove photo3
+                <% end %>
+              </div>
+              <div class="controls"> <%= f.file_field :image4 %>
+                <% if @office.image4? %>
+                    <%= image_tag(@office.image4_url(:thumb).to_s, :class => "img-polaroid img-edit" ) %>
+                    <%= f.check_box :remove_image1 %>Remove photo4
+                <% end %>
+              </div>
+
+             </div>
+
+            <div class="control-group">
+              <label class="control-label">Rent Amount</label>
+
+              <div class="controls">
+                <%= f.text_field :rent, :placeholder => "$",  :style => "width: 130px"%> per
+                <%= f.select :rent_type, [['Month', 1], ['Week', 2], ['Day', 3]], :style => "width: 10px" %>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label"> <strong>Title</strong> * </label>
+
+              <div class="controls"> <%= f.text_field :title, :style => "width: 350px",
+                                    :placeholder => "e.g. Private Office with conference room" %>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Description</label>
+
+              <div class="controls"> <%= f.text_area :description, :style => "width: 540px",
+                         :placeholder => "List availability, rental terms, house rules, additional amenities, etc." %>
+              </div>
+            </div>
+
+          </fieldset>
+
           <div class="row">
             <div class="span8 offset4">
               <!--%= f.submit "Add Your Listing", :class => "btn btn-large btn-inverse btn-call-to-action" %-->
-              <button class="btn btn-large btn-primary" type="submit" id="saveListingBtn">Save Your Listing</button>
+              <button class="btn btn-large btn-primary" type="submit" id="saveListingBtn">SAVE MY LISTING</button>
             </div>
           </div>
         </div>
-      </div>
+        <!-- White box -->
 
+      </div>
     </div>
+
 <% end %>

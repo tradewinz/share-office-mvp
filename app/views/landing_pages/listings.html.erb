@@ -1,93 +1,96 @@
 <div class="container">
 
- <div class="row" style="margin-top: 20px;">
-      <div class="span5">
-        <input type="text" class="l_input" placeholder="Enter a city">
-      </div>
-      <div class="span2">
-        <!--%= link_to "SEARCH", offices_path, :class=>"btn btn-large btn-primary btn-inverse btn-call-to-action input-block-level" %-->
-        <%= button_to "SEARCH", {:action => "listings"}, {:class => "btn btn-primary"} %>
-      </div>
-      <div class="offset2 span3">
+  <div class="row" style="margin-top: 20px;">
+    <div class="span5">
+      <input type="text" class="l_input" placeholder="Enter a city">
+    </div>
+    <div class="span2">
+      <%= button_to "SEARCH", {:action => "listings"}, {:class => "btn btn-primary"} %>
+    </div>
+    <div class="offset2 span3">
+      <div class="btn-group" data-toggle="buttons-radio">
         <%= link_to "Map View", maps_path, class: "btn btn-medium" %>
         <%= link_to "Grid View", listings_path, class: "btn btn-medium" %>
-
       </div>
     </div>
-
- <div class="row" style="padding-top:40px; background-color: #ffffff;" >
-
-  <div id="offices" class="span12">
-
-    <% @offices.each do |office| %>
-
-      <div class="row search_result">
-
-        <div class="span2">
-            <a href= "<%= office_path(office)  %>" >
-                <%= image_tag office.image1_url(:small).to_s, :size=> "130x100", :alt=> "Photo", :class => "img-polaroid" %>
-            </a>
-        </div>
-
-        <div class="span6">
-
-          <div class="row">
-            <h4><%= link_to office.title, office %></h4>
-            <p><%= office.loc_city %>, <%= office.loc_state %> </p>
-          </div>
-
-          <div class="row">
-            <div class="span2">
-            <ul>
-              <li> Wifi: <% if office.wifi? %> Yes <% else %> No     <% end %>    </li>
-              <li> Parking: <% if office.parking? %> Yes <% else %> No <% end %> </li>
-
-            </ul>
-            </div>
-
-            <div class="span2">
-              <ul>
-                <li> Air-Conditioning: <% if office.ac? %>Yes  <% else %> No        <% end %></li>
-                <li> Conference Room: <% if office.confroom? %> Yes <% else %> No  <% end %></li>
-              </ul>
-            </div>
-
-            <div class="span2">
-            <ul>
-              <li> Printer: <% if office.printer? %>Yes <% else %> No <% end %></li>
-              <li> Kitchen: <% if office.kitchen? %>Yes <% else %> No <% end %></li>
-            </ul>
-            </div>
-
-
-
-          </div>
-        </div>
-
-        <div class="span3" id="location">
-          <h4>$<%= office.rent %> /
-            <% if office.rent_type = 1 %>month
-            <% else %>
-              <% if office.rent_type = 2 %>week
-              <% else %>
-                  <% if office.rent_type = 3 %>day
-                  <% else %>month
-                  <% end %>
-              <% end %>
-            <% end %> </h4>
-            <%= office.accomodate %> people
-          <br>
-            <%= office.size %>sq. ft.
-        </div>
-
-
-      </div>
-
-    <% end %>
-
-    <br>
   </div>
 
-</div>
+  <div class="row" style="padding-top:40px; background-color: #ffffff;" >
 
+    <div id="offices" class="span12">
+
+      <% @offices.each do |office| %>
+
+          <div class="row search_result">
+
+            <div class="span3">
+              <a href= "<%= office_path(office)  %>" >
+                <%= image_tag office.image1_url(:medium).to_s, :alt=> "Photo", :class => "img-polaroid img-listing" %>
+              </a>
+            </div>
+
+            <div class="span6">
+              <div class="row">
+                <div class="span6">
+                  <h4><%= link_to office.title, office %></h4>
+                  <p><%= office.loc_city %>, <%= office.loc_state %> </p>
+                  <br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="span2">
+                  <p>Wifi: <% if office.wifi? %> Yes <% else %> No     <% end %><p>
+                  <p>Parking: <% if office.parking? %> Yes <% else %> No <% end %></p>
+                </div>
+                <div class="span2">
+                  <p>Air-Conditioning: <% if office.ac? %>Yes  <% else %> No        <% end %>  </p>
+                  <p>Conference Room: <% if office.confroom? %> Yes <% else %> No  <% end %>  </p>
+                </div>
+                <div class="span2">
+                  <p>Printer: <% if office.printer? %>Yes <% else %> No <% end %>   </p>
+                  <p>Kitchen: <% if office.kitchen? %>Yes <% else %> No <% end %>    </p>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="span3">
+              <div class="row">
+                  <div class="span3" id="rent">
+                    <h4>$<%= office.rent %>/
+                      <% if office.rent_type = 1 %>month
+                      <% else %>
+                          <% if office.rent_type = 2 %>week
+                          <% else %>
+                              <% if office.rent_type = 3 %>day
+                              <% else %>month
+                              <% end %>
+                          <% end %>
+                      <% end %> </h4>
+                    <br>
+                    <p>
+                      <% if office.accomodate? %>
+                        <%= office.accomodate %> people</p>
+                      <%end %>
+                    <p>
+                      <% if office.office_type = 1 %> Office space
+                      <% else %>
+                          <% if office.office_type = 2 %> Meeting room
+                          <% else %>
+                              <% if office.office_type = 3 %> Desk
+                              <% else %>month
+                              <% end %>
+                          <% end %>
+                      <% end %>
+                    </p>
+                    <p><%= office.size %> sq. ft.</p>
+                  </div>
+              </div>
+            </div>
+
+          </div>
+
+      <% end %>
+    </div>
+  </div>
 </div>

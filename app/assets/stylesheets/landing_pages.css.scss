@@ -2,11 +2,19 @@
 $lightbox: #FFFFFF;
 $fpobg: #baafa4;
 
+.img-listing {
+  height: 200px;
+}
+
+.img-edit {
+  height: 36px;
+}
+
 .wrapper {
   margin: 0 auto;
   overflow: hidden;
   position: relative;
-  width: 960px;
+  width: 1200px;
 }
 
 body{
@@ -20,7 +28,6 @@ body{
 
  .hero-bg{
  background-image: url('tw/hero_image.jpg');
- margin: 0;
  height:442px;
  background-size: 100%;
  background-repeat:no-repeat;

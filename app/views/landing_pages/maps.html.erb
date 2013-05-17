@@ -1,18 +1,19 @@
 <div class="container">
 
   <div class="row" style="margin-top: 20px;">
-      <div class="span5">
-        <input type="text" class="l_input" placeholder="Enter a city">
-      </div>
-      <div class="span2">
-        <!--%= link_to "SEARCH", offices_path, :class=>"btn btn-large btn-primary btn-inverse btn-call-to-action input-block-level" %-->
-        <%= button_to "SEARCH", {:action => "listings"}, {:class => "btn btn-primary"} %>
-      </div>
-      <div class="offset2 span3">
+    <div class="span5">
+      <input type="text" class="l_input" placeholder="Enter a city">
+    </div>
+    <div class="span2">
+      <!--%= link_to "SEARCH", offices_path, :class=>"btn btn-large btn-primary btn-inverse btn-call-to-action input-block-level" %-->
+      <%= button_to "SEARCH", {:action => "listings"}, {:class => "btn btn-primary"} %>
+    </div>
+    <div class="offset2 span3">
+      <div class="btn-group" data-toggle="buttons-radio">
         <%= link_to "Map View", maps_path, class: "btn btn-medium" %>
         <%= link_to "Grid View", listings_path, class: "btn btn-medium" %>
-
       </div>
+    </div>
   </div>
 
 <div class ="row">

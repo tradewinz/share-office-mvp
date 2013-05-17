@@ -2,7 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* airbnb styles */
+.panel {
+  padding-top:20px;
+  padding-bottom: 20px;
+  background-color: #ffffff;
+}
 
 .panel-background-well, .well {
     background-color: #FAFAFA;
@@ -12,7 +16,7 @@
 
 .panel-border {
     -moz-box-sizing: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid #baafa4;
     border-radius: 5px 5px 5px 5px;
 }
 
@@ -30,6 +34,9 @@
     padding-top: 30px;
 }
 
+.padbottom {
+  padding-bottom: 30px;
+}
 
 .control-label {
     float: left;
