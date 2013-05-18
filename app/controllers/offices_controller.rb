@@ -15,6 +15,8 @@ class OfficesController < ApplicationController
   # GET /offices/1.json
   def show
     @office = Office.find(params[:id])
+    @json = @office.to_gmaps4rails
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @office }

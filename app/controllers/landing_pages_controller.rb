@@ -31,7 +31,4 @@ class LandingPagesController < ApplicationController
     end
   end
 
-	def owners
-	end
-
 end

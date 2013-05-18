@@ -1,73 +1,161 @@
-<style>
-#galleria{ width: 700px; height: 550px; background: #000; }
+<style xmlns="http://www.w3.org/1999/html">
+    .webgallery
+    { height: 600px; background: #000000; }
+
+   .listing-detail  .title {
+        display:block;
+    }
+    .location-map .gmaps4rails_map {
+        height: 400px;
+    }
 </style>
 
 
-<div class="container">
+<div class="container listing-detail">
 
   <div class="row">
-    <div class="offset1 span7 officetitle">
-      Private office + conference room
-    </div>
-    <div class="offset1 span3 officecost">
-      $500/month
+    <div class="span4 offset3">
+      <h4> Below is how your listing looks like </h4>
+      <button class="btn btn-primary" id="postListingBtn" onclick=""> Post Listing </button>
     </div>
   </div>
 
+  <div class ="row panel panel-border">
 
-  <div class="row">
-    <div class="offset8 span4 officelocation">
-      2 people . Office space. 250 sq. ft.
-    </div>
-  </div>
+        <!-- frame -->
+          <div class="row" id="title">
+
+          <div class="span9">
+              <h2 class="officetitle">
+                <%= @office.title %>
+              </h2>
+              <p class="officelocation">
+                <%= @office.loc_addr1 %> , <%= @office.loc_city %> ,<%= @office.loc_state %> - <%= @office.loc_zip %>
+              </p>
+          </div> <!-- end left column -->
+
+          <div class="span3">
+              <p class="officecost">
+                $<%= @office.rent %>/
+                <% if @office.rent_type = 1 %>month
+                <% else %>
+                    <% if @office.rent_type = 2 %>week
+                    <% else %>
+                        <% if @office.rent_type = 3 %>day
+                        <% else %>month
+                        <% end %>
+                    <% end %>
+                <% end %>
+              </p>
+
+              <p class="highlights">
+                <i class="icon-home"></i>
+                <% if @office.office_type = 1 %> Office space
+                <% else %>
+                    <% if @office.office_type = 2 %> Meeting room
+                    <% else %>
+                        <% if @office.office_type = 3 %> Desk
+                        <% else %>month
+                        <% end %>
+                    <% end %>
+                <% end %>
+                <i class="icon-home"></i>
+                <% if @office.accomodate? %>
+                    <%= @office.accomodate %> people</p>
+                <%end %>
+                <i class="icon-home"></i>
+                  <%= @office.size %> sq. ft
+              </p>
+
+          </div>   <!--end let column -->
+
+          </div> <!-- end top row -->
 
 
-  <div class="row">
-    <div class="offset1 span7" id="galleria">
-      <img src=<%=@office.image1_url.to_s%> /img>
-      <img src=<%=@office.image1_url.to_s%> /img>
-    </div>
-    <div class="span3">
-      <div class="row officereserve ">
-        <div class="span12 text-align:center">
-          <%= button_to "Reserve this space", {:action => "reserve"}, {:class => "l_button btn btn-large btn-warning"} %>     
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="row">
 
-      <div class="row officehost">
-        About the host
-      </div>
+            <div class="span9">
+              <div class="row room-detail">
+                <div class="span9">
+                  <div class="webgallery">
+                    <img src=<%=@office.image1_url.to_s%> />
+                    <img src=<%=@office.image2_url.to_s%> />
+                    <img src=<%=@office.image3_url.to_s%> />
+                    <img src=<%=@office.image4_url.to_s%> />
+                  </div>
+                </div>
+                <div class="span9">
+                  <div class="description"></div>
+                    <h4>Description</h4>
+                    <p><%= @office.description %> </p>
+                </div>
+                <div class="span9">
+                  <div class="row"></div>
+                  <h4>Amenities</h4>
+                  <div class="span2">
+                    <p>Wifi: <% if @office.wifi? %> Yes <% else %> No     <% end %><p>
+                    <p>Parking: <% if @office.parking? %> Yes <% else %> No <% end %></p>
+                  </div>
+                  <div class="span2">
+                    <p>Air-Conditioning: <% if @office.ac? %>Yes  <% else %> No        <% end %>  </p>
+                    <p>Conference Room: <% if @office.confroom? %> Yes <% else %> No  <% end %>  </p>
+                  </div>
+                  <div class="span2">
+                    <p>Printer: <% if @office.printer? %>Yes <% else %> No <% end %>   </p>
+                    <p>Kitchen: <% if @office.kitchen? %>Yes <% else %> No <% end %>    </p>
+                </div>
+              </div>
+            </div>
+           </div>
 
-      <div class="row officehostphoto">
+            <div class="span3">
+              <div class="row">
+                <div class="span3">
+                  <div class="button-area"> <%= button_to "Reserve this space", {:action => "reserve"}, {:class => "l_button btn btn-large btn-warning"} %></div>
+                </div>
+                <div class="span3">
+                  <div class="host-summary">
+                    About the host
+                    <p>
+                      <b>Name:</b>
+                      <%= @office.user.name %>
+                    </p>
 
-      </div>
+                    <p>
+                      <b>Email:</b>
+                      <%= @office.user.email %>
+                    </p>
 
-    </div>
+                    <p>
+                      <b>Phone:</b>
+                      <%= @office.user.phone %>
+                    </p>
 
+                  </div>
+                </div>
+                <div class="span3">
+                  <div class="location-map">
+                    <%= gmaps("markers" => {"data" => @json},
+                              "map_options" =>  { "provider" => "google", "provider_key" => "AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE" })
+                    %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-  <div class="row">
-    <div class="span12">
-      Map area
-    </div>
-  </div>
+   </div>
 
 </div>
 
-
 <script>
 
-function galleria(){
-//alert ("YOO");
- //Galleria.loadTheme('galleria/themes/classic/galleria.classic.js');
- Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
- if (Galleria) { 
-  //$("body").text('*************Galleria works');
-  //alert("TYio");
-  Galleria.run('#galleria');
-}
-}
-galleria();
+    function galleria(){
+        Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
+        if (Galleria) {
+            Galleria.run('.webgallery');
+        }
+    }
+    galleria();
 </script>
 

@@ -1,25 +1,25 @@
-<div class="container">
+<div class="container-narrow">
 
-<h2>View all profiles</h2>
+ <h2>View all profiles</h2>
 
-<hr>
+ <hr>
 
-<ul id="users" class="unstyled">
-<% @users.each do |user| %>
-  <%= content_tag_for :li, user, :class =>"search_result" do %>
-    <%= user.name %>
-    <%= user.email %>
-    <%= user.phone %>
-    <%= link_to 'View', user %>
-    <%= link_to 'Edit', edit_user_path(user) %>
-    <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
-<% end %>
+   <ul id="users" class="unstyled">
+    <% @users.each do |user| %>
+      <%= content_tag_for :li, user, :class =>"search_result" do %>
+        <%= user.name %>
+        <%= user.email %>
+        <%= user.phone %>
+        <%= link_to 'View', user %>
+        <%= link_to 'Edit', edit_user_path(user) %>
+        <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    <% end %>
+   </ul>
+ <hr>
 
-<hr>
-
-<div class="btn btn-medium">
-  <%= link_to 'New Profile', new_user_path %>
-</div>
+ <div class="btn btn-medium">
+   <%= link_to 'New Profile', new_user_path %>
+ </div>
 
 </div>
