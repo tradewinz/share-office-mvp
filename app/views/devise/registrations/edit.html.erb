@@ -1,32 +1,107 @@
 <div class = "container">
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<h2>Profile </h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :name %><br />
-  <%= f.text_field :name %>  </div>
+   <div class="row panel panel-border">
+     <fieldset class="padtop padbottom">
 
-    <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+      <div class="control-group">
+        <label class="control-label">Username *: </label>
+        <div class="controls"> <%= f.text_field :name %>  </div>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+       <div class="control-group">
+         <label class="control-label">First Name: </label>
+         <div class="controls"> <%= f.text_field :fname %>  </div>
+       </div>
 
-  <!--if user is from linkedin no need to enter password to change profile data-->
-  <% if f.object.encrypted_password.present? %>
-      <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, :autocomplete => "off" %></div>
+       <div class="control-group">
+         <label class="control-label">Last Name: </label>
+         <div class="controls"> <%= f.text_field :lname %>  </div>
+       </div>
 
-      <div><%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation %></div>
+       <div class="control-group">
+         <label class="control-label">Email address *   :</label>
+         <div class="controls"> <%= f.email_field :email, :autofocus => true %>  </div>
+       </div>
 
-      <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password %></div>
-  <% end %>
+       <div class="control-group">
+         <label class="control-label">Phone number:</label>
+         <div class="controls"> <%= f.phone_field :phone %>  </div>
+       </div>
 
-  <div><%= f.submit "Update" %></div>
+       <div class="control-group">
+         <label class="control-label">Industry:</label>
+         <div class="controls"> <%= f.text_field :industry %>  </div>
+       </div>
+
+       <div class="control-group">
+         <label class="control-label">Company:</label>
+         <div class="controls"> <%= f.text_field :company %>  </div>
+       </div>
+
+       <div class="control-group">
+         <label class="control-label">Location:</label>
+         <div class="controls"> <%= f.text_field :location %>  </div>
+       </div>
+
+       <div class="control-group">
+         <label class="control-label">LinkedIn profile:</label>
+         <div class="controls"> <%= f.url_field :website %>  </div>
+       </div>
+
+       <div class="control-group">
+         <label class="control-label">LinkedIn Connections:</label>
+         <div class="controls"> <%= f.text_field :connections %>  </div>
+       </div>
+
+       <div class="control-group">
+         <label class="control-label">LinkedIn Headline:</label>
+         <div class="controls"> <%= f.text_field :description %>  </div>
+       </div>
+
+       <!--if user is from linkedin no need to enter password to change profile data-->
+       <% if f.object.encrypted_password.present? %>
+           <hr>
+           <div class="control-group">
+           <label class="control-label">New Password </label>
+             <div class="controls"> <%= f.password_field :password, :autocomplete => "off" %>
+             <i>(leave blank if you don't want to change it)</i> </div>
+           </div>
+
+           <div class="control-group">
+             <label class="control-label">Password confirmation: </label>
+             <div class="controls"><%= f.password_field :password_confirmation %>
+             <i>(leave blank if you don't want to change it)</i> </div>
+           </div>
+
+           <div class="control-group">
+            <label class="control-label">Current Password </label>
+            <div class="controls"> <%= f.password_field :current_password %>
+             <i>(we need your current password to confirm your changes)</i></div>
+            </div>
+       <% end %>
+
+      </fieldset>
+
+     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+     <% end %>
+
+
+     <div class="control-group">
+       <label class="control-label"></label>
+       <div class="controls"><%= f.submit "Update profile", :class => "btn btn-primary" %></div>
+     </div>
+
+   </div>
+
+
+
+
 
 <% end %>
 
@@ -35,5 +110,7 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
 
 <%= link_to "Back", :back %>
+
+</div>
 
 </div>

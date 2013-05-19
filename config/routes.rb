@@ -12,7 +12,7 @@ ShareOfficeMvp::Application.routes.draw do
   
   resources :offices 
    
-   match '/reserve', to:'offices#reserve'
+  match '/reserve', to:'offices#reserve'
 
   # resources :users
 

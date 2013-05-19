@@ -7,10 +7,12 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :name, :phone
+  attr_accessible :name, :phone, :fname, :lname, :company, :location, :connections, :description, :industry, :website
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates(:email, presence: true, format: { with: VALID_EMAIL_REGEX })
+  validates(:name, presence: true)
+
 
   has_many :office
 
@@ -20,6 +22,14 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.name = auth.info.nickname
       user.email = auth.info.email
+      user.fname = auth.info.first_name
+      user.lname = auth.info.last_name
+      user.location = auth.info.location.name
+      user.description = auth.info.description
+
+      user.website = auth.info.urls.public_profile
+      user.industry = auth.extra.raw_info.industry
+      #user.photo = auth.info.image
 
     end
   end

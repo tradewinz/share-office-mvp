@@ -95,6 +95,8 @@
                   <div class="span2">
                     <p>Wifi: <% if @office.wifi? %> Yes <% else %> No     <% end %><p>
                     <p>Parking: <% if @office.parking? %> Yes <% else %> No <% end %></p>
+                    <p>Window Office: <% if @office.window? %> Yes <% else %> No <% end %></p>
+
                   </div>
                   <div class="span2">
                     <p>Air-Conditioning: <% if @office.ac? %>Yes  <% else %> No        <% end %>  </p>
@@ -113,6 +115,14 @@
                 <div class="span3">
                   <div class="button-area"> <%= button_to "Reserve this space", {:action => "reserve"}, {:class => "l_button btn btn-large btn-warning"} %></div>
                 </div>
+
+                <% if can? :update, @office %>
+                <div class="span3">
+                  <div class="button-area"></div>
+                      <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
+                </div>
+                <% end %>
+
                 <div class="span3">
                   <div class="host-summary">
                     About the host
@@ -120,16 +130,29 @@
                       <b>Name:</b>
                       <%= @office.user.name %>
                     </p>
+                    <p>
+                      <b>Industry:</b>
+                      <%= @office.user.industry %>
+                    </p>
+                    <p>
+                      <b>Location:</b>
+                      <%= @office.user.location %>
+                    </p>
 
                     <p>
+                      <b>LinkedIn Profile:</b>
+                      <%= link_to @office.user.website %>
+                    </p>
+
+                    <!--hide personal data p>
                       <b>Email:</b>
-                      <%= @office.user.email %>
+                      <#%= @office.user.email %>
                     </p>
 
                     <p>
                       <b>Phone:</b>
-                      <%= @office.user.phone %>
-                    </p>
+                      <#%= @office.user.phone %>
+                    </p-->
 
                   </div>
                 </div>
@@ -139,6 +162,8 @@
                               "map_options" =>  { "provider" => "google", "provider_key" => "AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE" })
                     %>
                   </div>
+                </div>
+
                 </div>
               </div>
             </div>

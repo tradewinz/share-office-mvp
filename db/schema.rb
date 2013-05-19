@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509004100) do
+ActiveRecord::Schema.define(:version => 20130519211842) do
 
   create_table "offices", :force => true do |t|
     t.decimal  "rent"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20130509004100) do
     t.boolean  "printer"
     t.integer  "office_type"
     t.integer  "rent_type"
+    t.boolean  "window"
   end
 
   create_table "users", :force => true do |t|
@@ -62,6 +63,15 @@ ActiveRecord::Schema.define(:version => 20130509004100) do
     t.string   "last_sign_in_ip"
     t.string   "provider"
     t.string   "uid"
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "connections"
+    t.string   "industry"
+    t.string   "company"
+    t.string   "photo"
+    t.string   "website"
+    t.string   "location"
+    t.string   "description"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
