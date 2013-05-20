@@ -39,15 +39,31 @@ body{
    padding-top: 10px;
  }
 
+.padding-left {
+  padding-left: 30px;
+}
+
+.padding-right {
+  padding-right: 30px;
+}
+
+.features {
+  background-color : white;
+}
+
+.margin-bottom {
+  margin-bottom: 20px;
+}
+
+.margin-top{
+  margin-top: 20px;
+}
 
  .l_search {
   background-color: $lightbox;
   border-radius: 10px;
   opacity: 0.8;
-  width: 700px;
-  position:absolute;
-  left:200px;
-  top:200px;
+  margin-top:140px;
  }
 
  .l_text {
@@ -56,20 +72,22 @@ body{
    color: black;
    text-shadow:#FFFFFF;
    background-color: $lightbox;
-   margin-top: 10px;
-   margin-bottom: 10px;
+   
  }
 
  .l_button {
-  width: 100%;
-  opacity: 1;
+  opacity: 1.0;
  }
 
  .l_input {
   width: 100%;
-  opacity: 1;
+  opacity: 1.0;
  }
 
  .l_fpo {
   background-color: $fpobg;
+ }
+
+ .text-center {
+ text-align:center;
  }

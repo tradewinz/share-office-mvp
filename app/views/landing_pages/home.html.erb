@@ -1,54 +1,67 @@
 <div class="container">
+  <div class="hero-bg" style="margin-left:-30px;margin-right:-30px;padding-left:30px;padding-right:30px">
+    <div class="row" >
+      <div class="span12">
+        <!-- search box-->
+        <div class="row">
+          <div class="span7 offset2">  
+            <div class="l_search">
+
+              <div class="row padtop">
+                <div class="span6">
+                  <span class="leftgap label l_text">Find a space to work</span>
+                </div>
+              </div>
+
+              <div class="row padbottom">
+                <div class="span5">
+                  <div class="leftgap">
+                    <input type="text" class="l_input" placeholder="Enter a city">
+                  </div>
+                </div>
+
+                <div class="span2">
+                  <%= link_to "SEARCH", listings_path, :class => "l_button btn btn-large btn-primary" %>
+                </div>
+              </div>
+            </div><!-- /search -->
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+ <div style="margin-left:-30px;margin-right:-30px;padding-left:30px;padding-right:30px;background-color:white;">
   <div class="row">
-    <div class="hero-bg"></div>
-  </div>
+    <div class="span12 padtop padbottom features">
+      <div class="row">
+        <div class="span4 text-center">
+          
+            <%= image_tag "icon_home_floorplan.png", :alt=> "icon home" %>
+            <h4>Make your office pay for itself</h4>
+                Earn extra money by renting out your extra office space. No listing or membership fees.
+          
+        </div>
 
-  <!-- search box-->
-  <div class="l_search">
+        <div class="span4 text-center">
 
-    <div class="row">
-      <div class="leftgap span6">
-        <span class="label l_text">Find a space to work</span>
+            <%= image_tag("icon_home_pie.png", alt: "icon pie") %>
+            <h4>Listing your space is as easy as pie </h4>
+            From the makers of QuickBooks and TurboTax - not only do we make accounting and tax preparation easier for you,
+            we'll make it easy for you to earn extra money with your extra income.
+
+          </div>
+
+        <div class="span4 text-center">
+
+            <%= image_tag("icon_home_handshake.png", alt: "icon handshake") %>
+            <h4>Reliable & trustworthy connections</h4>
+            No SPAN and No SCAM ! Only interact with trusted and reliable professionals and entreprenuers like yourself.
+
+        </div>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="leftgap span5">
-        <input type="text" class="l_input" placeholder="Enter a city">
-      </div>
-
-      <div class="span2">
-        <%= button_to "SEARCH", {:action => "listings"}, {:class => "l_button btn btn-large btn-primary"} %>
-      </div>
-    </div>
-
-    <!-- /search -->
-  </div>
-
-  <div class="row" style="padding-top:40px; padding-bottom: 40px; background: #ffffff;">
-    <div class="span4">
-        <%= image_tag("icon_home_floorplan.png", alt: "icon home") %>
-        <h4>Make your office pay for itself</h4>
-            Earn extra money by renting out your extra office space. No listing or membership fees.
-    </div>
-
-    <div class="span4">
-
-        <%= image_tag("icon_home_pie.png", alt: "icon pie") %>
-        <h4>Listing your space is as easy as pie </h4>
-        From the makers of QuickBooks and TurboTax - not only do we make accounting and tax preparation easier for you,
-        we'll make it easy for you to earn extra money with your extra income.
-
-      </div>
-
-    <div class="span4">
-
-        <%= image_tag("icon_home_handshake.png", alt: "icon handshake") %>
-        <h4>Reliable & trustworthy connections</h4>
-        No SPAN and No SCAM ! Only interact with trusted and reliable professionals and entreprenuers like yourself.
-
     </div>
   </div>
+</div>
 
 
 
