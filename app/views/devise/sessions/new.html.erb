@@ -1,13 +1,63 @@
 <div class = "container">
 
-<h2>Sign in</h2>
+<div class="row">
+
+<center>
+<h2>Sign up for <b> free </b> to post your listing </h2>
+</center>
+
+</div>
+</div>
+
+<div class="container signin">
+
+
+<center>
+	<div class="linkedin">
+<%= image_tag("linkedin.png") %>
+    </div>
+</center>
+
+<div class="sepa">
+ or sign up using your email 
+</div>
+
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  
+<div class="row email">
+<div class="offset3 span2">
+  	<%= f.label :email_address %><br />
+  </div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+<div class="span3">
+
+  <%= f.email_field :email, :autofocus => true %>
+</div>
+<div class="span4"> </div>
+</div>
+
+<div class="row password">
+	<div class="offset3 span2">
+  <%= f.label :password %><br />
+  </div>
+  <div class="span3">
+  <%= f.password_field :password %>
+</div>
+</div>
+
+<div class="row confirm_password">
+	<div class="offset3 span2">
+  <%= f.label :confirm_password %><br />
+  </div>
+  <div class="span3">
+  <%= f.password_field :confirm_password %>
+</div>
+</div>
+
+<div class="signup">
+	<%= button_to "SIGN UP",  :html => {:class => "btn btn-large btn-primary"} %>
+</div>
 
   <% if devise_mapping.rememberable? -%>
     <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>

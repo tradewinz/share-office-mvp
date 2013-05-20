@@ -6,4 +6,51 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
   margin-bottom: 0px;
 }
+
+.signin {
+	background-color: white;
+	}
+
+.sepa{
+	margin-top: 50px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+	font-color: #505050;
+	font-weight: italic;
+    text-align: center;
+    height: 0.8em;
+    border-bottom: 1px dotted black;
+    margin-bottom: 0.5em;
+}
+.sepa:first-line {
+    background-color: white;
+}
+
+
+.linkedin {
+	margin-top: 50px;
+}
+
+.separate {
+}
+
+.email {
+	margin-top: 50px;
+}
+
+.password {
+	
+}
+
+.confirm_password {
+	
+}
+
+.signup {
+	margin-top: 20px;
+}
+
+#new_user {
+	
+}
 @import "bootstrap-responsive";
