@@ -1,46 +1,70 @@
 <div class = "container">
 
-<h2>Sign up</h2>
+  <div class="row">
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  <div class="row panel panel-border">
-      <fieldset class="padtop padbottom">
-
-        <div class="control-group">
-          <label class="control-label">Name *: </label>
-          <div class="controls"> <%= f.text_field :name %>  </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label">Email address:</label>
-          <div class="controls"> <%= f.email_field :email, :autofocus => true %>  </div>
-        </div>
-
-      <!--if user is from linkedin no need to enter password to change profile data-->
-      <% if f.object.password_required? %>
-
-        <div class="control-group">
-          <label class="control-label">Password:</label>
-          <div class="controls"> <%= f.password_field :password %>  </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label">Password Confirmation:</label>
-          <div class="controls"> <%= f.password_field :password_confirmation %>  </div>
-        </div>
-
-      <% end %>
-
-      </fieldset>
-
-      <div class="control-group">
-        <label class="control-label"></label>
-        <div class="controls"><%= f.submit "Sign up", :class => "btn btn-primary" %></div>
-      </div>
+    <div class="text-center">
+      <h2>Sign up for <b> free </b> to post your listing </h2>
+    </div>
 
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <div class="row panel panel-border">
+    <div class="text-center linkedin">
+      <a href= "<%=user_omniauth_authorize_path(:linkedin_oauth2) %>">
+        <%= image_tag("btn_linkedin.png") %>
+      </a>
+    </div>
+
+    <div class="sepa"> or sign up using your email </div>
+
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="row">
+          <div class="span6 offset3">
+            <fieldset class="padtop padbottom">
+
+              <div class="control-group">
+                <label class="control-label">Name *: </label>
+                <div class="controls"> <%= f.text_field :name %>  </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Email address:</label>
+                <div class="controls"> <%= f.email_field :email, :autofocus => true %>  </div>
+              </div>
+
+              <!--if user is from linkedin no need to enter password to change profile data-->
+              <% if f.object.password_required? %>
+
+                  <div class="control-group">
+                    <label class="control-label">Password:</label>
+                    <div class="controls"> <%= f.password_field :password %>  </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">Password Confirmation:</label>
+                    <div class="controls"> <%= f.password_field :password_confirmation %>  </div>
+                  </div>
+
+              <% end %>
+
+              <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls"><%= f.submit "Sign up", :class => "btn btn-primary" %></div>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+        </div>
+        <%- if controller_name != 'sessions' %>
+            <div class="controls"><%= link_to "Already have an account?", new_session_path(resource_name) %></div>
+        <% end -%>
+
+       </div>
+
+    <% end %>
 
 </div>
+

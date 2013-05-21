@@ -7,13 +7,10 @@ ShareOfficeMvp::Application.routes.draw do
   match '/listings', to: 'landing_pages#listings'
   match '/maps', to: 'landing_pages#maps'
 
-  match '/owners', to:'landing_pages#owners'
-
-  
-  resources :offices 
-   
   match '/reserve', to:'offices#reserve'
 
+  resources :offices 
+   
   # resources :users
 
 

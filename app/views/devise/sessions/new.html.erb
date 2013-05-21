@@ -1,87 +1,62 @@
 <div class = "container">
 
-<div class="row">
+  <div class="row">
 
-<center>
-<h2>Sign up for <b> free </b> to post your listing </h2>
-</center>
-
-</div>
-</div>
-
-<div class="container signin">
-
-
-<center>
-	<div class="linkedin">
-<%= image_tag("linkedin.png") %>
+    <div class="text-center">
+      <h2>Sign in to add or edit your listing </h2>
     </div>
-</center>
 
-<div class="sepa">
- or sign up using your email 
-</div>
-
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  
-<div class="row email">
-<div class="offset3 span2">
-  	<%= f.label :email_address %><br />
   </div>
 
-<div class="span3">
+  <div class="row panel panel-border">
+    <div class="text-center linkedin">
+      <a href= "<%=user_omniauth_authorize_path(:linkedin_oauth2) %>">
+        <%= image_tag("btn_linkedin.png") %>
+      </a>
+    </div>
 
-  <%= f.email_field :email, :autofocus => true %>
-</div>
-<div class="span4"> </div>
-</div>
+    <div class="sepa"> or sign in using your email </div>
 
-<div class="row password">
-	<div class="offset3 span2">
-  <%= f.label :password %><br />
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="row">
+          <div class="span6 offset3">
+            <fieldset class="padtop padbottom">
+
+              <div class="control-group">
+                <label class="control-label">Email address:</label>
+                <div class="controls"> <%= f.email_field :email, :autofocus => true %>  </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Password:</label>
+                <div class="controls"> <%= f.password_field :password %>  </div>
+              </div>
+
+
+
+            <div class="control-group">
+              <label class="control-label"></label>
+              <div class="controls"><%= f.submit "Sign In", :class => "btn btn-primary" %></div>
+              <% if devise_mapping.rememberable? -%>
+                <div class="controls"><%= f.check_box :remember_me %> Remember me</div>
+              <% end -%>
+
+            </div>
+            </fieldset>
+          </div>
+        </div>
+
+    <% end %>
+
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+        <div class="controls"><%= link_to "Forgot your password?", new_password_path(resource_name) %></div>
+    <% end -%>
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <div class="controls"><%= link_to "Don't have an account?", new_registration_path(resource_name) %></div>
+    <% end -%>
+
   </div>
-  <div class="span3">
-  <%= f.password_field :password %>
-</div>
-</div>
-
-<div class="row confirm_password">
-	<div class="offset3 span2">
-  <%= f.label :confirm_password %><br />
-  </div>
-  <div class="span3">
-  <%= f.password_field :confirm_password %>
-</div>
-</div>
-
-<div class="row">
-<div class=" offset5 span1 signup">
-	<%= button_to "SIGN UP",  {}, {:class => "btn btn-large btn-primary"} %>
-</div>
-<div class="span6"> </div>
-</div>
-
-<div class="row remember">
-  <% if devise_mapping.rememberable? -%>
-  	<div class="offset5 span1">
-    <%= f.check_box :remember_me %>
-
-     <%= f.label :remember_me %>
-  <% end -%>
-  </div>
-
-  <div class="span6"> </div>
-</div>
-
-<!--
-  <div><%= f.submit "Sign in" %></div>
--->
-<% end %>
-<div class="row links">
-	<div class="offset5 span2">
-<%= render "devise/shared/links" %>
-</div>
-<div class="span5"></div>
 
 </div>

@@ -17,8 +17,6 @@
 
   <div class="row" style="padding-top:40px; background-color: #ffffff;" >
 
-    <div id="offices" class="span12">
-
       <% @offices.each do |office| %>
 
           <div class="row search_result">
@@ -94,9 +92,16 @@
           </div>
 
       <% end %>
+      <div class="apple_pagination">
+        <div class="page_info">
+          <%= page_entries_info @offices %>
+        </div>
+        <%= will_paginate @offices, :container => false %>
+      </div>
+
     </div>
   </div>
 
-  <%= will_paginate @offices %>
+
   
 </div>

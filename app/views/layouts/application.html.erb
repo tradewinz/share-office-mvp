@@ -3,27 +3,23 @@
 <head>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Tradewinz facilitates sharing of office space between small business.
-   We help established small business make extra money by renting out their excess office space and equipments.
-   We help start-ups and other small business rent a office cheaply for short or long term needs and work together and learn from successful business owners.">
+   <meta name="description" content="Intuit Spaces facilitates sharing of office space between small business owners.
+   We help established small businesses recoup office expenses by renting out their excess office space to start-ups.
+   We help start-ups and home-based small businesses get a professional looking office for less. They can use it to
+     meet clients, work without distractions at home and learn from the established business owners.">
 
-   <meta name="keywords" content="Tradewinz, office, co-working, rent office, exchange office, extra office, excess office, share office, meet established business,
-   rental office"/>
+   <meta name="keywords" content="Intuit spaces, office, office share, co-working, rent office, exchange office,
+   extra office, excess office, share office, meet established business, small business network, rental office"/>
 
-   <meta name="author" content="Intuit Labs">
+  <meta name="author" content="Intuit Labs">
 
   <title>Office Rental and Sharing by Small Business</title>
-
- 
-  <!--script type="text/javascript"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE&sensor=false">
-  </script-->
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -39,7 +35,9 @@
                       <li><%= link_to current_user.name, edit_user_registration_path %></li>
                       <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
                     <% else %>
+                        <li><%= link_to "SIGN UP", new_user_registration_path %></li>
                         <li><%= link_to "SIGN IN", new_user_session_path %></li>
+
                     <% end %>
             </ul>
             <a href="/home">
@@ -136,50 +134,6 @@
 
 </script>
 
-<!-- google maps api integration -->
-<!--script type="text/javascript">
-var geocoder;
-var map;
-
-function initialize() {
-  var latlng = new google.maps.LatLng(-34.397, 150.644);
-  var mapOptions = {
-    zoom: 8,
-    center: latlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
-  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-}
-
-function codeAddress(address) {
-  geocoder = new google.maps.Geocoder();
-  geocoder.geocode(
-          { 'address': address},
-          function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                map.setCenter(results[0].geometry.location);
-                var marker = new google.maps.Marker({
-                                map: map,
-                                position: results[0].geometry.location
-                });
-            } else {
-                  alert('Geocode was not successful for the following reason: ' + status);
-            }
-          }
-  );
-}
-var address = document.getElementById('location').value;
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
-var addresses = [ '1961 East Mall Vancouver BC',
-    '2366 Main Mall Vancouver BC', '2053 Main Mall, Vancouver, BC ' ];
-
-for (var i = 0; i < addresses.length; i++) {
-    codeAddress(addresses[i]);
-}
-
-</script -->
 </body>
 
 

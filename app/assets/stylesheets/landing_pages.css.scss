@@ -15,6 +15,10 @@ text-shadow: 0 1px 0px rgba(255,255,255,0.3);
 box-shadow: 0 0 0 #000,0 0 0 #000;
 }
 
+.btn .list-btn:hover {
+  background-color: #f3c613;
+}
+
 .img-listing {
   height: 200px;
 }
