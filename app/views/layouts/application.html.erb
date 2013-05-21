@@ -15,6 +15,8 @@
 
   <title>Office Rental and Sharing by Small Business</title>
 
+  <link rel="icon" type="image/ico" href="/favicon.ico" />
+
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -35,7 +37,6 @@
                       <li><%= link_to current_user.name, edit_user_registration_path %></li>
                       <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
                     <% else %>
-                        <li><%= link_to "SIGN UP", new_user_registration_path %></li>
                         <li><%= link_to "SIGN IN", new_user_session_path %></li>
 
                     <% end %>
