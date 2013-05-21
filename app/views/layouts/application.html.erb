@@ -34,7 +34,7 @@
     <div class="navbar" >
       <div class="wrapper">
             <ul class="nav nav-pills pull-right">
-                <li><%= link_to "+ LIST YOUR SPACE", new_office_path, :class=>"btn-warning", :style => "color: #000000; text-shadow: none" %></li>
+                <li><%= link_to "+ LIST YOUR SPACE", new_office_path, :class=>"list-btn btn"%></li>
                     <% if user_signed_in? %>
                       <li><%= link_to current_user.name, edit_user_registration_path %></li>
                       <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
@@ -44,7 +44,7 @@
             </ul>
             <a href="/home">
                 <h3 class="muted" style="margin-top: 1px;">
-                  <%= image_tag("tw/logo_intuit_labs.gif", alt: "Intuit Labs") %>
+                  <%= image_tag("logo_intuit_spaces.gif", alt: "Intuit Spaces") %>
                 </h3>
             </a>
       </div>

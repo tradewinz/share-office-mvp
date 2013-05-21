@@ -6,10 +6,13 @@ class LandingPagesController < ApplicationController
 	def home
 	end
 
+  #	handle finding listing here separately
 	def listings
-	#	puts "**********redirecting to " + offices_path
-	#	redirect_to offices_path
-    @offices = Office.order("created_at desc")
+
+    #Paginated queries
+    #@offices = Office.order("created_at desc")
+    @offices = Office.order('created_at DESC').page(params[:page])
+
     respond_to do |format|
       format.html # listings.html.erb
       format.json { render json: @offices }

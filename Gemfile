@@ -47,3 +47,5 @@ gem 'geocoder'
 gem 'gmaps4rails'
 
 gem 'omniauth-linkedin-oauth2'
+
+gem 'will_paginate', '~> 3.0'

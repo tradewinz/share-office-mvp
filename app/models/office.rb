@@ -19,6 +19,8 @@ class Office < ActiveRecord::Base
   mount_uploader :image3, ImageUploader
   mount_uploader :image4, ImageUploader
 
+  self.per_page = 20
+
   def gmaps4rails_address
   #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
     "#{self.loc_zip}, #{self.loc_addr1}, #{self.loc_city}, #{self.loc_state}"

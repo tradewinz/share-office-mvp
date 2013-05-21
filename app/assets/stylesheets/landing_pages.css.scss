@@ -2,6 +2,19 @@
 $lightbox: #FFFFFF;
 $fpobg: #baafa4;
 
+.btn.list-btn {
+background-color: #f3c613;
+background-image: -webkit-linear-gradient(top, #fde44c 0%,#f3c613 100%);
+background-image: -moz-linear-gradient(top, #fde44c 0%,#f3c613 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffde44c', endColorstr='#fff3c613', GradientType=0);
+border: 1px solid rgba(0,0,0,0.2);
+border-color: #f3c81d #f6cd08 #d2aa0b #f6cd08;
+color: #393c3d;
+text-shadow: 0 1px 0px rgba(255,255,255,0.3);
+-webkit-box-shadow: 0 0 0 #000,0 0 0 #000;
+box-shadow: 0 0 0 #000,0 0 0 #000;
+}
+
 .img-listing {
   height: 200px;
 }
@@ -26,6 +39,13 @@ body{
 
  }
 
+.paperPanel {
+  margin-left:-30px;
+  margin-right:-30px;
+  padding-left:30px;
+  padding-right:30px
+}
+
  .hero-bg{
  background-image: url('tw/hero_image.jpg');
  height:442px;
@@ -34,7 +54,7 @@ body{
  display: compact;
  }
 
- .leftgap {
+.leftgap {
    padding-left: 20px;
    padding-top: 10px;
  }
