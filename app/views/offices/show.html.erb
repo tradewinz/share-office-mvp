@@ -1,6 +1,6 @@
 <style xmlns="http://www.w3.org/1999/html">
     .webgallery
-    { height: 600px; background: #000000; }
+    { height: 600px; background: white; }
 
    .listing-detail  .title {
         display:block;
@@ -14,27 +14,27 @@
 <div class="container listing-detail">
 
   <div class="row">
-    <div class="span4 offset3">
-      <h4> Below is how your listing looks like </h4>
-      <button class="btn btn-primary" id="postListingBtn" onclick=""> Post Listing </button>
+    <div class="span5 offset4">
+      <h3> Preview your listing </h3>
+      <!--button class="btn btn-primary" id="postListingBtn" onclick=""> Post Listing </button-->
     </div>
   </div>
 
   <div class ="row panel panel-border">
-
+    <div class="span12">
         <!-- frame -->
           <div class="row" id="title">
 
-          <div class="span9">
+          <div class="span8">
               <h2 class="officetitle">
                 <%= @office.title %>
               </h2>
               <p class="officelocation">
-                <%= @office.loc_addr1 %> , <%= @office.loc_city %> ,<%= @office.loc_state %> - <%= @office.loc_zip %>
+                <%= @office.loc_addr1 %>  <%= @office.loc_city %> <%= @office.loc_state %> <%= @office.loc_zip %>
               </p>
           </div> <!-- end left column -->
 
-          <div class="span3">
+          <div class="span4">
               <p class="officecost">
                 $<%= @office.rent %>/
                 <% if @office.rent_type = 1 %>month
@@ -74,9 +74,9 @@
 
           <div class="row">
 
-            <div class="span9">
+            <div class="span8">
               <div class="row room-detail">
-                <div class="span9">
+                <div class="span8">
                   <div class="webgallery">
                     <img src=<%=@office.image1_url.to_s%> />
                     <img src=<%=@office.image2_url.to_s%> />
@@ -84,18 +84,18 @@
                     <img src=<%=@office.image4_url.to_s%> />
                   </div>
                 </div>
-                <div class="span9">
+                <div class="span8">
                   <div class="description"></div>
                     <h4>Description</h4>
                     <p><%= @office.description %> </p>
                 </div>
-                <div class="span9">
+                <div class="span8">
                   <div class="row"></div>
                   <h4>Amenities</h4>
                   <div class="span2">
                     <p>Wifi: <% if @office.wifi? %> Yes <% else %> No     <% end %><p>
                     <p>Parking: <% if @office.parking? %> Yes <% else %> No <% end %></p>
-                    <p>Window Office: <% if @office.window? %> Yes <% else %> No <% end %></p>
+
 
                   </div>
                   <div class="span2">
@@ -106,24 +106,29 @@
                     <p>Printer: <% if @office.printer? %>Yes <% else %> No <% end %>   </p>
                     <p>Kitchen: <% if @office.kitchen? %>Yes <% else %> No <% end %>    </p>
                 </div>
+
+                  <div class="span2">
+                    <p>Window Office: <% if @office.window? %> Yes <% else %> No <% end %></p>
+                  </div>
+
               </div>
             </div>
            </div>
 
-            <div class="span3">
+            <div class="span4">
               <div class="row">
-                <div class="span3">
+                <div class="span4">
                   <div class="button-area"> <%= button_to "Reserve this space", {:action => "reserve"}, {:class => "l_button btn btn-large btn-warning"} %></div>
                 </div>
 
                 <% if can? :update, @office %>
-                <div class="span3">
+                <div class="span4">
                   <div class="button-area"></div>
                       <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
                 </div>
                 <% end %>
 
-                <div class="span3">
+                <div class="span4">
                   <div class="host-summary">
                     About the host
                     <p>
@@ -156,7 +161,7 @@
 
                   </div>
                 </div>
-                <div class="span3">
+                <div class="span4">
                   <div class="location-map">
                     <%= gmaps("markers" => {"data" => @json},
                               "map_options" =>  { "provider" => "google", "provider_key" => "AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE" })
@@ -168,7 +173,7 @@
               </div>
             </div>
           </div>
-
+    </div>
    </div>
 
 </div>
