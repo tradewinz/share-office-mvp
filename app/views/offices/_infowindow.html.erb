@@ -1,4 +1,6 @@
-<p><%= link_to  office.title, office_path(office) %></p>
-<p><%= image_tag office.image1_url(:thumb).to_s, :size=> "36x36", :alt=> "Thumbnail" %></p>
+<div class="span2">
+<%= image_tag office.image1_url.to_s, :alt=> "Thumbnail" %>
+<%= link_to  office.title, office_path(office) %>
+</div>
 
 
