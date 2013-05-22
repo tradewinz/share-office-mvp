@@ -15,9 +15,15 @@ class Office < ActiveRecord::Base
   acts_as_gmappable
 
   mount_uploader :image1, ImageUploader
+  process_in_background :image1
   mount_uploader :image2, ImageUploader
+  process_in_background :image2
+
   mount_uploader :image3, ImageUploader
+  process_in_background :image3
+
   mount_uploader :image4, ImageUploader
+  process_in_background :image4
 
   self.per_page = 20
 

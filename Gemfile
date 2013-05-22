@@ -49,3 +49,7 @@ gem 'gmaps4rails'
 gem 'omniauth-linkedin-oauth2'
 
 gem 'will_paginate', '~> 3.0'
+
+gem 'delayed_job'
+gem 'delayed_job_active_record'
+gem 'carrierwave_backgrounder'
