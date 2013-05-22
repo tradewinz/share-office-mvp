@@ -24,7 +24,7 @@
 
             <div class="span3">
               <a href= "<%= office_path(office)  %>" >
-                <%= image_tag office.image1_url.to_s, :alt=> "Photo", :class => "img-polaroid img-listing" %>
+                <%= image_tag office.image1_url(:medium).to_s, :alt=> "Photo", :class => "img-polaroid img-listing" %>
               </a>
             </div>
 
