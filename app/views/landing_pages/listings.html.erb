@@ -1,11 +1,12 @@
 <div class="container">
 
-  <div class="row" style="margin-top: 20px;">
+  <div class="row padtopsmall padbottomsmall" >
     <div class="span5">
       <input type="text" class="l_input" placeholder="Enter a city">
     </div>
     <div class="span2">
       <%= link_to "SEARCH", listings_path, :class => "l_button btn btn-primary" %>
+      <!--%= button_to "SEARCH", :action => "listings", :class => "btn btn-primary", :method=>"GET" %-->
     </div>
     <div class="offset2 span3">
       <div class="btn-group" data-toggle="buttons-radio">
@@ -15,8 +16,8 @@
     </div>
   </div>
 
-  <div class="row" style="padding-top:40px; background-color: #ffffff;" >
-
+  <div class="row padtop" style="background-color: #ffffff;">
+    <div class="span12">
       <% @offices.each do |office| %>
 
           <div class="row search_result">
@@ -92,13 +93,16 @@
           </div>
 
       <% end %>
-      <div class="apple_pagination">
-        <div class="page_info">
-          <%= page_entries_info @offices %>
+    </div>
+    <div class="row">
+        <div class="span12">
+          <div class="apple_pagination">
+            <div class="page_info">
+              <%= page_entries_info @offices %>
+            </div>
+            <%= will_paginate @offices, :container => false %>
+          </div>
         </div>
-        <%= will_paginate @offices, :container => false %>
-      </div>
-
     </div>
   </div>
 
