@@ -1,12 +1,12 @@
 <div class="container">
 
-  <div class="row" style="margin-top: 20px;">
+  <div class="row padtopsmall" >
     <div class="span5">
       <input type="text" class="l_input" placeholder="Enter a city">
     </div>
     <div class="span2">
-      <!--%= link_to "SEARCH", offices_path, :class=>"btn btn-large btn-primary btn-inverse btn-call-to-action input-block-level" %-->
-      <%= button_to "SEARCH", {:action => "listings"}, {:class => "btn btn-primary"} %>
+      <%= link_to "SEARCH", listings_path, :class => "l_button btn btn-primary" %>
+      <!--%= button_to "SEARCH", :action => "listings", :class => "btn btn-primary", :method=>"GET" %-->
     </div>
     <div class="offset2 span3">
       <div class="btn-group" data-toggle="buttons-radio">
@@ -16,7 +16,7 @@
     </div>
   </div>
 
-<div class ="row">
+<div class ="row padtopsmall">
 
   <div class="span12">
   <%= gmaps("markers" => {"data" => @json},
