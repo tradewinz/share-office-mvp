@@ -23,6 +23,8 @@ end
 
 gem 'jquery-rails', '2.0.2'
 
+gem 'unicorn'
+
 #Photo Gallery
 
 group :production do
