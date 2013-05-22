@@ -187,6 +187,11 @@
 
     function galleria(){
         Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
+	$('.webgallery img').each(function(index) { 
+		if ($(this).attr("src")=="/assets/default-studio.png"){
+			$(this).remove();}
+	});
+
         if (Galleria) {
             Galleria.run('.webgallery');
         }
