@@ -13,9 +13,10 @@ class Office < ActiveRecord::Base
   #after_validation :geocode
 
   acts_as_gmappable
-
+  
   mount_uploader :image1, ImageUploader
   process_in_background :image1
+
   mount_uploader :image2, ImageUploader
   process_in_background :image2
 

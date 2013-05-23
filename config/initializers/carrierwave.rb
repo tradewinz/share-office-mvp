@@ -3,6 +3,7 @@ CarrierWave.configure do |config|
     :provider               => 'AWS',                # required
     :aws_access_key_id      => ENV["AWS_KEY"],       # required
     :aws_secret_access_key  => ENV["AWS_SECRET"],    # required
+    :persistent             => false
   }
   config.fog_directory  = 'tradewinz-demo'           # required
 end
