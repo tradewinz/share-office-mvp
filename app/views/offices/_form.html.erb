@@ -1,3 +1,5 @@
+<div class="container">
+
 <%= form_for(@office) do |f| %>
     <% if @office.errors.any? %>
         <div id="error_explanation">
@@ -12,16 +14,17 @@
 
     <div class="row">
       <!-- first page of wizard -->
-      <div id="first" class="span10 offset1">
+      <div id="first" class="span12">
 
         <div class="row">
-          <div class="span4 offset3">
+          <div class="text-center">
             <h3> Tell us about your space </h3>
           </div>
         </div>
 
         <div class="row panel panel-border">
-          <fieldset class="padtop padbottom">
+          <div class="span10">
+            <fieldset class="padtop padbottom">
 
             <div class="control-group">
               <label class="control-label">Type of space</label>
@@ -48,22 +51,55 @@
 
               <div class="row">
                 <div class="span2">
-                  <label class="checkbox"> <%= f.check_box :wifi %> Wi-fi </label>
-                  <label class="checkbox"> <%= f.check_box :parking %> Parking </label>
-                  <label class="checkbox"> <%= f.check_box :window %> Window Office </label>
+                  <label class="checkbox">
+                    <%= f.check_box :wifi %>
+                    <div class="officeicon wifi_on"></div>
+                    Wi-Fi
+                  </label>
+                  <label class="checkbox">
+                    <%= f.check_box :parking %>
+                    <div class="officeicon park_on"></div>
+                    Parking
+                  </label>
 
-                </div>
 
-                <div class="span3">
-                  <label class="checkbox"> <%= f.check_box :confroom %> Conference Room</label>
-                  <label class="checkbox"> <%= f.check_box :ac %> Air Conditioning </label>
                 </div>
 
                 <div class="span2">
-                  <label class="checkbox"> <%= f.check_box :kitchen %> Kitchen </label>
-                  <label class="checkbox"> <%= f.check_box :printer %> Printer </label>
+                  <label class="checkbox ">
+                    <%= f.check_box :confroom %>
+                    <div class="officeicon conf_on"></div>
+                    Conference Room
+                  </label>
+                  <label class="checkbox">
+                    <%= f.check_box :ac %>
+                    <div class="officeicon ac_on"></div>
+                    Air Conditioning
+                  </label>
+                </div>
+
+                <div class="span2">
+                  <label class="checkbox">
+                    <%= f.check_box :kitchen %>
+                    <div class="officeicon kitchen_on"></div>
+                    Kitchen
+                  </label>
+                  <label class="checkbox">
+                    <%= f.check_box :printer %>
+                    <div class="officeicon printer_on"></div>
+                    Printer
+                  </label>
 
                 </div>
+
+                <div class="span2">
+                    <label class="checkbox">
+                      <%= f.check_box :window %>
+                      <div class="officeicon window_on"></div>
+                      Window Office
+                    </label>
+                </div>
+
 
               </div>
 
@@ -93,10 +129,10 @@
             </div>
 
           </fieldset>
-
+          </div>
 
           <div class="row">
-            <div class="span8 offset4">
+            <div class="span2 offset5">
               <button class="btn btn-large btn-primary" type="button" id="continueListingBtn">CONTINUE</button>
             </div>
           </div>
@@ -179,7 +215,7 @@
           </fieldset>
 
           <div class="row">
-            <div class="span8 offset4">
+            <div class="span3 offset4">
               <!--%= f.submit "Add Your Listing", :class => "btn btn-large btn-inverse btn-call-to-action" %-->
               <button class="btn btn-large btn-primary" type="submit" id="saveListingBtn">SAVE MY LISTING</button>
             </div>
@@ -191,3 +227,5 @@
     </div>
 
 <% end %>
+
+</div>

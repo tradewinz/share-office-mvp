@@ -54,6 +54,7 @@
     padding-top: 5px;
     text-align: right;
     width: 140px;
+  font-weight: bold;
 }
 
 .controls {
@@ -122,4 +123,72 @@ a {
 }
 
 .officecenter {
+}
+
+.officeicon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-repeat: no-repeat;
+  margin-top: 1px;
+}
+
+
+.wifi_on  {
+  background-image: url('tw/icon_wifi_yellow.png');
+}
+
+.park_on {
+  background-image: url('tw/icon_parking_yellow.png');
+}
+
+.window_on {
+  background-image: url('tw/icon_window_yellow.png');
+}
+
+.conf_on {
+  background-image: url('tw/icon_phone_yellow.png');
+}
+
+.kitchen_on {
+  background-image: url('tw/icon_kitchen_yellow.png');
+}
+
+ .printer_on {
+   background-image: url('tw/icon_printer_yellow.png');
+ }
+
+.ac_on {
+  background-image: url('tw/icon_ac_yellow.png');
+}
+
+
+.wifi_off  {
+  background-image: url('tw/icon_wifi_gray.png');
+}
+
+.park_off {
+  background-image: url('tw/icon_parking_gray.png');
+}
+
+.window_off {
+  background-image: url('tw/icon_window_gray.png');
+}
+
+.conf_off {
+  background-image: url('tw/icon_phone_gray.png');
+}
+
+.kitchen_off {
+  background-image: url('tw/icon_kitchen_gray.png');
+}
+
+.printer_off {
+  background-image: url('tw/icon_printer_gray.png');
+}
+
+.ac_off {
+  background-image: url('tw/icon_ac_gray.png');
 }
