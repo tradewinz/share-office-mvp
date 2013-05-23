@@ -30,10 +30,8 @@ gem 'jquery-rails', '2.0.2'
 group :production do
   gem 'pg', '0.12.2'
   gem 'newrelic_rpm'
-end
+  gem 'unicorn'
 
-platform :ruby do
-  gem 'unicron'
 end
 
 gem "mini_magick"
