@@ -55,13 +55,13 @@
                     <% if @office.office_type = 2 %> Meeting room
                     <% else %>
                         <% if @office.office_type = 3 %> Desk
-                        <% else %>month
+                        <% else %>Office space
                         <% end %>
                     <% end %>
                 <% end %>
                 <i class="icon-home"></i>
                 <% if @office.accomodate? %>
-                    <%= @office.accomodate %> people</p>
+                    <%= @office.accomodate %> people
                 <%end %>
                 <i class="icon-home"></i>
                   <%= @office.size %> sq. ft
