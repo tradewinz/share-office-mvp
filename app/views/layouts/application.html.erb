@@ -38,8 +38,8 @@
                       <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
                     <% else %>
                         <li><%= link_to "SIGN IN", new_user_session_path %></li>
-
                     <% end %>
+                    <li><%= link_to "ABOUT US", about_path%></li>
             </ul>
             <a href="/home">
                 <h3 class="muted" style="margin-top: 1px;">

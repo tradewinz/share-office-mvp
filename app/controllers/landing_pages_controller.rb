@@ -9,6 +9,12 @@ class LandingPagesController < ApplicationController
   def reserve
   end
 
+  def confirm
+  end
+
+  def about
+  end
+
   #	handle finding listing here separately
 	def listings
 
