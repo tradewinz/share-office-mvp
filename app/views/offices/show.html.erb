@@ -90,28 +90,66 @@
                     <p><%= @office.description %> </p>
                 </div>
                 <div class="span8">
-                  <div class="row"></div>
                   <h4>Amenities</h4>
-                  <div class="span2">
-                    <p>Wifi: <% if @office.wifi? %> Yes <% else %> No     <% end %><p>
-                    <p>Parking: <% if @office.parking? %> Yes <% else %> No <% end %></p>
+                  <div class="row">
+                    <div class="span2">
+                      <p><% if @office.wifi? %>
+                          <div class="officeicon wifi_on"></div>
+                      <% else %>
+                          <div class="officeicon wifi_off"></div>
+                      <% end %>Wi-fi</p>
 
+                      <p><% if @office.parking? %>
+                          <div class="officeicon park_on"></div>
+                      <% else %>
+                          <div class="officeicon park_off"></div>
+                      <% end %>Parking</p>
+
+                    </div>
+
+                    <div class="span2">
+                      <p><% if @office.ac? %>
+                          <div class="officeicon ac_on"></div>
+                      <% else %>
+                          <div class="officeicon ac_off"></div>
+                      <% end %>Air Conditioning</p>
+
+                      <p><% if @office.confroom? %>
+                          <div class="officeicon conf_on"></div>
+                      <% else %>
+                          <div class="officeicon conf_off"></div>
+                      <% end %>Conference Room</p>
+
+                    </div>
+
+                    <div class="span2">
+                      <p><% if @office.printer? %>
+                          <div class="officeicon conf_on"></div>
+                      <% else %>
+                          <div class="officeicon conf_off"></div>
+                      <% end %>Conference Room</p>
+
+                      <p><% if @office.kitchen? %>
+                          <div class="officeicon kitchen_on"></div>
+                      <% else %>
+                          <div class="officeicon kitchen_off"></div>
+                      <% end %>Kitchen</p>
+
+                    </div>
+
+                    <div class="span12">
+                      <p><% if @office.window? %>
+                          <div class="officeicon window_on"></div>
+                      <% else %>
+                          <div class="officeicon window_off"></div>
+                      <% end %>Window Office</p>
+
+                    </div>
 
                   </div>
-                  <div class="span2">
-                    <p>Air-Conditioning: <% if @office.ac? %>Yes  <% else %> No        <% end %>  </p>
-                    <p>Conference Room: <% if @office.confroom? %> Yes <% else %> No  <% end %>  </p>
-                  </div>
-                  <div class="span2">
-                    <p>Printer: <% if @office.printer? %>Yes <% else %> No <% end %>   </p>
-                    <p>Kitchen: <% if @office.kitchen? %>Yes <% else %> No <% end %>    </p>
+
+
                 </div>
-
-                  <div class="span2">
-                    <p>Window Office: <% if @office.window? %> Yes <% else %> No <% end %></p>
-                  </div>
-
-              </div>
             </div>
            </div>
 
@@ -131,9 +169,10 @@
                 <% end %>
 
                 <div class="span4">
-                  <div class="host-summary">
-                    About the host
+                  <div class="host-summary leftgap">
+                    <h4>About the host</h4>
                     <p>
+                      <img src=<%=@office.user.photo.to_s%> />
                       <b>Name:</b>
                       <%= @office.user.name %>
                     </p>
@@ -150,6 +189,7 @@
                       <b>LinkedIn Profile:</b>
                       <%= link_to "LinkedIn Public Profile", @office.user.website %>
                     </p>
+
 
                     <!--hide personal data p>
                       <b>Email:</b>
