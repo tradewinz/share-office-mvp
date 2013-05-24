@@ -1,350 +1,364 @@
-<style xmlns="http://www.w3.org/1999/html">
-    .webgallery {
-        height: 600px;
-        background: white;
-    }
+    <style xmlns="http://www.w3.org/1999/html">
+        .webgallery {
+            height: 600px;
+            background: white;
+        }
 
-   .listing-detail  .title {
-        display:block;
-    }
+       .listing-detail  .title {
+            display:block;
+        }
 
-    .location-map .gmaps4rails_map {
-        height: 400px;
-    }
+        .location-map .gmaps4rails_map {
+            height: 400px;
+        }
 
-    paperPanel {
-        position: relative;
-        background-color: white;
-        -webkit-box-shadow: 0 1px 4px #9e9e9e;
-        -moz-box-shadow: 0 1px 4px #9e9e9e;
-        box-shadow: 0 1px 4px #9e9e9e;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        zoom: 1;
-    }
+        paperPanel {
+            position: relative;
+            background-color: white;
+            -webkit-box-shadow: 0 1px 4px #9e9e9e;
+            -moz-box-shadow: 0 1px 4px #9e9e9e;
+            box-shadow: 0 1px 4px #9e9e9e;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            zoom: 1;
+        }
 
-    .paperPanel3D {
-        position: relative;
-        background-color: white;
-        -webkit-box-shadow: 0 1px 4px #9e9e9e;
-        -moz-box-shadow: 0 1px 4px #9e9e9e;
-        box-shadow: 0 1px 4px #9e9e9e;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        zoom: 1;
-    }
+        .paperPanel3D {
+            position: relative;
+            background-color: white;
+            -webkit-box-shadow: 0 1px 4px #9e9e9e;
+            -moz-box-shadow: 0 1px 4px #9e9e9e;
+            box-shadow: 0 1px 4px #9e9e9e;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            zoom: 1;
+        }
 
-    .paperPanel3D {
-        margin-bottom: 20px;
-    }
+        .paperPanel3D {
+            margin-bottom: 20px;
+        }
 
-        /*==================================================
-         * Paper Panel Effect from http://www.paulund.co.uk/playground/demo/css_box_shadow/
-         * ===============================================*/
+            /*==================================================
+             * Paper Panel Effect from http://www.paulund.co.uk/playground/demo/css_box_shadow/
+             * ===============================================*/
 
-    .paperPanel3D:before,
-    .paperPanel3D:after {
-        z-index: -1;
-        position: absolute;
-        content: "";
-        bottom: 15px;
-        left: 10px;
-        width: 50%;
-        top: 80%;
-        max-width: 300px;
-        background: #777777;
-        -webkit-box-shadow: 0 15px 10px #777777;
-        -moz-box-shadow: 0 15px 10px #777777;
-        box-shadow: 0 15px 10px #777777;
-        -webkit-transform: rotate(-3deg);
-        -moz-transform: rotate(-3deg);
-        -o-transform: rotate(-3deg);
-        -ms-transform: rotate(-3deg);
-        transform: rotate(-3deg);
-        zoom: 1;
-    }
+        .paperPanel3D:before,
+        .paperPanel3D:after {
+            z-index: -1;
+            position: absolute;
+            content: "";
+            bottom: 15px;
+            left: 10px;
+            width: 50%;
+            top: 80%;
+            max-width: 300px;
+            background: #777777;
+            -webkit-box-shadow: 0 15px 10px #777777;
+            -moz-box-shadow: 0 15px 10px #777777;
+            box-shadow: 0 15px 10px #777777;
+            -webkit-transform: rotate(-3deg);
+            -moz-transform: rotate(-3deg);
+            -o-transform: rotate(-3deg);
+            -ms-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+            zoom: 1;
+        }
 
-    .paperPanel3D:after {
-        -webkit-transform: rotate(3deg);
-        -moz-transform: rotate(3deg);
-        -o-transform: rotate(3deg);
-        -ms-transform: rotate(3deg);
-        transform: rotate(3deg);
-        right: 10px;
-        left: auto;
-        zoom: 1;
-    }
+        .paperPanel3D:after {
+            -webkit-transform: rotate(3deg);
+            -moz-transform: rotate(3deg);
+            -o-transform: rotate(3deg);
+            -ms-transform: rotate(3deg);
+            transform: rotate(3deg);
+            right: 10px;
+            left: auto;
+            zoom: 1;
+        }
 
-    .small-pad {
-        padding-right:12px;
-        padding-left:12px;
-    }
-
-
-</style>
+        .small-pad {
+            padding-left:12px;
+        }
 
 
-<div class="container listing-detail">
+    </style>
 
-  <div class="row">
-    <div class="span5 offset4">
-      <h3> View your listing </h3>
-      <!--button class="btn btn-primary" id="postListingBtn" onclick=""> Post Listing </button-->
-    </div>
-  </div>
 
-  <div class ="row panel panel-border">
-    <div class="span12">
-        <!-- frame -->
-          <div class="row" id="title">
+    <div class="container listing-detail">
 
-          <div class="span8">
-              <h2 class="officetitle">
-                <%= @office.title %>
-              </h2>
+      <div class="row">
+        <div class="span5 offset4">
+          <h3> View your listing </h3>
+          <!--button class="btn btn-primary" id="postListingBtn" onclick=""> Post Listing </button-->
+        </div>
+      </div>
 
-              <p class="officelocation">
-                <%= @office.loc_addr1 %>  <%= @office.loc_city %> <%= @office.loc_state %> <%= @office.loc_zip %>
-              </p>
-  </div>
-  <!-- end left column -->
+      <div class ="row panel panel-border">
+        <div class="span12">
+            <!-- frame -->
+              <div class="row" id="title">
 
-          <div class="span4">
-    <p class="officecost text-right">
-                $<%= @office.rent %>/
-                <% if @office.rent_type = 1 %>month
-                <% else %>
-                    <% if @office.rent_type = 2 %>week
+              <div class="span8">
+                  <h2 class="officetitle">
+                    <%= @office.title %>
+                  </h2>
+
+                  <p class="officelocation">
+                    <%= @office.loc_addr1 %>  <%= @office.loc_city %> <%= @office.loc_state %> <%= @office.loc_zip %>
+                  </p>
+      </div>
+      <!-- end left column -->
+
+              <div class="span4">
+                <p class="officecost text-right">
+                    $<%= @office.rent %>/
+                    <% if @office.rent_type = 1 %>month
                     <% else %>
-                        <% if @office.rent_type = 3 %>day
-                        <% else %>month
+                        <% if @office.rent_type = 2 %>week
+                        <% else %>
+                            <% if @office.rent_type = 3 %>day
+                            <% else %>month
+                            <% end %>
                         <% end %>
                     <% end %>
-                <% end %>
-              </p>
+                  </p>
 
-    <p class="highlights text-right">
-                <i class="icon-home"></i>
-                <% if @office.office_type = 1 %> Office space
-                <% else %>
-                    <% if @office.office_type = 2 %> Meeting room
+                <p class="highlights text-right">
+                    <% if @office.office_type = 1 %>
+                    <div class="officeicon office"></div> Office space
                     <% else %>
-                        <% if @office.office_type = 3 %> Desk
-                        <% else %>Office space
+                        <% if @office.office_type = 2 %>
+                        <div class="officeicon meeting"></div> Meeting room
+                        <% else %>
+                            <% if @office.office_type = 3 %>
+                            <div class="officeicon desk"></div> Desk
+                            <% else %>
+                            <div class="officeicon office"></div> Office space
+                            <% end %>
                         <% end %>
                     <% end %>
-                <% end %>
-                <i class="icon-home"></i>
-                <% if @office.accomodate? %>
+
+                    <% if @office.accomodate? %>
+                    <div class="officeicon accomodates"></div>
                     <%= @office.accomodate %> people
-                <%end %>
-                <i class="icon-home"></i>
-                  <%= @office.size %> sq. ft
-              </p>
+                    <%end %>
 
-  </div>
-  <!--end let column -->
+                    <div class="officeicon size"></div>
+                    <%= @office.size %> sq. ft
+                </p>
 
-</div>
-<!-- end top row -->
+      </div>
+      <!--end let column -->
+
+    </div>
+    <!-- end top row -->
 
 
-          <div class="row">
+              <div class="row">
 
-            <div class="span8">
-              <div class="row room-detail">
                 <div class="span8">
-                  <div class="webgallery">
-                    <img src=<%=@office.image1_url.to_s%> />
-                    <img src=<%=@office.image2_url.to_s%> />
-                    <img src=<%=@office.image3_url.to_s%> />
-                    <img src=<%=@office.image4_url.to_s%> />
-                  </div>
+                  <div class="row room-detail">
+                    <div class="span8">
+                      <div class="webgallery">
+                        <img src=<%=@office.image1_url.to_s%> />
+                        <img src=<%=@office.image2_url.to_s%> />
+                        <img src=<%=@office.image3_url.to_s%> />
+                        <img src=<%=@office.image4_url.to_s%> />
+                      </div>
+                    </div>
+                    <div class="span8">
+                      <div class="description"></div>
+                        <h4>Description</h4>
+
+                        <p><%= @office.description %> </p>
+                    </div>
+                    <div class="span8">
+                      <h4>Amenities</h4>
+
+                      <div class="row">
+                        <div class="span2">
+                        <p>
+                          <% if @office.wifi? %>
+                                      <div class="officeicon wifi_on"></div>
+                                  <% else %>
+                                      <div class="officeicon wifi_off"></div>
+                                  <% end %>Wi-fi</p>
+
+                        <p>
+                          <% if @office.parking? %>
+                                      <div class="officeicon park_on"></div>
+                                  <% else %>
+                                      <div class="officeicon park_off"></div>
+                                      <div class="officeicon park_off"></div>
+                                  <% end %>Parking</p>
+
+                                </div>
+
+                                <div class="span2">
+                        <p>
+                          <% if @office.ac? %>
+                                      <div class="officeicon ac_on"></div>
+                                  <% else %>
+                                      <div class="officeicon ac_off"></div>
+                                  <% end %>Air Conditioning</p>
+
+                        <p>
+                          <% if @office.confroom? %>
+                                      <div class="officeicon conf_on"></div>
+                                  <% else %>
+                                      <div class="officeicon conf_off"></div>
+                                  <% end %>Conference Room</p>
+                                </div>
+
+                                <div class="span2">
+                        <p>
+                          <% if @office.printer? %>
+                                      <div class="officeicon conf_on"></div>
+                                  <% else %>
+                                      <div class="officeicon conf_off"></div>
+                                  <% end %>Conference Room</p>
+
+                        <p>
+                          <% if @office.kitchen? %>
+                                      <div class="officeicon kitchen_on"></div>
+                                  <% else %>
+                                      <div class="officeicon kitchen_off"></div>
+                                  <% end %>Kitchen</p>
+                                </div>
+
+                                <div class="span12">
+                        <p>
+                          <% if @office.window? %>
+                                      <div class="officeicon window_on"></div>
+                                  <% else %>
+                                      <div class="officeicon window_off"></div>
+                                  <% end %>Window Office</p>
+                                </div>
+
+                              </div>
+
+
+                            </div>
                 </div>
-                <div class="span8">
-                  <div class="description"></div>
-                    <h4>Description</h4>
+               </div>
 
-                    <p><%= @office.description %> </p>
-                </div>
-                <div class="span8">
-                  <h4>Amenities</h4>
-
+      <div class="span4 room-action-area">
+        <div class="paperPanel3D text-center">
                   <div class="row">
-                    <div class="span2">
-            <p>
-              <% if @office.wifi? %>
-                          <div class="officeicon wifi_on"></div>
-                      <% else %>
-                          <div class="officeicon wifi_off"></div>
-                      <% end %>Wi-fi</p>
-
-            <p>
-              <% if @office.parking? %>
-                          <div class="officeicon park_on"></div>
-                      <% else %>
-                          <div class="officeicon park_off"></div>
-                      <% end %>Parking</p>
-
+                    <div class="span4">
+                      <div class="button-area">
+                        <%= button_to "Reserve this space", reserve_path, :class => "l_button btn btn-large btn-warning" %>
+                      </div>
                     </div>
 
-                    <div class="span2">
-            <p>
-              <% if @office.ac? %>
-                          <div class="officeicon ac_on"></div>
-                      <% else %>
-                          <div class="officeicon ac_off"></div>
-                      <% end %>Air Conditioning</p>
+                    <% if can? :update, @office %>
+                    <div class="span4">
+                  <div class="button-area"><%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %></div>
 
-            <p>
-              <% if @office.confroom? %>
-                          <div class="officeicon conf_on"></div>
-                      <% else %>
-                          <div class="officeicon conf_off"></div>
-                      <% end %>Conference Room</p>
                     </div>
-
-                    <div class="span2">
-            <p>
-              <% if @office.printer? %>
-                          <div class="officeicon conf_on"></div>
-                      <% else %>
-                          <div class="officeicon conf_off"></div>
-                      <% end %>Conference Room</p>
-
-            <p>
-              <% if @office.kitchen? %>
-                          <div class="officeicon kitchen_on"></div>
-                      <% else %>
-                          <div class="officeicon kitchen_off"></div>
-                      <% end %>Kitchen</p>
-                    </div>
-
-                    <div class="span12">
-            <p>
-              <% if @office.window? %>
-                          <div class="officeicon window_on"></div>
-                      <% else %>
-                          <div class="officeicon window_off"></div>
-                      <% end %>Window Office</p>
-                    </div>
-
-                  </div>
-
-
+                    <% end %>
+          </div>
+        </div>
+            <div class="paperPanel3D host-summary">
+              <div class="row">
+                <div class="span4">
+                  <h4 class="panel-header-gray">About the host</h4>
                 </div>
+                <div class="span2" style="width: 120px">
+                    <div class="small-pad">
+                      <img src=<%=@office.user.photo.to_s%> />
+                    </div>
+                </div>
+
+                <div class="span2">
+                  <div class="small-pad">
+                    <p>
+                      <b><%= @office.user.name %></b>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="span2">
+                  <div class="small-pad">
+                      <p>
+                        <div class="officeicon industry"></div>
+                        <b><%= @office.user.industry %></b>
+                      </p>
+                   </div>
+                </div>
+
+                <div class="span2">
+                  <div class="small-pad">
+                    <p>
+                    <div class="officeicon experience"></div>
+                    <b><%= @office.user.location %></b>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="span3">
+                  <div class="small-pad">
+                    <p>
+                      <b><%= link_to "See my LinkedIn profile", @office.user.website %></b>
+                    </p>
+                  </div>
+                </div>
+
+                <!--hide personal data p>
+                  <b>Email:</b>
+                  <#%= @office.user.email %>
+                </p>
+
+                <p>
+                  <b>Phone:</b>
+                  <#%= @office.user.phone %>
+                </p-->
+
+              </div>
             </div>
            </div>
 
-  <div class="span4 room-action-area">
-    <div class="paperPanel3D text-center">
-              <div class="row">
-                <div class="span4">
-                  <div class="button-area">
-                    <%= button_to "Reserve this space", reserve_path, :class => "l_button btn btn-large btn-warning" %>
+        <div class="row">
+                    <div class="span4">
+                      <div class="location-map">
+                        <%= gmaps("markers" => {"data" => @json},
+                                  "map_options" =>  { "provider" => "google",
+                                                      "provider_key" => "AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE",
+                                                      "auto_zoom" => false,
+                                                      "zoom" => 12
+                                                    }
+                                  )
+                        %>
+                      </div>
+                    </div>
+
+
+                    </div>
                   </div>
-                </div>
-
-                <% if can? :update, @office %>
-                <div class="span4">
-              <div class="button-area"><%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %></div>
-
-                </div>
-                <% end %>
-      </div>
-    </div>
-    <div class="paperPanel3D host-summary">
-      <div class="row">
-        <div class="span4">
-          <h4 class="panel-header-gray">About the host</h4>
-        </div>
-
-        <div class1"span1">
-     div class="small-pad"    <p>
-                      <img src=<%=@office.user.photo.to_s%> />
-      div   </p>
-        </div>
-        <div class3"span3">
-          <div csmall-pad">g            <p>
-                      <b>Name:</b>
-                      <%= @office.user.name %>
-            </p>ap">
-
-
-
-                    <p>
-                      <b>Industry:</b>
-                      <%= @office.user.industry %>
-                    </p>
-
-                    <p>
-                      <b>Location:</b>
-                      <%= @office.user.location %>
-                    </p>
-
-                    <p>
-                      <b>LinkedIn Profile:</b>
-                      <%= link_to "LinkedIn Public Profile", @office.user.website %>
-                    </p>
-
-
-                    <!--hide personal data p>
-                      <b>Email:</b>
-                      <#%= @office.user.email %>
-                    </p>
-
-                    <p>
-                      <b>Phone:</b>
-                      <#%= @office.user.phone %>
-                    </p-->
-
-                  </div>
-                </div>
-      </div>
-      </row>
-    </div>
-    <div class="row">
-                <div class="span4">
-                  <div class="location-map">
-                    <%= gmaps("markers" => {"data" => @json},
-                              "map_options" =>  { "provider" => "google",
-                                                  "provider_key" => "AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE",
-                                                  "auto_zoom" => false,
-                                                  "zoom" => 12
-                                                }
-                              )
-                    %>
-                  </div>
-                </div>
-
-
                 </div>
               </div>
-            </div>
-          </div>
+        </div>
+       </div>
+
     </div>
-   </div>
 
-</div>
+    <script>
 
-<script>
+        function galleria(){
+            Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
+        $('.webgallery img').each(function(index) {
+                if ($(this).attr("src").toLowerCase().indexOf("/assets/default-studio.png")>=0) {
+                    $(this).remove();
+                }
+        });
 
-    function galleria(){
-        Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
-	$('.webgallery img').each(function(index) { 
-            if ($(this).attr("src").toLowerCase().indexOf("/assets/default-studio.png")>=0) {
-                $(this).remove();
-            }
-	});
-
-        if (Galleria) {
-            if ($('.webgallery img').length > 0) {
-            Galleria.run('.webgallery');
-            } else {
-                $('.webgallery').remove();
+            if (Galleria) {
+                if ($('.webgallery img').length > 0) {
+                Galleria.run('.webgallery');
+                } else {
+                    $('.webgallery').remove();
+                }
             }
         }
-    }
-    galleria();
-</script>
+        galleria();
+    </script>
 
