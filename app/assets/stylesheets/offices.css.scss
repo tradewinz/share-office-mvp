@@ -2,13 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.host-summary {
- margin-top: 20px;
- margin-bottom:20px;
-  -moz-box-sizing: border-box;
-  border: 1px solid #baafa4;
-}
-
 .panel {
   padding-top:20px;
   padding-bottom: 20px;
@@ -103,7 +96,10 @@ a {
    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 34px;
     line-height: 20px;
-    
+}
+
+text-right{
+  text-align: right;
 }
 
 .officelocation {
