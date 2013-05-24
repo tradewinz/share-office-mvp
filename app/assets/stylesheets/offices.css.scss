@@ -122,6 +122,9 @@ a {
   // margin:0 auto;
 }
 
+// Icons
+//:TODO fix using sprite
+
 .officecenter {
 }
 
@@ -136,6 +139,35 @@ a {
 }
 
 
+.office {
+  background-image: url('tw/icon_office.png');
+}
+
+.meeting {
+  background-image: url('tw/icon_meetingroom.png');
+}
+
+.desk {
+  background-image: url('tw/icon_desk.png');
+}
+
+.size {
+  background-image: url('tw/icon_sqft.png');
+}
+
+.accomodates {
+  background-image: url('tw/icon_accomodates.png');
+}
+
+.industry {
+  background-image: url('tw/icon_profile_industry.png');
+}
+
+.experience {
+  background-image: url('tw/icon_profile_experience.png');
+}
+
+//Amenities
 .wifi_on  {
   background-image: url('tw/icon_wifi_yellow.png');
 }
