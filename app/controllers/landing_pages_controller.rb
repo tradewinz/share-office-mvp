@@ -6,6 +6,9 @@ class LandingPagesController < ApplicationController
 	def home
 	end
 
+  def reserve
+  end
+
   #	handle finding listing here separately
 	def listings
 

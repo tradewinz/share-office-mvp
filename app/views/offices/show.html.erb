@@ -118,7 +118,9 @@
             <div class="span4">
               <div class="row">
                 <div class="span4">
-                  <div class="button-area"> <%= button_to "Reserve this space", {:action => "reserve"}, {:class => "l_button btn btn-large btn-warning"} %></div>
+                  <div class="button-area">
+                    <%= button_to "Reserve this space", reserve_path, :class => "l_button btn btn-large btn-warning" %>
+                  </div>
                 </div>
 
                 <% if can? :update, @office %>
