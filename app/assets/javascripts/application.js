@@ -16,4 +16,9 @@
 //= require jquery.validate
 //= require galleria-1.2.9
 //= require galleria.classic
+//= require jquery.ui.widget
+//= require jquery.iframe-transport
+//= require jquery.fileupload
+//= require cloudinary/jquery.cloudinary
+//= require attachinary
 //= require_tree .

@@ -11,6 +11,9 @@ ShareOfficeMvp::Application.routes.draw do
   match '/reserve', to:'landing_pages#reserve'
 
   resources :offices 
+
+  mount Attachinary::Engine => "/attachinary"
+
    
   # resources :users
 

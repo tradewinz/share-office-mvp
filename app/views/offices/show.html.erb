@@ -82,7 +82,12 @@
 
     </style>
 
+<script>
 
+ $(document).ready(function() {
+  $('.attachinary-input').attachinary();
+  });
+ </script>
     <div class="container listing-detail">
 
       <div class="row">
@@ -159,10 +164,9 @@
                   <div class="row room-detail">
                     <div class="span8">
                       <div class="webgallery">
-                        <img src=<%=@office.image1_url.to_s%> />
-                        <img src=<%=@office.image2_url.to_s%> />
-                        <img src=<%=@office.image3_url.to_s%> />
-                        <img src=<%=@office.image4_url.to_s%> />
+                     <% @office.office_images.each do |photo| %>
+                      <%= cl_image_tag(photo.path) %>
+                      <% end %>
                       </div>
                     </div>
                     <div class="span8">

@@ -1,0 +1,18 @@
+development:
+  cloud_name: dmcfi9vma
+  api_key: '623386932182993'
+  api_secret: lzozmR2lmWWUY4RRyF0y5f7V38E
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dmcfi9vma
+  api_key: '623386932182993'
+  api_secret: lzozmR2lmWWUY4RRyF0y5f7V38E
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dmcfi9vma
+  api_key: '623386932182993'
+  api_secret: lzozmR2lmWWUY4RRyF0y5f7V38E
+  enhance_image_tag: true
+  static_image_support: false

@@ -34,11 +34,6 @@ group :production do
 
 end
 
-gem "mini_magick"
-
-gem "fog", "~> 1.3.1"
-
-gem "carrierwave"
 
 gem "jquery-validation-rails"
 
@@ -54,6 +49,5 @@ gem 'omniauth-linkedin-oauth2'
 
 gem 'will_paginate', '~> 3.0'
 
-gem 'delayed_job'
-gem 'delayed_job_active_record'
-gem 'carrierwave_backgrounder'
+gem 'cloudinary'
+gem 'attachinary'

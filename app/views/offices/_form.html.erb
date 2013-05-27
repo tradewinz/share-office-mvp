@@ -160,31 +160,12 @@
             <div class="control-group">
               <label class="control-label">Upload a Photo</label>
 
-              <div class="controls"> <%= f.file_field :image1 %>
-                  <% if @office.image1? %>
-                      <%= image_tag(@office.image1_url(:thumb).to_s, :class => "img-polaroid img-edit" ) %>
-                      <%= f.check_box :remove_image1 %>Remove photo1
-                  <% end %>
-              </div>
-              <div class="controls"> <%= f.file_field :image2 %>
-                <% if @office.image2? %>
-                    <%= image_tag(@office.image2_url(:thumb).to_s, :class => "img-polaroid img-edit" ) %>
-                    <%= f.check_box :remove_image2 %>Remove photo2
-                <% end %>
-              </div>
-              <div class="controls"> <%= f.file_field :image3 %>
-                <% if @office.image3? %>
-                    <%= image_tag(@office.image3_url(:thumb).to_s, :class => "img-polaroid img-edit" ) %>
-                    <%= f.check_box :remove_image3 %>Remove photo3
-                <% end %>
-              </div>
-              <div class="controls"> <%= f.file_field :image4 %>
-                <% if @office.image4? %>
-                    <%= image_tag(@office.image4_url(:thumb).to_s, :class => "img-polaroid img-edit" ) %>
-                    <%= f.check_box :remove_image4 %>Remove photo4
-                <% end %>
-              </div>
+              <div class="controls"> <%= f.attachinary_file_field :office_images %>
 
+              <!--
+              <div class="controls"> <%= f.file_field :image2 %>
+              -->
+            </div>
              </div>
 
             <div class="control-group">

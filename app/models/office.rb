@@ -12,20 +12,11 @@ class Office < ActiveRecord::Base
   #geocoded_by :loc_zip
   #after_validation :geocode
 
+  has_attachments :office_images, maximum: 4
+
   acts_as_gmappable
   
-  mount_uploader :image1, ImageUploader
-  process_in_background :image1
-
-  mount_uploader :image2, ImageUploader
-  process_in_background :image2
-
-  mount_uploader :image3, ImageUploader
-  process_in_background :image3
-
-  mount_uploader :image4, ImageUploader
-  process_in_background :image4
-
+ 
   self.per_page = 20
 
   def gmaps4rails_address
