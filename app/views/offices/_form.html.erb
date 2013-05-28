@@ -1,3 +1,41 @@
+
+
+<script type="text/javascript">
+
+function showLoadingImage() {
+    $('#second').append('<div id="loading-image"><%= image_tag("/images/ajaxloading.gif", :alt => "loading") %> </div>');
+}
+
+function hideLoadingImage() {
+    $('#loading-image').remove();
+} 
+
+
+$(document).ready (function() {
+
+
+$('.attachinary-input').bind('fileuploadstart', function() {  
+  alert ("ok, bound");
+       showLoadingImage();
+});
+
+$('.attachinary-input').bind('cloudinarydone', function() {  
+alert ("done!");
+       hideLoadingImage();
+});
+
+
+$('.attachinary-input').bind('fileuploadsend', function() {  
+alert ("done!");
+       hideLoadingImage();
+});
+
+//$('.attachinary-input').trigger('fileuploadstart');
+});
+
+</script>
+
+
 <div class="container">
 
 <%= form_for(@office) do |f| %>
@@ -159,13 +197,11 @@
 
             <div class="control-group">
               <label class="control-label">Upload a Photo</label>
-
-              <div class="controls"> <%= f.attachinary_file_field :office_images %>
-
-              <!--
-              <div class="controls"> <%= f.file_field :image2 %>
-              -->
-            </div>
+              <span class="btn btn-success attachinary-input">
+                <%= f.attachinary_file_field :office_images %> 
+                <i class="icon-plus icon-white"> </i>
+                <span> Add files... </span>
+              </span>
              </div>
 
             <div class="control-group">
