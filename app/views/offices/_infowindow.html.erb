@@ -1,13 +1,21 @@
 <div class="container-narrow">
   <div class="row">
-      <div class="span3">
-          <%= image_tag office.image1_url(:small).to_s, :style => "height:100px; width:100px;"%>
+      <div class="span2">
+        <% if (office.office_images.first != nil) %>
+            <a href= "<%= office_path(office)  %>" >
+                <!--%= cl_image_tag office.office_images, :width => 90, :height => 90, :crop => :thumb)-->
+                <%= cl_image_tag(office.office_images.first.path, :style => "height:100px; width:100px;") %>
+                <% else %>
+                <%= image_tag "thumb_default-studio.png" %>
+                <% end %>
+            </a>
+        </a>
       </div>
   </div>
   <div class="row">
 
-    <div class="span3">
-          <%= link_to  office.title, office_path(office) %>
+    <div class="span2">
+          <p><%= link_to  office.title, office_path(office) %></p>
     </div>
   </div>
 
