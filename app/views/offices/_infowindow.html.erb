@@ -5,11 +5,11 @@
             <a href= "<%= office_path(office)  %>" >
                 <!--%= cl_image_tag office.office_images, :width => 90, :height => 90, :crop => :thumb)-->
                 <%= cl_image_tag(office.office_images.first.path, :style => "height:100px; width:100px;") %>
-                <% else %>
-                <%= image_tag "thumb_default-studio.png" %>
-                <% end %>
             </a>
-        </a>
+        <% else %>
+                <%= image_tag "thumb_default-studio.png" %>
+        <% end %>
+
       </div>
   </div>
   <div class="row">
