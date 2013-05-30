@@ -105,7 +105,6 @@
                 <div class="officeicon park_on"></div>
             <% else %>
                 <div class="officeicon park_off"></div>
-                <div class="officeicon park_off"></div>
             <% end %>Parking</p>
 
           </div>
@@ -165,6 +164,7 @@
           <div class="button-area">
             <!--% if can? :update, @office %-->
             <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
+            <hr>
             <%= link_to "Reserve this space", reserve_path, :class => "btn btn-large btn-warning" %>
          </div>
         </div>
@@ -205,7 +205,6 @@
         <div class="span3">
           <div class="small-pad">
             <p>
-
             <div class="officeicon experience"></div>
             <b><%= @office.user.location %></b>
             </p>
@@ -220,10 +219,14 @@
           </div>
         </div>
 
-        <p>
-          <b>User Email:</b>
-          <%= @office.user.email %>
-        </p>
+        <div class="span3">
+          <div class="small-pad">
+            <p>
+              <b>User Email:</b>
+              <%= @office.user.email %>
+            </p>
+          </div>
+        </div>
 
         <!--p>
           <b>Phone:</b>
