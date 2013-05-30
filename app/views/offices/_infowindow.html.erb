@@ -4,10 +4,10 @@
         <% if (office.office_images.first != nil) %>
             <a href= "<%= office_path(office)  %>" >
                 <!--%= cl_image_tag office.office_images, :width => 90, :height => 90, :crop => :thumb)-->
-                <%= cl_image_tag(office.office_images.first.path, :style => "height:100px; width:100px;") %>
+                <%= cl_image_tag(office.office_images.first.path, :size => '100x75', :crop => :fit) %>
             </a>
         <% else %>
-                <%= image_tag "thumb_default-studio.png" %>
+                <%= image_tag "small_default-studio.png" %>
         <% end %>
 
       </div>
