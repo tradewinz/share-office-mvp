@@ -2,6 +2,11 @@
 
 <script type="text/javascript">
 
+<!-- file upload -->
+$(document).ready(function() {
+    $('.attachinary-input').attachinary();
+});
+
 function showLoadingImage() {
     $('#second').append('<div id="loading-image"><%= image_tag("/images/ajaxloading.gif", :alt => "loading") %> </div>');
 }
@@ -197,11 +202,13 @@ alert ("done!");
 
             <div class="control-group">
               <label class="control-label">Upload a Photo</label>
-              <span class="btn btn-success attachinary-input">
-                <%= f.attachinary_file_field :office_images %> 
-                <i class="icon-plus icon-white"> </i>
-                <span> Add files... </span>
-              </span>
+              <div class="controls">
+                  <span class="btn btn-success attachinary-input">
+                    <%= f.attachinary_file_field :office_images %>
+                    <i class="icon-plus icon-white"> </i>
+                    <span> Add photos... </span>
+                  </span> (select one or more photos )
+              </div>
              </div>
 
             <div class="control-group">

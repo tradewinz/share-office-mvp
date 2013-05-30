@@ -9,7 +9,7 @@
   background-color: #ffffff;
 }
 
-.panel-background-well, .well {
+.panel-background-well {
     background-color: #FAFAFA;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2) inset, 0 0 0 #000000;
     padding: 0;
@@ -80,12 +80,7 @@ a {
 }
 
 
-#galleria{ width: 700px; background: #ff0; }
 
-.gallery {
-
-    
-}
 .officetitle {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 34px;
@@ -222,6 +217,88 @@ text-right{
 }
 
 
+/*================================================== This is for the show listing page ========================*/
+.webgallery {
+  height: 600px;
+  background: white;
+}
+
+.listing-detail  .title {
+  display:block;
+}
+
+.location-map .gmaps4rails_map {
+  height: 400px;
+}
+
+paperPanel {
+  position: relative;
+  background-color: white;
+  -webkit-box-shadow: 0 1px 4px #9e9e9e;
+  -moz-box-shadow: 0 1px 4px #9e9e9e;
+  box-shadow: 0 1px 4px #9e9e9e;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  zoom: 1;
+}
+
+.paperPanel3D {
+  position: relative;
+  background-color: white;
+  -webkit-box-shadow: 0 1px 4px #9e9e9e;
+  -moz-box-shadow: 0 1px 4px #9e9e9e;
+  box-shadow: 0 1px 4px #9e9e9e;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  zoom: 1;
+}
+
+.paperPanel3D {
+  margin-bottom: 20px;
+}
+
+/*==================================================
+* Paper Panel Effect from http://www.paulund.co.uk/playground/demo/css_box_shadow/
+* ===============================================*/
+
+.paperPanel3D:before,
+.paperPanel3D:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width: 300px;
+  background: #777777;
+  -webkit-box-shadow: 0 15px 10px #777777;
+  -moz-box-shadow: 0 15px 10px #777777;
+  box-shadow: 0 15px 10px #777777;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+  zoom: 1;
+}
+
+.paperPanel3D:after {
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+  zoom: 1;
+}
+
+.small-pad {
+  padding-left:12px;
+}
+
+/*========================================== This is for the file upload  ========================*/
 
 .attachinary-input {
   position: relative;

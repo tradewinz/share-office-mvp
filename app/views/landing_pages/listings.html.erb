@@ -1,6 +1,5 @@
-<div class="container" xmlns="http://www.w3.org/1999/html">
+<div class="row padtopsmall padbottomsmall" >
 
-  <div class="row padtopsmall padbottomsmall" >
     <div class="span5">
       <input type="text" class="l_input" placeholder="Enter a city">
     </div>
@@ -27,7 +26,7 @@
                 <% if (office.office_images.first != nil) %>
                     <%= cl_image_tag office.office_images.first.path, :size => '220x165', :crop => :fit, :class => "img-polaroid" %>
                 <% else %>
-                      <%= image_tag "default-studio.png", :class => "img-polaroid" %>
+                      <%= image_tag "medium_default-studio.png", :class => "img-polaroid" %>
                 <% end %>
 
               </a>
@@ -155,8 +154,5 @@
           </div>
         </div>
     </div>
+
   </div>
-
-
-  
-</div>
