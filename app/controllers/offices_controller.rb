@@ -95,4 +95,8 @@ class OfficesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def reserve
+    # Create a booking entity and link with this office
+  end
 end

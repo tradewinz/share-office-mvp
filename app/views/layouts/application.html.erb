@@ -133,6 +133,36 @@
 
 </script>
 
+<!-- file upload -->
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('.attachinary-input').attachinary();
+    });
+</script>
+
+<!-- image gallery  -->
+<script type="text/javascript">
+    function galleria(){
+        Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
+        $('.webgallery img').each(function(index) {
+            if ($(this).attr("src").toLowerCase().indexOf("/assets/default-studio.png")>=0) {
+            $(this).remove();
+        }
+        });
+
+        if (Galleria) {
+            if ($('.webgallery img').length > 0) {
+                Galleria.run('.webgallery');
+            } else {
+            $('.webgallery').remove();
+            }
+        }
+    }
+
+    galleria();
+
+</script>
+
 </body>
 
 

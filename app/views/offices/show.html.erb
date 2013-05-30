@@ -1,10 +1,4 @@
 
-<script>
-
- $(document).ready(function() {
-  $('.attachinary-input').attachinary();
-  });
- </script>
     <div class="container listing-detail">
 
       <div class="row">
@@ -166,17 +160,15 @@
                   <div class="row">
                     <div class="span4">
                       <div class="button-area">
-                        <%= button_to "Reserve this space", reserve_path, :class => "l_button btn btn-large btn-warning" %>
+                        <% if can? :update, @office %>
+                              <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
+                        <% else %>
+                            <%= link_to "Reserve this space", reserve_path, :class => "btn btn-large btn-warning" %>
+                        <% end %>
                       </div>
                     </div>
 
-                    <% if can? :update, @office %>
-                    <div class="span4">
-                  <div class="button-area"><%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %></div>
-
-                    </div>
-                    <% end %>
-          </div>
+                  </div>
         </div>
             <div class="paperPanel3D host-summary">
               <div class="row">
@@ -262,24 +254,5 @@
 
     </div>
 
-    <script>
 
-        function galleria(){
-            Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
-        $('.webgallery img').each(function(index) {
-                if ($(this).attr("src").toLowerCase().indexOf("/assets/default-studio.png")>=0) {
-                    $(this).remove();
-                }
-        });
-
-            if (Galleria) {
-                if ($('.webgallery img').length > 0) {
-                Galleria.run('.webgallery');
-                } else {
-                    $('.webgallery').remove();
-                }
-            }
-        }
-        galleria();
-    </script>
 

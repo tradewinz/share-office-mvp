@@ -6,9 +6,6 @@ class LandingPagesController < ApplicationController
 	def home
 	end
 
-  def reserve
-  end
-
   def confirm
   end
 
