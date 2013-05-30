@@ -163,12 +163,10 @@
       <div class="row">
         <div class="span4">
           <div class="button-area">
-            <% if can? :update, @office %>
-                <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
-            <% else %>
-                <%= link_to "Reserve this space", reserve_path, :class => "btn btn-large btn-warning" %>
-            <% end %>
-          </div>
+            <!--% if can? :update, @office %-->
+            <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
+            <%= link_to "Reserve this space", reserve_path, :class => "btn btn-large btn-warning" %>
+         </div>
         </div>
 
       </div>
@@ -222,12 +220,12 @@
           </div>
         </div>
 
-        <!--hide personal data p>
-          <b>Email:</b>
-          <#%= @office.user.email %>
+        <p>
+          <b>User Email:</b>
+          <%= @office.user.email %>
         </p>
 
-        <p>
+        <!--p>
           <b>Phone:</b>
           <#%= @office.user.phone %>
         </p-->
