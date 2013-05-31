@@ -267,19 +267,27 @@
 
     function galleria(){
         Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
-        $('.webgallery img').each(function(index) {
-            if ($(this).attr("src").toLowerCase().indexOf("/assets/default-studio.png")>=0) {
-                $(this).remove();
-            }
-        });
+       // $('.webgallery img').each(function(index) {
+        //    if ($(this).attr("src").toLowerCase().indexOf("/assets/default-studio.png")>=0) {
+        //        $(this).remove();
+         //   }
 
-        if (Galleria) {
-            if ($('.webgallery img').length > 0) {
-                Galleria.run('.webgallery');
-            } else {
-                $('.webgallery').remove();
-            }
-        }
+        //if (Galleria) {
+         //   if ($('.webgallery img').length > 0) {
+          //    Galleria.run('.webgallery', {
+          //   height: parseInt($('.webgallery').css('height')),
+          // wait: true
+          //});
+          Galleria.run('.webgallery');
+          $('.webgallery').galleria ({
+            width: 600,
+            height: 600
+          });
+          }
+           // } else {
+             //   $('.webgallery').remove();
+            //}
+        //}
     }
 
     galleria();
