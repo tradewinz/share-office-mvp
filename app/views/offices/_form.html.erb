@@ -9,7 +9,8 @@ $(document).ready(function() {
     $('.attachinary-input').attachinary();
 
 function showLoadingImage() {
-    $('#second').append('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %> </div>');
+   $('.thumbs').prepend('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %></div>');
+ 
 }
 
 function hideLoadingImage() {
@@ -18,10 +19,20 @@ function hideLoadingImage() {
 
 $('.attachinary-input').attachinary();
 
-$('.attachinary-input').bind('fileuploadstart', function() {  
- // alert ("ok, bound");
-       showLoadingImage();
+$('.attachinary-input').bind('fileuploadstart', function(e, data) {  
+  alert ("ok, start");
+   //$('#loading-image').show();
+   showLoadingImage();
 });
+
+/*
+$('.attachinary-input').bind('fileuploadprogressall', function(e,data) {  
+  alert ("progress " + data.loaded);
+  var prog = parseInt(data.loaded / data.total * 100, 10);
+
+  $('.progress').css('width', prog + '%');
+});
+*/
 
 $('.attachinary-input').bind('cloudinarydone', function() {  
 //alert ("done!");
@@ -29,11 +40,14 @@ $('.attachinary-input').bind('cloudinarydone', function() {
 });
 
 
-$('.attachinary-input').bind('fileuploadsend', function() {  
-//alert ("done!");
-      $('.thumbs').prepend($('.attachinary_container'));
-       hideLoadingImage();
+$('.attachinary-input').bind('fileuploaddone', function() {  
+alert ("done event!");
+hideLoadingImage();
 });
+
+
+// move the attachinary container to a separate row (this is where the thumbnails show upf)
+$('.thumbs').prepend($('.attachinary_container'));
 
 //$('.attachinary-input').trigger('fileuploadstart');
 
@@ -216,6 +230,9 @@ $('.attachinary-input').bind('fileuploadsend', function() {
              </div>
              <div class="row ">
               <div class="offset2 span10 thumbs"> </div>
+                  <div class="progress">
+                   <div class="bar" style="width: 0%;"></div>
+                  </div>
             </div>
 
             <div class="control-group">
