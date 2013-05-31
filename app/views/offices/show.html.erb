@@ -162,12 +162,13 @@
       <div class="row">
         <div class="span4">
           <div class="button-area">
-            <!--% if can? :update, @office %-->
-            <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
-            <hr>
-            <div class = "btn btn-large btn-warning">
-              <%= link_to "Reserve this space", :controller => "offices", :action => "reserve", :id => @office %>
-            </div>
+            <% if can? :update, @office %>
+                <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
+            <% else %>
+                <div class = "btn btn-large btn-warning">
+                  <%= link_to "Reserve this space", :controller => "offices", :action => "reserve", :id => @office %>
+                </div>
+            <% end %>
          </div>
         </div>
 
@@ -216,19 +217,19 @@
         <div class="span3">
           <div class="small-pad">
             <p>
-              <b><%= link_to "See my LinkedIn profile", @office.user.website %></b>
+              <b><%= link_to "See my LinkedIn profile", @office.user.website.to_s, :target => "_blank" %></b>
             </p>
           </div>
         </div>
 
-        <div class="span3">
+        <!--div class="span3">
           <div class="small-pad">
             <p>
               <b>User Email:</b>
-              <%= @office.user.email %>
+              <#%= @office.user.email %>
             </p>
           </div>
-        </div>
+        </div-->
 
         <!--p>
           <b>Phone:</b>

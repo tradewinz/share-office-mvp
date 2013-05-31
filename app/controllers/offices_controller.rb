@@ -100,6 +100,7 @@ class OfficesController < ApplicationController
     # Create a booking entity and link with this office
     @office = Office.find(params[:id])
     @current_user = current_user
+
     OfficeMailer.reserve_listing_confirm(@office, @current_user).deliver
   end
 end
