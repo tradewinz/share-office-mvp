@@ -219,9 +219,10 @@ text-right{
 
 /*================================================== This is for the show listing page ========================*/
 
-.webgallery {
-  height: 600px;
-  background: white;
+#galleria {
+ height: 500px;
+ width: 600px;
+  background: #000;
 }
 
 .listing-detail  .title {
