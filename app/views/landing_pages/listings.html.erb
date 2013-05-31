@@ -10,7 +10,7 @@
     <div class="offset2 span3">
       <div class="btn-group" data-toggle="buttons-radio">
         <%= link_to "Map View", maps_path, class: "btn btn-medium" %>
-        <%= link_to "Grid View", listings_path, class: "btn btn-medium" %>
+        <%= link_to "List View", listings_path, class: "btn btn-medium" %>
       </div>
     </div>
   </div>
@@ -99,16 +99,20 @@
             <div class="span3">
               <div class="row">
                   <div class="span3" id="rent">
-                    <h4>$<%= office.rent %>/
-                      <% if office.rent_type == 1 %>month
-                      <% else %>
-                          <% if office.rent_type == 2 %>week
+                  <% if office.rent? %>
+                      <h4><%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
+                          <% if office.rent_type == 1 %>/month
                           <% else %>
-                              <% if office.rent_type == 3 %>day
-                              <% else %>month
+                              <% if office.rent_type == 2 %>/week
+                              <% else %>
+                                  <% if office.rent_type == 3 %>/day
+                                  <% else %>month
+                                  <% end %>
                               <% end %>
-                          <% end %>
-                      <% end %> </h4>
+                          <% end %> </h4>
+                  <% else %>
+                        <h4>Contact us</h4>
+                  <% end %>
                     <br>
                     <p>
                       <% if office.accomodate? %>
