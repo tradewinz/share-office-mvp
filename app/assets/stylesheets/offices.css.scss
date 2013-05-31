@@ -223,11 +223,13 @@ text-right{
 
 
 
-.attachinary-input {
+.span-attachinary-input {
   position: relative;
   overflow: hidden;
+  width: 130px;
+  margin-left: 15px;
 }
-.attachinary-input input {
+.span-attachinary-input input {
   position: absolute;
   top: 0;
   right: 0;
@@ -270,3 +272,10 @@ text-right{
     word-wrap: break-word;
   }
 }
+
+.attachinary_container {
+  margin-right: 10px;
+}
+.attachinary_container ul li{ display: inline;}
+.attachinary_container ul li{ display: inline-block;}
+.attachinary_container img {display: block;} 

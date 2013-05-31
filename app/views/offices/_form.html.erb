@@ -1,39 +1,46 @@
 
 
+
 <script type="text/javascript">
 
+$(document).ready(function()  {
+
 function showLoadingImage() {
-    $('#second').append('<div id="loading-image"><%= image_tag("/images/ajaxloading.gif", :alt => "loading") %> </div>');
+    $('#second').append('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %> </div>');
 }
 
 function hideLoadingImage() {
     $('#loading-image').remove();
 } 
 
-
-$(document).ready (function() {
-
+$('.attachinary-input').attachinary();
 
 $('.attachinary-input').bind('fileuploadstart', function() {  
-  alert ("ok, bound");
+ // alert ("ok, bound");
        showLoadingImage();
 });
 
 $('.attachinary-input').bind('cloudinarydone', function() {  
-alert ("done!");
-       hideLoadingImage();
+//alert ("done!");
+  //    hideLoadingImage();
 });
 
 
 $('.attachinary-input').bind('fileuploadsend', function() {  
-alert ("done!");
+//alert ("done!");
+      $('.thumbs').prepend($('.attachinary_container'));
        hideLoadingImage();
 });
 
 //$('.attachinary-input').trigger('fileuploadstart');
+
+
+
 });
 
 </script>
+
+
 
 
 <div class="container">
@@ -195,14 +202,17 @@ alert ("done!");
 
           <fieldset class="padtop padbottom">
 
-            <div class="control-group">
+            <div class= " row control-group">
               <label class="control-label">Upload a Photo</label>
-              <span class="btn btn-success attachinary-input">
-                <%= f.attachinary_file_field :office_images %> 
+              <span class="btn btn-success span-attachinary-input controls ">
+                <%= f.attachinary_file_field :office_images %>
                 <i class="icon-plus icon-white"> </i>
-                <span> Add files... </span>
-              </span>
+                <span> Add files.... </span>
+              </span> 
              </div>
+             <div class="row ">
+              <div class="offset2 span10 thumbs"> </div>
+            </div>
 
             <div class="control-group">
               <label class="control-label">Rent Amount</label>

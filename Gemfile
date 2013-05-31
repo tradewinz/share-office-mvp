@@ -24,6 +24,7 @@ end
 
 gem 'jquery-rails', '2.0.2'
 
+gem 'aws-sdk'
 
 #Photo Gallery
 

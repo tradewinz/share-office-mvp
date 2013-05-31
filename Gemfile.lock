@@ -32,6 +32,10 @@ GEM
     attachinary (1.2.4)
       cloudinary (~> 1.0.41)
       rails (~> 3.2)
+    aws-sdk (1.11.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     aws_cf_signer (0.1.1)
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
@@ -88,6 +92,7 @@ GEM
     multi_json (1.7.4)
     multipart-post (1.2.0)
     newrelic_rpm (3.6.2.96)
+    nokogiri (1.5.9)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -164,6 +169,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uuidtools (2.1.4)
     warden (1.2.1)
       rack (>= 1.0)
     will_paginate (3.0.4)
@@ -174,6 +180,7 @@ PLATFORMS
 
 DEPENDENCIES
   attachinary
+  aws-sdk
   bootstrap-sass
   cancan
   cloudinary

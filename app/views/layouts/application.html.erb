@@ -95,50 +95,76 @@
 
 <!-- jQquery validation -->
 <script type="text/javascript">
+function showLoadingImage() {
+    $('#second').append('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %> </div>');
+}
+
+function hideLoadingImage() {
+    $('#loading-image').remove();
+} 
 
 
-    $("#continueListingBtn").click(function() {      
-          $('#second').show(); 
-          $('#first').hide();
-    });   
 
-    $("#saveListingBtn").click(function() {
-        $("#new_office").validate({
-            rules: {
-                "office[loc_zip]": {required: true},
-                "office[title]": {required: true}
-            },
-            messages: {
-                "office[loc_zip]": "Please tell us the zip code of your office",
-                "office[title]": "Please provide a title for your listing"
-            },
-            errorPlacement: function(error, element) {
-                element.after(error);
-                element.css('border', 'solid red 2px');
-            }
-        });
-        
-        if ($("#new_office").valid()) {
-        _gaq.push(['_trackEvent', 'SaveListing', 'User saves a listing']);
-        }
-    });
+$("#continueListingBtn").click(function() {      
+  $('#second').show(); 
 
-    $("#newListingBtn").click(function() {
-        _gaq.push(['_trackEvent', 'NewListing', 'User clicks on Add Listing']);
-    });
+/*
 
-    $("#seeListingBtn").click(function() {
-        _gaq.push(['_trackEvent', 'SeeListings', 'User clicks on See Listing']);
-    });
+  $('.attachinary-input').bind('fileuploadstart', function() {  
+    alert ("ok, bound");
+    showLoadingImage();
+  });
+
+  $('.attachinary-input').bind('cloudinarydone', function() {  
+    alert ("done!");
+    hideLoadingImage();
+  });
+
+
+  $('.attachinary-input').bind('fileuploadsend', function() {  
+    alert ("done end!");
+    hideLoadingImage();
+  });
+  
+  */
+  
+  $('#first').hide();
+});   
+
+$("#saveListingBtn").click(function() {
+  $("#new_office").validate({
+    rules: {
+      "office[loc_zip]": {required: true},
+      "office[title]": {required: true}
+    },
+    messages: {
+      "office[loc_zip]": "Please tell us the zip code of your office",
+      "office[title]": "Please provide a title for your listing"
+    },
+    errorPlacement: function(error, element) {
+      element.after(error);
+      element.css('border', 'solid red 2px');
+    }
+  });
+
+  if ($("#new_office").valid()) {
+    _gaq.push(['_trackEvent', 'SaveListing', 'User saves a listing']);
+  }
+});
+
+$("#newListingBtn").click(function() {
+  _gaq.push(['_trackEvent', 'NewListing', 'User clicks on Add Listing']);
+});
+
+$("#seeListingBtn").click(function() {
+  _gaq.push(['_trackEvent', 'SeeListings', 'User clicks on See Listing']);
+});
 
 </script>
+
 
 <!-- file upload -->
-<script type="text/javascript">
-    $(document).ready(function() {
-    $('.attachinary-input').attachinary();
-    });
-</script>
+
 
 <!-- image gallery  -->
 <script type="text/javascript">
