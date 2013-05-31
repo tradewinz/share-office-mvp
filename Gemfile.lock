@@ -174,7 +174,7 @@ PLATFORMS
 
 DEPENDENCIES
   attachinary (= 1.2.5)
-  bootstrap-sass
+  bootstrap-sass (= 2.3.1.2)
   cancan (= 1.6.10)
   cloudinary (= 1.0.58)
   coffee-rails (= 3.2.2)
