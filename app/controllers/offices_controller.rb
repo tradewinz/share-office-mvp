@@ -51,7 +51,7 @@ class OfficesController < ApplicationController
         # send email to user and us on successful listing create
         OfficeMailer.add_listing_confirm(@office).deliver
 
-        format.html { redirect_to @office, notice: 'Listing was successfully created.' }
+        format.html { redirect_to confirm_path(:id => @office.id), notice: 'Listing was successfully posted.' }
         format.json { render json: @office, status: :created, location: @office }
       else
         format.html { render action: "new" }
@@ -72,7 +72,7 @@ class OfficesController < ApplicationController
         # send email to us on successful listing edit
         OfficeMailer.edit_listing_confirm(@office).deliver
 
-        format.html { redirect_to @office, notice: 'Listing was successfully updated.' }
+        format.html { redirect_to confirm_path(:id => @office.id), notice: 'Listing was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -102,5 +102,10 @@ class OfficesController < ApplicationController
     @current_user = current_user
 
     OfficeMailer.reserve_listing_confirm(@office, @current_user).deliver
+  end
+
+  def confirm
+    @office = Office.find(params[:id])
+    @current_user = current_user
   end
 end

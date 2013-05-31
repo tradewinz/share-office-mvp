@@ -6,9 +6,6 @@ class LandingPagesController < ApplicationController
 	def home
 	end
 
-  def confirm
-  end
-
   def about
   end
 
