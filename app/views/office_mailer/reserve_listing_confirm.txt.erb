@@ -1,0 +1,10 @@
+<%= @office.user.name %>,
+
+  Just now <%= current_user.name %> expressed interest in your listing. Please email <%= current_user.email %> ASAP.
+
+Click <%= link_to 'View', office_url(@office) %> to see your listing,
+  or <%= link_to "Edit", edit_office_url(@office) %> to update your listing
+Cheers,
+The Intuit Spaces team
+
+P.S. If you have any concerns or questions, please email us at <a href="mailto:spaces@intuit.com?subject=Feedback">spaces@intuit.com</a>

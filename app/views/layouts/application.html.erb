@@ -30,7 +30,7 @@
 </head>
 
 <body>
-    <div class="navbar" >
+<div class="navbar" >
       <div class="wrapper">
             <ul class="nav nav-pills pull-right">
                 <li><%= link_to "+ LIST YOUR SPACE", new_office_path, :class=>"list-btn btn"%></li>
@@ -40,7 +40,6 @@
                     <% else %>
                         <li><%= link_to "SIGN IN", new_user_session_path %></li>
                     <% end %>
-                    <li><%= link_to "ABOUT US", about_path%></li>
             </ul>
             <a href="/home">
                 <h3 class="muted" style="margin-top: 1px;">
@@ -48,25 +47,51 @@
                 </h3>
             </a>
       </div>
-
-    </div>
-
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, id: "flash_#{name}" %>
-    <% end %>
+</div>
 
 
+
+
+
+<!-- Main body pages -->
+
+<div class="container">
+      <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, id: "flash_#{name}" %>
+      <% end %>
   <%= yield %>
+</div>
 
 
-  <div class="container footer">
-    <div class="span6 offset4" style="margin-bottom: 30px; padding-top: 24px;">
-      <p>© Intuit, Inc. All rights reserved
-        <a href="http://security.intuit.com/privacy/">Privacy Policy</a>
-      </p>
-      <%= yield :scripts %>
-    </div>
-  </div>
+<!-- Footer -->
+
+<div class="container">
+      <div class="well well-small">
+        <div class="row-fluid">
+          <div class="span4">
+            <img src="https://s3.amazonaws.com/uploads.hipchat.com/46883/314424/exovvpc26etcptp/icon_phone_16x16.png"
+                 class="pull-left img-rounded">
+            <p>
+              <b>&nbsp;Have Questions?</b> Call us at 1 (855) 2-SPACES</p>
+          </div>
+          <div class="span4">
+            <img src="https://s3.amazonaws.com/uploads.hipchat.com/46883/314424/1ihs6zyiikeam9p/icon_email_16x16.png"
+                 class="pull-left img-rounded">
+            <b>&nbsp;Send us a note at</b>
+            <a href="mailto:spaces@intuit.com">spaces@intuit.com</a>
+          </div>
+          <div class="span4">&nbsp;
+            <b>Follow us:</b>
+            <img src="https://s3.amazonaws.com/uploads.hipchat.com/46883/314424/ibhvzf2ae9ci7ar/icon_blog_29x16.png"
+                 class="pull-left img-rounded">
+            <a href="http://spacesblog.tumblr.com/" target="_blank">Blog</a> |
+            <a href="/about">About Us</a>
+          </div>
+        </div>
+      </div>
+</div>
+
+<%= yield :scripts %>
 
 
 <script type="text/javascript">
@@ -107,27 +132,6 @@ function hideLoadingImage() {
 
 $("#continueListingBtn").click(function() {      
   $('#second').show(); 
-
-/*
-
-  $('.attachinary-input').bind('fileuploadstart', function() {  
-    alert ("ok, bound");
-    showLoadingImage();
-  });
-
-  $('.attachinary-input').bind('cloudinarydone', function() {  
-    alert ("done!");
-    hideLoadingImage();
-  });
-
-
-  $('.attachinary-input').bind('fileuploadsend', function() {  
-    alert ("done end!");
-    hideLoadingImage();
-  });
-  
-  */
-  
   $('#first').hide();
 });   
 
@@ -163,6 +167,7 @@ $("#seeListingBtn").click(function() {
 </script>
 
 
+
 <!-- file upload -->
 
 
@@ -188,6 +193,7 @@ $("#seeListingBtn").click(function() {
     galleria();
 
 </script>
+
 
 </body>
 

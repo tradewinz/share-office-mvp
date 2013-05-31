@@ -1,0 +1,18 @@
+
+<p>Hi <%= @office.user.name %>,</p>
+
+<h3>Thanks for using Intuit Spaces to share your office!</h3>
+<p>
+  Just now <%= @current_user.name %> expressed interest in your listing. Please email <%= @current_user.email %> ASAP.
+</p>
+
+<p>Click <%= link_to 'View', office_url(@office) %> to see your listing, or <%= link_to "Edit", edit_office_url(@office) %> to update your listing</p>
+
+<p>
+  Cheers,<br>
+  The Intuit Spaces team
+</p>
+
+<p>
+  P.S. If you have any concerns or questions, please email us at<a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a>
+</p>

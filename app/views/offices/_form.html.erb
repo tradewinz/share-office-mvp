@@ -3,7 +3,10 @@
 
 <script type="text/javascript">
 
-$(document).ready(function()  {
+
+<!-- file upload -->
+$(document).ready(function() {
+    $('.attachinary-input').attachinary();
 
 function showLoadingImage() {
     $('#second').append('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %> </div>');
@@ -209,6 +212,7 @@ $('.attachinary-input').bind('fileuploadsend', function() {
                 <i class="icon-plus icon-white"> </i>
                 <span> Add files.... </span>
               </span> 
+
              </div>
              <div class="row ">
               <div class="offset2 span10 thumbs"> </div>

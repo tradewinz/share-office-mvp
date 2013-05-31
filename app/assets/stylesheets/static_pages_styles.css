@@ -9,8 +9,9 @@ width: 270px;
 }
 
 .aboutus_heading {
-  padding-top: 50px;
+  padding-top: 20px;
   padding-bottom: 20px;
+  text-align: center;
 }
 
 .aboutus_footer {
@@ -26,7 +27,8 @@ width: 270px;
 .reserve_thankyou_subheading {
   padding-top:10px;
   padding-bottom:10px;
-  font: italic 20px "HelveticaNeue-Light" ;
+  padding-left: 40px;
+  font: italic 24px "HelveticaNeue-Light" ;
 }
 
 .steps_reserve {
