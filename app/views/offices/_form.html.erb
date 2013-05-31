@@ -20,7 +20,7 @@ function hideLoadingImage() {
 $('.attachinary-input').attachinary();
 
 $('.attachinary-input').bind('fileuploadstart', function(e, data) {  
-  alert ("ok, start");
+  //alert ("ok, start");
    //$('#loading-image').show();
    showLoadingImage();
 });
@@ -41,7 +41,7 @@ $('.attachinary-input').bind('cloudinarydone', function() {
 
 
 $('.attachinary-input').bind('fileuploaddone', function() {  
-alert ("done event!");
+//alert ("done event!");
 hideLoadingImage();
 });
 
