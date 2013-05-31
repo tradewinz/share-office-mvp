@@ -22,9 +22,9 @@ ShareOfficeMvp::Application.configure do
 
   # Use gmail smtp service for now
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
+  config.action_mailer.perform_deliveries = false
   # specify what domain to use for mailer URLs
-  config.action_mailer.default_url_options = { :host => "shareoffice-stage.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => "spaces.intuit.com" }
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
   

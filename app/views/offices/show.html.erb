@@ -25,16 +25,20 @@
 
   <div class="span4">
     <p class="officecost text-right">
-      $<%= @office.rent %>/
-      <% if @office.rent_type == 1 %>month
-      <% else %>
-          <% if @office.rent_type == 2 %>week
+     <% if @office.rent? %>
+          <%= number_to_currency(@office.rent, :locale => 'en_us', :precision => 0) %>
+          <% if @office.rent_type == 1 %>/month
           <% else %>
-              <% if @office.rent_type == 3 %>day
-              <% else %>month
+              <% if @office.rent_type == 2 %>/week
+              <% else %>
+                  <% if @office.rent_type == 3 %>/day
+                  <% else %>month
+                  <% end %>
               <% end %>
           <% end %>
-      <% end %>
+     <% else %>
+       <h4>Contact us for rent</h4>
+     <% end %>
     </p>
 
     <p class="highlights text-right">
@@ -61,8 +65,10 @@
         <%= @office.accomodate %> people
     <% end %>
 
-    <div class="officeicon size"></div>
-    <%= @office.size %> sq. ft
+    <% if @office.size? %>
+        <div class="officeicon size"></div>
+        <%= @office.size %> sq. ft
+    <% end %>
     </p>
 
   </div>
@@ -83,10 +89,11 @@
         </div>
       </div>
       <div class="span8">
-        <div class="description"></div>
-        <h4>Description</h4>
-
-        <p><%= @office.description %> </p>
+        <% if @office.description? %>
+            <div class="description"></div>
+            <h4>Description</h4>
+            <p><%= @office.description %> </p>
+        <% end %>
       </div>
       <div class="span8">
         <h4>Amenities</h4>
@@ -165,7 +172,7 @@
             <% if can? :update, @office %>
                 <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
             <% else %>
-                <div class = "btn btn-large btn-warning">
+                <div class = "btn btn-large btn-primary">
                   <%= link_to "Reserve this space", :controller => "offices", :action => "reserve", :id => @office %>
                 </div>
             <% end %>
@@ -181,14 +188,17 @@
         </div>
         <div class="span3">
           <div class="small-pad">
-            <img src=<%= @office.user.photo.to_s %>/>
+            <% if @office.user.photo? %>
+                <%= image_tag(@office.user.photo) %>
+            <% else %>
+                <%= image_tag("default_person.png") %>
+            <% end %>
           </div>
         </div>
 
         <div class="span3">
           <div class="small-pad">
             <p>
-
             <div class="officeicon accomodates"></div>
             <b><%= @office.user.name %></b>
             </p>
@@ -198,9 +208,10 @@
         <div class="span3">
           <div class="small-pad">
             <p>
-
-            <div class="officeicon industry"></div>
-            <b><%= @office.user.industry %></b>
+            <% if @office.user.industry? %>
+                <div class="officeicon industry"></div>
+                <b><%= @office.user.industry %></b>
+            <% end %>
             </p>
           </div>
         </div>
@@ -208,8 +219,10 @@
         <div class="span3">
           <div class="small-pad">
             <p>
-            <div class="officeicon experience"></div>
-            <b><%= @office.user.location %></b>
+              <% if @office.user.location? %>
+                <div class="officeicon experience"></div>
+                <b><%= @office.user.location %></b>
+              <% end %>
             </p>
           </div>
         </div>
@@ -217,7 +230,9 @@
         <div class="span3">
           <div class="small-pad">
             <p>
-              <b><%= link_to "See my LinkedIn profile", @office.user.website.to_s, :target => "_blank" %></b>
+              <% if @office.user.website? %>
+                <b><%= link_to "See my LinkedIn profile", @office.user.website, :target => "_blank" %></b>
+              <% end %>
             </p>
           </div>
         </div>
@@ -231,10 +246,6 @@
           </div>
         </div-->
 
-        <!--p>
-          <b>Phone:</b>
-          <#%= @office.user.phone %>
-        </p-->
 
       </div>
     </div>
