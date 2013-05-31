@@ -82,7 +82,7 @@
   <div class="span8">
     <div class="row room-detail">
       <div class="span8">
-        <div class="webgallery">
+        <div id="galleria">
           <% @office.office_images.each do |photo| %>
               <%= cl_image_tag(photo.path) %>
           <% end %>
@@ -289,17 +289,18 @@
           //   height: parseInt($('.webgallery').css('height')),
           // wait: true
           //});
-          Galleria.run('.webgallery');
+          Galleria.run('#galleria');
+          /*
           $('.webgallery').galleria ({
             width: 600,
             height: 600
           });
           }
+          */
            // } else {
              //   $('.webgallery').remove();
             //}
-        //}
-    }
+        }
 
     galleria();
 
