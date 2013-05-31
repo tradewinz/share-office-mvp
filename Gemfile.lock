@@ -173,17 +173,17 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  attachinary
+  attachinary (= 1.2.5)
   bootstrap-sass
-  cancan
-  cloudinary
+  cancan (= 1.6.10)
+  cloudinary (= 1.0.58)
   coffee-rails (= 3.2.2)
-  devise
+  devise (= 2.2.4)
   faker
-  geocoder
-  gmaps4rails
+  geocoder (= 1.1.8)
+  gmaps4rails (= 1.5.6)
   jquery-rails (= 2.0.2)
-  jquery-validation-rails
+  jquery-validation-rails (= 1.11.0)
   newrelic_rpm
   omniauth-linkedin-oauth2
   pg (= 0.12.2)
