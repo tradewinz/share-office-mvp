@@ -106,6 +106,6 @@ class OfficesController < ApplicationController
 
   def confirm
     @office = Office.find(params[:id])
-    @current_user = current_user
+
   end
 end
