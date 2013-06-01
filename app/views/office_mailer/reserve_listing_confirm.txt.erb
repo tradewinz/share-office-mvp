@@ -1,10 +1,8 @@
-<%= @office.user.name %>,
-
-  Just now <%= current_user.name %> expressed interest in your listing. Please email <%= current_user.email %> ASAP.
-
-Click <%= link_to 'View', office_url(@office) %> to see your listing,
-  or <%= link_to "Edit", edit_office_url(@office) %> to update your listing
-Cheers,
+<p>Hello <%= @office.user.name %>,</p>
+Great News! <i> <%= @current_user.name %> </i> wants to rent your extra office space <%= link_to 'View', office_url(@office) %>.</strong><br />
+You may contact the guest directly to start the conversation to see if <%= @current_user.name %> will be a good fit to share your office.</p>
+Here is the contact email:  <%= mail_to @current_user.email %>
+<p>Happy office sharing,
 The Intuit Spaces team
 
-P.S. If you have any concerns or questions, please email us at <a href="mailto:spaces@intuit.com?subject=Feedback">spaces@intuit.com</a>
+<p>P.S. If you have any concerns or questions, please email us at <a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a></p></td>

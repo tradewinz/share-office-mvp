@@ -1,18 +1,91 @@
 
-<p>Hi <%= @office.user.name %>,</p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Request to rent your space</title>
+  <style type="text/css">
+      body {
+          background-color: #ece6e0;
+          background-image: url('background.png');
+          background-repeat: repeat;
+          margin-left: 20px;
+          margin-right: 20px;
+          margin-top: 20px;
+      }
+      p {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 14px;
+          font-style: normal;
+          line-height: 26px;
+          font-weight: normal;
+          color: #505050;
+          text-decoration: none;
+      }
+      .headline {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 24px;
+          font-style: normal;
+          font-weight: lighter;
+          color: #A7A7A0;
+          text-decoration: none;
+      }
+      .tablecolor {
+          background-color: #FFF;
+          border: 1px solid #C2BDB3;
+      }
+      a {
+          font-family: Arial, Helvetica, sans-serif;
+          color: #0098cd;
+      }
+      .footer {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 12px;
+          font-weight: normal;
+          color: #999995;
+          text-align: center;
+      }
+  </style>
+</head>
 
-<h3>Thanks for using Intuit Spaces to share your office!</h3>
-<p>
-  Just now <%= @current_user.name %> expressed interest in your listing. Please email <%= @current_user.email %> ASAP.
-</p>
-
-<p>Click <%= link_to 'View', office_url(@office) %> to see your listing, or <%= link_to "Edit", edit_office_url(@office) %> to update your listing</p>
-
-<p>
-  Cheers,<br>
-  The Intuit Spaces team
-</p>
-
-<p>
-  P.S. If you have any concerns or questions, please email us at<a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a>
-</p>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablecolor">
+  <tr>
+    <td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablecolor">
+      <tr>
+        <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="80" class="headline">Request to rent your space</td>
+            <td class="headline1">&nbsp;</td>
+            <td width="160"><img src="/assets/logo_intuit_spaces.gif" alt="Intuit Spaces" width="140" height="26" align="right" longdesc="http://spaces.intuit.com" /></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td width="1" height="1" bgcolor="#C2BDB3"></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td colspan="2"><p>Hello <%= @office.user.name %>,</p>
+              <p><strong>Great News! <i> <%= @current_user.name %> </i> wants to rent your extra office space <%= link_to 'View', office_url(@office) %>.</strong><br />
+                You may contact the guest directly to start the conversation to see if <%= @current_user.name %> will be a good fit to share your office.</p>
+              <p>Here is the contact email:  <%= mail_to @current_user.email %></p>
+              <p>Happy office sharing,<br />
+                The Intuit Spaces team </p>
+              <p>P.S. If you have any concerns or questions, please email us at <a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a></p></td>
+          </tr>
+        </table>
+          <p>&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<p class="footer">©2013, Intuit, Inc. 2632 Marine Way, Mountain View, CA 94043</body>
+</html>
