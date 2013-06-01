@@ -17,4 +17,10 @@ class OfficeMailer < ActionMailer::Base
     @current_user = current_user
     mail(:to => office.user.email, :subject => "Someone just reserved your listing at Intuit Spaces!")
   end
+
+  def request_reserve_confirm(office, current_user)
+    @office = office
+    @current_user = current_user
+    mail(:to => current_user.email, :subject => "Thank you for booking a listing at Intuit Spaces!")
+  end
 end

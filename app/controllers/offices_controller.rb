@@ -102,6 +102,8 @@ class OfficesController < ApplicationController
     @current_user = current_user
 
     OfficeMailer.reserve_listing_confirm(@office, @current_user).deliver
+    OfficeMailer.request_reserve_confirm(@office, @current_user).deliver
+
   end
 
   def confirm

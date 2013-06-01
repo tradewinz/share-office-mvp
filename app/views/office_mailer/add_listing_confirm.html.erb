@@ -56,8 +56,9 @@
         <td height="80" class="headline">Your listing has been posted!</td>
         <td class="headline">&nbsp;</td>
         <td width="160">
-          <a href="<%= home_path%>" >
-          <img src="/assets/logo_intuit_spaces.gif" alt="Intuit Spaces" width="140" height="26" align="right" />
+          <a href="<%= home_url %>" >
+          <!--img src="/assets/logo_intuit_spaces.gif" alt="Intuit Spaces" width="140" height="26" align="right" /-->
+            <%= image_tag "logo_intuit_spaces.gif", :size => "140x26", :alt => "Intuit Spaces" %>
           </a>
         </td>
       </tr>
