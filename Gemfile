@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 
 #gem 'bootstrap-sass', '2.1'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '2.3.1.2'
 
 group :development do
   gem 'sqlite3', '1.3.5'
@@ -34,19 +34,19 @@ group :production do
 end
 
 
-gem "jquery-validation-rails"
+gem "jquery-validation-rails", '1.11.0'
 
-gem 'devise'
+gem 'devise', '2.2.4'
 
-gem 'cancan'
+gem 'cancan', '1.6.10'
 
-gem 'geocoder'
+gem 'geocoder', '1.1.8'
 
-gem 'gmaps4rails'
+gem 'gmaps4rails', '1.5.6'
 
 gem 'omniauth-linkedin-oauth2'
 
 gem 'will_paginate', '~> 3.0'
 
-gem 'cloudinary'
-gem 'attachinary'
+gem 'cloudinary', '1.0.58'
+gem 'attachinary', '1.2.5'

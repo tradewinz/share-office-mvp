@@ -47,13 +47,19 @@
           <div class="span4">
 
               <%= image_tag("tw/icon_home_pie.png", alt: "icon pie") %>
+<<<<<<< HEAD
               <h3>Listing your space is as easy as pie </h3>
               <p>From the makers of QuickBooks and TurboTax - not only do we make accounting and tax preparation
                 easier for you, we'll make it easy for you to earn extra money with your extra space.
                 <%= link_to "Get started >>", new_office_path %>
               </p>
+=======
+              <h4>Listing your space is as easy as pie </h4>
+              From the makers of QuickBooks and TurboTax - not only do we make accounting and tax preparation easier for you,
+              we'll make it easy for you to earn extra money with your extra space.
+>>>>>>> 62eaa6a95456018665d3babe57095293d138e0b8
 
-            </div>
+          </div>
 
           <div class="span4">
 
