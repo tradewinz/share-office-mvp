@@ -26,7 +26,7 @@
   <div class="span4">
     <p class="officecost text-right">
      <% if @office.rent? %>
-          <%= number_to_currency(@office.rent, :locale => 'en_us', :precision => 0) %>
+          <%= number_to_currency(@office.rent, :locale => 'en_us', :precision => 2) %>
           <% if @office.rent_type == 1 %>/month
           <% else %>
               <% if @office.rent_type == 2 %>/week
@@ -172,7 +172,7 @@
             <% if can? :update, @office %>
                 <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
             <% else %>
-                <div class = "btn btn-large btn-primary">
+                <div class = "btn btn-large btn-warning">
                   <%= link_to "Reserve this space", :controller => "offices", :action => "reserve", :id => @office %>
                 </div>
             <% end %>
@@ -303,5 +303,7 @@
         }
 
     galleria();
+
+    mixpanel.track("Viewed Details");
 
 </script>

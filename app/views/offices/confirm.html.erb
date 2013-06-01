@@ -1,9 +1,8 @@
 <div class="align-center reserve_thankyou">
-      <h3>Yay! Your listing has been posted.</h3>
+  <h3>Yay! Your listing has been posted. <%= link_to 'View your listing', office_url(@office) %></h3>
 
   <div class="panel panel-border">
 
-      <!--p>See your <#%= link_to 'LISTING', office_url(@office) %> </p-->
       <div class="container reserve_thankyou_subheading">
         <p>What happens next?</p>
       </div>
@@ -30,3 +29,8 @@
   </div>
 
 </div>
+
+<script type="text/javascript">
+    mixpanel.track("Added Listing");
+    mixpanel.people.increment("Added Listing"); // tracks number of listings added by this user
+</script>

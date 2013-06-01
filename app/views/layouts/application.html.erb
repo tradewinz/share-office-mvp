@@ -22,7 +22,17 @@
   <%= csrf_meta_tags %>
   <%= cloudinary_js_config %>
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!-- start Mixpanel -->
+  <script type="text/javascript">
+      (function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
+        typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);
+    b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
+    mixpanel.init("768cfcf7bf15bf1b6c5e1d00e71da827");
+  </script>
+  <!-- end Mixpanel -->
+
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -65,32 +75,6 @@
 
 <!-- Footer -->
 
-<div class="container">
-      <div class="well well-small">
-        <div class="row-fluid">
-          <div class="span4">
-            <img src="https://s3.amazonaws.com/uploads.hipchat.com/46883/314424/exovvpc26etcptp/icon_phone_16x16.png"
-                 class="pull-left img-rounded">
-            <p>
-              <b>&nbsp;Have Questions?</b> Call us at 1 (855) 2-SPACES</p>
-          </div>
-          <div class="span4">
-            <img src="https://s3.amazonaws.com/uploads.hipchat.com/46883/314424/1ihs6zyiikeam9p/icon_email_16x16.png"
-                 class="pull-left img-rounded">
-            <b>&nbsp;Send us a note at</b>
-            <a href="mailto:spaces@intuit.com">spaces@intuit.com</a>
-          </div>
-          <div class="span4">&nbsp;
-            <b>Follow us:</b>
-            <img src="https://s3.amazonaws.com/uploads.hipchat.com/46883/314424/ibhvzf2ae9ci7ar/icon_blog_29x16.png"
-                 class="pull-left img-rounded">
-            <a href="http://spacesblog.tumblr.com/" target="_blank">Blog</a> |
-            <a href="/about">About Us</a>
-          </div>
-        </div>
-      </div>
-</div>
-
 <div class="container footer">
   <div class="span6 offset4" style="margin-bottom: 30px; padding-top: 24px;">
     <p>© Intuit, Inc. All rights reserved
@@ -100,30 +84,23 @@
   </div>
 </div>
 
+<!-- GA code -->
 
 <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-38308750-1']);
-  _gaq.push(['_trackPageview']);
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38308750-1']);
+    _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 </script>
 
 <!-- end GA code -->
 
-<!-- begin SnapEngage code -->
-<script type="text/javascript">
-    (function() {
-        var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true;
-        se.src = '//commondatastorage.googleapis.com/code.snapengage.com/js/c441023c-0525-4d13-bf03-eaaaedc44080.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
-    })();
-</script>
-<!-- end SnapEngage code -->
+
 
 <!-- jQquery validation -->
 <script type="text/javascript">
@@ -173,33 +150,6 @@ $("#seeListingBtn").click(function() {
 
 </script>
 
-
-
-<!-- file upload -->
-
-
-<!-- image gallery  -->
-<script type="text/javascript">
-    function galleria(){
-        Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
-        $('.webgallery img').each(function(index) {
-            if ($(this).attr("src").toLowerCase().indexOf("/assets/default-studio.png")>=0) {
-            $(this).remove();
-        }
-        });
-
-        if (Galleria) {
-            if ($('.webgallery img').length > 0) {
-                Galleria.run('.webgallery');
-            } else {
-            $('.webgallery').remove();
-            }
-        }
-    }
-
-    galleria();
-
-</script>
 
 
 </body>

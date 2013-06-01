@@ -7,7 +7,7 @@ ShareOfficeMvp::Application.routes.draw do
   match '/listings', to: 'landing_pages#listings'
   match '/maps', to: 'landing_pages#maps'
   match '/about', to: 'landing_pages#about'
-  match '/confirm', to: 'landing_pages#confirm'
+  match '/confirm', to: 'offices#confirm'
   match '/reserve/:id', to:'offices#reserve'
 
   resources :offices, :except => :index

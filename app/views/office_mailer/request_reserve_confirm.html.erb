@@ -1,0 +1,93 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Your request has been sent!</title>
+  <style type="text/css">
+      body {
+          background-color: #ece6e0;
+          background-image: url("background.png");
+          background-repeat: repeat;
+          margin-left: 20px;
+          margin-top: 20px;
+          margin-right: 20px;
+      }
+      a {
+          font-family: Arial, Helvetica, sans-serif;
+          color: #0098cd;
+      }
+      p {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 14px;
+          font-style: normal;
+          line-height: 26px;
+          font-weight: normal;
+          color: #505050;
+          text-decoration: none;
+      }
+      .headline {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 24px;
+          font-style: normal;
+          font-weight: lighter;
+          color: #A7A7A0;
+          text-decoration: none;
+      }
+      .tablecolor {
+          background-color: #FFF;
+          border: 1px solid #C2BDB3;
+      }
+      .footer {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 12px;
+          font-weight: normal;
+          color: #999995;
+          text-align: center;
+      }
+  </style>
+</head>
+
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablecolor">
+  <tr>
+    <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="80" class="headline">Your request has been sent!</td>
+        <td class="headline1">&nbsp;</td>
+        <td width="160">
+          <!--img src="logo_intuit_spaces.gif" alt="Intuit Spaces" width="140" height="26" align="right" longdesc="http://spaces.intuit.com" /-->
+          <a href="<%= home_url %>" >
+            <%= image_tag "logo_intuit_spaces.gif", :size => "140x26", :alt => "Intuit Spaces" %>
+          </a>
+        </td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td width="1" height="1" bgcolor="#C2BDB3"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td colspan="2"><p>Hello <%= @current_user.name %>,</p>
+          <p><strong>Thanks for using Intuit Spaces to search for office space. Your request to reserve the space has been sent!</strong><br />
+            The host <strong> <%= @office.user.name %> </strong> will contact you directly with any additional questions
+            and also to answer any questions you may have. <br />
+            Here's a convenient link to view the listing your requested: <%= link_to 'View', office_url(@office) %> <br />
+          Cheers,<br />
+          The Intuit Spaces team </p>
+          <p>P.S. If you have any concerns or questions, please email us at <a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a></p></td>
+      </tr>
+    </table>
+      <p>&nbsp;</p></td>
+  </tr>
+  </td>
+  </tr>
+</table>
+<p class="footer">©2013, Intuit, Inc. 2632 Marine Way, Mountain View, CA 94043</p>
+</body>
+</html>

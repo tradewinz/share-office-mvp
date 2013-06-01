@@ -1,18 +1,16 @@
-<%= @office.user.name %>,
+Your listing has been updated !
+----------------------------------------
 
-Thanks for using tradewinz to share your office!
+Hello <%= @office.user.name %>,
 
-Your post was successfully updated.
+ Thanks for using Intuit Spaces to share your extra office space!
 
-We’ll notify you as soon as someone requests your office – and we’ll highlight the folks that seem to best match your listing criteria.
-
-We’ll also send you a weekly report on how many people review your listing, so you can assess how much interest there is.
-
-As part of our commitment to trust and privacy on the site, we will not release any contact information until you tell us that you’d like to communicate with the requestor.
-
-Click <%= link_to 'View', office_url(@office) %> to see your listing,
-  or <%= link_to "Edit", edit_office_url(@office) %> to update your listing
+ We’ll notify you as soon as someone requests your office space.
+ In the meantime, sit back, relax and let the renters come to you!
+ Here's a convenient link to view your listing: <%= link_to 'View', office_url(@office) %>
+ Need to update your listing? Click here <%= link_to "Edit", edit_office_url(@office) %>
 Cheers,
-The tradewinz team
+The Intuit Spaces team
 
-P.S. If you have any concerns or questions, please email us at <a href="mailto:tradewinz@intuit.com?subject=Feedback">tradewinz@intuit.com</a>
+P.S. If you have any concerns or questions, please email us at <a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a>
+   
