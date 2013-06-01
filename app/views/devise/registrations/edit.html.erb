@@ -14,7 +14,7 @@
          <fieldset class="padtop">
 
           <div class="control-group">
-            <label class="control-label">Username *: </label>
+            <label class="control-label">* Username: </label>
             <div class="controls"> <%= f.text_field :name %>  </div>
           </div>
 
@@ -29,17 +29,17 @@
            </div>
 
            <div class="control-group">
-             <label class="control-label">Profile Photo link:</label>
+             <label class="control-label">Profile Photo Link:</label>
              <div class="controls"> <%= f.text_field :photo %>  </div>
            </div>
 
            <div class="control-group">
-             <label class="control-label">Email address *:</label>
+             <label class="control-label">* Email Address:</label>
              <div class="controls"> <%= f.email_field :email, :autofocus => true %>  </div>
            </div>
 
            <div class="control-group">
-             <label class="control-label">Phone number:</label>
+             <label class="control-label">Phone Number:</label>
              <div class="controls"> <%= f.phone_field :phone %>  </div>
            </div>
 
@@ -59,7 +59,7 @@
            </div>
 
            <div class="control-group">
-             <label class="control-label">LinkedIn Profile link:</label>
+             <label class="control-label">LinkedIn Profile Link:</label>
              <div class="controls"> <%= f.url_field :website %>  </div>
            </div>
 
@@ -69,14 +69,14 @@
            </div>
 
            <div class="control-group">
-             <label class="control-label">About You:</label>
+             <label class="control-label">Describe You:</label>
              <div class="controls"> <%= f.text_field :description %>  </div>
            </div>
 
            <!--if user is from linkedin no need to enter password to change profile data-->
            <% if f.object.encrypted_password.present? %>
                <div class="control-group">
-                 <label class="control-label">Current Password *</label>
+                 <label class="control-label">* Current Password:</label>
                  <div class="controls"> <%= f.password_field :current_password %>
                    <i>(we need your current password to confirm your changes)</i></div>
                </div>
@@ -84,13 +84,13 @@
                <hr>
                <h3>Change Password</h3>
                <div class="control-group">
-               <label class="control-label">New Password </label>
+               <label class="control-label">New Password:</label>
                  <div class="controls"> <%= f.password_field :password, :autocomplete => "off" %>
                  <i>(leave blank if you don't want to change it)</i> </div>
                </div>
 
                <div class="control-group">
-                 <label class="control-label">Password confirmation: </label>
+                 <label class="control-label">Confirm Password:</label>
                  <div class="controls"><%= f.password_field :password_confirmation %>
                  <i>(leave blank if you don't want to change it)</i> </div>
                </div>
