@@ -5,18 +5,18 @@
         
         <!-- search box-->
         <div class="row">
-          <div class="span8 offset2">
+          <div class="span10 offset1">
             <div class="l_search">
-              <div class="row padtop">
+              <div class="row spacetop">
                 <div class="span4">
                   <span class="leftgap label l_text">Find a space to work</span>
                 </div>
               </div>
 
-              <div class="row padbottom">
-                <div class="span6">
+              <div class="row spacebottom">
+                <div class="span7">
                   <div class="leftgap">
-                    <input type="text" class="l_input" placeholder="Enter a city">
+                    <input type="text" class="l_input" style="margin-bottom: 5px; height:30px" placeholder="Enter a city">
                   </div>
                 </div>
 
@@ -36,28 +36,32 @@
     <div class="row">
       <div class="span12 padtop padbottom features">
         <div class="row">
-          <div class="span4 text-center">
-            
+          <div class="span4">
               <%= image_tag "tw/icon_home_floorplan.png", :alt=> "icon home" %>
-              <h4>Make your office pay for itself</h4>
-                  Earn extra money by renting out your extra office space. No listing or membership fees.
-            
+              <h3>Make your office pay for itself</h3>
+               <p>   Earn extra money by renting out your extra office space. No listing or membership fees.<br />
+                <%= link_to "List your extra space now >>", new_office_path %>
+                </p>
           </div>
 
-          <div class="span4 text-center">
+          <div class="span4">
 
               <%= image_tag("tw/icon_home_pie.png", alt: "icon pie") %>
-              <h4>Listing your space is as easy as pie </h4>
-              From the makers of QuickBooks and TurboTax - not only do we make accounting and tax preparation easier for you,
-              we'll make it easy for you to earn extra money with your extra income.
+              <h3>Listing your space is as easy as pie </h3>
+              <p>From the makers of QuickBooks and TurboTax - not only do we make accounting and tax preparation
+                easier for you, we'll make it easy for you to earn extra money with your extra space.
+                <%= link_to "Get started >>", new_office_path %>
+              </p>
 
-            </div>
+          </div>
 
-          <div class="span4 text-center">
+          <div class="span4">
 
               <%= image_tag("tw/icon_home_handshake.png", alt: "icon handshake") %>
-              <h4>Reliable & trustworthy connections</h4>
-              No SPAN and No SCAM ! Only interact with trusted and reliable professionals and entreprenuers like yourself.
+              <h3>Reliable & trustworthy connections</h3>
+              No SPAM and No SCAMS. Only interact with other reliable and trusted professionals and entrepreneurs
+              like yourself. <br />
+              <%= link_to "Get started >>", new_office_path %>
 
           </div>
         </div>
@@ -65,7 +69,7 @@
     </div>
 
     <div class="container paperpanel">
-      <div class="well well-small">
+      <div class="well well-small well-footer">
         <div class="row-fluid">
           <div class="span5">
             <img src="https://s3.amazonaws.com/uploads.hipchat.com/46883/314424/exovvpc26etcptp/icon_phone_16x16.png"
