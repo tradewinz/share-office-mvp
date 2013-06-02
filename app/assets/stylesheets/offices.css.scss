@@ -82,15 +82,20 @@ a {
 
 
 .officetitle {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 34px;
-    line-height: 20px;
+    font-family: "Helvetica Neue Regular", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    line-height: 35px;
+    color: #333333;
+
 }
 
 .officecost {
    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 34px;
-    line-height: 20px;
+    font-size: 30px;
+    line-height: 35px;
+    font-weight: bold;
+    color: #333333;
+
 }
 
 text-right{
@@ -99,8 +104,32 @@ text-right{
 
 .officelocation {
  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 20px;
+    font-size: 14px;
     line-height: 20px;
+   color: #505050;
+}
+
+.officeamenities {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #505050;
+
+}
+
+officedetailstitle  {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+}
+
+officedetailstext  {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  color: #505050;
+
 }
 
 .officereserve {
@@ -216,7 +245,6 @@ text-right{
   background-image: url('tw/icon_ac_gray.png');
 }
 
-
 /*================================================== This is for the show listing page ========================*/
 
 #galleria {
@@ -299,6 +327,7 @@ paperPanel {
 .small-pad {
   padding-left:12px;
 }
+
 
 /*========================================== This is for the file upload  ========================*/
 

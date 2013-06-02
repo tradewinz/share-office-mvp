@@ -13,9 +13,9 @@
 <div class="row" id="title">
 
   <div class="span8">
-    <h2 class="officetitle">
+    <p class="officetitle">
       <%= @office.title %>
-    </h2>
+    </p>
 
     <p class="officelocation">
       <%= @office.loc_addr1 %>  <%= @office.loc_city %> <%= @office.loc_state %> <%= @office.loc_zip %>
@@ -26,7 +26,7 @@
   <div class="span4">
     <p class="officecost text-right">
      <% if @office.rent? %>
-          <%= number_to_currency(@office.rent, :locale => 'en_us', :precision => 2) %>
+          <strong><%= number_to_currency(@office.rent, :locale => 'en_us', :precision => 2) %></strong>
           <% if @office.rent_type == 1 %>/month
           <% else %>
               <% if @office.rent_type == 2 %>/week
@@ -37,37 +37,39 @@
               <% end %>
           <% end %>
      <% else %>
-       <h4>Contact us for rent</h4>
+       Contact us for rent
      <% end %>
     </p>
 
-    <p class="highlights text-right">
+    <p class="officeamenities text-right">
       <% if @office.office_type == 1 %>
         <div class="officeicon office"></div>
-        Office space
+        <span class="text-right">Office space</span>
     <% else %>
         <% if @office.office_type == 2 %>
             <div class="officeicon meeting"></div>
-            Meeting room
+            <span class="text-right">Meeting room</span>
         <% else %>
             <% if @office.office_type == 3 %>
                 <div class="officeicon desk"></div>
-                Desk
+                <span class="text-right">Desk</span>
             <% else %>
                 <div class="officeicon office"></div>
-                Office space
+                <span class="text-right">Office space</span>
             <% end %>
         <% end %>
     <% end %>
 
     <% if @office.accomodate? %>
         <div class="officeicon accomodates"></div>
-        <%= @office.accomodate %> people
+        <%= @office.accomodate %>
+        <span class="text-right">people</span>
     <% end %>
 
     <% if @office.size? %>
         <div class="officeicon size"></div>
-        <%= @office.size %> sq. ft
+        <%= @office.size %>
+        <span class="text-right">sq. ft</span>
     <% end %>
     </p>
 
@@ -88,19 +90,18 @@
           <% end %>
         </div>
       </div>
-      <div class="span8">
+      <div class="span8" style="margin-top: 10px;">
         <% if @office.description? %>
-            <div class="description"></div>
             <h4>Description</h4>
-            <p><%= @office.description %> </p>
+            <p class="officedetailstext"><%= @office.description %> </p>
         <% end %>
       </div>
       <div class="span8">
         <h4>Amenities</h4>
 
         <div class="row">
-          <div class="span2">
-            <p>
+          <div class="span1.5">
+            <p class="officedetailstext">
               <% if @office.wifi? %>
                 <div class="officeicon wifi_on"></div>
             <% else %>
@@ -116,15 +117,15 @@
 
           </div>
 
-          <div class="span2">
-            <p>
+          <div class="span1.5">
+            <p class="officedetailstext">
               <% if @office.ac? %>
                 <div class="officeicon ac_on"></div>
             <% else %>
                 <div class="officeicon ac_off"></div>
             <% end %>Air Conditioning</p>
 
-            <p>
+            <p class="officedetailstext">
               <% if @office.confroom? %>
                 <div class="officeicon conf_on"></div>
             <% else %>
@@ -132,15 +133,15 @@
             <% end %>Conference Room</p>
           </div>
 
-          <div class="span2">
-            <p>
+          <div class="span1.5">
+            <p class="officedetailstext">
               <% if @office.printer? %>
                 <div class="officeicon conf_on"></div>
             <% else %>
                 <div class="officeicon conf_off"></div>
             <% end %>Conference Room</p>
 
-            <p>
+            <p class="officedetailstext">
               <% if @office.kitchen? %>
                 <div class="officeicon kitchen_on"></div>
             <% else %>
@@ -148,8 +149,8 @@
             <% end %>Kitchen</p>
           </div>
 
-          <div class="span12">
-            <p>
+          <div class="span1.5">
+            <p class="officedetailstext">
               <% if @office.window? %>
                 <div class="officeicon window_on"></div>
             <% else %>

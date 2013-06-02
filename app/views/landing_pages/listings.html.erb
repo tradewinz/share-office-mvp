@@ -4,7 +4,7 @@
       <input type="text" class="l_input" placeholder="Enter a city">
     </div>
     <div class="span2">
-      <%= link_to "SEARCH", listings_path, :class => "l_button btn btn-primary" %>
+      <%= link_to "SEARCH", listings_path, :class => "l_button btn btn-primary", :style => "margin-top:5px" %>
       <!--%= button_to "SEARCH", :action => "listings", :class => "btn btn-primary", :method=>"GET" %-->
     </div>
     <div class="offset2 span3">
@@ -42,7 +42,7 @@
               </div>
 
               <div class="row">
-                <div class="span2">
+                <div class="span1.5">
                   <p><% if office.wifi? %>
                       <div class="officeicon wifi_on"></div>
                   <% else %>
@@ -55,15 +55,10 @@
                       <div class="officeicon park_off"></div>
                   <% end %>Parking</p>
 
-                  <p><% if office.window? %>
-                      <div class="officeicon window_on"></div>
-                  <% else %>
-                      <div class="officeicon window_off"></div>
-                  <% end %>Window Office</p>
 
                 </div>
 
-                <div class="span2">
+                <div class="span1.5">
                   <p><% if office.ac? %>
                       <div class="officeicon ac_on"></div>
                   <% else %>
@@ -78,12 +73,12 @@
 
                 </div>
 
-                <div class="span2">
+                <div class="span1.5">
                   <p><% if office.printer? %>
-                      <div class="officeicon conf_on"></div>
+                      <div class="officeicon printer_on"></div>
                   <% else %>
-                      <div class="officeicon conf_off"></div>
-                  <% end %>Conference Room</p>
+                      <div class="officeicon printer_off"></div>
+                  <% end %>Printer</p>
 
                   <p><% if office.kitchen? %>
                       <div class="officeicon kitchen_on"></div>
@@ -92,6 +87,15 @@
                   <% end %>Kitchen</p>
 
                 </div>
+
+                <div class="span1.5">
+                    <p><% if office.window? %>
+                        <div class="officeicon window_on"></div>
+                    <% else %>
+                        <div class="officeicon window_off"></div>
+                    <% end %>Window Office</p>
+                </div>
+
 
               </div>
             </div>
@@ -148,15 +152,13 @@
 
       <% end %>
     </div>
-    <div class="row">
-        <div class="span12">
-          <div class="apple_pagination">
-            <div class="page_info">
-              <%= page_entries_info @offices %>
-            </div>
-            <%= will_paginate @offices, :container => false %>
-          </div>
+    <div class="span12">
+      <div class="apple_pagination">
+        <div class="page_info">
+          <%= page_entries_info @offices %>
         </div>
+        <%= will_paginate @offices, :container => false %>
+      </div>
     </div>
 
   </div>
