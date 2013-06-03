@@ -2,6 +2,9 @@ ShareOfficeMvp::Application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+
   match '/home', to: 'landing_pages#home'
 
   match '/listings', to: 'landing_pages#listings'
@@ -15,7 +18,7 @@ ShareOfficeMvp::Application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
    
-  # resources :users
+  resources :users
 
 
   # The priority is based upon order of creation:

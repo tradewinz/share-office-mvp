@@ -50,3 +50,5 @@ gem 'will_paginate', '~> 3.0'
 
 gem 'cloudinary', '1.0.58'
 gem 'attachinary', '1.2.5'
+
+gem 'rails_admin'
