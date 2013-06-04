@@ -20,7 +20,7 @@
                   </div>
                 </div>
 
-                <div class="span2">
+                <div class="span2" id="search">
                   <%= link_to "SEARCH", listings_path, :class => "l_button btn btn-large btn-primary" %>
                 </div>
               </div>
@@ -98,5 +98,8 @@
   </div>    <!-- Paper panel -->
 
 <script type="text/javascript">
+  var val = $("#search").val();
     mixpanel.track("Visited Homepage");
+    mixpanel.track_links("#search a", "Clicked Search", {"text":val});
+
 </script>

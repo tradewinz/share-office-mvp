@@ -173,7 +173,7 @@
             <% if can? :update, @office %>
                 <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
             <% else %>
-                <div class = "btn btn-large btn-warning">
+                <div class = "btn btn-large btn-warning" id="reserve">
                   <%= link_to "Reserve this space", :controller => "offices", :action => "reserve", :id => @office %>
                 </div>
             <% end %>
@@ -279,32 +279,12 @@
 
     function galleria(){
         Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
-       // $('.webgallery img').each(function(index) {
-        //    if ($(this).attr("src").toLowerCase().indexOf("/assets/default-studio.png")>=0) {
-        //        $(this).remove();
-         //   }
-
-        //if (Galleria) {
-         //   if ($('.webgallery img').length > 0) {
-          //    Galleria.run('.webgallery', {
-          //   height: parseInt($('.webgallery').css('height')),
-          // wait: true
-          //});
-          Galleria.run('#galleria');
-          /*
-          $('.webgallery').galleria ({
-            width: 600,
-            height: 600
-          });
-          }
-          */
-           // } else {
-             //   $('.webgallery').remove();
-            //}
-        }
+        Galleria.run('#galleria');
+    }
 
     galleria();
 
     mixpanel.track("Viewed Details");
+    mixpanel.track_links("#reserve a", "Clicked Reserve");
 
 </script>

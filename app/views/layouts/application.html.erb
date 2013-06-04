@@ -43,7 +43,7 @@
 <div class="navbar" >
       <div class="wrapper">
             <ul class="nav nav-pills pull-right">
-                <li><%= link_to "+ LIST YOUR SPACE", new_office_path, :class=>"list-btn btn"%></li>
+                <li id="addlisting"><%= link_to "+ LIST YOUR SPACE", new_office_path, :class=>"list-btn btn"%></li>
                     <% if user_signed_in? %>
                       <li><%= link_to current_user.name, edit_user_registration_path %></li>
                       <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
@@ -84,6 +84,11 @@
   </div>
 </div>
 
+<!-- mixPanel click code -->
+<script type="text/javascript">
+    mixpanel.track_links("#addlisting a", "Clicked AddListing");
+</script>
+
 <!-- GA code -->
 
 <script type="text/javascript">
@@ -117,6 +122,9 @@ function hideLoadingImage() {
 $("#continueListingBtn").click(function() {      
   $('#second').show(); 
   $('#first').hide();
+
+  mixpanel.track("Viewed AddDetails");
+
 });   
 
 $("#saveListingBtn").click(function() {
