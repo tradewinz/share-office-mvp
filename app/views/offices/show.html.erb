@@ -169,12 +169,12 @@
     <div class="paperPanel3D text-center">
       <div class="row">
         <div class="span4">
-          <div class="button-area">
+          <div>
             <% if can? :update, @office %>
                 <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
             <% else %>
-                <div class = "btn btn-large btn-warning" id="reserve">
-                  <%= link_to "Contact Host", :controller => "offices", :action => "reserve", :id => @office %>
+                <div id="reserve">
+                  <%= link_to "", {:controller => "offices", :action => "reserve", :id => @office}, :class => "reserve-btn"  %>
                 </div>
             <% end %>
          </div>
