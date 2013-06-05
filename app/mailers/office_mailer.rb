@@ -1,6 +1,5 @@
 class OfficeMailer < ActionMailer::Base
-  self.default :from => 'Intuit Spaces <spaces@intuit.com>',
-               :bcc => 'tradewinz@intuit.com'
+  self.default :from => 'Intuit Spaces <spaces@intuit.com>'
 
   def add_listing_confirm(office)
   	@office = office
