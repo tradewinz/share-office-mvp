@@ -47,8 +47,9 @@ before_filter :authenticate_user!
     respond_to do |format|
       if @user.save
 
-        mixpanel_alias(current_user.id)
-        mixpanel_people_set(:name => current_user.name)
+        # mixpanel_alias(current_user.id)
+        # mixpanel_people_set(:name => current_user.name)
+
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
