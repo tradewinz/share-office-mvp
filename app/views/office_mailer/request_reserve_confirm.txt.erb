@@ -1,8 +1,11 @@
 Hello <%= @current_user.name %>,
-Thanks for using Intuit Spaces to search for office space. Your request to reserve the space has been sent!
-The host <%= @office.user.name %> will contact you directly with any additional questions
-and also to answer any questions you may have
-Here's a convenient link to view the listing your requested: <%= link_to 'View', office_url(@office) %>
+
+Thanks for using Intuit Spaces!
+Your <%= link_to 'office space', office_url(@office) %> request has been sent.
+
+What's next?
+The person who listed the space will contact you to talk details, including any questions you may have.
 Cheers,
 The Intuit Spaces team
-P.S. If you have any concerns or questions, please email us at <a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a>
+
+P.S. Questions or concerns about Intuit Spaces? Email us at <a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a>

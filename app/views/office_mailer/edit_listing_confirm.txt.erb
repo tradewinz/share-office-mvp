@@ -1,16 +1,7 @@
-Your listing has been updated !
-----------------------------------------
-
-Hello <%= @office.user.name %>,
-
- Thanks for using Intuit Spaces to share your extra office space!
-
- We’ll notify you as soon as someone requests your office space.
- In the meantime, sit back, relax and let the renters come to you!
- Here's a convenient link to view your listing: <%= link_to 'View', office_url(@office) %>
- Need to update your listing? Click here <%= link_to "Edit", edit_office_url(@office) %>
-Cheers,
-The Intuit Spaces team
-
-P.S. If you have any concerns or questions, please email us at <a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a>
-   
+    Hello <%= @office.user.name %>,
+          Thanks for using Intuit Spaces to share your extra office space!
+          Your listing was successfully updated
+          Here's a convenient link to view your listing: <%= link_to 'View', office_url(@office) %>
+          Cheers,
+            The Intuit Spaces team
+          P.S. If you have any concerns or questions, please email us at <a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a>
