@@ -15,7 +15,7 @@
   :port => 587,
   :domain => "mandrillapp.com",
   :authentication => :plain,
-  :user_name => "app14218737@heroku.com", # see Mandrill add-on in heroku
-  :password => "oKMq7YcpJHq5IrfPbrNJtw",
+  :user_name => ENV["MANDRILL_USERNAME"], # see Mandrill add-on in heroku
+  :password => ENV["MANDRILL_APIKEY"],
   :enable_starttls_auto => true
 }
