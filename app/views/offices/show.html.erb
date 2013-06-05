@@ -174,7 +174,7 @@
                 <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
             <% else %>
                 <div class = "btn btn-large btn-warning" id="reserve">
-                  <%= link_to "Reserve this space", :controller => "offices", :action => "reserve", :id => @office %>
+                  <%= link_to "Contact Host", :controller => "offices", :action => "reserve", :id => @office %>
                 </div>
             <% end %>
          </div>
