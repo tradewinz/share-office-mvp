@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+encoding//app/views/office_mailer/add_listing_confirm.html.erb=UTF-8
+encoding//app/views/office_mailer/request_reserve_confirm.html.erb=UTF-8
+encoding//app/views/office_mailer/reserve_listing_confirm.html.erb=UTF-8
