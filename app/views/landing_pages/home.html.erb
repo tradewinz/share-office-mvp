@@ -16,12 +16,14 @@
               <div class="row spacebottom">
                 <div class="span7">
                   <div class="leftgap">
-                    <input type="text" class="l_input" style="margin-bottom: 5px; height:30px" placeholder="Enter a city">
+                    <input id="search" type="text" class="l_input" style="margin-bottom: 5px; height:30px" placeholder="Enter a city">
                   </div>
                 </div>
 
-                <div class="span2" id="search">
-                  <%= link_to "SEARCH", listings_path, :class => "l_button btn btn-large btn-primary" %>
+                <div class="span2">
+                  <!--button class="l_button btn btn-large btn-primary" type="submit" action="/listings"  id="searchBtn">SEARCH</button-->
+
+                  <%= button_to "SEARCH", listings_path, :method => "get", :id => "searchBtn", :class => "l_button btn btn-large btn-primary" %>
                 </div>
               </div>
             </div>

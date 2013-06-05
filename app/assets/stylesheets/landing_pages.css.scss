@@ -2,21 +2,23 @@
 $lightbox: #FFFFFF;
 $fpobg: #baafa4;
 
-.btn.list-btn {
-background-color: #f3c613;
-background-image: -webkit-linear-gradient(top, #fde44c 0%,#f3c613 100%);
-background-image: -moz-linear-gradient(top, #fde44c 0%,#f3c613 100%);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffde44c', endColorstr='#fff3c613', GradientType=0);
-border: 1px solid rgba(0,0,0,0.2);
-border-color: #f3c81d #f6cd08 #d2aa0b #f6cd08;
-color: #393c3d;
-text-shadow: 0 1px 0px rgba(255,255,255,0.3);
--webkit-box-shadow: 0 0 0 #000,0 0 0 #000;
-box-shadow: 0 0 0 #000,0 0 0 #000;
+.list-btn {
+ width: 134px;
+ height: 16px;
+ background-image: url('btn/btn_list_your_space_NORMAL.png');
+  background-repeat:no-repeat;
+  display: compact;
+ border: 1px solid rgba(0,0,0,0.2);
+ border-color: #f3c81d #f6cd08 #d2aa0b #f6cd08;
+ color: #393c3d;
+ text-shadow: 0 1px 0px rgba(255,255,255,0.3);
+ -webkit-box-shadow: 0 0 0 #000,0 0 0 #000;
+ box-shadow: 0 0 0 #000,0 0 0 #000;
+
 }
 
-.btn .list-btn:hover {
-  background-color: #f3c613;
+.list-btn:hover {
+  background-image: url('btn/btn_list_your_space_HOVER.png');
 }
 
 .img-listing {
@@ -114,6 +116,10 @@ body{
   opacity: 1.0;
  }
 
+.l_button .hover{
+  width: 100%;
+  opacity: 1.0;
+}
  .l_input {
   margin-top: 5px;
   height: 30px;
