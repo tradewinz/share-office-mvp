@@ -17,12 +17,12 @@ ShareOfficeMvp::Application.configure do
   config.action_mailer.delivery_method = :smtp
 
  # turn on/off email delivering
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = true
 
   # specify what domain to use for mailer URLs
-  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.default_url_options = { :host => "shareoffice-stage.herokuapp.com" }
   # specify what domain to use for mailer ASSETS
-  config.action_mailer.asset_host = "localhost:3000"
+  config.action_mailer.asset_host = "shareoffice-stage.herokuapp.com"
 
   # If false, don't throw an exception if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
