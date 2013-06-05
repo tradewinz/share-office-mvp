@@ -76,4 +76,9 @@ ShareOfficeMvp::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # Mixpanel production keys
+  config.event_tracker.mixpanel_key="768cfcf7bf15bf1b6c5e1d00e71da827"
+
+
 end

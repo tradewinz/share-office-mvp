@@ -52,3 +52,7 @@ gem 'cloudinary', '1.0.58'
 gem 'attachinary', '1.2.5'
 
 gem 'rails_admin'
+
+#gem 'mixpanel'
+
+gem 'event_tracker'

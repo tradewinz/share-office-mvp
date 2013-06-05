@@ -5,6 +5,7 @@ class OfficesController < ApplicationController
   # GET /offices.json
   def index
     @offices = Office.order("created_at desc")
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @offices }
@@ -16,6 +17,8 @@ class OfficesController < ApplicationController
   def show
     @office = Office.find(params[:id])
     @json = @office.to_gmaps4rails
+
+    track_event("Viewed Details");
 
     respond_to do |format|
       format.html # show.html.erb
@@ -29,6 +32,8 @@ class OfficesController < ApplicationController
   def new
     @office = Office.new
 
+    track_event("Viewed AddListing")
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @office }
@@ -38,6 +43,8 @@ class OfficesController < ApplicationController
   # GET /offices/1/edit
   def edit
     @office = Office.find(params[:id])
+
+    track_event("Viewed EditListing")
   end
 
   # POST /offices
@@ -50,6 +57,8 @@ class OfficesController < ApplicationController
       if @office.save
         # send email to user and us on successful listing create
         OfficeMailer.add_listing_confirm(@office).deliver
+
+        track_event("Added Listing");
 
         format.html { redirect_to confirm_path(:id => @office.id), notice: 'Listing was successfully posted.' }
         format.json { render json: @office, status: :created, location: @office }
@@ -72,6 +81,8 @@ class OfficesController < ApplicationController
         # send email to us on successful listing edit
         OfficeMailer.edit_listing_confirm(@office).deliver
 
+        track_event("Updated Listing");
+
         format.html { redirect_to confirm_path(:id => @office.id), notice: 'Listing was successfully updated.' }
         format.json { head :no_content }
       else
@@ -90,6 +101,8 @@ class OfficesController < ApplicationController
     
     @office.destroy
 
+    track_event("Deleted Listing");
+
     respond_to do |format|
       format.html { redirect_to offices_url }
       format.json { head :no_content }
@@ -103,6 +116,8 @@ class OfficesController < ApplicationController
 
     OfficeMailer.reserve_listing_confirm(@office, @current_user).deliver
     OfficeMailer.request_reserve_confirm(@office, @current_user).deliver
+
+    track_event("Completed Reserve")
 
   end
 

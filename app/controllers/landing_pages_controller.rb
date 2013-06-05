@@ -1,12 +1,11 @@
 class LandingPagesController < ApplicationController
 
-	def index
-	end
-
 	def home
-	end
+    track_event("Visited Homepage")
+  end
 
   def about
+    track_event("Visited AboutUs")
   end
 
   #	handle finding listing here separately
@@ -16,6 +15,7 @@ class LandingPagesController < ApplicationController
     #@offices = Office.order("created_at desc")
     @offices = Office.order('created_at DESC').page(params[:page])
 
+    track_event("Viewed ListView")
     respond_to do |format|
       format.html # listings.html.erb
       format.json { render json: @offices }
@@ -31,6 +31,7 @@ class LandingPagesController < ApplicationController
       marker.picture({ :picture => "/assets/office-building.png", :width =>32, :height => 32})
 
     end
+    track_event("Viewed MapView")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @offices }

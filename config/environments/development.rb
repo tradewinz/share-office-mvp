@@ -48,4 +48,7 @@ ShareOfficeMvp::Application.configure do
   
   config.serve_static_assets = false
 
+  # Mixpanel dev keys
+  config.event_tracker.mixpanel_key="5457e4b5c3b5ec9501dc9bd9a40f2839"
+
 end
