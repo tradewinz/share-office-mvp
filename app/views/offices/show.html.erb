@@ -86,7 +86,7 @@
       <div class="span8">
         <div id="galleria">
           <% @office.office_images.each do |photo| %>
-              <%= cl_image_tag(photo.path, :width => 600, :height=>400, :angle => :exif) %>
+              <%= cl_image_tag(photo.path, :width => 600, :height=>400, :crop=> :fill, :angle => :exif) %>
           <% end %>
         </div>
       </div>
