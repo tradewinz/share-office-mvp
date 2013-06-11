@@ -221,7 +221,8 @@ $('.thumbs').prepend($('.attachinary_container'));
               <label class="control-label">Upload a Photo</label>
               <div class="controls">
                   <span class="btn btn-success span-attachinary-input controls ">
-                    <%= f.attachinary_file_field :office_images %>
+                    <%= f.attachinary_file_field :office_images, :cloudinary => {
+                             :eager => [{:width => 600, :height => 400, :crop => :fill}]}%>
                     <i class="icon-plus icon-white"> </i>
                     <span> Add files.... </span>
                   </span> (select up to 4 photos)
