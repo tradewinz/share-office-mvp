@@ -12,30 +12,28 @@ class LandingPagesController < ApplicationController
 	def listings
 
     #Paginated queries
-    #@offices = Office.order("created_at desc")
-    @offices = Office.order('created_at DESC').page(params[:page])
+    #@offices = Office.where("loc_zip = ?", params[:city]).page(params[:page])
+    if (params[:city] != "")
+      @offices = Office.near(params[:city], 20).page(params[:page])
+    else
+      @offices = Office.order('created_at DESC').page(params[:page])
 
-    track_event("Viewed ListView")
-    respond_to do |format|
-      format.html # listings.html.erb
-      format.json { render json: @offices }
     end
-	end
 
-  def maps
-    #	redirect_to offices_path
-    @json = Office.all.to_gmaps4rails do |office, marker|
+    @json = @offices.to_gmaps4rails do |office, marker|
 
       marker.infowindow render_to_string(:partial => "/offices/infowindow", :locals => { :office => office})
       marker.title "#{office.title}"
       marker.picture({ :picture => "/assets/office-building.png", :width =>32, :height => 32})
 
     end
-    track_event("Viewed MapView")
+
+    track_event("Viewed Search Results")
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # listings.html.erb
       format.json { render json: @offices }
     end
-  end
+	end
+
 
 end

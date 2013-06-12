@@ -117,7 +117,7 @@ class OfficesController < ApplicationController
     OfficeMailer.reserve_listing_confirm(@office, @current_user).deliver
     OfficeMailer.request_reserve_confirm(@office, @current_user).deliver
 
-    track_event("Completed Reserve")
+    track_event("Completed ContactUs")
 
   end
 

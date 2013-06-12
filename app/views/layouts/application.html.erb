@@ -96,7 +96,7 @@
 
 
 
-<!-- jQquery validation -->
+<!-- other JS code -->
 <script type="text/javascript">
 function showLoadingImage() {
     $('#second').append('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %> </div>');
@@ -115,6 +115,7 @@ $("#continueListingBtn").click(function() {
   mixpanel.track("Clicked Continue");
 
 });
+
 
 
 
@@ -147,7 +148,7 @@ $("#addlisting").click(function() {
 
 $("#searchBtn").click(function() {
   var val = $("#search").val();
-  _gaq.push(['_trackEvent', 'Search', 'User clicks on Search']);
+  _gaq.push(['_trackEvent', "Search".concat(val), 'User clicks on Search']);
   mixpanel.track("Clicked Search", {location: val});
 });
 

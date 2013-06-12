@@ -13,7 +13,24 @@
                 </div>
               </div>
 
+            <%= form_tag(listings_path, :method => "get") do %>
+
               <div class="row spacebottom">
+                <div class="span7">
+                  <div class="leftgap">
+                        <%= text_field_tag 'city', "", :class=> :l_input, :style => "margin-bottom: 5px; height:30px", :placeholder => "Enter a City" %>
+                  <!--input type="text" class="l_input" name = "l_input" style="margin-bottom: 5px; height:30px" placeholder="Enter a city"-->
+                  </div>
+                </div>
+
+                <div class="span2" id="search">
+                   <%= submit_tag "SEARCH", :class => "l_button btn btn-large btn-primary", :style => "width: 100%" %>
+                       <!--%= link_to "SEARCH", listings_path,:name => "l_search", :class => "l_button btn btn-large btn-primary" %-->
+                </div>
+            <%end%>
+
+
+              <!--div class="row spacebottom">
                 <div class="span7">
                   <div class="leftgap">
                     <input id="search" type="text" class="l_input" style="margin-bottom: 5px; height:30px" placeholder="Enter a city">
@@ -23,9 +40,9 @@
                 <div class="span3">
                   <!--button class="l_button btn btn-large btn-primary" type="submit" action="/listings"  id="searchBtn">SEARCH</button-->
 
-                  <%= button_to "SEARCH", listings_path, :method => "get", :id => "searchBtn",
-                  :class => "l_button btn btn-large btn-primary", :style => "width: 160px; margin-top: 3px; margin-left: 10px;" %>
-                </div>
+                  <!--%= button_to "SEARCH", listings_path, :method => "get", :id => "searchBtn", :class => "l_button btn btn-large btn-primary", :style => "width: 160px; margin-top: 3px; margin-left: 10px;" %>
+                </div-->
+
               </div>
             </div>
           </div>
