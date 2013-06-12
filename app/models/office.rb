@@ -12,7 +12,7 @@ class Office < ActiveRecord::Base
   geocoded_by :loc_zip
   after_validation :geocode
 
-  has_attachments :office_images, maximum: 4
+  has_attachments :office_images, maximum: 4, accept: [:jpg, :png, :gif, :jpeg]
 
   acts_as_gmappable
   
