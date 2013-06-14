@@ -9,8 +9,8 @@ class Office < ActiveRecord::Base
   validates :title, :presence => true
   validates :loc_zip, :presence => true
 
-  #geocoded_by :loc_zip
-  #after_validation :geocode
+  geocoded_by :loc_zip
+  after_validation :geocode
 
   has_attachments :office_images, maximum: 4, accept: [:jpg, :png, :gif, :jpeg]
 
