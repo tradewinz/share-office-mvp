@@ -56,3 +56,5 @@ gem 'rails_admin'
 #gem 'mixpanel'
 
 gem 'event_tracker'
+
+gem 'tinymce-rails'
