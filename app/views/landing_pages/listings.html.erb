@@ -23,18 +23,29 @@
    <div class ="row">
 
       <div class="span12">
-
+        <% if @offices.count == 0 %>
+            <div class="row search result">
+              <div class="span12">
+                <p>"Oops! We could not find any office near your city. Try one of our popular locations -
+                  San Francisco and Los Angeles or email your city of interest to us at
+                  <a href="mailto:spaces@intuit.com">spaces@intuit.com</a>
+                  and we will inform you as soon as we have offices available.</p>
+              </div>
+            </div>
+        <% else %>
         <%= gmaps("markers" => {"data" => @json},
                   "map_options" =>  { "provider" => "google",
                                       "provider_key" => "AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE",
                                       "auto_zoom" => false,
-                                      "zoom" => 10
+                                      "zoom" => 8,
+                                      "libraries" => ["places"]
 
                   }
             )
         %>
-
+        <% end %>
       </div>
+
    </div>
 </div>
 
@@ -42,6 +53,16 @@
 
   <div class="row padtopsmall" style="background-color: #ffffff;">
     <div class="span12">
+    <% if @offices.count == 0 %>
+          <div class="row search result">
+             <div class="span12">
+                <p>"Oops! We could not find any office near your city. Try one of our popular locations -
+                  San Francisco and Los Angeles or email your city of interest to us at
+                  <a href="mailto:spaces@intuit.com">spaces@intuit.com</a>
+                  and we will inform you as soon as we have offices available.</p>
+             </div>
+          </div>
+    <% else %>
       <% @offices.each do |office| %>
 
           <div class="row search_result">
@@ -181,6 +202,7 @@
           </div>
 
       <% end %>
+    <% end %>
     </div>
     <div class="span12">
       <div class="apple_pagination">
@@ -220,7 +242,6 @@
         mixpanel.track("Clicked ListView button");
 
     });
-
 
 
 </script>

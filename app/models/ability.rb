@@ -8,11 +8,6 @@ class Ability
     # grant access to edit and delete to only owners of te listing
     can [:update, :destroy], Office, :user_id => user.id
 
-    if user && user.admin?
-      can :access, :rails_admin
-      can :manage, :all
-    end
-
 
     # Define abilities for the passed in user here. For example:
     #

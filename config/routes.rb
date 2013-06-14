@@ -18,7 +18,7 @@ ShareOfficeMvp::Application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
    
-  resources :users
+  # resources :users
 
 
   # The priority is based upon order of creation:

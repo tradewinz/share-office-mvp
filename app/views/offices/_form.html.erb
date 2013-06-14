@@ -6,48 +6,48 @@
 $(document).ready(function() {
     $('.attachinary-input').attachinary();
 
-function showLoadingImage() {
-   $('.thumbs').prepend('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %></div>');
- 
-}
+    function showLoadingImage() {
+       $('.thumbs').prepend('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %></div>');
 
-function hideLoadingImage() {
-    $('#loading-image').remove();
-} 
+    }
 
-$('.attachinary-input').attachinary();
+    function hideLoadingImage() {
+        $('#loading-image').remove();
+    }
 
-$('.attachinary-input').bind('fileuploadstart', function(e, data) {  
-  //alert ("ok, start");
-   //$('#loading-image').show();
-   showLoadingImage();
-});
+    $('.attachinary-input').attachinary();
 
-/*
-$('.attachinary-input').bind('fileuploadprogressall', function(e,data) {  
-  alert ("progress " + data.loaded);
-  var prog = parseInt(data.loaded / data.total * 100, 10);
+    $('.attachinary-input').bind('fileuploadstart', function(e, data) {
+      //alert ("ok, start");
+       //$('#loading-image').show();
+       showLoadingImage();
+    });
 
-  $('.progress').css('width', prog + '%');
-});
-*/
+    /*
+    $('.attachinary-input').bind('fileuploadprogressall', function(e,data) {
+      alert ("progress " + data.loaded);
+      var prog = parseInt(data.loaded / data.total * 100, 10);
 
-$('.attachinary-input').bind('cloudinarydone', function() {  
-//alert ("done!");
-  //    hideLoadingImage();
-});
+      $('.progress').css('width', prog + '%');
+    });
+    */
 
-
-$('.attachinary-input').bind('fileuploaddone', function() {  
-//alert ("done event!");
-hideLoadingImage();
-});
+    $('.attachinary-input').bind('cloudinarydone', function() {
+    //alert ("done!");
+      //    hideLoadingImage();
+    });
 
 
-// move the attachinary container to a separate row (this is where the thumbnails show upf)
-$('.thumbs').prepend($('.attachinary_container'));
+    $('.attachinary-input').bind('fileuploaddone', function() {
+    //alert ("done event!");
+    hideLoadingImage();
+    });
 
-//$('.attachinary-input').trigger('fileuploadstart');
+
+    // move the attachinary container to a separate row (this is where the thumbnails show upf)
+    $('.thumbs').prepend($('.attachinary_container'));
+
+    //$('.attachinary-input').trigger('fileuploadstart');
 
 
 

@@ -15,6 +15,9 @@ class LandingPagesController < ApplicationController
     #@offices = Office.where("loc_zip = ?", params[:city]).page(params[:page])
     if (params[:city] != "")
       @offices = Office.near(params[:city], 20).page(params[:page])
+      if (@offices.count == 0)
+        @offices = Office.near(params[:city], 50).page(params[:page])
+      end
     else
       @offices = Office.order('created_at DESC').page(params[:page])
 
