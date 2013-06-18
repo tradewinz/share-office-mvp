@@ -10,9 +10,9 @@ class Office < ActiveRecord::Base
   validates :loc_zip, :presence => true
 
   #geocode using geocoder
-  geocoded_by :loc_zip
-  #already geocoded by gmap4rails below
-  #after_validation :geocode
+  geocoded_by :address
+  #geocode on update
+  after_validation :geocode
 
   # attachinary
   has_attachments :office_images, maximum: 4, accept: [:jpg, :png, :gif, :jpeg]
@@ -26,6 +26,10 @@ class Office < ActiveRecord::Base
 
   #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
   def gmaps4rails_address
-    "#{self.loc_zip}, #{self.loc_addr1}, #{self.loc_city}, #{self.loc_state}"
+    "#{self.loc_addr1}, #{self.loc_city}, #{self.loc_state}, #{self.loc_zip}"
+  end
+
+  def address
+    [loc_addr1, loc_city, loc_state, loc_zip].compact.join(', ')
   end
 end
