@@ -26,10 +26,15 @@
         <% if @offices.count == 0 %>
             <div class="row search result">
               <div class="span12">
-                <p>"Oops! We could not find any office near your city. Try one of our popular locations -
-                  San Francisco and Los Angeles or email your city of interest to us at
+                <p>
+                  "Oops! We could not find any office near your city.
+                  Try one of our popular locations -
+                  <%= link_to "San Francisco", listings_path(:city => "San Francisco") %> and
+                  <%= link_to "San Jose", listings_path(:city => "San Jose")  %>
+                  <br />
+                  Didn't find your city? Tell us about it at
                   <a href="mailto:spaces@intuit.com">spaces@intuit.com</a>
-                  and we will inform you as soon as we have offices available.</p>
+                </p>
               </div>
             </div>
         <% else %>
@@ -56,10 +61,15 @@
     <% if @offices.count == 0 %>
           <div class="row search result">
              <div class="span12">
-                <p>"Oops! We could not find any office near your city. Try one of our popular locations -
-                  San Francisco and Los Angeles or email your city of interest to us at
+                <p>
+                  "Oops! We could not find any office near your city.
+                  Try one of our popular locations -
+                  <%= link_to "San Francisco", listings_path(:city => "San Francisco") %> and
+                  <%= link_to "San Jose", listings_path(:city => "San Jose")  %>
+                  <br />
+                  Didn't find your city? Tell us about it at
                   <a href="mailto:spaces@intuit.com">spaces@intuit.com</a>
-                  and we will inform you as soon as we have offices available.</p>
+                </p>
              </div>
           </div>
     <% else %>
