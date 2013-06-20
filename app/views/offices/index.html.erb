@@ -6,27 +6,38 @@
 
       <div class="row search_result">
 
-        <!--div class="span2" style="padding: 4px; border: 1px solid #D0D0D0;
-                vertical-align: middle; text-align: center; background-color: #FFFFFF;">
-            <a href= "<#%= office_path(office)  %>" >
-                <#%= image_tag office.image1_url(:small).to_s, :size=> "130x100", :alt=> "Photo" %>
-            </a>
-        </div-->
+        <div class="span2">
+          <a href= "<%= office_path(office)  %>" >
+            <% if (office.office_images.first != nil) %>
+                <%= cl_image_tag office.office_images.first.path, :size => '100x75', :crop => :fit, :class => "img-polaroid" %>
+            <% else %>
+                <%= image_tag "small_default-studio.png", :class => "img-polaroid" %>
+            <% end %>
 
-        <div class="span5">
+          </a>
+        </div>
+
+        <div class="span4">
             <%= link_to office.title, office %>
         </div>
 
+        <div class="span2" id="city">
+          <%= office.loc_city %>
+        </div>
 
-        <div class="span3" id="location">
+        <div class="span1" id="state">
+          <%= office.loc_state %>
+        </div>
+
+        <div class="span1" id="zipcode">
           <%= office.loc_zip %>
         </div>
 
-        <div class="span1">         
-          <%= link_to 'View', office %>
+        <div class="span2">
+          <!--%= link_to 'View', office %-->
 
           <% if can? :update, office %>
-            <%= link_to 'Edit', edit_office_path(office) %>
+            <%= link_to 'Update |', edit_office_path(office) %>
           <% end %>
           
           <% if can? :destroy, office %>

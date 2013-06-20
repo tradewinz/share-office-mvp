@@ -13,7 +13,7 @@ ShareOfficeMvp::Application.routes.draw do
   match '/confirm', to: 'offices#confirm'
   match '/reserve/:id', to:'offices#reserve'
 
-  resources :offices, :except => :index
+  resources :offices
 
   mount Attachinary::Engine => "/attachinary"
 

@@ -5,8 +5,12 @@ class Ability
 
     user ||= User.new
 
-    # grant access to edit and delete to only owners of te listing
+    # grant access to edit and delete to only owners of the listings
     can [:update, :destroy], Office, :user_id => user.id
+
+    if user && user.admin?
+      can :manage, :all
+    end
 
 
     # Define abilities for the passed in user here. For example:
