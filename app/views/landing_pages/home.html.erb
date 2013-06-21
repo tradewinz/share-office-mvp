@@ -54,39 +54,58 @@
  
   <div class="features paperpanel">
     <div class="row">
-      <div class="span12 padtop padbottom features">
+      <div class="span6 offset1 padtop">
+        <iframe width="430" height="242" src="http://www.youtube.com/embed/qsveEO6oQUk?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="span5">
+        <h4 style="font-size: 20px; color: #0098cd; padding-top: 150px;">Watch an overview of Intuit Spaces</h4>
+        <p>(00:49)</p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="span8 offset2 padtop padbottom">
         <div class="row">
-          <div class="span4">
-              <%= image_tag "tw/icon_home_floorplan.png", :alt=> "icon home" %>
+          <div class="span6">
               <h3>Make your office pay for itself</h3>
-               <p>   Earn extra money by renting out your extra office space. No listing or membership fees.<br />
-                <%= link_to "List your extra space now >>", new_office_path %>
+               <p>Earn extra money by renting out your extra office space. No listing or membership fees.
+                 <%= link_to "List your extra space now >>", new_office_path %>
                 </p>
           </div>
+          <div class="span2">
+            <%= image_tag "tw/icon_home_floorplan.png", :alt=> "icon home" %>
+          </div>
+        </div>
 
-          <div class="span4">
-
-              <%= image_tag("tw/icon_home_pie.png", alt: "icon pie") %>
+        <div class="row padtop">
+          <div class="span2">
+            <%= image_tag("tw/icon_home_pie.png", alt: "icon pie") %>
+          </div>
+          <div class="span6">
               <h3>Listing your space is as easy as pie </h3>
               <p>From the makers of QuickBooks and TurboTax - not only do we make accounting and tax preparation
                 easier for you, we'll make it easy for you to earn extra money with your extra space.
                 <%= link_to "Get started >>", new_office_path %>
               </p>
-
-            </div>
-
-          <div class="span4">
-
-              <%= image_tag("tw/icon_home_handshake.png", alt: "icon handshake") %>
-              <h3>Reliable & trustworthy connections</h3>
-              No SPAM and No SCAMS. Only interact with other reliable and trusted professionals and entrepreneurs
-              like yourself. <br />
-              <%= link_to "Get started >>", new_office_path %>
-
           </div>
         </div>
-      </div>
+
+          <div class="row padtop padbottom">
+            <div class="span6">
+              <h3>Reliable & trustworthy connections</h3>
+              No SPAM and No SCAMS. Only interact with other reliable and trusted professionals and entrepreneurs
+              like yourself.
+              <%= link_to "Get started >>", new_office_path %>
+            </div>
+            <div class="span2">
+              <%= image_tag("tw/icon_home_handshake.png", alt: "icon handshake") %>
+            </div>
+        </div>
+
+
     </div>
+
+  </div>
 
     <div class="container paperpanel">
       <div class="well well-small well-footer">
@@ -114,6 +133,6 @@
       </div>
     </div>
 
+  </div>   <!-- white features panel -->
 
-  </div>    <!-- Paper panel -->
-
+</div>
