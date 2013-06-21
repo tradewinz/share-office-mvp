@@ -14,9 +14,9 @@ class LandingPagesController < ApplicationController
     #Paginated queries
     #@offices = Office.where("loc_zip = ?", params[:city]).page(params[:page])
     if (params[:city] != "")
-      @offices = Office.order('rent DESC').near(params[:city], 20).page(params[:page])
+      @offices = Office.near(params[:city], 20).page(params[:page])
       if (@offices.count == 0)
-        @offices = Office.order('rent DESC').near(params[:city], 50).page(params[:page])
+        @offices = Office.near(params[:city], 50).page(params[:page])
       end
     else
       @offices = Office.order('created_at DESC').page(params[:page])
