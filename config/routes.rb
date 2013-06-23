@@ -18,7 +18,7 @@ ShareOfficeMvp::Application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
   match "/blog" => redirect("http://spacesblog.tumblr.com/"), :as => :blog
-  match "/howdy" => redirect("https://intuitspaces.geckoboard.com/loop/A25BE5157A61EC93"), :as => :howdy
+  match "/system/whatsup" => redirect("https://intuitspaces.geckoboard.com/loop/A25BE5157A61EC93"), :as => :whatsup
 
   # resources :users
 
