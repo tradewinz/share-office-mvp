@@ -21,4 +21,5 @@
 //= require jquery.fileupload
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
+//= require jquery.cookie
 //= require_tree .

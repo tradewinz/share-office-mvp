@@ -23,6 +23,8 @@ class LandingPagesController < ApplicationController
 
     end
 
+    @search_string = params[:city]
+
     @json = @offices.to_gmaps4rails do |office, marker|
 
       marker.infowindow render_to_string(:partial => "/offices/infowindow", :locals => { :office => office})

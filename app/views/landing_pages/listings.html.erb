@@ -2,7 +2,7 @@
 
   <%= form_tag(listings_path, :method => "get") do %>
       <div class="span5">
-          <%= text_field_tag 'city', "", :class=> "l_input", :placeholder => "Enter a City" %>
+          <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "Enter a City" %>
       </div>
 
 
@@ -231,11 +231,21 @@
 <script type="text/javascript">
 
     $( window ).load(function() {
-       $('#mapview').hide();
+        //alert( $.cookie("mapview") );
+
+        if($.cookie ('mapview') == "true") {
+            $('#mapview').show();
+            $('#listview').hide();
+        }
+        else {
+            $('#mapview').hide();
+            $('#listview').show();
+        }
     });
 
 
     $("#showMapBtn").click(function() {
+        $.cookie ('mapview', 'true');
         $('#mapview').show();
         $('#listview').hide();
 
@@ -247,6 +257,7 @@
     });
 
     $("#showListBtn").click(function() {
+        $.cookie ('mapview', 'false');
         $('#mapview').hide();
         $('#listview').show();
         mixpanel.track("Clicked ListView button");
