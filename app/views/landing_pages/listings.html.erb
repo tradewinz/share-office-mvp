@@ -248,10 +248,6 @@
         $('#mapview').show();
         $('#listview').hide();
 
-        var center = Gmaps.map.map.getCenter();
-        google.maps.event.trigger(map, 'resize');
-        Gmaps.map.map.setCenter(center);
-
         Gmaps.loadMaps();
         mixpanel.track("Clicked MapView button");
     });
