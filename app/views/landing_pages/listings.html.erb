@@ -41,8 +41,7 @@
         <%= gmaps("markers" => {"data" => @json},
                   "map_options" =>  { "provider" => "google",
                                       "provider_key" => "AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE",
-                                      "auto_zoom" => false,
-                                      "zoom" => 10,
+                                      "auto_zoom" => true,
                                       "libraries" => ["places"]
 
                   }
@@ -253,6 +252,7 @@
         google.maps.event.trigger(map, 'resize');
         Gmaps.map.map.setCenter(center);
 
+        Gmaps.loadMaps();
         mixpanel.track("Clicked MapView button");
     });
 
