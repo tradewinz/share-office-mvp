@@ -16,17 +16,15 @@ class LandingPagesController < ApplicationController
     @search_string = params[:city]
 
     if (@search_string != "")
-      @offices = Office.near(@search_string, 20).page(params[:page])
       @mappable_offices = Office.near(@search_string, 20)
-      if (@offices.count == 0)
-        @offices = Office.near(@search_string, 50).page(params[:page])
+      if (@mappable_offices.count == 0)
         @mappable_offices = Office.near(@search_string, 50)
       end
     else
-      @offices = Office.order('created_at DESC').page(params[:page])
-      @mappable_offices = Office.all
+      @mappable_offices = Office.order('created_at DESC')
     end
 
+    @offices = @mappable_offices.page(params[:page])
 
     @json = @mappable_offices.to_gmaps4rails do |office, marker|
       marker.infowindow render_to_string(:partial => "/offices/infowindow", :locals => { :office => office})
