@@ -32,25 +32,28 @@
 </head>
 
 <body>
-<div class="navbar" >
-      <div class="wrapper">
-            <ul class="nav nav-pills pull-right">
-                <li><%= link_to "", new_office_path, :id => "addlisting", :class=>"list-btn" %></li>
-                    <% if user_signed_in? %>
-                      <li><%= link_to current_user.name, edit_user_registration_path %></li>
-                      <li><%= link_to "MY LISTINGS", offices_path %></li>
-                      <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
-                    <% else %>
-                        <li><%= link_to "SIGN IN", new_user_session_path %></li>
-                    <% end %>
-            </ul>
-            <a href="/home">
-                <h3 class="muted" style="margin-top: 1px;">
-                  <%= image_tag("logo_intuit_spaces.gif", alt: "Intuit Spaces") %>
-                </h3>
-            </a>
-      </div>
+
+<div class="navbar navbar-static">
+  <div class="wrapper">
+  <div class="container">
+    <div class="brand"><%= link_to image_tag("logo_intuit_spaces.gif", alt: "Intuit Spaces"),home_path %></div>
+    <ul class="nav pull-right">
+      <% if user_signed_in? %>
+      <li class="dropdown">
+        <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><%= image_tag("default_person.png"), width="20", height="20" %> <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+          <li><%= link_to "PROFILE", edit_user_registration_path %></li>
+          <li><%= link_to "MY LISTINGS", offices_path %></li>
+          <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </li>
+      <% end %>
+     <li><%= link_to "", new_office_path, :id => "addlisting", :class=>"list-btn" %></li>
+    </ul>
+  </div>
+  </div>
 </div>
+
 
 
 
