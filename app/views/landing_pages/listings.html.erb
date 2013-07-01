@@ -27,7 +27,7 @@
             <div class="row search result">
               <div class="span12">
                 <p>
-                  Oops! We could not find any office near your city. Try one of our popular locations -
+                  Oops! We could not find any offices near <%= @location %>. Try one of our popular locations -
                   <%= link_to "San Francisco", listings_path(:city => "San Francisco") %> and
                   <%= link_to "San Jose", listings_path(:city => "San Jose")  %>
                   <br /> <br />
@@ -62,8 +62,7 @@
           <div class="row search result">
              <div class="span12">
                 <p>
-                  Oops! We could not find any office near your city.
-                  Try one of our popular locations -
+                  Oops! We could not find any offices near <%= @location %>. Try one of our popular locations -
                   <%= link_to "San Francisco", listings_path(:city => "San Francisco") %> and
                   <%= link_to "San Jose", listings_path(:city => "San Jose")  %>
                   <br />   <br />
@@ -91,7 +90,7 @@
             <div class="span6">
               <div class="row">
                 <div class="span6">
-                  <h4><%= link_to office.title, office %></h4>
+                  <h4><%= link_to office.title, office%></h4>
                   <p><%= office.loc_city %> <%= office.loc_state %> </p>
                   <br>
                 </div>
