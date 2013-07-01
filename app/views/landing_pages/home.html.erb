@@ -1,3 +1,7 @@
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?v=3.8&sensor=false&libraries=geometry,places&client=gme-intuitinc&channel=fms.spaces">
+</script>
+
 <div class="hero-bg paperpanel">
 
     <div class="row">
@@ -125,3 +129,13 @@
   </div>   <!-- white features panel -->
 
 </div>
+
+<script type="text/javascript">
+
+$(document).ready (function() {
+    var input = document.getElementById('city');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.setTypes(['geocode']);
+});
+
+</script>

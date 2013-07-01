@@ -262,10 +262,11 @@
     <div class="span4">
       <div class="location-map">
         <%= gmaps("markers" => {"data" => @json},
-                  "map_options" => {"provider" => "google",
-                                    "provider_key" => "AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE",
-                                    "auto_zoom" => false,
-                                    "zoom" => 12
+                  "map_options" =>  { "provider" => "google",
+                                      "client" => "gme-intuitinc",
+                                      "channel" => "fms.spaces",
+                                      "auto_zoom" => false,
+                                      "zoom" => 12
                   }
             )
         %>
