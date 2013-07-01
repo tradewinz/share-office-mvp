@@ -2,11 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
-#gem 'bootstrap-sass', '2.1'
 gem 'bootstrap-sass', '2.3.1.2'
 
 group :development do
-  gem 'sqlite3', '1.3.5'
+  gem 'sqlite3'
   gem 'faker'
 end
 
@@ -27,8 +26,8 @@ gem 'jquery-rails', '2.0.2'
 #Photo Gallery
 
 group :production do
-  gem 'pg', '0.12.2'
-  gem 'newrelic_rpm'
+  gem 'pg'
+  gem 'newrelic_rpm', '3.6.4.122'
   gem 'unicorn'
 
 end
@@ -44,17 +43,17 @@ gem 'geocoder', '1.1.8'
 
 gem 'gmaps4rails', '1.5.6'
 
-gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-linkedin-oauth2', '0.0.2'
 
 gem 'will_paginate', '~> 3.0'
 
 gem 'cloudinary', '1.0.58'
 gem 'attachinary', '1.2.5'
 
-gem 'rails_admin'
+gem 'rails_admin', '0.1.2'
 
 #gem 'mixpanel'
 
-gem 'event_tracker'
+gem 'event_tracker', '0.2.0'
 
-gem 'tinymce-rails'
+gem 'tinymce-rails', '3.5.8.2'

@@ -2,7 +2,7 @@
 
   <%= form_tag(listings_path, :method => "get") do %>
       <div class="span5">
-          <%= text_field_tag 'city', "", :class=> "l_input", :placeholder => "Enter a City" %>
+          <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "Enter a City" %>
       </div>
 
 
@@ -38,13 +38,13 @@
             </div>
 
         <% else %>
+
         <%= gmaps("markers" => {"data" => @json},
                   "map_options" =>  { "provider" => "google",
-                                      "provider_key" => "AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE",
-                                      "auto_zoom" => false,
-                                      "zoom" => 10,
+                                      "client" => "gme-intuitinc",
+                                      "channel" => "fms.spaces",
+                                      "auto_zoom" => true,
                                       "libraries" => ["places"]
-
                   }
             )
         %>
@@ -230,23 +230,37 @@
 
 <script type="text/javascript">
 
+    $(document).ready (function() {
+        var input = document.getElementById('city');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.setTypes(['geocode']);
+    });
+
     $( window ).load(function() {
-       $('#mapview').hide();
+        //alert( $.cookie("mapview") );
+
+        if($.cookie ('mapview') == "true") {
+            $('#mapview').show();
+            $('#listview').hide();
+        }
+        else {
+            $('#mapview').hide();
+            $('#listview').show();
+        }
     });
 
 
     $("#showMapBtn").click(function() {
+        $.cookie ('mapview', 'true');
         $('#mapview').show();
         $('#listview').hide();
 
-        var center = Gmaps.map.map.getCenter();
-        google.maps.event.trigger(map, 'resize');
-        Gmaps.map.map.setCenter(center);
-
+        Gmaps.loadMaps();
         mixpanel.track("Clicked MapView button");
     });
 
     $("#showListBtn").click(function() {
+        $.cookie ('mapview', 'false');
         $('#mapview').hide();
         $('#listview').show();
         mixpanel.track("Clicked ListView button");
