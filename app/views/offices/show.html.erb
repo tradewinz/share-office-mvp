@@ -1,14 +1,10 @@
 <div class="listing-detail">
 
 <div class="row">
-  <div class="span5 offset4">
-    <h3>Listing details</h3>
-    <!--button class="btn btn-primary" id="postListingBtn" onclick=""> Post Listing </button-->
-  </div>
+  <div class="span5"><h5><%= link_to "&#8592; Back to search results".html_safe, :back %></h5></div>
 </div>
 
 <div class="row panel panel-border">
-<div class="span12">
 <!-- frame -->
 <div class="row" id="title">
 
@@ -63,7 +59,7 @@
     <% if @office.accomodate? %>
         <div class="officeicon accomodates"></div>
         <%= @office.accomodate %>
-        <span class="text-right">people</span>
+        <span class="text-right"><% if @office.accomodate == 1 %>person<% else %>people <% end %></span>
     <% end %>
 
     <% if @office.size? %>

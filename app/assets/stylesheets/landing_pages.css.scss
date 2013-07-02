@@ -31,9 +31,9 @@ $fpobg: #baafa4;
 
 .wrapper {
   margin: 0 auto;
-  overflow: hidden;
+  //overflow: hidden;
   position: relative;
-  width: 1200px;
+  width: 1200px !important;
 }
 
 body{
@@ -138,4 +138,10 @@ body{
 .well-footer {
   background-color: #EBE8E1;
   padding: 6px;
+}
+
+.profile-pic {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
 }
