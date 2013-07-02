@@ -71,10 +71,15 @@
 <!-- Main body pages -->
 
 <div class="container">
-      <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, id: "flash_#{name}" %>
-      <% end %>
-  <%= yield %>
+  <!--
+  <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: "flashmsg", id: "flash_#{name}"%>
+  <% end %>
+  -->
+
+
+  <%= render 'layouts/messages'%>
+  <%= yield %> 
 </div>
 
 

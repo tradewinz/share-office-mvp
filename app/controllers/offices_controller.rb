@@ -59,7 +59,7 @@ class OfficesController < ApplicationController
 
         track_event("Added Listing");
 
-        format.html { redirect_to confirm_path(:id => @office.id), notice: 'Listing was successfully posted.' }
+        format.html { redirect_to confirm_path(:id => @office.id)}
         format.json { render json: @office, status: :created, location: @office }
       else
         format.html { render action: "new" }
@@ -82,7 +82,7 @@ class OfficesController < ApplicationController
 
         track_event("Updated Listing");
 
-        format.html { redirect_to confirm_path(:id => @office.id), notice: 'Listing was successfully updated.' }
+        format.html { redirect_to confirm_path(:id => @office.id) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

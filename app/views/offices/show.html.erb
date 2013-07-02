@@ -1,7 +1,11 @@
 <div class="listing-detail">
 
 <div class="row">
-  <div class="span5"><h5><%= link_to "&#8592; Back to search results".html_safe, :back %></h5></div>
+  <div class="span5"><h5>
+  <% if request.referer.include? "SEARCH"%>
+    <%= link_to "&#8592; Back to search results".html_safe, :back %>
+  <% end %>
+  </h5></div>
 </div>
 
 <div class="row panel panel-border">

@@ -66,6 +66,33 @@
 .links {
 	margin-top: 50px;
 }
+
+.alert {
+  margin-bottom: 10px;
+  margin-top:10px;
+}
+
+/*.alert-success {
+  color: #000;
+  background-color: rgba(30,160,210, .1);
+  border-color: #0088cc;
+  border-style: dashed;
+}*/
+
+.alert-success {
+  color: #3f3f3f;
+  background-color: rgba(253,192,46, .1);
+  border-color: #d2aa0b;
+  border-style: dashed;
+}
+
+/*.alert-danger,
+.alert-error {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}*/
+
 // ENd devise sign in page
 
 // don;t want to deal with responsive design jnow

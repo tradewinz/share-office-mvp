@@ -57,3 +57,5 @@ gem 'rails_admin', '0.1.2'
 gem 'event_tracker', '0.2.0'
 
 gem 'tinymce-rails', '3.5.8.2'
+
+gem 'simple_form'
