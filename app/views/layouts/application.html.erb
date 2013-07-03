@@ -35,7 +35,6 @@
   <div class="wrapper container">
       <div class="brand"><%= link_to image_tag("logo_intuit_spaces.gif", alt: "Intuit Spaces"), home_path %></div>
       <ul class="nav pull-right">
-        <li><%= link_to "", new_office_path, :id => "addlisting", :class=>"list-btn" %></li>
       <% if user_signed_in? %>
         <li class="dropdown">
           <a href="#" id="user" role="button" class="dropdown-toggle" data-toggle="dropdown">
@@ -56,6 +55,7 @@
       <% else %>
         <li><%= link_to "SIGN IN", new_user_session_path %></li>
       <% end %>
+        <li><%= link_to "", new_office_path, :id => "addlisting", :class=>"list-btn" %></li>
       </ul>
   </div>
 </div>
