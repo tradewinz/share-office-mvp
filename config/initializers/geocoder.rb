@@ -1,10 +1,13 @@
 Geocoder.configure(
-    # open source free geocode service
-    :lookup => :nominatim
+    # open source free geocode service - slow
+    # :lookup => :nominatim
+
+    # Using Google free account  restricted to 2500/day
+    :lookup => :google
 
     # Google premier geocoding service
     #:lookup => :google_premier,
 
-    # Intuit enterprise license, must be on intuit.com domain [key, client, channel]
+    # intuit enterprise license, must be on intuit.com domain but we don;t ahve the key !
     #:api_key => ["???", "gme-intuitinc", "fms.spaces"]
 )
