@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130603185312) do
+ActiveRecord::Schema.define(:version => 20130702221830) do
 
   create_table "attachinary_files", :force => true do |t|
     t.integer  "attachinariable_id"
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(:version => 20130603185312) do
     t.string   "image2"
     t.string   "image3"
     t.string   "image4"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "accomodate"
     t.text     "available"
     t.string   "loc_addr1"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20130603185312) do
     t.integer  "office_type"
     t.integer  "rent_type"
     t.boolean  "window"
+    t.boolean  "featured",    :default => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|

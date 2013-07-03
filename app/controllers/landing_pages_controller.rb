@@ -1,6 +1,8 @@
 class LandingPagesController < ApplicationController
 
 	def home
+      @featured_offices = Office.where("rent IS NOT ?", nil).limit(4);
+
     track_event("Visited Homepage")
   end
 
@@ -40,6 +42,5 @@ class LandingPagesController < ApplicationController
       format.json { render json: @offices }
     end
 	end
-
 
 end

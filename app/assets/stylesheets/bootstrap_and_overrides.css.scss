@@ -93,6 +93,42 @@
   border-color: #eed3d7;
 }*/
 
+.carousel-control.right {
+  right: -20px;
+}
+
+.carousel-control.left {
+  left: -25px;
+}
+
+.carousel-img {
+  width: 365px;
+  height: 249px;
+}
+
+.carousel-div {
+  position: relative;
+}
+
+.left-img {
+  float:right;
+}
+
+.right-img {
+  padding-left:20px;
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+  width: 357px;
+  height: 35px;
+  color:white;
+  font:Helvetica;
+  background: rgba(0,0,0,.6);
+  padding: 10px;
+}
+
 // ENd devise sign in page
 
 // don;t want to deal with responsive design jnow

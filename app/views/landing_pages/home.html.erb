@@ -17,22 +17,18 @@
                 </div>
               </div>
 
-            <%= form_tag(listings_path, :method => "get") do %>
-
-              <div class="row spacebottom">
-                <div class="span7">
-                  <div class="leftgap">
-                        <%= text_field_tag 'city', "", :class=> :l_input, :style => "margin-bottom: 5px; height:30px", :placeholder => "Enter a City" %>
-                  <!--input type="text" class="l_input" name = "l_input" style="margin-bottom: 5px; height:30px" placeholder="Enter a city"-->
+              <%= form_tag(listings_path, :method => "get") do %>
+                <div class="row spacebottom">
+                  <div class="span7">
+                    <div class="leftgap">
+                      <%= text_field_tag 'city', "", :class=> :l_input, :style => "margin-bottom: 5px; height:30px", :placeholder => "Enter a City" %>
+                    </div>
                   </div>
-                </div>
 
                 <div class="span2" id="search">
                    <%= submit_tag "SEARCH", :class => "l_button btn btn-large btn-primary", :style => "width: 100%" %>
-                       <!--%= link_to "SEARCH", listings_path,:name => "l_search", :class => "l_button btn btn-large btn-primary" %-->
                 </div>
-            <%end%>
-
+              <%end%>
 
               </div>
             </div>
@@ -40,10 +36,58 @@
         </div> <!-- end search box-->
 
       </div>
-    </div>
+    </div> <!-- row-->
   </div>
- 
+
   <div class="features paperpanel">
+    <div class="container-fluid">
+      <div class = "row-fluid">
+
+<div class="featured">Work in these unique spaces</div>
+        <div id="myCarousel" class="carousel slide">
+
+          <!-- Carousel items -->
+          <div class="carousel-inner">            
+           <% @featured_offices.each_with_index do |office,index| %>
+              <% if index%2==0 %><div class="<% if index==0%>active<% end %> item"><% end %>
+                 
+
+                  <a href= "<%= office_path(office)  %>" >
+                      <li class = "span6 carousel-div">
+                        <div class="<% if index%2 ==0%>left-img<% else %>right-img<% end %>">
+                          <%= cl_image_tag office.office_images.first.path, :class => "img-polaroid carousel-img" %>
+                          <div class="caption">
+                            <strong><%= office.title %></strong>
+                            <p><%= office.loc_city %>, <%= office.loc_state %> &#8226; <% if office.rent? %>
+                              <%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
+                              <% if office.rent_type == 1 %>/month
+                              <% else %>
+                                <% if office.rent_type == 2 %>/week
+                                <% else %>
+                                  <% if office.rent_type == 3 %>/day
+                                  <% else %>month
+                                  <% end %>
+                                <% end %>
+                              <% end %>
+                             <% else %>
+                               Contact us for rent
+                             <% end %></p>
+                          </div>
+                      </div></li> 
+                  </a>
+              <% if index%2 != 0 %></div><% end %>
+        <% end %> 
+
+          </div>
+          <!-- Carousel nav -->
+          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+        </div> <!--end carousel-->
+
+      </div>
+    </div> 
+    <hr>
+
     <div class="row">
       <div class="span6 offset1 padtop">
 
@@ -54,7 +98,7 @@
         <h4 style="font-size: 20px; color: #0098cd; padding-top: 150px;"><a href="http://www.youtube.com/embed/4PVtWH7phk0?rel=0" target="_blank">Watch an overview of Intuit Spaces</a></h4>
         <p>(00:49)</p>
       </div>
-    </div>
+    </div>    
     <hr>
     <div class="row">
       <div class="span9 offset1 padtop padbottom">
