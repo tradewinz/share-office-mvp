@@ -53,25 +53,25 @@
                  
 
                   <a href= "<%= office_path(office)  %>" >
-                      <li class = "span6 carousel-div">
-                        <div class="<% if index%2 ==0%>left-img<% else %>right-img<% end %>">
-                          <%= cl_image_tag office.office_images.first.path, :class => "img-polaroid carousel-img" %>
-                          <div class="caption">
-                            <strong><%= office.title %></strong>
-                            <p><%= office.loc_city %>, <%= office.loc_state %> &#8226; <% if office.rent? %>
-                              <%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
-                              <% if office.rent_type == 1 %>/month
+                    <li class = "span6 carousel-div">
+                      <div class="<% if index%2 ==0%>left-img<% else %>right-img<% end %>">
+                        <%= cl_image_tag office.office_images.first.path, :class => "img-polaroid carousel-img" %>
+                        <div class="caption">
+                          <strong><%= office.title %></strong>
+                          <p><%= office.loc_city %>, <%= office.loc_state %> &#8226; <% if office.rent? %>
+                            <%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
+                            <% if office.rent_type == 1 %>/month
+                            <% else %>
+                              <% if office.rent_type == 2 %>/week
                               <% else %>
-                                <% if office.rent_type == 2 %>/week
-                                <% else %>
-                                  <% if office.rent_type == 3 %>/day
-                                  <% else %>month
-                                  <% end %>
+                                <% if office.rent_type == 3 %>/day
+                                <% else %>month
                                 <% end %>
                               <% end %>
-                             <% else %>
-                               Contact us for rent
-                             <% end %></p>
+                            <% end %>
+                           <% else %>
+                             Contact us for rent
+                           <% end %></p>
                           </div>
                       </div></li> 
                   </a>
