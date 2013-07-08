@@ -1,36 +1,36 @@
 <div class="hero-bg paperpanel">
 
-    <div class="row">
-      <div class="span12">
-        
-        <!-- search box-->
-        <div class="row">
-          <div class="span10 offset1">
-            <div class="l_search">
-              <div class="row spacetop spacebottom">
-                <div class="span4">
-                  <span class="leftgap label l_text">Find a space to work</span>
-                </div>
-              </div>
-
-              <%= form_tag(listings_path, :method => "get") do %>
-                <div class="row spacebottom">
-                  <div class="span7">
-                    <div class="leftgap">
-                      <%= text_field_tag 'city', "", :class=> :l_input, :style => "margin-bottom: 5px; height:30px", :placeholder => "Enter a City" %>
-                    </div>
-                  </div>
-
-                <div class="span2" id="search">
-                   <%= submit_tag "SEARCH", :class => "l_button btn btn-large btn-primary", :style => "width: 100%" %>
-                </div>
-              <%end%>
-
+  <div class="row">
+    <div class="span12">
+      
+      <!-- search box-->
+      <div class="row">
+        <div class="span10 offset1">
+          <div class="l_search">
+            <div class="row spacetop spacebottom">
+              <div class="span4">
+                <span class="leftgap label l_text">Find a space to work</span>
               </div>
             </div>
-          </div>
-        </div> <!-- end search box-->
 
-      </div>
-    </div> <!-- row-->
-  </div>
+            <%= form_tag(listings_path, :method => "get") do %>
+              <div class="row spacebottom">
+                <div class="span7">
+                  <div class="leftgap">
+                    <%= text_field_tag 'city', "", :class=> :l_input, :style => "margin-bottom: 5px; height:30px", :placeholder => "Enter a City" %>
+                  </div>
+                </div>
+
+              <div class="span2" id="search">
+                 <%= submit_tag "SEARCH", :class => "l_button btn btn-large btn-primary", :style => "width: 100%" %>
+              </div>
+            <%end%>
+
+            </div>
+          </div>
+        </div>
+      </div> <!-- end search box-->
+
+    </div>
+  </div> <!-- row-->
+</div>

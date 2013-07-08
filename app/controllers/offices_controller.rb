@@ -15,6 +15,12 @@ class OfficesController < ApplicationController
   # GET /offices/1.json
   def show
     @office = Office.find(params[:id])
+
+    if session[:query]
+      @next_office = @office.next(session[:query])
+      @prev_office = @office.previous(session[:query])
+    end 
+
     @json = @office.to_gmaps4rails
 
     track_event("Viewed Details");
