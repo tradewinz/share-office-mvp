@@ -1,0 +1,48 @@
+<div id="myCarousel" class="carousel slide">
+
+          <!-- Carousel items -->
+          <div class="carousel-inner">            
+           <% @featured_offices.each_with_index do |office,index| %>
+              <% if index%2==0 %><div class="<% if index==0%>active<% end %> item"><% end %>
+                 
+
+                  <a href= "<%= office_path(office)  %>" >
+                    <li class = "span6 carousel-div">
+                      <div class="<% if index%2 ==0%>left-img<% else %>right-img<% end %>">
+
+                        <% if (office.office_images.first != nil) %>
+                          <%= cl_image_tag office.office_images.first.path, :width => 365, :height => 249, :crop => :fill, :class => "img-polaroid" %>
+                        <% else %>
+                         <%= image_tag "default-studio.png", :class => "img-polaroid carousel-img" %>
+                        <% end %>
+                      
+                        <div class="caption">
+                          <strong><%= office.title %></strong>
+                          <p><%= office.loc_city %>, <%= office.loc_state %> &#8226; <% if office.rent? %>
+                            <%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
+                            <% if office.rent_type == 1 %>/month
+                            <% else %>
+                              <% if office.rent_type == 2 %>/week
+                              <% else %>
+                                <% if office.rent_type == 3 %>/day
+                                <% else %>month
+                                <% end %>
+                              <% end %>
+                            <% end %>
+                           <% else %>
+                             Contact us for rent
+                           <% end %></p>
+                          </div>
+                      </div></li> 
+                  </a>
+              <% if index%2 != 0 %></div><% end %>
+        <% end %> 
+
+          </div>
+          <!-- Carousel nav -->
+          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+        </div> <!--end carousel-->
+
+      </div>
+    </div>
