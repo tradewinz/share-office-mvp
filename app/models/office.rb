@@ -2,7 +2,7 @@ class Office < ActiveRecord::Base
   attr_accessible :office_type, :accomodate, :size, :wifi, :confroom, :kitchen, :parking, :ac, :printer,
                   :loc_zip, :loc_addr1, :loc_addr2, :loc_city, :loc_state,
                   :title, :description, :rent, :rent_type, :available,
-                  :user_id, :latitude, :longitude, :gmaps, :window
+                  :user_id, :latitude, :longitude, :gmaps, :window, :featured
 
   belongs_to :user                  
 

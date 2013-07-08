@@ -8,173 +8,23 @@
       src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry,places&client=gme-intuitinc&channel=fms.spaces">
 </script-->
 
-<div class="hero-bg paperpanel">
+<%= render 'landing_pages/search' %>
 
-    <div class="row">
-      <div class="span12">
-        
-        <!-- search box-->
-        <div class="row">
-          <div class="span10 offset1">
-            <div class="l_search">
-              <div class="row spacetop spacebottom">
-                <div class="span4">
-                  <span class="leftgap label l_text">Find a space to work</span>
-                </div>
-              </div>
+<div class="features paperpanel">
+  <div class="container-fluid">
+    <div class = "row-fluid">
 
-              <%= form_tag(listings_path, :method => "get") do %>
-                <div class="row spacebottom">
-                  <div class="span7">
-                    <div class="leftgap">
-                      <%= text_field_tag 'city', "", :class=> :l_input, :style => "margin-bottom: 5px; height:30px", :placeholder => "Enter a City" %>
-                    </div>
-                  </div>
-
-                <div class="span2" id="search">
-                   <%= submit_tag "SEARCH", :class => "l_button btn btn-large btn-primary", :style => "width: 100%" %>
-                </div>
-              <%end%>
-
-              </div>
-            </div>
-          </div>
-        </div> <!-- end search box-->
-
-      </div>
-    </div> <!-- row-->
-  </div>
-
-  <div class="features paperpanel">
-    <div class="container-fluid">
-      <div class = "row-fluid">
-
-<div class="featured">Work in these unique spaces</div>
-        <div id="myCarousel" class="carousel slide">
-
-          <!-- Carousel items -->
-          <div class="carousel-inner">            
-           <% @featured_offices.each_with_index do |office,index| %>
-              <% if index%2==0 %><div class="<% if index==0%>active<% end %> item"><% end %>
-                 
-
-                  <a href= "<%= office_path(office)  %>" >
-                    <li class = "span6 carousel-div">
-                      <div class="<% if index%2 ==0%>left-img<% else %>right-img<% end %>">
-                        <%= cl_image_tag office.office_images.first.path, :class => "img-polaroid carousel-img" %>
-                        <div class="caption">
-                          <strong><%= office.title %></strong>
-                          <p><%= office.loc_city %>, <%= office.loc_state %> &#8226; <% if office.rent? %>
-                            <%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
-                            <% if office.rent_type == 1 %>/month
-                            <% else %>
-                              <% if office.rent_type == 2 %>/week
-                              <% else %>
-                                <% if office.rent_type == 3 %>/day
-                                <% else %>month
-                                <% end %>
-                              <% end %>
-                            <% end %>
-                           <% else %>
-                             Contact us for rent
-                           <% end %></p>
-                          </div>
-                      </div></li> 
-                  </a>
-              <% if index%2 != 0 %></div><% end %>
-        <% end %> 
-
-          </div>
-          <!-- Carousel nav -->
-          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-        </div> <!--end carousel-->
-
-      </div>
-    </div> 
-    <hr>
-
-    <div class="row">
-      <div class="span6 offset1 padtop">
-
-        <iframe width="430" height="242" src="http://www.youtube.com/embed/4PVtWH7phk0?rel=0" frameborder="0" allowfullscreen></iframe>
-        <!--HD VIDEO -- iframe width="430" height="242" src="http://www.youtube.com/embed/qsveEO6oQUk?rel=0" frameborder="0" allowfullscreen></iframe-->
-      </div>
-      <div class="span5">
-        <h4 style="font-size: 20px; color: #0098cd; padding-top: 150px;"><a href="http://www.youtube.com/embed/4PVtWH7phk0?rel=0" target="_blank">Watch an overview of Intuit Spaces</a></h4>
-        <p>(00:49)</p>
-      </div>
-    </div>    
-    <hr>
-    <div class="row">
-      <div class="span9 offset1 padtop padbottom">
-        <div class="row">
-          <div class="span7">
-              <h3>Make your office pay for itself</h3>
-               <p>Earn extra money by renting out your extra office space. No listing or membership fees.
-                 <%= link_to "List your extra space now >>", new_office_path %>
-                </p>
-          </div>
-          <div class="span2">
-            <%= image_tag "tw/icon_home_floorplan.png", :alt=> "icon home" %>
-          </div>
-        </div>
-
-        <div class="row padtop">
-          <div class="span2">
-            <%= image_tag("tw/icon_home_pie.png", alt: "icon pie") %>
-          </div>
-          <div class="span7">
-              <h3>Listing your space is as easy as pie </h3>
-              <p>From the makers of QuickBooks and TurboTax - not only do we make accounting and tax preparation
-                easier for you, we'll make it easy for you to earn extra money with your extra space.
-                <%= link_to "Get started >>", new_office_path %>
-              </p>
-          </div>
-        </div>
-
-          <div class="row padtop padbottom">
-            <div class="span7">
-              <h3>Reliable & trustworthy connections</h3>
-              No SPAM and No SCAMS. Only interact with other reliable and trusted professionals and entrepreneurs
-              like yourself.
-              <%= link_to "Get started >>", new_office_path %>
-            </div>
-            <div class="span2">
-              <%= image_tag("tw/icon_home_handshake.png", alt: "icon handshake") %>
-            </div>
-        </div>
-
-
+      <div class="featured">Work in these unique spaces</div>
+      <%= render 'landing_pages/carousel' %>
+      <hr>
+  
+      <div class="featured">We make it easy for businesses to share and find office space</div>
+      <%= render 'landing_pages/video' %>       
+      <hr>
+  
     </div>
 
-  </div>
-
-    <div class="container paperpanel">
-      <div class="well well-small well-footer">
-        <div class="row-fluid">
-          <div class="span5">
-            <img src="https://s3.amazonaws.com/uploads.hipchat.com/46883/314424/exovvpc26etcptp/icon_phone_16x16.png"
-                 class="pull-left img-rounded">
-            <p>
-              <b>&nbsp;Have Questions?</b> Call us at 1 (855) SPK-2-SPACES</p>
-          </div>
-          <div class="span4">
-            <img src="https://s3.amazonaws.com/uploads.hipchat.com/46883/314424/1ihs6zyiikeam9p/icon_email_16x16.png"
-                 class="pull-left img-rounded">
-            <b>&nbsp;Send us a note at</b>
-            <a href="mailto:spaces@intuit.com">spaces@intuit.com</a>
-          </div>
-          <div class="span3">&nbsp;
-            <b>Follow us:</b>
-            <img src="https://s3.amazonaws.com/uploads.hipchat.com/46883/314424/ibhvzf2ae9ci7ar/icon_blog_29x16.png"
-                 class="pull-left img-rounded">
-            <a href="/blog" target="_blank">Blog</a> |
-            <a href="/about" target="_blank">About Us</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render 'landing_pages/footer' %>    
 
   </div>   <!-- white features panel -->
 
