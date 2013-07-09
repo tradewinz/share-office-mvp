@@ -23,7 +23,7 @@
                <%= image_tag "default-studio.png", :class => "img-polaroid carousel-img" %>
               <% end %>
             
-              <div class="caption">
+              <div class="carousel-caption home">
                 <strong><%= office.title %></strong>
                 <p><%= office.loc_city %>, <%= office.loc_state %> &#8226; <% if office.rent? %>
                   <%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
