@@ -1,10 +1,9 @@
+ <% if (session[:search_results] and (request.referer.include? "offices/" or request.referer.include? "listings")) %> 
   <div class="listing-nav">
-  <% if (session[:search_results] and (request.referer.include? "offices/" or request.referer.include? "listings")) %> 
     <%= link_to "&larr; Back to search results".html_safe, session[:search_results] %>
     <span style="float:right;"><% if @prev_office %><%= link_to "&laquo; Previous listing".html_safe, office_path(@prev_office) %><% end %> <% if @prev_office and @next_office%>|<% end %> <% if @next_office %><%= link_to "Next listing &raquo;".html_safe, office_path(@next_office) %><% end %></span>
-  <% end %>
   </div>
-  
+<% end %>  
    
 
 <div class="row panel panel-border">
@@ -26,11 +25,11 @@
     <p class="officecost text-right">
      <% if @office.rent? %>
           <strong><%= number_to_currency(@office.rent, :locale => 'en_us', :precision => 0) %></strong>
-          <% if @office.rent_type == 1 %>/month
+          <% if @office.rent_type == 1 %>/ month
           <% else %>
-              <% if @office.rent_type == 2 %>/week
+              <% if @office.rent_type == 2 %>/ week
               <% else %>
-                  <% if @office.rent_type == 3 %>/day
+                  <% if @office.rent_type == 3 %>/ day
                   <% else %>month
                   <% end %>
               <% end %>
