@@ -1,11 +1,10 @@
   <div class="listing-nav">
-  <!--
   <% if (session[:search_results] and (request.referer.include? "offices/" or request.referer.include? "listings")) %> 
     <%= link_to "&larr; Back to search results".html_safe, session[:search_results] %>
     <span style="float:right;"><% if @prev_office %><%= link_to "&laquo; Previous listing".html_safe, office_path(@prev_office) %><% end %> <% if @prev_office and @next_office%>|<% end %> <% if @next_office %><%= link_to "Next listing &raquo;".html_safe, office_path(@next_office) %><% end %></span>
   <% end %>
-  -->
   </div>
+  
    
 
 <div class="row panel panel-border">
