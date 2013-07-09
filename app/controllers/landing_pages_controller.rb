@@ -2,7 +2,6 @@ class LandingPagesController < ApplicationController
 
 	def home
     @featured_offices = Office.where("featured = ?", "true");
-
     track_event("Visited Homepage")
   end
 
