@@ -13,7 +13,7 @@
                 </div>
               </div>
 
-              <%= form_tag(listings_path, :method => "get") do %>
+              <%= form_tag(listings_path, :method => "get", :id => 'search_form') do %>
                 <div class="row spacebottom">
                   <div class="span7">
                     <div class="leftgap">
@@ -22,7 +22,7 @@
                   </div>
 
                 <div class="span2" id="search">
-                   <%= submit_tag "SEARCH", :class => "l_button btn btn-large btn-primary", :style => "width: 100%" %>
+                   <%= submit_tag "SEARCH", :class => "l_button btn btn-large btn-primary", :id => 'searchBtn', :style => "width: 100%" %>
                 </div>
               <%end%>
 
