@@ -128,15 +128,26 @@
   font:Helvetica;
   background: rgba(0,0,0,.6);
   padding: 10px;
+  z-index: 10;
 }
 
-.carousel-indicators {
-  position: absolute;
-  top: 455px;
-  right: 15px;
-  z-index: 5;
-  margin: 0;
-  list-style: none;
+.carousel-indicators.middle {
+  left: 0;
+  right: 0;
+  top: auto;
+  bottom: 15px;
+  text-align: center;
+}
+
+.carousel-indicators.middle li {
+  float: none;
+  display: inline-block;
+  background-color: #000; 
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.carousel-indicators.middle .active {
+  background-color: #ccc;
 }
 
 .listing-nav {

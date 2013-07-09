@@ -1,7 +1,7 @@
 class LandingPagesController < ApplicationController
 
 	def home
-    @featured_offices = Office.where("featured = ?", true).limit(4);
+    @featured_offices = Office.where("featured = ?", true).limit(8);
 
     track_event("Visited Homepage")
   end
@@ -24,11 +24,14 @@ class LandingPagesController < ApplicationController
         @offices = Office.near(@search_string, 50).page(params[:page])
         @mappable_offices = Office.near(@search_string, 50)
       end
+      session[:query] = @offices.map(&:id)
+      session[:search_results] = request.url
     else
       @offices = Office.order('created_at DESC').page(params[:page])
       @mappable_offices = Office.all
+      session[:query] = @offices.map(&:id)
+      session[:search_results] = request.url
     end
-    session[:query] = @offices.map(&:id)
 
 
     @json = @mappable_offices.to_gmaps4rails do |office, marker|
