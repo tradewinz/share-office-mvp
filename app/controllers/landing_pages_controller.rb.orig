@@ -19,13 +19,23 @@ class LandingPagesController < ApplicationController
     @sort = params[:sort]
     @direction = params[:dir]
 
-    if (@search_string != "")
-      @mappable_offices = Office.near(@search_string, 20)
+    if (@search_string != "")      
+      @mappable_offices = Office.near(@search_string, 20)      
       if (@mappable_offices.count == 0)
-        @mappable_offices = Office.near(@search_string, 50)
+        @mappable_offices = Office.near(@search_string, 50)      
       end
-    else     
+<<<<<<< HEAD
+    else      
       @mappable_offices = Office.order('created_at DESC')
+=======
+      session[:query] = @offices.map(&:id)
+      session[:search_results] = request.url
+    else
+      @offices = Office.order('created_at DESC').page(params[:page])
+      @mappable_offices = Office.all
+      session[:query] = @offices.map(&:id)
+      session[:search_results] = request.url
+>>>>>>> aff8b0abccf64028fdfafc4ebd57a306a238f663
     end
 
     if(@sort == "rent")
@@ -36,11 +46,9 @@ class LandingPagesController < ApplicationController
       end
     else
       @offices = @mappable_offices
-    end
+    end    
 
     @offices = @offices.page(params[:page])
-    session[:query] = @offices.map(&:id)
-    session[:search_results] = request.url
 
     @json = @mappable_offices.to_gmaps4rails do |office, marker|
       marker.infowindow render_to_string(:partial => "/offices/infowindow", :locals => { :office => office})

@@ -15,6 +15,16 @@ class OfficesController < ApplicationController
   # GET /offices/1.json
   def show
     @office = Office.find(params[:id])
+    
+    # make sure next and prev are only found when searching; if not search, clear session
+    if (session[:query] and session[:search_results] and session[:query].include? @office.id and (request.referer.include? "offices/" or request.referer.include? "listings"))
+      @next_office = @office.next(session[:query])
+      @prev_office = @office.previous(session[:query])
+    else
+      session[:query] = nil
+      session[:search_results] = nil
+    end 
+
     @json = @office.to_gmaps4rails
 
     track_event("Viewed Details");
