@@ -1,11 +1,9 @@
-<div class="listing-detail">
 
 <div class="row">
   <div class="listing-nav">
   <% if request.referer.include? "SEARCH"%>
-    <%= link_to "&laquo; Back to search results".html_safe, :back %>
-    <!--span style="float:right;"><%= link_to "View next listing &raquo;".html_safe, :back %></span-->
-  <% end %>
+    <%= link_to "&larr; Back to search results".html_safe, :back %> <% end %>
+    <span style="float:right;"><% if @prev_office %><%= link_to "&laquo; Previous listing".html_safe, office_path(@prev_office) %><% end %> <% if @prev_office and @next_office%>|<% end %> <% if @next_office %><%= link_to "Next listing &raquo;".html_safe, office_path(@next_office) %><% end %></span>
   </div>
 </div>
 
