@@ -16,19 +16,29 @@ class LandingPagesController < ApplicationController
     #Paginated queries
     #@offices = Office.where("loc_zip = ?", params[:city]).page(params[:page])
     @search_string = params[:city]
+    @sort = params[:sort]
+    @direction = params[:dir]
 
-    if (@search_string != "")
-      @offices = Office.near(@search_string, 20).page(params[:page])
-      @mappable_offices = Office.near(@search_string, 20)
-      if (@offices.count == 0)
-        @offices = Office.near(@search_string, 50).page(params[:page])
-        @mappable_offices = Office.near(@search_string, 50)
+    if (@search_string != "")      
+      @mappable_offices = Office.near(@search_string, 20)      
+      if (@mappable_offices.count == 0)
+        @mappable_offices = Office.near(@search_string, 50)      
       end
-    else
-      @offices = Office.order('created_at DESC').page(params[:page])
-      @mappable_offices = Office.all
+    else      
+      @mappable_offices = Office.order('created_at DESC')
     end
 
+    if(@sort == "rent")
+      if(@direction == "asc")
+        @offices = @mappable_offices.order('rent IS NULL, rent ASC')
+      else
+        @offices = @mappable_offices.order('rent IS NULL, rent DESC')
+      end
+    else
+      @offices = @mappable_offices
+    end    
+
+    @offices = @offices.page(params[:page])
 
     @json = @mappable_offices.to_gmaps4rails do |office, marker|
       marker.infowindow render_to_string(:partial => "/offices/infowindow", :locals => { :office => office})

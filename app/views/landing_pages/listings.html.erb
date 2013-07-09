@@ -59,6 +59,26 @@
 
   <div class="row padtopsmall" style="background-color: #ffffff;">
     <div class="span12">
+      <ul class="nav" role="navigation">
+        <li class="dropdown">
+          <a id="sortdrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+            Sort <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+            <li role="presentation">
+              <%= link_to "Rent: Low to High", listings_path(:city => @search_string, :sort => "rent", :dir => "asc"), :role => "menuitem", :tabindex => "-1" %>              
+            </li>
+            <li role="presentation">
+              <%= link_to "Rent: High to Low", listings_path(:city => @search_string, :sort => "rent", :dir => "desc"), :role => "menuitem", :tabindex => "-1" %>              
+            </li>
+            <!--li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Distance: Near to Far</a></li>        
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Distance: Far to Near</a></li-->
+          </ul>                    
+        </li>                    
+      </ul>
+
+
     <% if @offices.count == 0 %>
           <div class="row search result">
              <div class="span12">
