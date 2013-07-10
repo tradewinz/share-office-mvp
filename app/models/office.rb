@@ -7,7 +7,7 @@ class Office < ActiveRecord::Base
   belongs_to :user                  
 
   validates :title, :presence => true
-  validates :loc_zip, :presence => true
+  validates :loc_city, :presence => true
 
   #geocode using geocoder
   geocoded_by :address
@@ -30,7 +30,13 @@ class Office < ActiveRecord::Base
   end
 
   def address
-    [loc_addr1, loc_city, loc_state, loc_zip].compact.join(', ')
+    if !loc_addr1.blank? && !loc_zip.blank?
+      [loc_addr1, loc_city, loc_state, loc_zip].compact.join(', ')
+    elsif !loc_zip.blank?
+      [loc_city, loc_state, loc_zip].compact.join(', ')
+    else
+      [loc_city, loc_state].compact.join(', ')
+    end
   end
 
   def next(query)

@@ -60,6 +60,9 @@ $(document).ready(function() {
 
 </script>
 
+<script type="text/javascript"
+        src="http://maps.google.com/maps/api/js?v=3&sensor=false&libraries=geometry,places&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE">
+</script>
 
 <%= tinymce_assets %>
 <script type="text/javascript">
@@ -189,6 +192,10 @@ $(document).ready(function() {
             <div class="control-group">
               <label class="control-label">Location</label>
 
+              <div class="span7">
+                  <%= text_field_tag 'address', f.object.address , :class=> :l_input, :style => "margin-bottom: 5px; height:30px", :placeholder => "Enter your address. e.g. 2000 Coast Ave, Mountain View, CA 94043." %>
+              </div>
+
               <div class="row">
                 <div class="span3">
                   <%= f.text_field :loc_addr1, :placeholder => "Street address", :style => "width: 220px" %>
@@ -208,6 +215,7 @@ $(document).ready(function() {
               <div class="controls"> <%= f.text_field :loc_zip, :placeholder => "required", :style => "width: 109px" %>
               </div>
             </div>
+
 
           </fieldset>
           </div>
@@ -306,3 +314,76 @@ $(document).ready(function() {
 <% end %>
 
 </div>
+
+<script type="text/javascript">
+
+    $(document).ready (function() {
+        var input = document.getElementById('address');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.setTypes(['geocode']);
+        autocomplete.setComponentRestrictions({'country':'us'});
+
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+
+            var place = autocomplete.getPlace();
+            console.log("Event::Place_Changed::" +place);
+            var address = '';
+            if (place.address_components) {
+                var loc_addr1 = document.getElementById('office_loc_addr1');
+                var loc_city = document.getElementById('office_loc_city');
+                var loc_state = document.getElementById('office_loc_state');
+                var loc_zip = document.getElementById('office_loc_zip');
+
+                // reset fields
+                loc_addr1.value = '';
+                loc_city.value = '';
+                loc_state.value = '';
+                loc_zip.value = '';
+
+
+                //loc_addr1.value = place.address_components[0] && place.address_components[0].short_name || '';
+                //loc_city.value = place.address_components[1] && place.address_components[1].short_name || '';
+                //loc_state.value = place.address_components[2] && place.address_components[2].short_name || '';
+                var street_number;
+                var street_name;
+
+                for (var i=0; i<place.address_components.length;i++)
+                {
+                    for (var j=0;j<place.address_components[i].types.length;j++)
+                    {
+                        console.log('type:' + place.address_components[i].types[j] + ' => short_name:' + place.address_components[i].short_name + ' , long_name:' + place.address_components[i].long_name);
+                        if (place.address_components[i].types[j] == "postal_code")
+                        {
+                            loc_zip.value = place.address_components[i].long_name;
+                        }
+                        else if (place.address_components[i].types[j] == "street_number")
+                        {
+                            street_number = place.address_components[i].long_name;
+                        }
+                        else if (place.address_components[i].types[j] == "route")
+                        {
+                            street_name = place.address_components[i].long_name;
+                        }
+                        else if (place.address_components[i].types[j] == "locality")
+                        {
+                            loc_city.value = place.address_components[i].long_name;
+                        }
+                        else if (place.address_components[i].types[j] == "administrative_area_level_1")
+                        {
+                            loc_state.value = place.address_components[i].short_name;
+                        }
+                    }
+                }
+                if (street_number && street_name) {
+                    loc_addr1.value = street_number + ' ' + street_name;
+                } else if (street_name) {
+                    loc_addr1.value = street_name;
+                } else {
+                    loc_addr1.value = '';
+                }
+            }
+        });
+
+    });
+
+</script>
