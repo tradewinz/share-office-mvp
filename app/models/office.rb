@@ -9,6 +9,10 @@ class Office < ActiveRecord::Base
   validates :title, :presence => true
   validates :loc_zip, :presence => true
 
+  #change to simple form before adding error
+  #validates :accomodate, :numericality => { :greater_than_or_equal_to => 0 }
+
+
   #geocode using geocoder
   geocoded_by :address
   #geocode on update
