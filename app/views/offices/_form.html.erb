@@ -281,6 +281,14 @@ $(document).ready(function() {
               </div>
             </div>
 
+           <% if current_user.admin? %>
+                <div class="control-group">
+                 <label class="control-label">Featured Listing:</label>
+                 <div class="controls"> <%= f.check_box :featured %>  </div>
+               </div>
+           <% end %>
+
+
           </fieldset>
 
           <div class="row">

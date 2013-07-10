@@ -1,4 +1,4 @@
-class LandingPagesController < ApplicationController
+lass LandingPagesController < ApplicationController
 
 	def home
     @featured_offices = Office.where("featured = ?", true).limit(8);

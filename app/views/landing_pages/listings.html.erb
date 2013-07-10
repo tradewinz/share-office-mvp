@@ -124,7 +124,7 @@
 
                 <div class="span" style="width:44px;">
                     <div class="profile-pic-list">
-                      <% if office.user.photo? %>
+                      <% if office.user && office.user.photo? %>
                           <%= image_tag(office.user.photo) %>
                       <% else %>
                           <%= image_tag("default_person.png") %>
