@@ -19,29 +19,32 @@ class LandingPagesController < ApplicationController
     @direction = params[:dir]
 
     if (@search_string != "")
-      @mappable_offices = Office.near(@search_string, 20).page(params[:page])
-      if (@mappable_offices.count == 0)
-        @mappable_offices = Office.near(@search_string, 50).page(params[:page])
-      end
-    else     
-      @mappable_offices = Office.order('created_at DESC').page(params[:page])
-    end
-    
-    #@mappable_offices = @mappable_offices.page(params[:page])
-
-    if(@sort == "rent")
-      if(@direction == "asc")
-        #@sorted_offices = Office.order('rent IS NULL, rent ASC').page(params[:page])        
-        @offices = @mappable_offices.sort! { |a,b| a.rent.to_i <=> b.rent.to_i}
+      @mappable_offices = Office.near(@search_string, 20)
+      if(@sort == "rent")
+        if(@direction == "desc")
+          #@sorted_offices = Office.order('rent IS NULL, rent ASC').page(params[:page])
+          #@offices = @mappable_offices.sort! { |a,b| a.rent.to_i <=> b.rent.to_i}
+          @offices = Office.near(@search_string, 20, :order => 'rent IS NULL, rent DESC').page(params[:page])
+        else
+          #@sorted_offices = Office.order('rent IS NULL, rent DESC').page(params[:page])
+          #@offices = @mappable_offices.sort! { |a,b| b.rent.to_i <=> a.rent.to_i}
+          @offices = Office.near(@search_string, 20, :order => 'rent IS NULL, rent ASC').page(params[:page])
+        end
       else
-        #@sorted_offices = Office.order('rent IS NULL, rent DESC').page(params[:page])        
-        @offices = @mappable_offices.sort! { |a,b| b.rent.to_i <=> a.rent.to_i}
+         @offices = Office.near(@search_string, 20).page(params[:page])
       end
     else
-      @offices = @mappable_offices  
+      @mappable_offices = Office.all
+      if(@sort == "rent")
+        if(@direction == "desc")
+          @offices =  Office.order('rent IS NULL, rent DESC').page(params[:page])
+        else
+          @offices =  Office.order('rent IS NULL, rent ASC').page(params[:page])
+        end
+      else
+        @offices =  Office.order('created_at DESC').page(params[:page])
+      end
     end
-    
-    #@sorted_offices = @sorted_offices.page(params[:page])
 
     session[:query] = @offices.map(&:id)
     session[:search_results] = request.url
