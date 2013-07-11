@@ -20,23 +20,39 @@ class LandingPagesController < ApplicationController
     #Paginated queries
     #@offices = Office.where("loc_zip = ?", params[:city]).page(params[:page])
     @search_string = params[:city]
+    @sort = params[:sort]
+    @direction = params[:dir]
 
     if (@search_string != "")
-      @offices = Office.near(@search_string, 20).page(params[:page])
       @mappable_offices = Office.near(@search_string, 20)
-      if (@offices.count == 0)
-        @offices = Office.near(@search_string, 50).page(params[:page])
-        @mappable_offices = Office.near(@search_string, 50)
+      if(@sort == "rent")
+        if(@direction == "asc")
+          #@sorted_offices = Office.order('rent IS NULL, rent ASC').page(params[:page])
+          #@offices = @mappable_offices.sort! { |a,b| a.rent.to_i <=> b.rent.to_i}
+          @offices = Office.near(@search_string, 20, :order => 'rent IS NULL, rent == 0, rent ASC').page(params[:page])
+        else
+          #@sorted_offices = Office.order('rent IS NULL, rent DESC').page(params[:page])
+          #@offices = @mappable_offices.sort! { |a,b| b.rent.to_i <=> a.rent.to_i}
+          @offices = Office.near(@search_string, 20, :order => 'rent IS NULL, rent == 0, rent DESC').page(params[:page])
+        end
+      else
+         @offices = Office.near(@search_string, 20).page(params[:page])
       end
-      session[:query] = @offices.map(&:id)
-      session[:search_results] = request.url
     else
-      @offices = Office.order('created_at DESC').page(params[:page])
       @mappable_offices = Office.all
-      session[:query] = @offices.map(&:id)
-      session[:search_results] = request.url
+      if(@sort == "rent")
+        if(@direction == "asc")
+          @offices =  Office.order('rent IS NULL, rent == 0, rent ASC').page(params[:page])
+        else
+          @offices =  Office.order('rent IS NULL, rent == 0, rent DESC').page(params[:page])
+        end
+      else
+        @offices =  Office.order('created_at DESC').page(params[:page])
+      end
     end
 
+    session[:query] = @offices.map(&:id)
+    session[:search_results] = request.url
 
     @json = @mappable_offices.to_gmaps4rails do |office, marker|
       marker.infowindow render_to_string(:partial => "/offices/infowindow", :locals => { :office => office})

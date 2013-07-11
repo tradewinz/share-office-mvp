@@ -68,7 +68,7 @@
   <div class="row padtopsmall" style="background-color: #ffffff;">
     <div class="span12">
     <% if @offices.count == 0 %>
-          <div class="row search result">
+          <div class="row">
              <div class="span12">
                 <p>
                   Oops! We could not find any offices near your city.
@@ -82,7 +82,48 @@
              </div>
           </div>
     <% else %>
-      <% @offices.each do |office| %>
+        <div class="row">
+          <div class="span12">
+          <ul class="nav" role="navigation">
+            <li class="dropdown">
+              <a id="sortdrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                <strong>Sorted by:
+                  <%if @sort=="rent" %>
+                      <%if @direction=="asc" %>
+                        Rent
+                      <% else %>
+                        Rent (High to Low)
+                      <% end %>
+                  <% else %>
+                      <%if @search_string != "" %>
+                        Distance
+                      <% end %>
+                  <% end %>
+                </strong>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                <li role="presentation">
+                  <%= link_to "Rent", listings_path(:city => @search_string, :sort => "rent", :dir => "asc"), :role => "menuitem", :tabindex => "-1" %>
+                </li>
+
+                <!--li role="presentation">
+                  <#%= link_to "Rent: High to Low", listings_path(:city => @search_string, :sort => "rent", :dir => "desc"), :role => "menuitem", :tabindex => "-1" %>
+                </li!-->
+
+                <% if @search_string != "" %>
+                    <li role="presentation" class="divider"> </li>
+                    <li role="presentation">
+                        <%= link_to "Distance", listings_path(:city => @search_string), :role => "menuitem", :tabindex => "-1" %>
+                    </li>
+                <% end %>
+
+              </ul>
+            </li>
+          </ul>
+          </div>
+        </div>
+          <% @offices.each do |office| %>
 
           <div class="row search_result">
 
@@ -104,7 +145,7 @@
 
                 <div class="span" style="width:44px;">
                     <div class="profile-pic-list">
-                      <% if office.user.photo? %>
+                      <% if office.user && office.user.photo? %>
                           <%= image_tag(office.user.photo) %>
                       <% else %>
                           <%= image_tag("default_person.png") %>
