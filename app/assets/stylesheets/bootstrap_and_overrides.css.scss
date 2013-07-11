@@ -129,12 +129,13 @@
 .carousel-indicators.middle li {
   float: none;
   display: inline-block;
-  background-color: #000; 
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: #ccc;
 }
 
 .carousel-indicators.middle .active {
-  background-color: #ccc;
+  background-color: #000; 
+  background-color: rgba(0, 0, 0, 0.75);
+
 }
 
 .listing-nav {

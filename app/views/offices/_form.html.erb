@@ -298,3 +298,49 @@ $(document).ready(function() {
 <% end %>
 
 </div>
+
+<!-- other JS code -->
+<script type="text/javascript">
+function showLoadingImage() {
+    $('#second').append('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %> </div>');
+}
+
+function hideLoadingImage() {
+    $('#loading-image').remove();
+} 
+
+
+
+$("#continueListingBtn").click(function() {      
+  $('#second').show(); 
+  $('#first').hide();
+
+  mixpanel.track("Clicked Continue");
+
+});
+
+
+
+
+$("#saveListingBtn").click(function() {
+  $("#new_office").validate({
+    rules: {
+      "office[loc_zip]": {required: true},
+      "office[title]": {required: true}
+    },
+    messages: {
+      "office[loc_zip]": "Please tell us the zip code of your office",
+      "office[title]": "Please provide a title for your listing"
+    },
+    errorPlacement: function(error, element) {
+      element.after(error);
+      element.css('border', 'solid red 2px');
+    }
+  });
+
+  if ($("#new_office").valid()) {
+    _gaq.push(['_trackEvent', 'SaveListing', 'User saves a listing']);
+  }
+});
+
+</script>

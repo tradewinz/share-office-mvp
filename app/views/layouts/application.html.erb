@@ -31,46 +31,12 @@
 
 <body>
 
-<div class="navbar navbar-static">
-  <div class="wrapper container">
-      <div class="brand"><%= link_to image_tag("logo_intuit_spaces.gif", alt: "Intuit Spaces"), home_path %></div>
-      <ul class="nav pull-right">
-      <% if user_signed_in? %>
-        <li class="dropdown">
-          <a href="#" id="user" role="button" class="dropdown-toggle" data-toggle="dropdown">
-            <div class="profile-pic">
-              <% if current_user.photo? %>
-                  <%= image_tag(current_user.photo) %>
-              <% else %>
-                  <%= image_tag("default_person.png") %>
-              <% end %>
-            </div>
-            <%= current_user.name %> <b class="caret"></b></a>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="user">
-            <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-            <li><%= link_to "Your Listings", offices_path %></li>
-            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-          </ul>
-        </li>
-      <% else %>
-        <li><%= link_to "SIGN IN", new_user_session_path %></li>
-      <% end %>
-        <li><%= link_to "", new_office_path, :id => "addlisting", :class=>"list-btn" %></li>
-      </ul>
-  </div>
-</div>
+<%= render 'layouts/header' %>
 
 
 <!-- Main body pages -->
 
 <div class="container">
-  <!--
-  <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: "flashmsg", id: "flash_#{name}"%>
-  <% end %>
-  -->
-
-
   <%= render 'layouts/messages'%>
   <%= yield %> 
 </div>
@@ -78,14 +44,7 @@
 
 <!-- Footer -->
 
-<div class="container footer">
-  <div class="span6 offset4" style="margin-bottom: 30px; padding-top: 24px;">
-    <p>© Intuit, Inc. All rights reserved
-      <a href="http://security.intuit.com/privacy/" target="_blank">Privacy Policy</a>
-    </p>
-    <%= yield :scripts %>
-  </div>
-</div>
+<%= render 'layouts/footer'%>
 
 <!-- GA code -->
 
@@ -110,47 +69,6 @@
 
 <!-- other JS code -->
 <script type="text/javascript">
-function showLoadingImage() {
-    $('#second').append('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %> </div>');
-}
-
-function hideLoadingImage() {
-    $('#loading-image').remove();
-} 
-
-
-
-$("#continueListingBtn").click(function() {      
-  $('#second').show(); 
-  $('#first').hide();
-
-  mixpanel.track("Clicked Continue");
-
-});
-
-
-
-
-$("#saveListingBtn").click(function() {
-  $("#new_office").validate({
-    rules: {
-      "office[loc_zip]": {required: true},
-      "office[title]": {required: true}
-    },
-    messages: {
-      "office[loc_zip]": "Please tell us the zip code of your office",
-      "office[title]": "Please provide a title for your listing"
-    },
-    errorPlacement: function(error, element) {
-      element.after(error);
-      element.css('border', 'solid red 2px');
-    }
-  });
-
-  if ($("#new_office").valid()) {
-    _gaq.push(['_trackEvent', 'SaveListing', 'User saves a listing']);
-  }
-});
 
 $("#addlisting").click(function() {
   _gaq.push(['_trackEvent', 'AddListing', 'User clicks on Add Listing']);
