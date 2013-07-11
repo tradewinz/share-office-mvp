@@ -203,7 +203,7 @@ $(document).ready(function() {
             </div>
 
             <div class="control-group">
-              <label class="control-label"><strong>* Zip Code</strong></label>
+              <label class="control-label"><strong>* city Code</strong></label>
 
               <div class="controls"> <%= f.text_field :loc_zip, :placeholder => "required", :style => "width: 109px" %>
               </div>
@@ -329,7 +329,7 @@ $("#saveListingBtn").click(function() {
       "office[title]": {required: true}
     },
     messages: {
-      "office[loc_zip]": "Please tell us the zip code of your office",
+      "office[loc_zip]": "Please tell us the city code of your office",
       "office[title]": "Please provide a title for your listing"
     },
     errorPlacement: function(error, element) {

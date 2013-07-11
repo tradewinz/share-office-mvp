@@ -73,18 +73,6 @@
              <div class="controls"> <%= f.text_field :description %>  </div>
            </div>
 
-           <% if current_user.admin? %>
-               <div class="control-group">
-                 <label class="control-label">Admin:</label>
-                 <div class="controls"> <%= f.check_box :admin %>  </div>
-               </div>
-
-                <div class="control-group">
-                 <label class="control-label">Featured:</label>
-                 <div class="controls"> <%= f.check_box :featured %>  </div>
-               </div>
-           <% end %>
-
            <!--if user is from linkedin no need to enter password to change profile data-->
            <% if f.object.encrypted_password.present? %>
                <div class="control-group">
@@ -108,6 +96,15 @@
                </div>
 
 
+           <% end %>
+
+          <% if current_user.admin? %>
+          <hr>
+          <h3>Admin</h3>
+               <div class="control-group">
+                 <label class="control-label">Admin:</label>
+                 <div class="controls"> <%= f.check_box :admin %>  </div>
+               </div>
            <% end %>
 
            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

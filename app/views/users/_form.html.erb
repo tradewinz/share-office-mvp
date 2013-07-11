@@ -32,31 +32,3 @@
 <% end %>
 
 </div>
-
-<!-- other JS code -->
-<script type="text/javascript">
-$("#saveAlertBtn").click(function() {
-  $("#new_alert").validate({
-    rules: {
-      "alert[city]": {required: true},
-      "alert[email]": {
-        required: true, 
-        email: true
-      }
-    },
-    messages: {
-      "alert[city]": "Please tell us the city in which you are looking for a space.",
-      "alert[email]": {
-        required: "Please provide your email address, so we can send you a notice when a space in your city has been added.",
-        email: "Please enter a valid email address."
-      }
-    },
-    errorPlacement: function(error, element) {
-      element.after(error);
-      element.css('border', 'solid red 2px');
-    }
-  });
-
-});
-
-</script>
