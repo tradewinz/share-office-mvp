@@ -84,21 +84,38 @@
     <% else %>
         <div class="row">
           <div class="span12">
-          <ul class="nav" style="margin-left: 860px" role="navigation">
+          <ul class="nav" role="navigation">
             <li class="dropdown">
               <a id="sortdrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                <strong>Sort By</strong><b class="caret"></b>
+                <strong>Sorted by:
+                  <%if @sort=="rent" %>
+                      <%if @direction=="asc" %>
+                        Rent
+                      <% else %>
+                        Rent!
+                      <% end %>
+                  <% else %>
+                      <%if @search_string != "" %>
+                        Distance
+                      <% end %>
+                  <% end %>
+                </strong>
+                <b class="caret"></b>
               </a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                 <li role="presentation">
-                  <%= link_to "Rent: Low to High", listings_path(:city => @search_string, :sort => "rent", :dir => "asc"), :role => "menuitem", :tabindex => "-1" %>
+                  <%= link_to "Rent", listings_path(:city => @search_string, :sort => "rent", :dir => "asc"), :role => "menuitem", :tabindex => "-1" %>
                 </li>
+
+                <!--li role="presentation">
+                  <#%= link_to "Rent: High to Low", listings_path(:city => @search_string, :sort => "rent", :dir => "desc"), :role => "menuitem", :tabindex => "-1" %>
+                </li!-->
+
+
+                <li role="presentation" class="divider"> </li>
                 <li role="presentation">
-                  <%= link_to "Rent: High to Low", listings_path(:city => @search_string, :sort => "rent", :dir => "desc"), :role => "menuitem", :tabindex => "-1" %>
+                    <%= link_to "Distance", listings_path(:city => @search_string), :role => "menuitem", :tabindex => "-1" %>
                 </li>
-                <!--li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Distance: Near to Far</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Distance: Far to Near</a></li-->
               </ul>
             </li>
           </ul>
