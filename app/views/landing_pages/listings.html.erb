@@ -92,7 +92,7 @@
                       <%if @direction=="asc" %>
                         Rent
                       <% else %>
-                        Rent!
+                        Rent (High to Low)
                       <% end %>
                   <% else %>
                       <%if @search_string != "" %>
@@ -111,11 +111,13 @@
                   <#%= link_to "Rent: High to Low", listings_path(:city => @search_string, :sort => "rent", :dir => "desc"), :role => "menuitem", :tabindex => "-1" %>
                 </li!-->
 
+                <% if @search_string != "" %>
+                    <li role="presentation" class="divider"> </li>
+                    <li role="presentation">
+                        <%= link_to "Distance", listings_path(:city => @search_string), :role => "menuitem", :tabindex => "-1" %>
+                    </li>
+                <% end %>
 
-                <li role="presentation" class="divider"> </li>
-                <li role="presentation">
-                    <%= link_to "Distance", listings_path(:city => @search_string), :role => "menuitem", :tabindex => "-1" %>
-                </li>
               </ul>
             </li>
           </ul>
