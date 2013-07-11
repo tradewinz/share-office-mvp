@@ -24,11 +24,11 @@ class LandingPagesController < ApplicationController
         if(@direction == "asc")
           #@sorted_offices = Office.order('rent IS NULL, rent ASC').page(params[:page])
           #@offices = @mappable_offices.sort! { |a,b| a.rent.to_i <=> b.rent.to_i}
-          @offices = Office.near(@search_string, 20, :order => 'rent IS NULL, rent == 0, rent ASC').page(params[:page])
+          @offices = Office.near(@search_string, 20, :order => 'rent IS NULL, rent ASC').page(params[:page])
         else
           #@sorted_offices = Office.order('rent IS NULL, rent DESC').page(params[:page])
           #@offices = @mappable_offices.sort! { |a,b| b.rent.to_i <=> a.rent.to_i}
-          @offices = Office.near(@search_string, 20, :order => 'rent IS NULL, rent == 0, rent DESC').page(params[:page])
+          @offices = Office.near(@search_string, 20, :order => 'rent IS NULL, rent DESC').page(params[:page])
         end
       else
          @offices = Office.near(@search_string, 20).page(params[:page])
@@ -37,9 +37,9 @@ class LandingPagesController < ApplicationController
       @mappable_offices = Office.all
       if(@sort == "rent")
         if(@direction == "asc")
-          @offices =  Office.order('rent IS NULL, rent == 0, rent ASC').page(params[:page])
+          @offices =  Office.order('rent IS NULL, rent ASC').page(params[:page])
         else
-          @offices =  Office.order('rent IS NULL, rent == 0, rent DESC').page(params[:page])
+          @offices =  Office.order('rent IS NULL, rent DESC').page(params[:page])
         end
       else
         @offices =  Office.order('created_at DESC').page(params[:page])
