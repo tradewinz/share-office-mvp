@@ -7,7 +7,6 @@ ShareOfficeMvp::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-
   match '/home', to: 'landing_pages#home'
 
   match '/listings', to: 'landing_pages#listings'

@@ -71,6 +71,12 @@ class OfficesController < ApplicationController
 
         format.html { redirect_to confirm_path(:id => @office.id)}
         format.json { render json: @office, status: :created, location: @office }
+
+        # send email to users who have set alerts
+        @alerts = Alert.where("city = ?", @office.loc_zip)
+        @alerts.each do |alert|
+          AlertMailer.match_found(@office,alert).deliver
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @office.errors, status: :unprocessable_entity }

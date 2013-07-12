@@ -26,22 +26,41 @@
               <% end %>
             
               <div class="carousel-caption home">
-                <strong><%= office.title %></strong>
-                <p><%= office.loc_city %>, <%= office.loc_state %> &#8226; <% if office.rent? %>
-                  <%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
-                  <% if office.rent_type == 1 %>/month
-                  <% else %>
-                    <% if office.rent_type == 2 %>/week
+                
+                <div class = "row-fluid">
+
+                  <div class="caption-pic span2">
+                      <div class="profile-pic-list">
+                        <% if office.user && office.user.photo? %>
+                            <%= image_tag(office.user.photo) %>
+                        <% else %>
+                            <%= image_tag("default_person.png") %>
+                        <% end %>
+                      </div>
+                  </div>
+
+                  <div class="span10">
+                  <strong><%= office.title %></strong>
+                  <p><%= office.loc_city %>, <%= office.loc_state %> &#8226; <% if office.rent? %>
+                    <%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
+                    <% if office.rent_type == 1 %>/month
                     <% else %>
-                      <% if office.rent_type == 3 %>/day
-                      <% else %>month
+                      <% if office.rent_type == 2 %>/week
+                      <% else %>
+                        <% if office.rent_type == 3 %>/day
+                        <% else %>month
+                        <% end %>
                       <% end %>
                     <% end %>
-                  <% end %>
-                 <% else %>
-                   Contact us for rent
-                 <% end %></p>
+                   <% else %>
+                     Contact us for rent
+                   <% end %></p>
+                 </div>
+
+                  </div>
+
                 </div>
+
             </div>
           </li> 
         </a>
