@@ -238,23 +238,22 @@ $(document).ready(function() {
 
           <fieldset class="padtop padbottom">
 
-            <div class= " row control-group">
-              <label class="control-label">Upload a Photo</label>
+            <div class= "control-group">
+              <label class="control-label">Upload photos (up to 4)</label>
               <div class="controls">
-                  <span class="btn btn-success span-attachinary-input controls ">
-                    <%= f.attachinary_file_field :office_images, :cloudinary => {
-                             :eager => [{:width => 600, :height => 400, :crop => :fill, :angle => :exif}]}%>
-                    <i class="icon-plus icon-white"> </i>
-                    <span> Add files.... </span>
-                  </span> (select up to 4 photos)
+                <button class="btn btn-success span-attachinary-input controls"> <%= f.attachinary_file_field :office_images, :cloudinary => {
+                             :eager => [{:width => 600, :height => 400, :crop => :fill, :angle => :exif}]}%><i class="icon-plus icon-white"> </i>
+                    <span> Add files.... </span></button>
               </div>
-             </div>
+
              <div class="row ">
+              
               <div class="offset2 span10 thumbs"> </div>
-                  <div class="progress">
+                  <!--div class="progress">
                    <div class="bar" style="width: 0%;"></div>
-                  </div>
-            </div>
+                  </div-->
+              </div>
+              </div>
 
             <div class="control-group">
               <label class="control-label">Rent Amount</label>

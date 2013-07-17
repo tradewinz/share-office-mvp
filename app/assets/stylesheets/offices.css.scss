@@ -181,6 +181,9 @@ officedetailstext  {
   margin-top: 1px;
 }
 
+.text-gray {
+  color: #C0C0C0;
+}
 
 .office {
   background-image: url('tw/icon_office.png');
@@ -358,7 +361,7 @@ paperPanel {
   position: relative;
   overflow: hidden;
   width: 130px;
-  margin-left: 15px;
+  margin-left: 0px;
 }
 .span-attachinary-input input {
   position: absolute;

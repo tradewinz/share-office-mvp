@@ -4,7 +4,8 @@ class Office < ActiveRecord::Base
                   :title, :description, :rent, :rent_type, :available,
                   :user_id, :latitude, :longitude, :gmaps, :window, :featured
 
-  belongs_to :user                  
+  belongs_to :user                
+  has_many :contact
 
   validates :title, :presence => true
   validates :loc_zip, :presence => true
