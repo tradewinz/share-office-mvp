@@ -15,8 +15,6 @@ class OfficesController < ApplicationController
   # GET /offices/1.json
   def show
     @office = Office.find(params[:id])
-    @alert = Alert.find(1);
-    @contact = Contact.new
 
     # make sure next and prev are only found when searching; if not search, clear session
     if (session[:query] and session[:search_results] and session[:query].include? @office.id and (request.referer.include? "offices/" or request.referer.include? "listings"))
@@ -35,6 +33,9 @@ class OfficesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @office }
     end
+
+    @dinosaurs
+
   end
 
 

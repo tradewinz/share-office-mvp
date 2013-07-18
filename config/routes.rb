@@ -1,7 +1,4 @@
 ShareOfficeMvp::Application.routes.draw do
-
-  resources :contacts
-
   resources :alerts
 
 
