@@ -1,4 +1,7 @@
 ShareOfficeMvp::Application.routes.draw do
+  resources :reserves
+
+
   resources :alerts
 
 
