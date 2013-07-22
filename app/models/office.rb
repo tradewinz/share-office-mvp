@@ -4,10 +4,15 @@ class Office < ActiveRecord::Base
                   :title, :description, :rent, :rent_type, :available,
                   :user_id, :latitude, :longitude, :gmaps, :window, :featured
 
-  belongs_to :user                  
+  belongs_to :user                
+  has_many :contact
 
   validates :title, :presence => true
   validates :loc_zip, :presence => true
+
+  #change to simple form before adding error
+  #validates :accomodate, :numericality => { :greater_than_or_equal_to => 0 }
+
 
   #geocode using geocoder
   geocoded_by :address

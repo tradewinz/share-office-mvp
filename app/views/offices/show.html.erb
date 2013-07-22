@@ -96,69 +96,76 @@
       </div>
       <div class="span8">
         <h4>Amenities</h4>
+<div class="row">
 
-        <div class="row">
-          <div class="span1.5">
-            <p class="officedetailstext">
-              <% if @office.wifi? %>
-                <div class="officeicon wifi_on"></div>
-            <% else %>
-                <div class="officeicon wifi_off"></div>
-            <% end %>Wi-fi</p>
+              <div class="span1.5">
+                  <p><% if @office.wifi? %>
+                      <div class="officeicon wifi_on"></div>
+                      Wi-fi
+                  <% else %>
+                      <div class="officeicon wifi_off"></div>
+                      <span class="text-gray"> Wi-fi</span>
+                  <% end %></p>
 
-            <p>
-              <% if @office.parking? %>
-                <div class="officeicon park_on"></div>
-            <% else %>
-                <div class="officeicon park_off"></div>
-            <% end %>Parking</p>
+                  <p><% if @office.parking? %>
+                      <div class="officeicon park_on"></div>
+                  <% else %>
+                      <div class="officeicon park_off"></div>
+                      <span class="text-gray"> Parking</span>
+                  <% end %></p>
 
-          </div>
 
-          <div class="span1.5">
-            <p class="officedetailstext">
-              <% if @office.ac? %>
-                <div class="officeicon ac_on"></div>
-            <% else %>
-                <div class="officeicon ac_off"></div>
-            <% end %>Air Conditioning</p>
+                </div>
 
-            <p class="officedetailstext">
-              <% if @office.confroom? %>
-                <div class="officeicon conf_on"></div>
-            <% else %>
-                <div class="officeicon conf_off"></div>
-            <% end %>Conference Room</p>
-          </div>
+                <div class="span1.5">
+                  <p><% if @office.ac? %>
+                      <div class="officeicon ac_on"></div>
+                      Air Conditioning
+                  <% else %>
+                      <div class="officeicon ac_off"></div>
+                      <span class="text-gray">Air Conditioning</span>
+                  <% end %></p>
 
-          <div class="span1.5">
-            <p class="officedetailstext">
-              <% if @office.printer? %>
-                <div class="officeicon conf_on"></div>
-            <% else %>
-                <div class="officeicon conf_off"></div>
-            <% end %>Conference Room</p>
+                  <p><% if @office.confroom? %>
+                      <div class="officeicon conf_on"></div>
+                      Conference Room
+                  <% else %>
+                      <div class="officeicon conf_off"></div>
+                      <span class="text-gray">Conference Room</span>
+                  <% end %></p>
 
-            <p class="officedetailstext">
-              <% if @office.kitchen? %>
-                <div class="officeicon kitchen_on"></div>
-            <% else %>
-                <div class="officeicon kitchen_off"></div>
-            <% end %>Kitchen</p>
-          </div>
+                </div>
 
-          <div class="span1.5">
-            <p class="officedetailstext">
-              <% if @office.window? %>
-                <div class="officeicon window_on"></div>
-            <% else %>
-                <div class="officeicon window_off"></div>
-            <% end %>Window Office</p>
-          </div>
+                <div class="span1.5">
+                  <p><% if @office.printer? %>
+                      <div class="officeicon printer_on"></div>
+                      Printer
+                  <% else %>
+                      <div class="officeicon printer_off"></div>
+                      <span class="text-gray">Printer</span>
+                  <% end %></p>
+
+                  <p><% if @office.kitchen? %>
+                      <div class="officeicon kitchen_on"></div>
+                      Kitchen
+                  <% else %>
+                      <div class="officeicon kitchen_off"></div>
+                      <span class="text-gray">Kitchen</span>
+                  <% end %></p>
+
+                </div>
+
+                <div class="span1.5">
+                    <p><% if @office.window? %>
+                        <div class="officeicon window_on"></div>
+                        Window Office
+                    <% else %>
+                        <div class="officeicon window_off"></div>
+                        <span class="text-gray">Window Office</span>
+                    <% end %></p>
+                </div>
 
         </div>
-
-
       </div>
     </div>
   </div>
@@ -168,18 +175,12 @@
       <div class="row">
         <div class="span4">
           <div>
-            <% if can? :update, @office %>
-                <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
-                <div style="padding-top: 7px;">
-                    <% if can? :destroy, @office %>
-                        <%= link_to 'Delete this listing', @office, :method => :delete, :data => { confirm: 'Are you sure?' } %>
-                    <% end %>
-                </div>
-            <% else %>
+            
                 <div id="reserve">
-                  <%= link_to "", {:controller => "offices", :action => "reserve", :id => @office}, :class => "reserve-btn"  %>
+                  <!--%= link_to "", {:controller => "offices", :action => "reserve", :id => @office}, :class => "reserve-btn"  %-->
+                  <a href="#myModal" role="button" class="reserve-btn" data-toggle="modal"></a>
+
                 </div>
-            <% end %>
          </div>
         </div>
       </div>
@@ -280,6 +281,8 @@
 </div>
 
 </div>
+
+<%= render 'reserves/form' %>
 
 <!-- image gallery  -->
 <script type="text/javascript">

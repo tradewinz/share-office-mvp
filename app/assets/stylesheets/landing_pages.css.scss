@@ -152,6 +152,16 @@ body{
   margin-bottom: 40px;
 }
 
+.featured.alerts {
+  font-family: "Helvetica Neue";
+  font-weight: lighter;
+  font-size: 30px;
+  color: #333333;
+  text-align: left;
+  margin-top:0px;
+  margin-bottom:0px;
+}
+
 .home-container {
   padding-bottom: 10px;
 }
@@ -161,7 +171,7 @@ body{
 }
 
 .about-container {
-  padding-bottom: 50px;
+  padding-bottom: 60px;
 }
 
 .video-container {
@@ -177,4 +187,18 @@ body{
   width: 44px;
   height: 44px;
   float: none;
+}
+
+.alerts-container {
+  background-color: #ffe8b7;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-bottom: 40px;
+  margin-left:-50px;
+  width:1000px; // is there a better way to put small div inside big div?
+}
+
+.alert-btn {
+  margin-top: 25px;
+  width: 200px;
 }

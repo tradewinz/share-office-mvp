@@ -203,7 +203,7 @@ $(document).ready(function() {
             </div>
 
             <div class="control-group">
-              <label class="control-label"><strong>* Zip Code</strong></label>
+              <label class="control-label"><strong>* city Code</strong></label>
 
               <div class="controls"> <%= f.text_field :loc_zip, :placeholder => "required", :style => "width: 109px" %>
               </div>
@@ -238,23 +238,22 @@ $(document).ready(function() {
 
           <fieldset class="padtop padbottom">
 
-            <div class= " row control-group">
-              <label class="control-label">Upload a Photo</label>
+            <div class= "control-group">
+              <label class="control-label">Upload photos (up to 4)</label>
               <div class="controls">
-                  <span class="btn btn-success span-attachinary-input controls ">
-                    <%= f.attachinary_file_field :office_images, :cloudinary => {
-                             :eager => [{:width => 600, :height => 400, :crop => :fill, :angle => :exif}]}%>
-                    <i class="icon-plus icon-white"> </i>
-                    <span> Add files.... </span>
-                  </span> (select up to 4 photos)
+                <button class="btn btn-success span-attachinary-input controls"> <%= f.attachinary_file_field :office_images, :cloudinary => {
+                             :eager => [{:width => 600, :height => 400, :crop => :fill, :angle => :exif}]}%><i class="icon-plus icon-white"> </i>
+                    <span> Add files.... </span></button>
               </div>
-             </div>
+
              <div class="row ">
+              
               <div class="offset2 span10 thumbs"> </div>
-                  <div class="progress">
+                  <!--div class="progress">
                    <div class="bar" style="width: 0%;"></div>
-                  </div>
-            </div>
+                  </div-->
+              </div>
+              </div>
 
             <div class="control-group">
               <label class="control-label">Rent Amount</label>
@@ -306,3 +305,49 @@ $(document).ready(function() {
 <% end %>
 
 </div>
+
+<!-- other JS code -->
+<script type="text/javascript">
+function showLoadingImage() {
+    $('#second').append('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %> </div>');
+}
+
+function hideLoadingImage() {
+    $('#loading-image').remove();
+} 
+
+
+
+$("#continueListingBtn").click(function() {      
+  $('#second').show(); 
+  $('#first').hide();
+
+  mixpanel.track("Clicked Continue");
+
+});
+
+
+
+
+$("#saveListingBtn").click(function() {
+  $("#new_office").validate({
+    rules: {
+      "office[loc_zip]": {required: true},
+      "office[title]": {required: true}
+    },
+    messages: {
+      "office[loc_zip]": "Please tell us the city code of your office",
+      "office[title]": "Please provide a title for your listing"
+    },
+    errorPlacement: function(error, element) {
+      element.after(error);
+      element.css('border', 'solid red 2px');
+    }
+  });
+
+  if ($("#new_office").valid()) {
+    _gaq.push(['_trackEvent', 'SaveListing', 'User saves a listing']);
+  }
+});
+
+</script>

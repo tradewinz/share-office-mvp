@@ -1,9 +1,13 @@
 ShareOfficeMvp::Application.routes.draw do
+  resources :reserves
+
+
+  resources :alerts
+
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-
 
   match '/home', to: 'landing_pages#home'
 
@@ -12,6 +16,8 @@ ShareOfficeMvp::Application.routes.draw do
   match '/about', to: 'landing_pages#about'
   match '/confirm', to: 'offices#confirm'
   match '/reserve/:id', to:'offices#reserve'
+
+  match '/alerts/:id/unsubscribe', to: 'alerts#destroy', :as => :unsubscribe_alert
 
   resources :offices
 

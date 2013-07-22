@@ -15,7 +15,8 @@ class OfficesController < ApplicationController
   # GET /offices/1.json
   def show
     @office = Office.find(params[:id])
-    
+    @reserf = Reserve.new
+
     # make sure next and prev are only found when searching; if not search, clear session
     if (session[:query] and session[:search_results] and session[:query].include? @office.id and (request.referer.include? "offices/" or request.referer.include? "listings"))
       @next_office = @office.next(session[:query])
@@ -33,6 +34,8 @@ class OfficesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @office }
     end
+
+
   end
 
 
@@ -71,6 +74,12 @@ class OfficesController < ApplicationController
 
         format.html { redirect_to confirm_path(:id => @office.id)}
         format.json { render json: @office, status: :created, location: @office }
+
+        # send email to users who have set alerts
+        @alerts = Alert.where("city = ?", @office.loc_zip)
+        @alerts.each do |alert|
+          AlertMailer.match_found(@office,alert).deliver
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @office.errors, status: :unprocessable_entity }

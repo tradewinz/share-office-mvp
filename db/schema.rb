@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130702221830) do
+ActiveRecord::Schema.define(:version => 20130719233240) do
+
+  create_table "alerts", :force => true do |t|
+    t.string   "city"
+    t.string   "email"
+    t.string   "misc"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "attachinary_files", :force => true do |t|
     t.integer  "attachinariable_id"
@@ -91,6 +99,17 @@ ActiveRecord::Schema.define(:version => 20130702221830) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "reserves", :force => true do |t|
+    t.string   "length"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "misc"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "office_id"
+    t.string   "name"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
