@@ -1,0 +1,75 @@
+<!-- Modal -->
+<div id="myModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Contact host about this space</h3>
+  </div>
+
+<%= simple_form_for(@reserf) do |f|%>
+
+  <div class="modal-body">
+    <%= f.error_notification %>
+
+    <% if @reserf.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@reserf.errors.count, "error") %> prohibited this listing from being saved:</h2>
+          <ul style="margin-left:10;">
+            <% @reserf.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-inputs">
+        <label class="control-label">How long would you like to rent this space?</label>
+      <div class="controls"><%= f.text_field :length %></div>
+
+      <label class="control-label">Email *</label>
+      <div class="controls"><%= f.text_field :email %></div>
+
+      <label class="control-label">Phone number</label>
+      <div class="controls"><%= f.text_field :phone %></div>
+
+      <label class="control-label">Questions or comments for the host</label>
+      <div class="controls"><%= f.text_area :misc, :placeholder => "For example: best time to call you or additional information about yourself or your business.", :style => "width: 240px", :rows => 20  %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">CLOSE</button>
+    <%= f.button :submit, "SEND MESSAGE", :class=>"btn btn-primary", :id => "reserveBtn"%>
+  </div>
+
+  <% end %>
+</div>
+
+<!-- other JS code -->
+<script type="text/javascript">
+$("#reserveBtn").click(function() {
+  $("#new_reserve").validate({
+    rules: {
+      "reserve[email]": {
+        required: true, 
+        email: true
+      }
+    },
+    messages: {
+      "alert[email]": {
+        required: "Please provide your email address, so we can send you a notice when a space in your zipcode has been added.",
+        email: "Please enter a valid email address."
+      }
+    },
+    errorPlacement: function(error, element) {
+      element.after(error);
+      element.css('border', 'solid red 2px');
+    }
+  });
+
+  if ($("#new_alert").valid()) {
+    _gaq.push(['_trackEvent', 'SaveListing', 'User requests to contact host.']);
+  }
+});
+
+</script>

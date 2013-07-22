@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Alert: space was found!</title>
+  <style type="text/css">
+      body {
+          background-color: #ece6e0;
+          background-image: url('background.png');
+          background-repeat: repeat;
+          margin-left: 20px;
+          margin-top: 20px;
+          margin-right: 20px;
+      }
+      p {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 14px;
+          font-style: normal;
+          line-height: 26px;
+          font-weight: normal;
+          color: #505050;
+          text-decoration: none;
+      }
+      .headline {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 24px;
+          font-style: normal;
+          font-weight: lighter;
+          color: #bbbbbb;
+          text-decoration: none;
+      }
+      .subhead2 {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: lighter;
+          color: #000;
+          text-decoration: none;
+      }
+      .subhead {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: lighter;
+          color: #bbbbbb;
+          text-decoration: none;
+      }
+      .tablecolor {
+          background-color: #FFF;
+          border: 1px solid #C2BDB3;
+      }
+      a {
+          font-family: Arial, Helvetica, sans-serif;
+          color: #0098cd;
+      }
+      .footer {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 12px;
+          font-weight: normal;
+          color: #999995;
+          text-align: center;
+      }
+
+      .title {
+          font-family: "Helvetica Neue Regular", Helvetica, Arial, sans-serif;
+          font-size: 30px;
+          line-height: 35px;
+          color: #333333;
+
+      }
+
+  </style>
+</head>
+
+<body>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablecolor">
+  <tr>
+    <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="80" class="headline">A space in <%= @office.loc_zip %> has been posted!</td>
+        <td class="headline">&nbsp;</td>
+        <td width="160">
+          <a href="<%= home_url %>" >
+            <img src="http://spaces.intuit.com/assets/logo_intuit_spaces.gif" alt="Intuit Spaces" width="140" height="26" align="right" />
+          </a>
+        </td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td width="1" height="1" bgcolor="#C2BDB3"></td>
+  </tr>
+  <tr>
+  <td><table width="90%" border="0" align="center" cellpadding="0" >
+  <tr><td width="15px"></td><td>
+    <br>
+    <p><span class="title"><%= @office.title %></span>
+    <br><%= @office.loc_addr1 %> <%= @office.loc_city %> <%= @office.loc_state %> <%= @office.loc_zip %></br></p>
+    </td></tr></table>
+
+  <table width="90%" border="0" align="center" cellpadding="15" cellspacing="0">
+    <tr><td width="300px" valign="top">
+      <%if (@office.office_images.first != nil)%>
+        <img src="<%="http://res.cloudinary.com/dmcfi9vma/image/upload/" + @office.office_images.first.path%>" alt="<%=@office.title %>" width="300" height="225"/>
+      <%else%>
+        <img src="http://spaces.intuit.com/assets/medium_default-studio.png" alt="<%=@office.title %>"  width="300" height="225"/>
+      <%end%>
+    </div>
+  </td>
+  <!--end left column -->
+
+  <td valign="top">
+    <table cellpadding="10">
+      <tr><td>
+    <% if @office.user %>
+      <span class="subhead">About the host</span>
+      <table width="100%" border="0" align="left" cellpadding="3" cellspacing="0">
+        <tr><td width="60px">
+        <%if @office.user && @office.user.photo?%> 
+          <img src="<%="http://m.c.lnkd.licdn.com/" + @office.user.photo.path%>" alt="<%=@office.user.name %>" width="60"/>
+        <%else %>
+          <img src="http://spaces.intuit.com/assets/default_person.png" alt="<%=@office.user.name %>" width="60"/>
+        <%end%>
+      </td>
+      <td valign="top">
+      <%= @office.user.name %>
+      <% if @office.user.industry? %><br><%= @office.user.industry %><% end %>
+      <% if @office.user.location? %><br><%= @office.user.location %><% end %>
+      </td></tr>
+    </table>
+    <% end %>
+
+    </td></tr>
+    <tr><td>
+    <span class="subhead">About the space</span>
+    
+        <% if @office.rent? %>
+        <br>
+          <%= number_to_currency(@office.rent, :locale => 'en_us', :precision => 0) %>
+          <% if @office.rent_type == 1 %>/ month
+          <% else %>
+              <% if @office.rent_type == 2 %>/ week
+              <% else %>
+                <% if @office.rent_type == 3 %>/ day
+                <% else %>month
+                <% end %>
+              <% end %>
+            <% end %>
+          <% else %>
+          <% end %>
+
+        <br>
+          <% if @office.office_type == 1 %>Office space
+          <% else %>
+            <% if @office.office_type == 2 %>
+               Meeting room
+            <% else %>
+                <% if @office.office_type == 3 %>
+                   Desk
+                <% else %>
+                  Office space
+                <% end %>
+            <% end %>
+        <% end %>
+
+        
+
+        <br><% if @office.size? %>
+          (<%= @office.size %> sq. ft) 
+        <% end %>
+
+        <% if @office.accomodate? %>
+          - <%= @office.accomodate %> <% if @office.accomodate == 1 %>person<% else %>people<% end %>
+        <% end %>
+        <br>
+      <p class="subhead2"><%= link_to 'View listing >>', office_url(@office) %> </p>
+      </td></tr>
+    </table>
+  </td>
+<!--end right column -->
+
+</tr>
+    </table>
+
+          <p>&nbsp;</p></td>
+  </tr>
+  </tr>
+</table>
+<p class="footer"><%= link_to 'Unsubscribe from ' + @office.loc_zip + ' alerts', unsubscribe_alert_url(@alert), :method => :delete %>
+<br>© 2013, Intuit, Inc. 2632 Marine Way, Mountain View, CA 94043</p>
+</body>
+</html>

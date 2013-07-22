@@ -1,0 +1,51 @@
+A space in <%= @office.loc_zip %> has been posted!
+--------------------------------------
+
+<%= @office.title %>
+<%= @office.loc_addr1 %> <%= @office.loc_city %> <%= @office.loc_state %> <%= @office.loc_zip %>
+
+<% if @office.user %>About the host
+      <%= @office.user.name %>
+      <% if @office.user.industry? %><%= @office.user.industry %><% end %>
+      <% if @office.user.location? %><%= @office.user.location %><% end %>
+    <% end %>
+
+<% if @office.rent or @office.office_type or @office.size %>
+About the space
+<% if @office.rent? %>
+  <%= number_to_currency(@office.rent, :locale => 'en_us', :precision => 0) %>
+  <% if @office.rent_type == 1 %>/ month
+  <% else %>
+      <% if @office.rent_type == 2 %>/ week
+      <% else %>
+        <% if @office.rent_type == 3 %>/ day
+        <% else %>month
+        <% end %>
+      <% end %>
+    <% end %>
+  <% else %>
+  <% end %>
+
+  <% if @office.office_type == 1 %>Office space<% else %>
+  <% if @office.office_type == 2 %>Meeting room<% else %>
+  <% if @office.office_type == 3 %>Desk<% else %>
+  Office space
+  <% end %>
+  <% end %>
+<% end %>
+
+<% if @office.size? %>(<%= @office.size %> sq. ft)<% end %> <% if @office.accomodate? %> - <%= @office.accomodate %> <% if @office.accomodate == 1 %>person<% else %>people<% end %>
+<% end %>
+
+<% end %>
+
+<%= link_to 'View listing >>', office_url(@office) %>
+
+Cheers,
+The Intuit Spaces team
+
+P.S. If you have any concerns or questions, please email us at <a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a>
+
+<%= link_to 'Unsubscribe from ' + @office.loc_zip + ' alerts', unsubscribe_alert_url(@alert), :method => :delete %>
+<%= button_to "Delete", alert_url(@alert) ,  :method => :delete %>
+   
