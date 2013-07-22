@@ -6,11 +6,12 @@ class Alerts::ConfirmUnsubscribe
 	attr_accessor :email
 
   	validates :email,
-            correct_email
+              correct_email
 
     def correct_email
     	if (self.email != @alert.email)
-    	errors.add(:email, "Email does not match email on record")
+    	  errors.add(:email, "Email does not match email on record")
+      end
     end
   
 	def initialize(attributes = {}) 

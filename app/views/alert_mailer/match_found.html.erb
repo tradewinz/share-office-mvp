@@ -117,10 +117,10 @@
       <span class="subhead">About the host</span>
       <table width="100%" border="0" align="left" cellpadding="3" cellspacing="0">
         <tr><td width="60px">
-        <%if @office.user && @office.user.photo?%> 
-          <img src="<%="http://m.c.lnkd.licdn.com/" + @office.user.photo.path%>" alt="<%=@office.user.name %>" width="60"/>
+        <%if @office.user && @office.user.photo?%>
+            <%= image_tag(@office.user.photo, :alt => @office.user.name, :width => "60") %>
         <%else %>
-          <img src="http://spaces.intuit.com/assets/default_person.png" alt="<%=@office.user.name %>" width="60"/>
+            <%= image_tag("default_person.png", :alt => @office.user.name, :width => "60") %>
         <%end%>
       </td>
       <td valign="top">
