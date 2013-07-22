@@ -1,9 +1,9 @@
 Geocoder.configure(
     # open source free geocode service - slow
-    # :lookup => :nominatim
+    :lookup => :nominatim
 
     # Using Google free account  restricted to 2500/day
-    :lookup => :google
+    #:lookup => :google
 
     # Google premier geocoding service
     #:lookup => :google_premier,
