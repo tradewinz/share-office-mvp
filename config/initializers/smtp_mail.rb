@@ -9,7 +9,7 @@
 #  :enable_starttls_auto => true
 # }
 
-Mandrill settings
+# Mandrill settings
  ActionMailer::Base.smtp_settings = {
   :address => "smtp.mandrillapp.com",
   :port => 587,
