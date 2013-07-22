@@ -14,7 +14,6 @@ class OfficesController < ApplicationController
   # GET /offices/1
   # GET /offices/1.json
   def show
-    logger.debug "WORKS!!!"
     @office = Office.find(params[:id])
     @reserf = Reserve.new
 
