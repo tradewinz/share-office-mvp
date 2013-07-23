@@ -5,8 +5,7 @@ class Alerts::ConfirmUnsubscribe
 
 	attr_accessor :email
 
-  	validates :email,
-              correct_email
+  	#validates :email, correct_email
 
     def correct_email
     	if (self.email != @alert.email)
