@@ -1,9 +1,4 @@
 ShareOfficeMvp::Application.routes.draw do
-  namespace :alerts do
-    resources :confirm_unsubscribes
-  end
-
-
   resources :reserves
 
 
@@ -22,7 +17,7 @@ ShareOfficeMvp::Application.routes.draw do
   match '/confirm', to: 'offices#confirm'
   match '/reserve/:id', to:'offices#reserve'
 
-  match '/alerts/:id/unsubscribe', to: 'alerts#unsubscribe', :as => :unsubscribe_alert
+  match '/alerts/:id/unsubscribe', to: 'alerts#destroy', :as => :unsubscribe_alert
 
   resources :offices
 
