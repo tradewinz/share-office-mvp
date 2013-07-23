@@ -26,3 +26,4 @@ class Alerts::ConfirmUnsubscribesController < ApplicationController
       end
     end
   end
+end
