@@ -44,7 +44,6 @@ class AlertsController < ApplicationController
   def unsubscribe
     @alert = Alert.find(params[:id])
     # @alerts_confirm_unsubscribe = Alerts::ConfirmUnsubscribe.new
-
     respond_to do |format|
       format.html { render :confirm}
       format.json { head :no_content }
