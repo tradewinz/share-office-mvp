@@ -43,7 +43,6 @@ class AlertsController < ApplicationController
   # DELETE /alerts/1.json
   def unsubscribe
     @alert = Alert.find(params[:id])
-    @alerts_confirm_unsubscribe = Alerts::ConfirmUnsubscribe.new
 
     respond_to do |format|
       format.html { render :confirm}
