@@ -76,19 +76,6 @@ $("#addlisting").click(function() {
 
 });
 
-$("#searchBtn").click(function() {
-  var val = $("#search").val();
-  _gaq.push(['_trackEvent', "Search".concat(val), 'User clicks on Search']);
-  mixpanel.track("Clicked Search", {location: val});
-});
-
-$("#search").keyup(function(event){
-    if(event.keyCode == 13){
-        $("#searchBtn").click();
-    }
-});
-
-
 
 </script>
 
