@@ -4,7 +4,7 @@ class OfficesController < ApplicationController
   # GET /offices
   # GET /offices.json
   def index
-    @offices = Office.where("user_id = ?", current_user)
+    @offices = Office.where("user_id = ?", current_user).order('created_at DESC').page(params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @offices }

@@ -57,8 +57,16 @@
       </div>
     
     <% end %>
-    
-  <br>
+
+    <div class="span12">
+      <div class="apple_pagination">
+        <!--div class="page_info">
+          <#%= page_entries_info @offices %>
+        </div-->
+        <%= will_paginate @offices, :container => false %>
+      </div>
+    </div>
+
 </div>
 
 </div>

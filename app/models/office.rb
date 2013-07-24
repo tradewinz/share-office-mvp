@@ -22,7 +22,7 @@ class Office < ActiveRecord::Base
   has_attachments :office_images, maximum: 4, accept: [:jpg, :png, :gif, :jpeg]
 
 
-  # will_paginate resutls per page
+  # will_paginate query limit per page
   self.per_page = 20
 
   # make objects shows up in gmaps4rails
