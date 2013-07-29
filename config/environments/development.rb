@@ -20,9 +20,9 @@ ShareOfficeMvp::Application.configure do
   config.action_mailer.perform_deliveries = false
 
   # specify what domain to use for mailer URLs
-  config.action_mailer.default_url_options = { :host => "http://shareoffice-stage.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => "http://localhost:3000" }
   # specify what domain to use for mailer ASSETS
-  config.action_mailer.asset_host = "http://shareoffice-stage.herokuapp.com"
+  config.action_mailer.asset_host = "http://localhost:3000"
 
   # If false, don't throw an exception if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
