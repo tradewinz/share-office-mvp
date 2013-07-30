@@ -4,14 +4,15 @@ Someone wants to rent your space!
 Hello <%= @office.user.name %>,
 
 Great News: <%=@guest.name%> wants to rent your extra office space, <%= link_to @office.title, office_url(@office) %>!
-What’s next? Just contact<%=@guest.name%> directly to talk details, and then decide whether they’d be a good fit.  Here’s the email address: <a href="mailto:"+<%=@guest.email%>><%=@guest.email%></a>.
+What’s next? Just contact<%=@guest.name%> directly to talk details, and then decide whether they’d be a good fit.  Here’s the email address: <a href=<%="mailto:#{@guest.email}"%>><%=@guest.email%></a>.
  
-<%if @guest.phone or @guest.length or @guest.misc%>
+<%if @guest.phone? or @guest.length? or @guest.misc?%>
 Additional details about the guest:
-<%if @guest.phone%>Phone number:  <%=@guest.phone%><% end %>
-<%if @guest.length%>Rental duration: <%=@guest.length%><% end %>
-<%if @guest.misc%>Questions or comments: <%=@guest.misc%><% end %>
+<%if @guest.phone?%>Phone number:  <%=@guest.phone%><% end %>
+<%if @guest.length?%>Rental duration: <%=@guest.length%><% end %>
+<%if @guest.misc?%>Questions or comments: <%=@guest.misc%><% end %>
  <% end %>
+
 
 Cheers,
 The Intuit Spaces team
