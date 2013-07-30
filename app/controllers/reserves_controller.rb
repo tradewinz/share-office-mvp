@@ -21,6 +21,7 @@ class ReservesController < ApplicationController
         format.json { render json: @reserf, status: :created, location: @reserf}
         ContactHost.contact_host(@reserf).deliver
       else
+        flash[:error] = 'There was an error, and your message could not be sent.'
         format.html { render action: "new" }
         format.json { render json: @reserf.errors, status: :unprocessable_entity }
       end
