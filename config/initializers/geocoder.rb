@@ -1,14 +1,14 @@
 Geocoder.configure(
     # ESRI based on ArcGIS, good performance and its free
-    #:lookup => :esri,
+    :lookup => :esri,
 
     # open source free geocode service - slow
     #:lookup => :nominatim,
     # nominatim is slow , so add more time so geocder doesn;t timeout
-    #:timeout => 15
+    :timeout => 10
 
     # Using Google free account  restricted to 2500/day
-    :lookup => :google
+    #:lookup => :google
 
     # Google premier geocoding service
     #:lookup => :google_premier,
