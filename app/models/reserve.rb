@@ -1,6 +1,6 @@
 class Reserve < ActiveRecord::Base
  	attr_accessible :name, :office_id, :email, :length, :misc, :phone
- 	belongs_to :office
+ 	#belongs_to :office
 
 	validates :name, 
 			:presence => true

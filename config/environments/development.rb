@@ -17,7 +17,7 @@ ShareOfficeMvp::Application.configure do
   config.action_mailer.delivery_method = :smtp
 
  # turn on/off email delivering
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = true
 
   # specify what domain to use for mailer URLs
   config.action_mailer.default_url_options = { :host => "http://localhost:3000" }

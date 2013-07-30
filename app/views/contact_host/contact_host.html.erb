@@ -75,14 +75,14 @@
 
       <tr>
         <td colspan="2"><p>Hello <%= @office.user.name %>,</p>
-<p><br><strong>Great News: <%=@guest.name%> wants to rent your extra office space, <%= link_to @office.title, office_url(@office) %>!</strong>
+<p><strong>Great News: <%=@guest.name%> wants to rent your extra office space, <%= link_to @office.title, office_url(@office) %>!</strong>
 <br><strong>What’s next?</strong> Just contact <%=@guest.name%> directly to talk details, and then decide whether they’d be a good fit.  Here’s their email address: <a href="mailto:"+<%=@guest.email%>><%=@guest.email%></a></p>
  
-<%if @guest.phone or @guest.length or @guest.misc%>
-<p>Additional details about the guest:
-<%if @guest.phone%><br>Phone number:  <%=@guest.phone%><% end %>
-<%if @guest.length%><br>Rental duration: <%=@guest.length%><% end %>
-<%if @guest.misc%><br>Questions or comments: <%=@guest.misc%><% end %></p>
+<%if @guest.phone? or @guest.length? or @guest.misc?%>
+<p><strong>Additional details about the guest:</strong>
+<%if @guest.phone?%><br>Phone number:  <%=@guest.phone%><% end %>
+<%if @guest.length?%><br>Rental duration: <%=@guest.length%><% end %>
+<%if @guest.misc?%><br>Questions or comments: <%=@guest.misc%><% end %></p>
  <% end %>
 
 <p>Cheers,

@@ -5,7 +5,7 @@ class Office < ActiveRecord::Base
                   :user_id, :latitude, :longitude, :gmaps, :window, :featured
 
   belongs_to :user
-  has_many :reserve
+  #has_many :reserve
 
   validates :title, :presence => true
   validates :loc_zip, :presence => true

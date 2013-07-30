@@ -23,21 +23,31 @@
 
     <div class="form-inputs">
     <%= f.hidden_field :office_id, value: @office.id %>
+    <div class="control-group">
       <label class="control-label">Name *</label>
       <div class="controls"><%= f.text_field :name %></div>
+    </div>
 
+    <div class="control-group">
       <label class="control-label">Email *</label>
       <div class="controls"><%= f.text_field :email %></div>
+    </div>
 
-        <label class="control-label">How long would you like to rent this space?</label>
-      <div class="controls"><%= f.text_field :length %></div>
+    <div class="control-group" style="margin-bottom: 35px">
+      <label class="control-label">How long would you like to rent this space?</label>
+      <div class="controls" style="padding-top: 10px"><%= select_tag(:length, options_for_select(['Less than 1 month','1 to 5 months','6 to 12 months', 'More than 1 year']), {:prompt => "Choose rental duration"}) %></div>
+     </div>
 
+  <div class="control-group">
       <label class="control-label">Phone number</label>
       <div class="controls"><%= f.text_field :phone %></div>
+    </div>
 
+<div class="control-group">
       <label class="control-label">Questions or comments for the host</label>
       <div class="controls"><%= f.text_area :misc, :placeholder => "For example: best time to call you or additional information about yourself or your business.", :style => "width: 240px", :rows => 20  %>
       </div>
+    </div>
     </div>
   </div>
   
