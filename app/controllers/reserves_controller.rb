@@ -18,7 +18,7 @@ class ReservesController < ApplicationController
     respond_to do |format|
       if @reserf.save
         format.html { redirect_to :back, notice: 'Your message has been sent! The host will contact you directly to talk details and answer any questions you may have.' }
-        format.json { render json: @reserf, status: :created, location: @reserf }
+        format.json { render json: @reserf, status: :created, location: @reserf, :remote => true}
         ContactHost.contact_host(@reserf).deliver
       else
         format.html { render action: "new" }

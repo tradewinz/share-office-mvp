@@ -195,7 +195,6 @@
                 <div id="reserve">
                   <!--%= link_to "", {:controller => "offices", :action => "reserve", :id => @office}, :class => "reserve-btn"  %-->
                   <a href="#myModal" role="button" class="reserve-btn" data-toggle="modal"></a>
-
                 </div>
             <% end %>
 
@@ -301,6 +300,8 @@
 </div>
 
 <%= render 'reserves/form' %>
+
+<%= render 'reserves/thankyou' %>
 
 <!-- image gallery  -->
 <script type="text/javascript">
