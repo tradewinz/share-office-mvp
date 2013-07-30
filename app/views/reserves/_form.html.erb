@@ -35,7 +35,7 @@
 
     <div class="control-group" style="margin-bottom: 35px">
       <label class="control-label">How long would you like to rent this space?</label>
-      <div class="controls" style="padding-top: 10px"><%= select_tag(:length, options_for_select(['Less than 1 month','1 to 5 months','6 to 12 months', 'More than 1 year']), {:prompt => "Choose rental duration"}) %></div>
+      <div class="controls" style="padding-top: 10px"><%= f.select(:length, options_for_select(['Less than 1 month','1 to 5 months','6 to 12 months', 'More than 1 year']), {:prompt => "Choose rental duration"}) %></div>
      </div>
 
   <div class="control-group">
