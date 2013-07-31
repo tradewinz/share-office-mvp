@@ -43,7 +43,7 @@ gem 'geocoder', '1.1.8'
 
 gem 'gmaps4rails', '1.5.6'
 
-gem 'omniauth-linkedin-oauth2', '0.0.2'
+gem 'omniauth-linkedin-oauth2', '0.0.3'
 
 gem 'will_paginate', '~> 3.0'
 
