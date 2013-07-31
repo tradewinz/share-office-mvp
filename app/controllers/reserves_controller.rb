@@ -21,7 +21,7 @@ class ReservesController < ApplicationController
         format.json { render json: @reserf, status: :created, location: @reserf}
         ContactHost.contact_host(@reserf).deliver
       else
-        flash[:error] = 'There was an error, and your message could not be sent.' 
+        flash[:error] = 'Your message could not be sent due to an invalid email address. Please try again.'
         format.html { redirect_to :back }
         format.json { render json: @reserf.errors, status: :unprocessable_entity }
       end
