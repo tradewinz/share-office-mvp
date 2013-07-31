@@ -72,6 +72,14 @@
   margin-top:10px;
 }
 
+.alert-danger,
+.alert-error {
+  color: #000;
+  background-color: #f2dede;
+  border-color: #b94a48;
+  border-style: dashed;
+}
+
 .alert-success {
   color: #000;
   background-color: rgba(0,153,0, .1);
