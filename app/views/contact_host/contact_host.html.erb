@@ -3,58 +3,34 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Your listing has been posted!</title>
-  <style type="text/css">
-      body {
-          background-color: #ece6e0;
-          background-image: url('background_small.png');
-          background-repeat: repeat;
-          margin-left: 20px;
-          margin-top: 20px;
-          margin-right: 20px;
-      }
-      p {
-          font-family: Arial, Helvetica, sans-serif;
-          font-size: 14px;
+</head>
+
+<body style ="background-color: #ece6e0;
+          background-image: url('http://spaces.intuit.com/assets/background_small.png');
+          background-repeat: repeat;">
+
+<table background="http://spaces.intuit.com/assets/background_small.png" id="wrapper" width="100%">
+  <tr><td>&nbsp;
+  </td></tr>
+  <tr><td>
+
+<table width="600px" align="center" bgcolor="#FFF" style="border: 1px solid #C2BDB3;">
+  <tr>
+    <td><table width="540px" border="0" align="center" cellpadding="0" cellspacing="0">
+
+      <tr>
+        <td height="80" style="font-family: Arial, Helvetica, sans-serif;
+          font-size: 22px;
           font-style: normal;
-          line-height: 26px;
-          font-weight: normal;
-          color: #505050;
-          text-decoration: none;
-      }
-      .headline {
-          font-family: Arial, Helvetica, sans-serif;
+          font-weight: lighter;
+          color: #bbbbbb;
+          text-decoration: none;">Someone's interested in your space!</td>
+        <td style="font-family: Arial, Helvetica, sans-serif;
           font-size: 24px;
           font-style: normal;
           font-weight: lighter;
           color: #bbbbbb;
-          text-decoration: none;
-      }
-      .tablecolor {
-          background-color: #FFF;
-          border: 1px solid #C2BDB3;
-      }
-      a {
-          font-family: Arial, Helvetica, sans-serif;
-          color: #0098cd;
-      }
-      .footer {
-          font-family: Arial, Helvetica, sans-serif;
-          font-size: 12px;
-          font-weight: normal;
-          color: #999995;
-          text-align: center;
-      }
-  </style>
-</head>
-
-<body>
-
-<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablecolor">
-  <tr>
-    <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
-      <tr>
-        <td height="80" class="headline">Someone's interested in your space!</td>
-        <td class="headline">&nbsp;</td>
+          text-decoration: none;">&nbsp;</td>
         <td width="160">
           <a href="<%= home_url %>" >
             <img src="http://spaces.intuit.com/assets/logo_intuit_spaces.gif" alt="Intuit Spaces" width="140" height="26" align="right" />
@@ -71,7 +47,7 @@
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <td><table width="540px" border="0" align="center" cellpadding="0" cellspacing="0">
 
       <tr>
         <td colspan="2"><p>Hello <%= @office.user.name %>,</p>
@@ -95,6 +71,12 @@
   </tr>
   </tr>
 </table>
-<p class="footer">© 2013, Intuit, Inc. 2632 Marine Way, Mountain View, CA 94043</p>
+
+<p style="font-size: 12px;
+          color: #999995;
+          text-align: center;">© 2013, Intuit, Inc. 2632 Marine Way, Mountain View, CA 94043</p>
+<p>&nbsp;</p>
+</tr></td></table>
+
 </body>
 </html>
