@@ -1,8 +1,8 @@
 <div class="featured">Work in these unique spaces</div>
 
-<div id="myCarousel" class="carousel slide">
+<div id="myCarousel" class="carousel slide carousel-container">
 
-  <ol class="carousel-indicators">
+  <ol class="carousel-indicators middle">
     <% @featured_offices.each_with_index do |office,index| %>
       <% if index < @featured_offices.count / 2 %>
         <li data-target="#myCarousel" data-slide-to="<%= index %>" <% if index==0%>class="active"<% end %> ></li>
@@ -13,7 +13,7 @@
   <!-- Carousel items -->
   <div class="carousel-inner">            
     <% @featured_offices.each_with_index do |office,index| %>
-      <div class="<% if index==0%>active<% end %> item">
+      <% if index%2==0 %><div class="<% if index==0%>active<% end %> item"><% end %>
 
         <a href= "<%= office_path(office)  %>" >
           <li class = "span6 carousel-div">
@@ -69,6 +69,6 @@
   </div>
 
   <!-- Carousel nav -->
-  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+  <a class="carousel-control left home" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right home" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div> <!--end carousel-->

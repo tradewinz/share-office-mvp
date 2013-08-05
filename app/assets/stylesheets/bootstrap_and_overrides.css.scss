@@ -94,12 +94,17 @@
   border-style: dashed;
 }*/
 
-.carousel-control.right {
+
+.carousel-control.right.home {
   right: -20px;
 }
 
-.carousel-control.left {
+.carousel-control.left.home {
   left: -25px;
+}
+
+.carousel-control.left.alerts {
+  left: 33px;
 }
 
 .carousel-img {
@@ -152,6 +157,18 @@
 
 .img-align {
   align:center;
+}
+
+.span45 {
+  width: 385px;
+}
+
+.span44 {
+  width: 355px;
+}
+
+.span75 {
+  width: 535px;
 }
 
 // ENd devise sign in page
