@@ -39,8 +39,7 @@
                   <%= link_to "San Francisco", listings_path(:city => "San Francisco, CA") %> and
                   <%= link_to "San Jose", listings_path(:city => "San Jose, CA")  %>
                   <br /> <br />
-                  Didn't find your city? Tell us about it at
-                  <a href="mailto:spaces@intuit.com">spaces@intuit.com</a>
+                  Didn't find your city?  <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city. 
                 </p>
               </div>
             </div>
@@ -283,6 +282,8 @@
 
                 <div class="pagemarker span12">
                   <div class="apple_pagination">
+                    <div class="listing_footer">Haven't found your perfect space? <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city.</div>
+
                   <!--div class="page_info">
                     <#%= page_entries_info @offices %>
                   </div-->
@@ -297,6 +298,7 @@
 </div>
 
 
+<%= render 'alerts/form' %>
 
 <script type="text/javascript">
 

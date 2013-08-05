@@ -1,2 +1,0 @@
-module Alerts::ConfirmUnsubscribesHelper
-end

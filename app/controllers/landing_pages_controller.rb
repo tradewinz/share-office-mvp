@@ -2,7 +2,7 @@ class LandingPagesController < ApplicationController
 
 	def home
     # must be true for staging and "true" for local
-    @featured_offices = Office.where("featured = ?", "true")
+    @featured_offices = Office.where("featured = ?", true)
     if (@featured_offices.length % 2 != 0)
       @featured_offices.pop
     end
@@ -16,6 +16,7 @@ class LandingPagesController < ApplicationController
 
   #	handle finding listing here separately
 	def listings
+    @alert = Alert.new
 
     #Paginated queries
     #@offices = Office.where("loc_zip = ?", params[:city]).page(params[:page])

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Alerts::ConfirmUnsubscribeTest < ActiveSupport::TestCase
+class UnsubscribeAlertControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
