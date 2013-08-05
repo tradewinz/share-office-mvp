@@ -43,6 +43,7 @@ class AlertsController < ApplicationController
   # DELETE /alerts/1.json
   def unsubscribe
     @alert = Alert.find(params[:id])
+    @offices = Office.where("loc_zip = ?", @alert.city)
     respond_to do |format|
       format.html
       format.json { head :no_content }
