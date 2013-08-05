@@ -1,14 +1,11 @@
 ShareOfficeMvp::Application.routes.draw do
-  namespace :alerts do
-    resources :confirm_unsubscribes
-  end
-
-
   resources :reserves
 
-
-  resources :alerts
-
+  resources :alerts, :only => [:new, :create, :destroy] do
+    member do
+      get 'unsubscribe'
+    end
+  end
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
@@ -21,8 +18,6 @@ ShareOfficeMvp::Application.routes.draw do
   match '/about', to: 'landing_pages#about'
   match '/confirm', to: 'offices#confirm'
   match '/reserve/:id', to:'offices#reserve'
-
-  match '/alerts/:id/unsubscribe', to: 'alerts#destroy', :as => :unsubscribe_alert
 
   resources :offices
 
