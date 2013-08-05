@@ -74,7 +74,6 @@
 				<p>Please enter your email address to stop receiving alerts.</p>
 			 	<label class="control-label">Email *</label>
 			    <div class="controls"><%= text_field_tag :email %></div>
-
 			    <div class="row">
 				    <div class="span3 offset5">
 				      <%= submit_tag "Unsubscribe", :class=>"btn btn-primary", :id => "confirmUnsubscribe"%>
@@ -89,7 +88,7 @@
 </div>
 <!-- other JS code -->
 <script type="text/javascript">
-
+$('#myCarousel').carousel();
 
 $("#confirmUnsubscribe").click(function() {
 
