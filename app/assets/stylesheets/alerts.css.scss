@@ -1,3 +1,32 @@
 // Place all the styles related to the Alerts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.unsubscribe-panel {
+	padding-top:15px;
+}
+
+.unsubscribe-box {
+  padding: 50px 35px 55px 14px;
+  color: #C4923B;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.span-carousel {
+  width: 385px;
+}
+
+.span-unsubscribe {
+  width: 535px;
+}
+
+.span-carousel-photo {
+  width: 355px;
+}
+
