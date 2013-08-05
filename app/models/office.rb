@@ -32,6 +32,8 @@ class Office < ActiveRecord::Base
   def address
     if !loc_addr1.blank? && !loc_zip.blank?
       [loc_addr1, loc_city, loc_state, loc_zip].compact.join(', ')
+    elsif !loc_addr1.blank?
+      [loc_addr1, loc_city, loc_state].compact.join(', ')
     elsif !loc_zip.blank?
       [loc_city, loc_state, loc_zip].compact.join(', ')
     else

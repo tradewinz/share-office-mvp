@@ -193,7 +193,8 @@ $(document).ready(function() {
               <label class="control-label">Location</label>
 
               <div class="span7">
-                  <%= text_field_tag 'address', f.object.address , :class=> :l_input, :style => "margin-bottom: 5px; height:30px", :placeholder => "Enter your address. e.g. 2000 Coast Ave, Mountain View, CA 94043." %>
+                  <%= text_field_tag 'address', f.object.address , :class=> :l_input, :style => "margin-bottom: 5px; height:30px", :placeholder => "Enter your address. e.g. 2000 Coast Ave, Mountain View, CA 94043.", :id => "address_field" %>
+                  <!-- %= f.text_field :address, :placeholder => "Address", :style => "margin-bottom: 5px; height:30px" , :class=> :l_input, :id => "address_field" % -->
               </div>
 
               <div class="row hide">
@@ -318,7 +319,7 @@ $(document).ready(function() {
 <script type="text/javascript">
 
     $(document).ready (function() {
-        var input = document.getElementById('address');
+        var input = document.getElementById('address_field');
         var autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.setTypes(['geocode']);
         autocomplete.setComponentRestrictions({'country':'us'});
@@ -382,8 +383,13 @@ $(document).ready(function() {
                     loc_addr1.value = '';
                 }
             }
+
+            if (loc_city.value == '') {
+                alert("Please enter a valid address or city.");
+            }
         });
 
     });
+
 
 </script>
