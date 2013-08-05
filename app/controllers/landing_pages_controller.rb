@@ -16,6 +16,7 @@ class LandingPagesController < ApplicationController
 
   #	handle finding listing here separately
 	def listings
+    @alert = Alert.new
 
     #Paginated queries
     #@offices = Office.where("loc_zip = ?", params[:city]).page(params[:page])
