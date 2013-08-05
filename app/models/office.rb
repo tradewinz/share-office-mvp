@@ -8,7 +8,7 @@ class Office < ActiveRecord::Base
   #has_many :reserve
 
   validates :title, :presence => true
-  validates :loc_zip, :presence => true
+  validates :loc_city, :presence => true
 
   #change to simple form before adding error
   #validates :accomodate, :numericality => { :greater_than_or_equal_to => 0 }
@@ -35,7 +35,15 @@ class Office < ActiveRecord::Base
   end
 
   def address
-    [loc_addr1, loc_city, loc_state, loc_zip].compact.join(', ')
+    if !loc_addr1.blank? && !loc_zip.blank?
+      [loc_addr1, loc_city, loc_state, loc_zip].compact.join(', ')
+    elsif !loc_addr1.blank?
+      [loc_addr1, loc_city, loc_state].compact.join(', ')
+    elsif !loc_zip.blank?
+      [loc_city, loc_state, loc_zip].compact.join(', ')
+    else
+      [loc_city, loc_state].compact.join(', ')
+    end
   end
 
   def next(query)
