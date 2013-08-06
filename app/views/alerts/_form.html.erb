@@ -48,9 +48,7 @@ $("#saveAlertBtn").click(function() {
   $("#new_alert").validate({
     rules: {
       "alert[city]": {
-        required: true,
-        minlength: 5,
-        digits: true
+        required: true
       },
       "alert[email]": {
         required: true, 
@@ -60,8 +58,6 @@ $("#saveAlertBtn").click(function() {
     messages: {
       "alert[city]": {
         required: "Please tell us the zipcode in which you are looking for a space.",
-        minlength: "This field must contain at least 5 characters.",
-        digits: "This field can only contain numbers."
       },
       "alert[email]": {
         required: "Please provide your email address, so we can send you a notice when a space in your zipcode has been added.",
