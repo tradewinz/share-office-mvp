@@ -11,18 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130722203409) do
+ActiveRecord::Schema.define(:version => 20130719233240) do
 
   create_table "alerts", :force => true do |t|
     t.string   "city"
     t.string   "email"
     t.string   "misc"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "alerts_confirm_unsubscribes", :force => true do |t|
-    t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
