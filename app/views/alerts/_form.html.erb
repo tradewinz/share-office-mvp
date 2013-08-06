@@ -22,8 +22,8 @@
     <% end %>
 
 	  <div class="form-inputs">
-	  	<label class="control-label">Zipcode *</label>
-	    <div class="controls"><%= f.text_field :city %></div>
+	  	<label class="control-label">City *</label>
+	    <div class="controls"><%= f.text_field :city, :id => "alertCity" %></div>
 
 	    <label class="control-label">Email *</label>
 	    <div class="controls"><%= f.text_field :email %></div>
@@ -44,6 +44,7 @@
 
 <!-- other JS code -->
 <script type="text/javascript">
+
 $("#saveAlertBtn").click(function() {
   $("#new_alert").validate({
     rules: {
