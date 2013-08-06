@@ -1,0 +1,16 @@
+Thank you for signing up for alerts!
+--------------------------------------
+
+Hello,
+
+Thank you for signing up for alerts! We will be sure to send you an email when a host adds a space in <%=@alert.city%>.
+
+
+Cheers,
+The Intuit Spaces team
+ 
+P.S. Questions or concerns about Intuit Spaces? Email us at <a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a>
+
+-
+
+<%= link_to 'Unsubscribe from ' + @alert.city + ' alerts', unsubscribe_alert_url(@alert)%>

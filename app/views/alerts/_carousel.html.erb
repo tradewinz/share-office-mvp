@@ -1,0 +1,59 @@
+<div id="myCarousel" class="carousel slide">
+
+  <!-- Carousel items -->
+  <div class="carousel-inner">            
+    <% @offices.each_with_index do |office,index| %>
+      <div class="<% if index==0%>active<% end %> item">
+
+        <a href= "<%= office_path(office)  %>" >
+          <div class = "span-carousel-photo carousel-div">
+              <% if (office.office_images.first != nil) %>
+                <%= cl_image_tag office.office_images.first.path, :width => 365, :height => 249, :crop => :fill, :class => "img-polaroid carousel-img" %>
+              <% else %>
+               <%= image_tag "default-studio.png", :class => "img-polaroid carousel-img" %>
+              <% end %>
+            
+              <div class="carousel-caption home">
+                
+                <div class = "row-fluid">
+
+                  <div class="caption-pic span2">
+                      <div class="profile-pic-list">
+                        <% if office.user && office.user.photo? %>
+                            <%= image_tag(office.user.photo) %>
+                        <% else %>
+                            <%= image_tag("default_person.png") %>
+                        <% end %>
+                      </div>
+                  </div>
+
+                  <div class="span10">
+                  <strong><%= office.title %></strong>
+                  <p><%= office.loc_city %>, <%= office.loc_state %> &#8226; <% if office.rent? %>
+                    <%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
+                    <% if office.rent_type == 1 %>/month
+                    <% else %>
+                      <% if office.rent_type == 2 %>/week
+                      <% else %>
+                        <% if office.rent_type == 3 %>/day
+                        <% else %>month
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                   <% else %>
+                     Contact us for rent
+                   <% end %></p>
+                 </div>
+                </div>
+
+            </div>
+          </div> 
+        </a>
+      </div>
+    <% end %> 
+  </div>
+
+  <!-- Carousel nav -->
+  <a class="carousel-control left alerts" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right alerts" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div> <!--end carousel-->

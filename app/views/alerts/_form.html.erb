@@ -1,8 +1,8 @@
 <!-- Modal -->
-<div id="addAlert" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="addAlertLabel" aria-hidden="true">
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="addAlertLabel">Create your space alert</h3>
+    <h3 id="myModalLabel">Create your space alert</h3>
   </div>
 
   <%= simple_form_for(@alert) do |f| %>
@@ -10,7 +10,6 @@
   <div class="modal-body">
   	<%= f.error_notification %>
 
-    <p>Tell us about the type of space you're looking for, and we'll let you know when we find something that matches your criteria!</p>
   	<% if @alert.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@alert.errors.count, "error") %> prohibited this listing from being saved:</h2>
@@ -23,7 +22,7 @@
     <% end %>
 
 	  <div class="form-inputs">
-	  	<label class="control-label">City *</label>
+	  	<label class="control-label">Zipcode *</label>
 	    <div class="controls"><%= f.text_field :city %></div>
 
 	    <label class="control-label">Email *</label>

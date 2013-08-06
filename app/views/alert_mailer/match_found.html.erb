@@ -20,7 +20,7 @@
       <tr>
         <td height="80px" style="font-size: 22px;
           font-weight: lighter;
-          color: #bbbbbb;">A space in <%= @office.loc_zip %> has been posted!</td>
+          color: #bbbbbb;">A space in <%= @alert.city %> has been posted!</td>
         <td style="font-size: 24px;
           font-weight: lighter;
           color: #bbbbbb;">&nbsp;</td>
@@ -136,7 +136,7 @@
 
 <p style="font-size: 12px;
           color: #999995;
-          text-align: center;"><%= link_to 'Unsubscribe from ' + @office.loc_zip + ' alerts', unsubscribe_alert_url(@alert), :method => :delete %>
+          text-align: center;"><%= link_to 'Unsubscribe from ' + @alert.city + ' alerts', unsubscribe_alert_url(@alert) %>
 <br>© 2013, Intuit, Inc. 2632 Marine Way, Mountain View, CA 94043</p>
 <p>&nbsp;</p>
 </tr></td></table>

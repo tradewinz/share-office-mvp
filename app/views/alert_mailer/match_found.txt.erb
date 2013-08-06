@@ -1,4 +1,4 @@
-A space in <%= @office.loc_zip %> has been posted!
+A space in <%= @alert.city %> has been posted!
 --------------------------------------
 
 <%= @office.title %>
@@ -46,4 +46,4 @@ The Intuit Spaces team
 
 P.S. If you have any concerns or questions, please email us at <a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a>
 
-<%= link_to 'Unsubscribe from ' + @office.loc_zip + ' alerts', unsubscribe_alert_url(@alert), :method => :delete %>
+<%= link_to 'Unsubscribe from ' + @alert.city + ' alerts', unsubscribe_alert_url(@alert)%>
