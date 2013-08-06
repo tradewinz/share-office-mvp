@@ -9,7 +9,7 @@
 
   <div class="modal-body">
   	<%= f.error_notification %>
-
+    <p>Tell us about the type of space you're looking for, and we'll let you know when we find something that matches your criteria!</p>
   	<% if @alert.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@alert.errors.count, "error") %> prohibited this listing from being saved:</h2>

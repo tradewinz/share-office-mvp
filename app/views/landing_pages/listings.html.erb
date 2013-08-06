@@ -307,6 +307,10 @@
         var autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.setTypes(['geocode']);
 
+        var inputA = document.getElementById('alertCity');
+        var autocompleteA = new google.maps.places.Autocomplete(inputA);
+        autocompleteA.setTypes(['geocode']);
+
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
 
             //$("#search input[type='submit']").click();
