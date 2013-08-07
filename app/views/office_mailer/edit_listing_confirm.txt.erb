@@ -1,7 +1,14 @@
-    Hello <%= @office.user.name %>,
-          Thanks for using Intuit Spaces to share your extra office space!
-          Your listing was successfully updated
-          Here's a convenient link to view your listing: <%= link_to 'View', office_url(@office) %>
-          Cheers,
-            The Intuit Spaces team
-          P.S. If you have any concerns or questions, please email us at <a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a>
+Your listing has been updated!
+--------------------------------------
+
+Hello <%= @office.user.name %>,
+
+Thanks for using Intuit Spaces to share your extra office space!
+Your listing was successfully updated.
+
+Here's a convenient link to view your listing: <%= link_to 'View', office_url(@office) %>
+
+Cheers,
+The Intuit Spaces team
+          
+P.S. If you have any concerns or questions, please email us at <a href="mailto:spaces@intuit.com?subject=Inquiry">spaces@intuit.com</a>
