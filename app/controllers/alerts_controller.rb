@@ -28,8 +28,11 @@ class AlertsController < ApplicationController
 
     respond_to do |format|
       if @alert.save
-        #send confirmation email?
-        format.html { redirect_to home_path, notice: 'Alert was successfully created.' }
+        #send confirmation email
+        AlertMailer.confirm(@alert).deliver
+        track_event("Added Alert");
+
+        format.html { redirect_to home_path, notice: "Alert was successfully created. We\'ll notify you when there are new listings in #{@alert.city}." }
         format.json { render json: @alert, status: :created, location: @alert }
       else
         format.html { render action: "new"}
@@ -43,7 +46,8 @@ class AlertsController < ApplicationController
   # DELETE /alerts/1.json
   def unsubscribe
     @alert = Alert.find(params[:id])
-    @offices = Office.where("loc_zip = ?", @alert.city)
+    @offices = Office.where("lower(loc_city) = ?", @alert.city.downcase)
+
     respond_to do |format|
       format.html
       format.json { head :no_content }

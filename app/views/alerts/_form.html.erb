@@ -35,8 +35,7 @@
   </div>
   
   <div class="modal-footer">
-    <%= button_to "CLOSE", "#addAlert", {:class => "btn btn-primary", :data => {:toggle=>"modal"}} %>
-    <button class="btn" data-dismiss="modal" aria-hidden="true">CLOSE</button>
+    <%= link_to "CLOSE", "", :data => {:dismiss=>"modal"}, :class=> "btn" %>
     <%= f.button :submit, "CREATE ALERT", :class=>"btn btn-primary", :id => "saveAlertBtn"%>
   </div>
 

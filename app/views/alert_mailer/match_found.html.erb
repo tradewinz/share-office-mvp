@@ -20,7 +20,7 @@
       <tr>
         <td height="80px" style="font-size: 22px;
           font-weight: lighter;
-          color: #bbbbbb;">A space in <%= @alert.city %> has been posted!</td>
+          color: #bbbbbb;">New office available in <%= @alert.city %>!</td>
         <td style="font-size: 24px;
           font-weight: lighter;
           color: #bbbbbb;">&nbsp;</td>
@@ -50,8 +50,7 @@
       <%if (@office.office_images.first != nil)%>
         <img src="<%="http://res.cloudinary.com/dmcfi9vma/image/upload/" + @office.office_images.first.path%>" alt="<%=@office.title %>" width="280"/>
       <%else%>
-        <%= image_tag("medium_default-studio.png", :alt => @office.title, :width => "280") %> 
-
+        <img src="http://spaces.intuit.com/assets/medium_default-studio.png" alt="<%=@office.title%>" width="280" />
       <%end%>
   </td>
   <!--end left column -->
@@ -66,7 +65,7 @@
         <%if @office.user && @office.user.photo?%>
             <%= image_tag(@office.user.photo, :alt => @office.user.name, :width => "60") %>
         <%else %>
-            <%= image_tag("default_person.png", :alt => @office.user.name, :width => "60") %>
+            <img src="http://spaces.intuit.com/assets/default_person.png" alt="<%= @office.user.name%>" width="60" />
         <%end%>
       </td>
       <td valign="top">

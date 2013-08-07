@@ -1,10 +1,9 @@
 <div class="row-fluid alerts-container">
   <div class="span6 offset2">
    	<div class="featured alerts">Get Space Alerts</div>
-   	<br>We'll send you email updates on listings based on your criteria</br>
+   	<br>We'll send you instant e-mail alerts for new listings matching your criteria</br>
    	<!-- Button to trigger modal -->
-   	   	<%= link_to "CREATE ALERT", "#addAlert", :data => {:toggle=>"modal"} %>
-
+	<%= link_to "CREATE ALERT", "#addAlert", :data => {:toggle=>"modal"}, :class=> "btn btn-large btn-primary alert-btn" %>
   </div>
   <%= image_tag "tw/icon_alert_150x139.png"%>
 

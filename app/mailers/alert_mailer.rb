@@ -10,7 +10,7 @@ class AlertMailer < ActionMailer::Base
   def match_found(office,alert)
   	@office = office
   	@alert = alert
-  	mail(:to => alert.email, :subject => "Alert: space was found!")
+  	mail(:to => alert.email, :subject => "Alert: space was found in #{alert.city}!")
   end
 
 end

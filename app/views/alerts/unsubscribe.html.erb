@@ -1,13 +1,17 @@
 
 <div class="panel panel-border">
 	<div class="text-center">
-	    <h4>Are you sure you want to unsubscribe from <%= @alert.city%> alerts?</h4>
+	    <h4>Are you sure you want to unsubscribe from <%= @alert.city %> alerts?</h4>
 	</div>
 
 <div class="row unsubscribe-panel">
 
 	<div class="span-carousel">
-    <%= render 'alerts/carousel' %>
+    <% if @offices.count > 0 %>
+      <%= render 'alerts/carousel' %>
+    <% else %>
+      <div class="no-alert"><%= image_tag "tw/icon_alert_150x139.png", width: "200px"%></div>
+    <% end %>
 
   </div>
   <div class="span-unsubscribe">

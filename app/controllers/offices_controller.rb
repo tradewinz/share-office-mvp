@@ -76,7 +76,7 @@ class OfficesController < ApplicationController
         format.json { render json: @office, status: :created, location: @office }
 
         # send email to users who have set alerts
-        @alerts = Alert.where("city = ?", @office.loc_city)
+        @alerts = Alert.where("lower(city) = ?", @office.loc_city.downcase)
         @alerts.each do |alert|
           AlertMailer.match_found(@office,alert).deliver
         end
