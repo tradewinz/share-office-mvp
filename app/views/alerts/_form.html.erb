@@ -22,8 +22,18 @@
     <% end %>
 
 	  <div class="form-inputs">
+
+      <div class="row hide">
+        <div class="span2">
+          <%= f.text_field :city, :placeholder => "City", :style => "width: 140px", :id => "alert_loc_city" %>
+        </div>
+        <div class="span1">
+          <%= f.text_field :state, :placeholder => "State", :style => "width: 70px", :id => "alert_loc_state" %>
+        </div>
+      </div>
+
 	  	<label class="control-label">City *</label>
-	    <div class="controls"><%= f.text_field :city, :id => "alertCity" %></div>
+	    <div class="controls"><%= f.text_field :address, :id => "alertCity" %></div>
 
 	    <label class="control-label">Email *</label>
 	    <div class="controls"><%= f.text_field :email %></div>
