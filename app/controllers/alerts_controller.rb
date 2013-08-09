@@ -32,7 +32,7 @@ class AlertsController < ApplicationController
         AlertMailer.confirm(@alert).deliver
         track_event("Added Alert");
 
-        format.html { redirect_to home_path, notice: "Alert was successfully created. We\'ll notify you when there are new listings in #{@alert.city}." }
+        format.html { redirect_to :back, notice: "Alert was successfully created. We\'ll notify you when there are new listings in #{@alert.city}." }
         format.json { render json: @alert, status: :created, location: @alert }
       else
         format.html { render action: "new"}
