@@ -282,13 +282,13 @@
 
                 <div class="pagemarker span12">
                   <div class="apple_pagination">
-                    <div class="listing_footer">Haven't found your perfect space? <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city.</div>
 
                   <!--div class="page_info">
                     <#%= page_entries_info @offices %>
                   </div-->
                   <%= will_paginate @offices, :container => false %>
                   </div>
+                  <div class="text-center listing_footer">Haven't found your perfect space? <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city.</div>
                 </div>
 
             </div>
