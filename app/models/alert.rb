@@ -1,5 +1,5 @@
 class Alert < ActiveRecord::Base
-  attr_accessible :city, :email, :misc
+  attr_accessible :city, :state, :address, :email, :misc
 
   validates :city, :presence => true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
