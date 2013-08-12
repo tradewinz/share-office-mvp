@@ -1,4 +1,4 @@
-<div class="paperPanel3D text-center show_office">
+<div class="paperPanel3D show_office">
   <div class="row">
     <div class="span4">
         <% if can? :update, @office %>
@@ -10,7 +10,7 @@
             </div>
         <% else %>
             <div id="reserve">
-              <h4 class="panel-header-gray">Contact <%=@office.user.name%></h4>
+              <h4 class="panel-header-gray text-center">Contact host</h4>
 
               <%= render 'reserves/form1' %>
               <!--%= link_to "", {:controller => "offices", :action => "reserve", :id => @office}, :class => "reserve-btn"  %-->
@@ -18,7 +18,7 @@
             </div>
 
             <div id="thankyou">
-              <h4 class="panel-header-gray">And it's sent!</h4>
+              <h4 class="panel-header-gray text-center">And it's sent!</h4>
               <%= render 'reserves/thankyou' %>
             </div>
 

@@ -13,7 +13,7 @@ class ReservesController < ApplicationController
   # POST /reserves.json
   def create
     @office = Office.find(params[:office_id])
-    @reserf = @office.reserves.create(params[:reserve])
+    @reserf = @office.reserve.create(params[:reserve])
 
     respond_to do |format|
       if @reserf.save
