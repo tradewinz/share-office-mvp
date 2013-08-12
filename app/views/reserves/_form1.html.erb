@@ -1,7 +1,8 @@
-<%= simple_form_for(@reserf) do |f|%>
+<%= form_for([@office, @office.reserves.build]) do |f|%>
+
 
   <div class="form-inputs">
-  <%= f.hidden_field :office_id, value: @office.id %>
+  <!--%= f.hidden_field :office_id, value: @office.id %-->
   <%= f.text_field :name, :placeholder => "Name", :style => "width: 250px" %>
   <%= f.text_field :email, :placeholder => "Email", :style => "width: 250px" %>
   <%= f.select(:length, options_for_select(['Less than 1 month','1 to 5 months','6 to 12 months', 'More than 1 year']), {:prompt => "Rental duration"}, {:style => "width: 260px"})%>
