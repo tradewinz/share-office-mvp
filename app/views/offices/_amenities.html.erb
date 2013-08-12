@@ -1,0 +1,78 @@
+<div class="row">
+
+              <div class="span1.5">
+                  <p><% if @office.wifi? %>
+                      <div class="officeicon wifi_on"></div>
+                      Wi-fi
+                  <% else %>
+                      <div class="officeicon wifi_off"></div>
+                      <span class="text-gray"> Wi-fi</span>
+                  <% end %>
+                  </p>
+
+                  <p><% if @office.parking? %>
+                      <div class="officeicon park_on"></div>
+                      Parking
+                  <% else %>
+                      <div class="officeicon park_off"></div>
+                      <span class="text-gray"> Parking</span>
+                  <% end %>
+                  </p>
+
+
+                </div>
+
+                <div class="span1.5">
+                  <p><% if @office.ac? %>
+                      <div class="officeicon ac_on"></div>
+                      Air Conditioning
+                  <% else %>
+                      <div class="officeicon ac_off"></div>
+                      <span class="text-gray">Air Conditioning</span>
+                  <% end %>
+                  </p>
+
+                  <p><% if @office.confroom? %>
+                      <div class="officeicon conf_on"></div>
+                      Conference Room
+                  <% else %>
+                      <div class="officeicon conf_off"></div>
+                      <span class="text-gray">Conference Room</span>
+                  <% end %>
+                  </p>
+
+                </div>
+
+                <div class="span1.5">
+                  <p><% if @office.printer? %>
+                      <div class="officeicon printer_on"></div>
+                      Printer
+                  <% else %>
+                      <div class="officeicon printer_off"></div>
+                      <span class="text-gray">Printer</span>
+                  <% end %>
+                  </p>
+
+                  <p><% if @office.kitchen? %>
+                      <div class="officeicon kitchen_on"></div>
+                      Kitchen
+                  <% else %>
+                      <div class="officeicon kitchen_off"></div>
+                      <span class="text-gray">Kitchen</span>
+                  <% end %>
+                  </p>
+
+                </div>
+
+                <div class="span1.5">
+                    <p><% if @office.window? %>
+                        <div class="officeicon window_on"></div>
+                        Window Office
+                    <% else %>
+                        <div class="officeicon window_off"></div>
+                        <span class="text-gray">Window Office</span>
+                    <% end %>
+                    </p>
+                </div>
+
+        </div>

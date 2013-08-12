@@ -1,0 +1,28 @@
+<div class="paperPanel3D text-center show_office">
+  <div class="row">
+    <div class="span4">
+        <% if can? :update, @office %>
+            <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
+            <div style="padding-top: 7px;">
+              <% if can? :destroy, @office %>
+                  <%= link_to 'Delete this listing', @office, :method => :delete, :data => { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+        <% else %>
+            <div id="reserve">
+              <h4 class="panel-header-gray">Contact <%=@office.user.name%></h4>
+
+              <%= render 'reserves/form1' %>
+              <!--%= link_to "", {:controller => "offices", :action => "reserve", :id => @office}, :class => "reserve-btn"  %-->
+              <!--a href="#myModal" role="button" class="reserve-btn" data-toggle="modal"></a-->
+            </div>
+
+            <div id="thankyou">
+              <h4 class="panel-header-gray">And it's sent!</h4>
+              <%= render 'reserves/thankyou' %>
+            </div>
+
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+  <div class="paperPanel3D host-summary show_office">
+    <div class="row">
+        <div class="span4">
+          <h4 class="panel-header-gray">About the host</h4>
+        </div>
+        <div class="span3">
+          <div class="small-pad">
+            <% if @office.user.photo? %>
+                <%= image_tag(@office.user.photo) %>
+            <% else %>
+                <%= image_tag("default_person.png") %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="span3">
+          <div class="small-pad">
+            <p>
+            <div class="officeicon accomodates"></div>
+            <b><%= @office.user.name %></b>
+            </p>
+          </div>
+        </div>
+
+        <div class="span3">
+          <div class="small-pad">
+            <p>
+            <% if @office.user.industry? %>
+                <div class="officeicon industry"></div>
+                <b><%= @office.user.industry %></b>
+            <% end %>
+            </p>
+          </div>
+        </div>
+
+        <div class="span3">
+          <div class="small-pad">
+            <p>
+              <% if @office.user.location? %>
+                <div class="officeicon experience"></div>
+                <b><%= @office.user.location %></b>
+              <% end %>
+            </p>
+          </div>
+        </div>
+
+        <div class="span3">
+          <div class="small-pad">
+            <p>
+              <% if @office.user.website? %>
+                <b><%= link_to "See my LinkedIn profile", @office.user.website, :target => "_blank" %></b>
+              <% end %>
+            </p>
+          </div>
+        </div>
+
+        <!--div class="span3">
+          <div class="small-pad">
+            <p>
+              <b>User Email:</b>
+              <#%= @office.user.email %>
+            </p>
+          </div>
+        </div-->
+
+
+      </div>
+    </div>
