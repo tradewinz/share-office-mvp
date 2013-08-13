@@ -1,4 +1,6 @@
 <div class="container footer">
+
+   <%= render(:partial => 'layouts/footer1') if (params[:action] != 'home') %>
   <div class="span6 offset4" style="margin-bottom: 30px; padding-top: 24px;">
     <p>© Intuit, Inc. All rights reserved
       <a href="http://security.intuit.com/privacy/" target="_blank">Privacy Policy</a>
