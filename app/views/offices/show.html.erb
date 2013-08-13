@@ -36,7 +36,6 @@
                 </div>
               </div>
               <div class="tab-pane fade" id="googlemap">
-                  <div class="location-map">
                     <%= gmaps("markers" => {"data" => @json},
                               "map_options" =>  { "provider" => "google",
                                                   # "client" => "gme-intuitinc",
@@ -47,7 +46,6 @@
                               }
                         )
                     %>
-                </div>            
               </div>
             </div>
 
@@ -89,6 +87,7 @@
 $(document).ready(function(){
  
         $("#thankyou").hide();
+        $("#sending").hide();
         $("#reserve").show();
  
 });
