@@ -7,86 +7,72 @@
    
 
 <div class="row panel panel-border">
-<!-- frame -->
-<div class="row" id="title">
 
-  <div class="span8">
-    <p class="officetitle">
-      <%= @office.title %>
-    </p>
+  <!-- frame -->
+  <div class="row" id="title">
 
-    <p class="officelocation">
-      <%= @office.loc_addr1 %>  <%= @office.loc_city %> <%= @office.loc_state %> <%= @office.loc_zip %>
-    </p>
-  
-    <div class="row room-detail">
-      <div class="span8">
+    <div class="span8">
 
-            <ul id="myTab" class="nav nav-tabs">
-              <li class="active"><a href="#photos" data-toggle="tab">Photos</a></li>
-              <li><a href="#googlemap" data-toggle="tab" onclick="Gmaps.loadMaps();">Maps</a></li>
-              <li><a href="#streetview" data-toggle="tab" onclick="Gmaps.loadMaps();">Street view</a></li>
+      <p class="officetitle">
+        <%= @office.title %>
+      </p>
 
+      <p class="officelocation">
+        <%= @office.loc_addr1 %>  <%= @office.loc_city %> <%= @office.loc_state %> <%= @office.loc_zip %>
+      </p>
+    
+      <div class="row room-detail">
         
-            </ul>
-            <div id="myTabContent" class="tab-content">
-              <div class="tab-pane fade in active" id="photos">
-                <div id="galleria">
+        <div class="span8">
+          <ul id="myTab" class="nav nav-tabs">
+            <li class="active"><a href="#photos" data-toggle="tab">Photos</a></li>
+            <li><a href="#googlemap" data-toggle="tab">Map</a></li>
+            <li><a href="#streetview" data-toggle="tab">Street view</a></li>
+
+          </ul>
+
+          <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="photos">
+              <div id="galleria">
                   <% @office.office_images.each do |photo| %>
                       <%= cl_image_tag(photo.path, :width => 600, :height=>400, :crop=> :fill, :angle => :exif) %>
                   <% end %>
                 </div>
-              </div>
-              <div class="tab-pane fade" id="googlemap">
-                  <div class="location-map">
-                  <%= gmaps("markers" => {"data" => @json},
-                            "map_options" =>  { "provider" => "google",
-                                                # "client" => "gme-intuitinc",
-                                                # "channel" => "fms.spaces",
-                                                "provider_key" => "AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE",
-                                                "auto_zoom" => false,
-                                                "zoom" => 12
-                            }
-                      )
-                  %>
-                </div>
-              </div>
-
-              <div class="tab-pane fade" id="streetview">
-                <div id="panorama" style="width: 400px; height: 400px"></div>
-              </div>
-
             </div>
 
-        
-      </div>
-      <div class="span8" style="margin-top: 10px;">
-        <% if @office.description? %>
-            <h4>Description</h4>
-            <p class="officedetailstext"><%= @office.description.html_safe %> </p>
-        <% end %>
-      </div>
-      <div class="span8">
-        <h4>Amenities</h4>
-          <%= render 'amenities'%>
+            <div class="tab-pane fade" id="googlemap">
+                <div id="map-canvas"></div>
+            </div>
+
+            <div class="tab-pane fade" id="streetview">
+                <div id="pano"></div>
+            </div>
+
+          </div>
+          
+        </div>
+        <div class="span8" style="margin-top: 10px;">
+          <% if @office.description? %>
+              <h4>Description</h4>
+              <p class="officedetailstext"><%= @office.description.html_safe %> </p>
+          <% end %>
+        </div>
+        <div class="span8">
+          <h4>Amenities</h4>
+            <%= render 'amenities'%>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="span4 room-action-area">
+    <div class="span4 room-action-area">
       <%= render 'briefinfo' %>
-    <%= render 'contacthost' %>
+      <%= render 'contacthost' %>
 
-    <% if @office.user %>
-      <%= render 'abouthost' %>
-    <% end %>
+      <% if @office.user %>
+        <%= render 'abouthost' %>
+      <% end %>
+    </div>
   </div>
-
-  
-</div>
-</div>
-</div>
-
 </div>
 
 
@@ -99,35 +85,60 @@
     $("#reserve").show();
   });
 
-  function streetview() {
-    var pano;
-    var latlng = new google.maps.LatLng(38.897526, -77.0370613);
-
-    var panoOptions = {
-      position: latlng,
-      pov: {
-        heading: 0,
-          pitch: 0
-      }
-    };
-
-    pano = new google.maps.StreetViewPanorama(document.getElementById('panorama'), panoOptions);
-
-    window.setInterval(function() {
-      var pov = pano.getPov();
-      pov.heading += 0.2;
-      pano.setPov(pov);
-    }, 10);
-  }
-
-  // streetview();
-
   function galleria(){
       Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
       Galleria.run('#galleria');
   }
 
   galleria();
+
+
+  function initialize() {
+     var latlng = new google.maps.LatLng(-34.397, 150.644);
+      var mapOptions = {
+        center: latlng,
+        zoom: 8,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("map-canvas"),
+          mapOptions);
+
+      var fenway = new google.maps.LatLng(42.345573,-71.098326);
+     
+      var panoramaOptions = {
+        position: fenway,
+        pov: {
+          heading: 34,
+          pitch: 10
+        }
+      };
+      var pano = new  google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
+
+      window.setInterval(function() {
+        var pov = pano.getPov();
+        pov.heading += 0.2;
+        pano.setPov(pov);
+      }, 10);
+
+      $('#myTab a[href="#googlemap"]').on('shown', function(e){
+        google.maps.event.trigger(map, 'resize');
+        map.setCenter(latlng);
+      });
+
+      $('#myTab a[href="#streetview"]').on('shown', function(e){
+        google.maps.event.trigger(pano, 'resize');
+      });
+
+    }
+    
+    function loadScript() {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize";
+      document.body.appendChild(script);
+    }
+
+    window.onload = loadScript;
 
   mixpanel.track_links('#reserve a', 'Clicked Contact Us');
 
