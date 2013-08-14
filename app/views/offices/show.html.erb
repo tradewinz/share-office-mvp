@@ -32,11 +32,18 @@
 
           <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade in active" id="photos">
+             <% if (@office.office_images.first != nil) %>
               <div id="galleria">
-                  <% @office.office_images.each do |photo| %>
-                      <%= cl_image_tag(photo.path, :width => 600, :height=>400, :crop=> :fill, :angle => :exif) %>
-                  <% end %>
-                </div>
+                <% @office.office_images.each do |photo| %>
+                    <%= cl_image_tag(photo.path, :width => 600, :height=>400, :crop=> :fill, :angle => :exif) %>
+                <% end %>
+              </div>
+            <% else %>
+              <div id="galleria">
+                <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=600x400&location=#{@office.latitude},%20#{@office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fill, :class => "img-polaroid" %>
+              </div>
+
+           <% end %>
             </div>
 
             <div class="tab-pane fade" id="googlemap">
