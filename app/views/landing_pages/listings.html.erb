@@ -114,7 +114,9 @@
                             <% if (office.office_images.first != nil) %>
                                 <%= cl_image_tag office.office_images.first.path, :size => '220x165', :crop => :fit, :class => "img-polaroid" %>
                             <% else %>
-                                <%= image_tag "medium_default-studio.png", :class => "img-polaroid" %>
+
+                                <!--%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=220x165&location=40.720032,%20-73.988354&fov=90&heading=235&pitch=10&sensor=false", :crop => :fit, :class => "img-polaroid" %-->
+                                <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=220x165&location=#{office.latitude},%20#{office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fit, :class => "img-polaroid" %>
                             <% end %>
 
                           </a>

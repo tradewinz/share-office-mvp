@@ -22,7 +22,7 @@
               <% if (office.office_images.first != nil) %>
                 <%= cl_image_tag office.office_images.first.path, :width => 365, :height => 249, :crop => :fill, :class => "img-polaroid" %>
               <% else %>
-               <%= image_tag "default-studio.png", :class => "img-polaroid carousel-img" %>
+                  <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=600x400&location=#{office.latitude},%20#{office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :class => "img-polaroid carousel-img" %>
               <% end %>
             
               <div class="carousel-caption home">
