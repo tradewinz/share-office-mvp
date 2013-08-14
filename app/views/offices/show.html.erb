@@ -24,11 +24,10 @@
       <div class="row room-detail">
         
         <div class="span8">
-          <ul id="myTab" class="nav nav-tabs">
+          <ul id="myTab" class="nav nav-tabs">            
             <li class="active"><a href="#photos" data-toggle="tab">Photos</a></li>
             <li><a href="#googlemap" data-toggle="tab">Map</a></li>
-            <li><a href="#streetview" data-toggle="tab">Street view</a></li>
-
+            <li><a href="#streetview" data-toggle="tab" id="streetview-tab">Street view</a></li>
           </ul>
 
           <div id="myTabContent" class="tab-content">
@@ -78,12 +77,18 @@
 
 <!-- image gallery  -->
 <script type="text/javascript">
-
   $(document).ready(function(){
     $("#thankyou").hide();
     $("#sending").hide();
     $("#reserve").show();
+    google.maps.StreetViewService.getPanoramaByLocation( latlng, 50, processSVData());
   });
+
+  function processSVData(data, status) {
+    if (status != google.maps.StreetViewStatus.OK) {
+      $("#streetview-tab").hide();
+    }
+  }
 
   function galleria(){
       Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
@@ -92,27 +97,25 @@
 
   galleria();
 
-
   function initialize() {
-     var latlng = new google.maps.LatLng(-34.397, 150.644);
+     var latlng = new google.maps.LatLng("<%=@office.latitude%>", "<%=@office.longitude%>");
       var mapOptions = {
         center: latlng,
         zoom: 8,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        streetViewControl: false
       };
       var map = new google.maps.Map(document.getElementById("map-canvas"),
           mapOptions);
-
-      var fenway = new google.maps.LatLng(42.345573,-71.098326);
      
       var panoramaOptions = {
-        position: fenway,
+        position: latlng,
         pov: {
           heading: 34,
           pitch: 10
         }
       };
-      var pano = new  google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
+      var pano = new google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
 
       window.setInterval(function() {
         var pov = pano.getPov();
