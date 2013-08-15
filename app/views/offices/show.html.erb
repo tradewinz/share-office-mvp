@@ -108,13 +108,18 @@
      var latlng = new google.maps.LatLng("<%=@office.latitude%>", "<%=@office.longitude%>");
       var mapOptions = {
         center: latlng,
-        zoom: 8,
+        zoom: 12,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         streetViewControl: false
       };
       var map = new google.maps.Map(document.getElementById("map-canvas"),
           mapOptions);
-     
+
+      var marker = new google.maps.Marker({
+          position: latlng,
+          map: map
+      });
+
       var panoramaOptions = {
         position: latlng,
         pov: {
@@ -144,7 +149,7 @@
     function loadScript() {
       var script = document.createElement("script");
       script.type = "text/javascript";
-      script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize";
+      script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE";
       document.body.appendChild(script);
     }
 
