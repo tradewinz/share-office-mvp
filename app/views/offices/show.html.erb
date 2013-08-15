@@ -7,320 +7,149 @@
    
 
 <div class="row panel panel-border">
-<!-- frame -->
-<div class="row" id="title">
 
-  <div class="span8">
-    <p class="officetitle">
-      <%= @office.title %>
-    </p>
+  <!-- frame -->
+  <div class="row" id="title">
 
-    <p class="officelocation">
-      <%= @office.loc_addr1 %>  <%= @office.loc_city %> <%= @office.loc_state %> <%= @office.loc_zip %>
-    </p>
-  </div>
-  <!-- end left column -->
+    <div class="span8">
 
-  <div class="span4">
-    <p class="officecost text-right">
-     <% if @office.rent? %>
-          <strong><%= number_to_currency(@office.rent, :locale => 'en_us', :precision => 0) %></strong>
-          <% if @office.rent_type == 1 %>/ month
-          <% else %>
-              <% if @office.rent_type == 2 %>/ week
-              <% else %>
-                  <% if @office.rent_type == 3 %>/ day
-                  <% else %>month
-                  <% end %>
-              <% end %>
+      <p class="officetitle">
+        <%= @office.title %>
+      </p>
+
+      <p class="officelocation">
+        <%= @office.loc_addr1 %>  <%= @office.loc_city %> <%= @office.loc_state %> <%= @office.loc_zip %>
+      </p>
+    
+      <div class="row room-detail">
+        
+        <div class="span8">
+          <ul id="myTab" class="nav nav-tabs">            
+            <li class="active"><a href="#photos" data-toggle="tab">Photos</a></li>
+            <li><a href="#googlemap" data-toggle="tab">Map</a></li>
+            <li><a href="#streetview" data-toggle="tab" id="streetview-tab">Street view</a></li>
+          </ul>
+
+          <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="photos">
+             <% if (@office.office_images.first != nil) %>
+              <div id="galleria">
+                <% @office.office_images.each do |photo| %>
+                    <%= cl_image_tag(photo.path, :width => 600, :height=>400, :crop=> :fill, :angle => :exif) %>
+                <% end %>
+              </div>
+            <% else %>
+              <div id="galleria">
+                <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=600x400&location=#{@office.latitude},%20#{@office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fill, :class => "img-polaroid" %>
+              </div>
+
+           <% end %>
+            </div>
+
+            <div class="tab-pane fade" id="googlemap">
+                <div id="map-canvas"></div>
+            </div>
+
+            <div class="tab-pane fade" id="streetview">
+                <div id="pano"></div>
+            </div>
+
+          </div>
+          
+        </div>
+        <div class="span8" style="margin-top: 10px;">
+          <% if @office.description? %>
+              <h4>Description</h4>
+              <p class="officedetailstext"><%= @office.description.html_safe %> </p>
           <% end %>
-     <% else %>
-       Contact us for rent
-     <% end %>
-    </p>
-
-    <p class="officeamenities text-right">
-      <% if @office.office_type == 1 %>
-        <div class="officeicon office"></div>
-        <span class="text-right">Office space</span>
-    <% else %>
-        <% if @office.office_type == 2 %>
-            <div class="officeicon meeting"></div>
-            <span class="text-right">Meeting room</span>
-        <% else %>
-            <% if @office.office_type == 3 %>
-                <div class="officeicon desk"></div>
-                <span class="text-right">Desk</span>
-            <% else %>
-                <div class="officeicon office"></div>
-                <span class="text-right">Office space</span>
-            <% end %>
-        <% end %>
-    <% end %>
-
-    <% if @office.accomodate? %>
-        <div class="officeicon accomodates"></div>
-        <%= @office.accomodate %>
-        <span class="text-right"><% if @office.accomodate == 1 %>person<% else %>people <% end %></span>
-    <% end %>
-
-    <% if @office.size? %>
-        <div class="officeicon size"></div>
-        <%= @office.size %>
-        <span class="text-right">sq. ft</span>
-    <% end %>
-    </p>
-
-  </div>
-  <!--end let column -->
-
-</div>
-<!-- end top row -->
-
-<div class="row">
-
-  <div class="span8">
-    <div class="row room-detail">
-      <div class="span8">
-        <% if (@office.office_images.first != nil) %>
-            <div id="galleria">
-              <% @office.office_images.each do |photo| %>
-                  <%= cl_image_tag(photo.path, :width => 600, :height=>400, :crop=> :fill, :angle => :exif) %>
-              <% end %>
-            </div>
-        <% else %>
-            <div id="galleria">
-              <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=600x400&location=#{@office.latitude},%20#{@office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fill, :class => "img-polaroid" %>
-            </div>
-
-        <% end %>
-      </div>
-      <div class="span8" style="margin-top: 10px;">
-        <% if @office.description? %>
-            <h4>Description</h4>
-            <p class="officedetailstext"><%= @office.description.html_safe %> </p>
-        <% end %>
-      </div>
-      <div class="span8">
-        <h4>Amenities</h4>
-<div class="row">
-
-              <div class="span1.5">
-                  <p><% if @office.wifi? %>
-                      <div class="officeicon wifi_on"></div>
-                      Wi-fi
-                  <% else %>
-                      <div class="officeicon wifi_off"></div>
-                      <span class="text-gray"> Wi-fi</span>
-                  <% end %>
-                  </p>
-
-                  <p><% if @office.parking? %>
-                      <div class="officeicon park_on"></div>
-                      Parking
-                  <% else %>
-                      <div class="officeicon park_off"></div>
-                      <span class="text-gray"> Parking</span>
-                  <% end %>
-                  </p>
-
-
-                </div>
-
-                <div class="span1.5">
-                  <p><% if @office.ac? %>
-                      <div class="officeicon ac_on"></div>
-                      Air Conditioning
-                  <% else %>
-                      <div class="officeicon ac_off"></div>
-                      <span class="text-gray">Air Conditioning</span>
-                  <% end %>
-                  </p>
-
-                  <p><% if @office.confroom? %>
-                      <div class="officeicon conf_on"></div>
-                      Conference Room
-                  <% else %>
-                      <div class="officeicon conf_off"></div>
-                      <span class="text-gray">Conference Room</span>
-                  <% end %>
-                  </p>
-
-                </div>
-
-                <div class="span1.5">
-                  <p><% if @office.printer? %>
-                      <div class="officeicon printer_on"></div>
-                      Printer
-                  <% else %>
-                      <div class="officeicon printer_off"></div>
-                      <span class="text-gray">Printer</span>
-                  <% end %>
-                  </p>
-
-                  <p><% if @office.kitchen? %>
-                      <div class="officeicon kitchen_on"></div>
-                      Kitchen
-                  <% else %>
-                      <div class="officeicon kitchen_off"></div>
-                      <span class="text-gray">Kitchen</span>
-                  <% end %>
-                  </p>
-
-                </div>
-
-                <div class="span1.5">
-                    <p><% if @office.window? %>
-                        <div class="officeicon window_on"></div>
-                        Window Office
-                    <% else %>
-                        <div class="officeicon window_off"></div>
-                        <span class="text-gray">Window Office</span>
-                    <% end %>
-                    </p>
-                </div>
-
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="span4 room-action-area">
-    <div class="paperPanel3D text-center">
-      <div class="row">
-        <div class="span4">
-          <div>
-
-            <% if can? :update, @office %>
-                <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-primary" %>
-                <div style="padding-top: 7px;">
-                  <% if can? :destroy, @office %>
-                      <%= link_to 'Delete this listing', @office, :method => :delete, :data => { confirm: 'Are you sure?' } %>
-                  <% end %>
-                </div>
-            <% else %>
-                <div id="reserve">
-                  <!--%= link_to "", {:controller => "offices", :action => "reserve", :id => @office}, :class => "reserve-btn"  %-->
-                  <a href="#myModal" role="button" class="reserve-btn" data-toggle="modal"></a>
-                </div>
-            <% end %>
-
-         </div>
+        <div class="span8">
+          <h4>Amenities</h4>
+            <%= render 'amenities'%>
         </div>
       </div>
     </div>
 
-    <% if @office.user %>
-    <div class="paperPanel3D host-summary">
-      <div class="row">
-        <div class="span4">
-          <h4 class="panel-header-gray">About the host</h4>
-        </div>
-        <div class="span3">
-          <div class="small-pad">
-            <% if @office.user.photo? %>
-                <%= image_tag(@office.user.photo) %>
-            <% else %>
-                <%= image_tag("default_person.png") %>
-            <% end %>
-          </div>
-        </div>
+    <div class="span4 room-action-area">
+      <%= render 'briefinfo' %>
+      <%= render 'contacthost' %>
 
-        <div class="span3">
-          <div class="small-pad">
-            <p>
-            <div class="officeicon accomodates"></div>
-            <b><%= @office.user.name %></b>
-            </p>
-          </div>
-        </div>
-
-        <div class="span3">
-          <div class="small-pad">
-            <p>
-            <% if @office.user.industry? %>
-                <div class="officeicon industry"></div>
-                <b><%= @office.user.industry %></b>
-            <% end %>
-            </p>
-          </div>
-        </div>
-
-        <div class="span3">
-          <div class="small-pad">
-            <p>
-              <% if @office.user.location? %>
-                <div class="officeicon experience"></div>
-                <b><%= @office.user.location %></b>
-              <% end %>
-            </p>
-          </div>
-        </div>
-
-        <div class="span3">
-          <div class="small-pad">
-            <p>
-              <% if @office.user.website? %>
-                <b><%= link_to "See my LinkedIn profile", @office.user.website, :target => "_blank" %></b>
-              <% end %>
-            </p>
-          </div>
-        </div>
-
-        <!--div class="span3">
-          <div class="small-pad">
-            <p>
-              <b>User Email:</b>
-              <#%= @office.user.email %>
-            </p>
-          </div>
-        </div-->
-
-
-      </div>
+      <% if @office.user %>
+        <%= render 'abouthost' %>
+      <% end %>
     </div>
-    <% end %>
-  </div>
-
-  <div class="row">
-    <div class="span4">
-      <div class="location-map">
-        <%= gmaps("markers" => {"data" => @json},
-                  "map_options" =>  { "provider" => "google",
-                                      # "client" => "gme-intuitinc",
-                                      # "channel" => "fms.spaces",
-                                      "provider_key" => "AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE",
-                                      "auto_zoom" => false,
-                                      "zoom" => 12
-                  }
-            )
-        %>
-      </div>
-    </div>
-
-
   </div>
 </div>
-</div>
-</div>
 
-</div>
-
-<%= render 'reserves/form' %>
-
-<!--%= render 'reserves/thankyou' %-->
 
 <!-- image gallery  -->
 <script type="text/javascript">
+  $(document).ready(function(){
+    $("#thankyou").hide();
+    $("#sending").hide();
+    $("#reserve").show();
+    google.maps.StreetViewService.getPanoramaByLocation( latlng, 50, processSVData());
+  });
 
+  function processSVData(data, status) {
+    if (status != google.maps.StreetViewStatus.OK) {
+      $("#streetview-tab").hide();
+    }
+  }
 
-    function galleria(){
-        Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
-        Galleria.run('#galleria');
+  function galleria(){
+      Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
+      Galleria.run('#galleria');
+  }
+
+  galleria();
+
+  function initialize() {
+     var latlng = new google.maps.LatLng("<%=@office.latitude%>", "<%=@office.longitude%>");
+      var mapOptions = {
+        center: latlng,
+        zoom: 8,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        streetViewControl: false
+      };
+      var map = new google.maps.Map(document.getElementById("map-canvas"),
+          mapOptions);
+     
+      var panoramaOptions = {
+        position: latlng,
+        pov: {
+          heading: 34,
+          pitch: 10
+        }
+      };
+      var pano = new google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
+
+      window.setInterval(function() {
+        var pov = pano.getPov();
+        pov.heading += 0.2;
+        pano.setPov(pov);
+      }, 10);
+
+      $('#myTab a[href="#googlemap"]').on('shown', function(e){
+        google.maps.event.trigger(map, 'resize');
+        map.setCenter(latlng);
+      });
+
+      $('#myTab a[href="#streetview"]').on('shown', function(e){
+        google.maps.event.trigger(pano, 'resize');
+      });
+
+    }
+    
+    function loadScript() {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize";
+      document.body.appendChild(script);
     }
 
-    galleria();
+    window.onload = loadScript;
 
-    mixpanel.track_links('#reserve a', 'Clicked Contact Us');
+  mixpanel.track_links('#reserve a', 'Clicked Contact Us');
 
 </script>

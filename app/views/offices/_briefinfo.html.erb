@@ -1,0 +1,53 @@
+    <p class="officecost text-right">
+     <% if @office.rent? %>
+          <strong><%= number_to_currency(@office.rent, :locale => 'en_us', :precision => 0) %></strong>
+          <% if @office.rent_type == 1 %>/ month
+          <% else %>
+              <% if @office.rent_type == 2 %>/ week
+              <% else %>
+                  <% if @office.rent_type == 3 %>/ day
+                  <% else %>month
+                  <% end %>
+              <% end %>
+          <% end %>
+     <% else %>
+       Contact us for rent
+     <% end %>
+    </p>
+
+    <span class="pull-right">
+      <% if @office.office_type == 1 %>
+        <div class="officeicon office"></div>
+        <span class="text-right">Office space</span>
+    <% else %>
+        <% if @office.office_type == 2 %>
+            <div class="officeicon meeting"></div>
+            <span class="text-right">Meeting room</span>
+        <% else %>
+            <% if @office.office_type == 3 %>
+                <div class="officeicon desk"></div>
+                <span class="text-right">Desk</span>
+            <% else %>
+                <div class="officeicon office"></div>
+                <span class="text-right">Office space</span>
+            <% end %>
+        <% end %>
+    <% end %>
+ 
+
+
+    <% if @office.accomodate? %>
+        <div class="officeicon accomodates"></div>
+        <%= @office.accomodate %>
+        <span class="text-right"><% if @office.accomodate == 1 %>person<% else %>people <% end %></span>
+    <% end %>
+
+    <% if @office.size? %>
+        <div class="officeicon size"></div>
+        <%= @office.size %>
+        <span class="text-right">sq. ft</span>
+    <% end %>
+
+  </span>
+</p>
+<div style="height:67px;"></div>

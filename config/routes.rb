@@ -1,6 +1,4 @@
 ShareOfficeMvp::Application.routes.draw do
-  resources :reserves
-
   resources :alerts, :only => [:new, :create, :destroy] do
     member do
       get 'unsubscribe'
@@ -19,7 +17,9 @@ ShareOfficeMvp::Application.routes.draw do
   match '/confirm', to: 'offices#confirm'
   match '/reserve/:id', to:'offices#reserve'
 
-  resources :offices
+  resources :offices do
+      resources :reserves
+  end
 
   mount Attachinary::Engine => "/attachinary"
 
