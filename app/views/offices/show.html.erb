@@ -88,14 +88,14 @@
     $("#thankyou").hide();
     $("#sending").hide();
     $("#reserve").show();
-    google.maps.StreetViewService.getPanoramaByLocation( latlng, 50, processSVData());
+    //google.maps.StreetViewService.getPanoramaByLocation( latlng, 50, processSVData());
   });
 
-  function processSVData(data, status) {
-    if (status != google.maps.StreetViewStatus.OK) {
-      $("#streetview-tab").hide();
-    }
-  }
+  // function processSVData(data, status) {
+  //   if (status != google.maps.StreetViewStatus.OK) {
+  //     $("#streetview-tab").hide();
+  //   }
+  // }
 
   function galleria(){
       Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
