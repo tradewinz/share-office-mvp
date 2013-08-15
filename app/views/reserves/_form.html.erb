@@ -6,7 +6,7 @@
     <%= f.text_field :email, :value => @office.user.email, :placeholder => "Email", :style => "width: 252px" %>
     <%= f.select(:length, options_for_select(['Less than 1 month','1 to 5 months','6 to 12 months', 'More than 1 year']), {:prompt => "Rental duration"}, {:style => "width: 270px"})%>
     <%= f.text_field :phone, :value => @office.user.phone, :placeholder => "Phone number", :style => "width: 252px" %>
-    <%= f.text_area :misc, :placeholder => "Questions or comments?                                  (Best time to call, more about you or your business)", :style => "width: 252px", :rows => 20  %>
+    <%= f.text_area :misc, :placeholder => "Questions or comments?                       (Best time to call, more about you or your business)", :style => "width: 252px", :rows => 20  %>
     </div>
   <%= f.submit "SEND MESSAGE", :class=>"btn btn-primary", :id => "reserveBtn", :style => "width: 270px", :remote => true %>
   <% end %>
