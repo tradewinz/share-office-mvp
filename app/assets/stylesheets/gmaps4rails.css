@@ -24,3 +24,7 @@
 }
 
 .map_container img{max-width: none;}
+
+#googlemap img { max-width: none; }
+
+#streetview img { max-width: none; }
