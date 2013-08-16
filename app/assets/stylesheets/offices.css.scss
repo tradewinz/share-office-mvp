@@ -170,17 +170,17 @@ officedetailstext  {
 // Icons
 //:TODO fix using sprite
 
-.officecenter {
-}
-
 .officeicon {
   display: inline-block;
   width: 14px;
   height: 14px;
   line-height: 14px;
-  vertical-align: text-top;
   background-repeat: no-repeat;
   margin-top: 1px;
+}
+
+.about.officeicon {
+  float:left; 
 }
 
 .text-gray {
@@ -349,8 +349,9 @@ paperPanel {
   zoom: 1;
 }
 
-.small-pad {
-  padding-left:12px;
+.small-padding {
+  padding-left:10px;
+  padding-right:10px;
 }
 
 
@@ -416,9 +417,7 @@ paperPanel {
 .side-container {
   padding-left:15px; 
   padding-right:15px;
-}
-side-container-fields {
-  width:252px;
+  padding-top:18px;
 }
 
 .tab-pane { height: 100% }
@@ -426,3 +425,11 @@ side-container-fields {
 .container { height: 100%;}
 #map-canvas { height: 100% }
 #pano { height: 100% }
+
+.img-center {
+  float:right;  
+}
+
+.span15 {
+  width:30px;
+}
