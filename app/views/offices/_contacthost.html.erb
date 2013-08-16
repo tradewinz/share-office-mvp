@@ -10,7 +10,7 @@
             </div>
         <% else %>
             <div id="reserve">
-              <h4 class="panel-header-gray">Contact <% if @office.user %><%= @office.user.name %><% else %>host<% end %></h4>
+              <h4 class="panel-header-gray">Contact host</h4>
               <% if @office.user %>
                 <%= render 'abouthost' %>
               <% end %>
