@@ -21,11 +21,15 @@ class OfficesController < ApplicationController
     if (session[:query] and session[:search_results] and session[:query].include? @office.id and (request.referer.present? and (request.referer.include? "offices/" or request.referer.include? "listings")))
       @next_office = @office.next(session[:query])
       @prev_office = @office.previous(session[:query])
+    else
+      session[:search_results] = nil
     end 
 
     if (session[:query] and session[:featured] and session[:query].include? @office.id and (request.referer.present? and (request.referer.include? "offices/" or Rails.application.routes.recognize_path(request.referrer)==Rails.application.routes.recognize_path(home_path))))
       @next_office = @office.next(session[:query])
       @prev_office = @office.previous(session[:query])
+    else
+      session[:featured] = nil
     end 
 
     @json = @office.to_gmaps4rails
