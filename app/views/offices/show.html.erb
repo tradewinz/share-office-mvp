@@ -73,7 +73,7 @@
     <div class="span4 room-action-area">
       <%= render 'briefinfo' %>
       <%= render 'contacthost' %>
-      <%= render 'walkscore' %>
+      <%if @office.loc_addr1? %><%= render 'walkscore' %><%end%>
     </div>
   </div>
 </div>
