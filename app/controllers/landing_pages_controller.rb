@@ -7,7 +7,7 @@ class LandingPagesController < ApplicationController
       @featured_offices.pop
     end
     session[:query] = @featured_offices.map(&:id)
-    session[:search_results] = home_path
+    session[:featured] = home_path
     track_event("Visited Homepage")
     @alert = Alert.new
   end

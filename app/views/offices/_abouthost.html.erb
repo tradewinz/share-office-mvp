@@ -5,7 +5,7 @@
         <% if @office.user.photo? %>
             <%= image_tag(@office.user.photo) %>
         <% else %>
-            <%= image_tag("default_person.png") %>
+            <%= image_tag("default_person.png", width: '75px')  %>
         <% end %>
       </div>
    
