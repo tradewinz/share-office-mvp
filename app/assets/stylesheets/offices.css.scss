@@ -72,7 +72,14 @@
     padding-top: 5px;
     text-align: right;
     width: 140px;
-  font-weight: bold;
+    font-weight: bold;
+}
+
+.control-label.address {
+    float: left;
+    padding-top: 5px;
+    text-align: left;
+    font-weight: bold;
 }
 
 .controls {
@@ -433,4 +440,9 @@ paperPanel {
 
 .span15 {
   width:30px;
+}
+
+.side-margins {
+  margin-left:50px;
+  margin-right:50px;
 }

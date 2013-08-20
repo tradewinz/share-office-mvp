@@ -96,19 +96,52 @@ $(document).ready(function() {
         </div>
     <% end %>
 
-    <div class="row">
-      <!-- first page of wizard -->
-      <div id="first" class="span12">
 
-        <div class="row">
+        <div class="row panel panel-border" id="first">
           <div class="text-center">
-            <h3> Tell us about your space </h3>
+            <h3>Tell us about your space</h3>
           </div>
-        </div>
+            <fieldset class="padtop padbottom side-margins">
+              <div class="control-group">
+                <label class="control-label address" id="address-label">Address</label>
+                <div style="width:825px;">
+                  <div id="map-canvas"></div>
+                  <%= text_field_tag 'address', f.object.address , :class=> :l_input, :placeholder => "Enter your address. e.g. 2000 Coast Ave, Mountain View, CA 94043.", :id => "address_field" %>
+                <div id="pano"></div>
+                </div>
+              </div>
 
-        <div class="row panel panel-border">
-          <div class="span10">
-            <fieldset class="padtop padbottom">
+              <div class="row hide">
+                <div class="span3">
+                  <%= f.text_field :loc_addr1, :placeholder => "Street address", :style => "width: 220px" %>
+                </div>
+                <div class="span2">
+                  <%= f.text_field :loc_city, :placeholder => "City", :style => "width: 140px" %>
+                </div>
+                <div class="span1">
+                  <%= f.text_field :loc_state, :placeholder => "State", :style => "width: 70px" %>
+                </div>
+              </div>
+
+            <div class="control-group hide">
+
+              <label class="control-label"><strong>* Zip Code</strong></label>
+
+              <div class="controls"> <%= f.text_field :loc_zip, :placeholder => "required", :style => "width: 109px" %>
+              </div>
+            </div>
+
+              <button class="btn btn-primary pull-right" type="button" id="continueListingBtn">Continue</button>
+            </fieldset>
+
+
+      <!--second page of wizard -->
+
+      <div id="second" style="display: none" class="span10 offset1">
+
+
+          <fieldset class="padtop padbottom">
+
 
             <div class="control-group">
               <label class="control-label">Type of space</label>
@@ -184,70 +217,8 @@ $(document).ready(function() {
                     </label>
                 </div>
 
-
-              </div>
-
-            </div>
-
-            <div class="control-group">
-              <label class="control-label">* Location</label>
-
-              <div class="span7">
-                  <%= text_field_tag 'address', f.object.address , :class=> :l_input, :style => "margin-bottom: 5px; height:30px", :placeholder => "Enter your address. e.g. 2000 Coast Ave, Mountain View, CA 94043.", :id => "address_field" %>
-                  <!-- %= f.text_field :address, :placeholder => "Address", :style => "margin-bottom: 5px; height:30px" , :class=> :l_input, :id => "address_field" % -->
-              </div>
-
-              <div class="row hide">
-                <div class="span3">
-                  <%= f.text_field :loc_addr1, :placeholder => "Street address", :style => "width: 220px" %>
-                </div>
-                <div class="span2">
-                  <%= f.text_field :loc_city, :placeholder => "City", :style => "width: 140px" %>
-                </div>
-                <div class="span1">
-                  <%= f.text_field :loc_state, :placeholder => "State", :style => "width: 70px" %>
-                </div>
-              </div>
-            </div>
-
-            <div class="control-group hide">
-
-              <label class="control-label"><strong>* Zip Code</strong></label>
-
-              <div class="controls"> <%= f.text_field :loc_zip, :placeholder => "required", :style => "width: 109px" %>
-              </div>
-            </div>
-
-
-          </fieldset>
-          </div>
-
-          <div class="row">
-            <div class="span2 offset5">
-              <button class="btn btn-large btn-primary" type="button" id="continueListingBtn">CONTINUE</button>
-            </div>
-          </div>
-
-        </div>
-        <!-- end white box -->
-
-      </div>
-
-
-      <!--second page of wizard -->
-
-      <div id="second" style="display: none" class="span10 offset1">
-
-        <div class="row">
-          <div class="span4 offset3">
-            <h3> You're almost done! </h3>
-          </div>
-        </div>
-
-        <div class="row panel panel-border">
-
-          <fieldset class="padtop padbottom">
-
+          
+        
             <div class= "control-group">
               <label class="control-label">Upload photos (up to 4)</label>
               <div class="controls">
@@ -259,9 +230,6 @@ $(document).ready(function() {
              <div class="row ">
               
               <div class="offset2 span10 thumbs"> </div>
-                  <!--div class="progress">
-                   <div class="bar" style="width: 0%;"></div>
-                  </div-->
               </div>
               </div>
 
@@ -298,7 +266,7 @@ $(document).ready(function() {
            <% end %>
 
 
-          </fieldset>
+          
 
           <div class="row">
             <div class="span3 offset4">
@@ -312,12 +280,67 @@ $(document).ready(function() {
       </div>
     </div>
 
+</fieldset>
+</div>
+
 <% end %>
 
 </div>
 
 <!-- other JS code -->
 <script type="text/javascript">
+// function initialize() {
+//      var latlng = new google.maps.LatLng("<%=@office.latitude%>", "<%=@office.longitude%>");
+//       var mapOptions = {
+//         center: latlng,
+//         zoom: 12,
+//         mapTypeId: google.maps.MapTypeId.ROADMAP,
+//         streetViewControl: false
+//       };
+//       var map = new google.maps.Map(document.getElementById("map-canvas"),
+//           mapOptions);
+
+//       var marker = new google.maps.Marker({
+//           position: latlng,
+//           map: map
+//       });
+
+//       var panoramaOptions = {
+//         position: latlng,
+//         pov: {
+//           heading: 34,
+//           pitch: 10
+//         }
+//       };
+//       var pano = new google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
+
+//       window.setInterval(function() {
+//         var pov = pano.getPov();
+//         pov.heading += 0.2;
+//         pano.setPov(pov);
+//       }, 10);
+
+//       $('#myTab a[href="#googlemap"]').on('shown', function(e){
+//         google.maps.event.trigger(map, 'resize');
+//         map.setCenter(latlng);
+//       });
+
+//       $('#myTab a[href="#streetview"]').on('shown', function(e){
+//         google.maps.event.trigger(pano, 'resize');
+//       });
+
+//     }
+    
+//     function loadScript() {
+//       var script = document.createElement("script");
+//       script.type = "text/javascript";
+//       script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE";
+//       document.body.appendChild(script);
+//     }
+
+//     window.onload = loadScript;
+
+
     function showLoadingImage() {
         $('#second').append('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %> </div>');
     }
@@ -330,8 +353,9 @@ $(document).ready(function() {
 
     $("#continueListingBtn").click(function() {
       $('#second').show();
-      $('#first').hide();
-
+      $("#continueListingBtn").hide();
+      $("#address-label").hide();
+      google.maps.event.addDomListener(window, 'load', initializeMap);
       mixpanel.track("Clicked Continue");
 
     });
@@ -360,6 +384,35 @@ $(document).ready(function() {
       }
     });
 
+    function initializePano() {
+      var panoramaOptions = {
+        position: new google.maps.LatLng(-34.397, 150.644),
+        pov: {
+          heading: 34,
+          pitch: 10
+        }
+      };
+      var pano = new google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
+
+      window.setInterval(function() {
+        var pov = pano.getPov();
+        pov.heading += 0.2;
+        pano.setPov(pov);
+      }, 10);
+    }
+
+    var map;
+    function initializeMap() {
+      var mapOptions = {
+        zoom: 8,
+        center: new google.maps.LatLng(-34.397, 150.644),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById('map-canvas'),
+          mapOptions);
+    }
+
+
     $(document).ready (function() {
         var input = document.getElementById('address_field');
         var autocomplete = new google.maps.places.Autocomplete(input);
@@ -368,7 +421,7 @@ $(document).ready(function() {
         iePlaceholderFix();
 
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
-
+           google.maps.event.addDomListener(window, 'load', initializePano);
             var place = autocomplete.getPlace();
             console.log("Event::Place_Changed::" +place);
             var address = '';
@@ -431,6 +484,19 @@ $(document).ready(function() {
                 alert("Please enter a valid address or city.");
             }
         });
+        // // get latitude and longitude
+        //   geocoder.geocode( { 'address': place}, function(results, status) {
+        //     if (status == google.maps.GeocoderStatus.OK) {
+        //       map.setCenter(results[0].geometry.location);
+        //       var marker = new google.maps.Marker({
+        //           map: map,
+        //           position: results[0].geometry.location
+        //       });
+        //     } else {
+        //       alert('Geocode was not successful for the following reason: ' + status);
+        //     }
+        //   });
+
 
     });
 

@@ -10,7 +10,7 @@
 
   <%= form_tag(listings_path, :method => "get", :id => "search_form") do %>
       <div class="span5">
-          <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "Enter a City" %>
+          <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "Enter an Address, City, or Zip" %>
       </div>
 
 
