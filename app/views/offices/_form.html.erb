@@ -6,7 +6,7 @@
       <div class="listing-header">What's the address?</div> 
         <div class="row panel panel-border">       
           <fieldset class="padtop_big padbottom_big side-margins">
-            <%= form_tag(home_path, :method => "get") do %>
+            <%= form_tag(home_path, :method => "get", :html => { :id => "address_form" }) do %>
             <div class="control-group">                              
               <%= text_field_tag 'address', '', :style => "height:40px; font-size:20px; padding-left: 15px; width:716px;", :placeholder => "2000 Coast Ave, Mountain View, CA 94043", id: "address_field"%>
             </div>
@@ -121,7 +121,7 @@
     });
 
     $("#continueBtn").click(function() {
-      $("#office_listing").validate({
+      $("#address_form").validate({
         rules: {
           "office[city]": {required: true},
           "office[title]": {required: true}
@@ -136,8 +136,8 @@
         }
       });
 
-      if ($("#office_listing").valid()) {
-        _gaq.push(['_trackEvent', 'SaveListing', 'User saves a listing']);
+      if ($("#address_form").valid()) {
+        // on valid
       }
     });
 
