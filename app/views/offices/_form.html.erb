@@ -6,7 +6,7 @@
       <div class="listing-header">What's the address?</div> 
         <div class="row panel panel-border">       
           <fieldset class="padtop_big padbottom_big side-margins">
-            <%= form_tag(home_path, :method => "get", :html => { :id => "address_form" }) do %>
+            <%= form_tag(:method => "get", :id => "address_form" ) do %>
             <div class="control-group">                              
               <%= text_field_tag 'address', '', :style => "height:40px; font-size:20px; padding-left: 15px; width:716px;", :placeholder => "2000 Coast Ave, Mountain View, CA 94043", id: "address_field"%>
             </div>
@@ -27,7 +27,29 @@
 
 <!-- other JS code -->
 <script type="text/javascript">
+    $("#continueBtn").click(function() {
+      $("#address_form").validate({
+        rules: {
+          "address": {required: true},
+          "loc_city": {required: true}
+        },
+        messages: {
+          "address": "Please enter an address."
+          "loc_city": "Please enter a valid address."
+        },
+        errorPlacement: function(error, element) {
+          console.log(error);
+          element.after(error);
+          element.css('border', 'solid red 2px');
+        }
+      });
 
+      if ($("#address_form").valid()) {
+        console.log("valid");
+      } else {
+        console.log("not valid");
+      }
+    });
     
     $(document).ready (function() {
         var input = document.getElementById('address_field');
@@ -120,25 +142,6 @@
 
     });
 
-    $("#continueBtn").click(function() {
-      $("#address_form").validate({
-        rules: {
-          "office[city]": {required: true},
-          "office[title]": {required: true}
-        },
-        messages: {
-          "office[city]": "Please tell us the address or city of your office",
-          "office[title]": "Please provide a title for your listing"
-        },
-        errorPlacement: function(error, element) {
-          element.after(error);
-          element.css('border', 'solid red 2px');
-        }
-      });
 
-      if ($("#address_form").valid()) {
-        // on valid
-      }
-    });
 
 </script>
