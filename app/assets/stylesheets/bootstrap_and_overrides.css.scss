@@ -1,4 +1,9 @@
 @import "bootstrap";
+
+body {
+  height: 100%;
+}
+
 .navbar {
   padding-top: 10px;
   background-color: #ffffff;
@@ -79,6 +84,7 @@
   border-color: #b94a48;
   border-style: dashed;
 }
+
 
 .alert-success {
   color: #000;

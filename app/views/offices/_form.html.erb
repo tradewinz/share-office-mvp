@@ -6,19 +6,20 @@
       <div class="listing-header">What's the address?</div> 
         <div class="row panel panel-border">       
           <fieldset class="padtop_big padbottom_big side-margins">
-            <%= form_tag("", :method => "get", :id => "address_form" ) do %>
+            <%= form_tag(new_office_path, :method => "get", :id => "address_form" ) do %>
             <div class="control-group">                              
               <%= text_field_tag 'address', '', :style => "height:40px; font-size:20px; padding-left: 15px; width:716px;", :placeholder => "2000 Coast Ave, Mountain View, CA 94043", id: "address_field"%>
             </div>
+            <div class="hide" id="error-msg">Please enter a valid address.</div>
             
-            <div class="">
-                <%= text_field_tag :loc_addr1 %>
-                <%= text_field_tag :loc_city %>
-                <%= text_field_tag :loc_state %>
-                <%=text_field_tag :loc_zip %>
+            <div class="hide">
+                <%= text_field_tag :street %>
+                <%= text_field_tag :city %>
+                <%= text_field_tag :state %>
+                <%=text_field_tag :zip %>
             </div>
             
-            <%= submit_tag "Continue", :class => "btn btn-large btn-primary pull-right", :id => "continueBtn",  :style => "width: 150px" %>
+            <%= submit_tag "Continue", :class => "btn btn-large btn-primary pull-right", :id => "continueBtn", :style => "width: 150px", onclick:"return validate();" %>
 
             <% end %>
           </fieldset>
@@ -27,6 +28,17 @@
 
 <!-- other JS code -->
 <script type="text/javascript">
+    function validate() {   
+        mixpanel.track("Clicked Continue"); 
+        if (city.value == '' || street.value == '' ) {
+            $("#address_field").addClass('error-border');
+            $("#error-msg").show();
+            return false;
+        }
+        $("#error-msg").hide();
+        $("#address_field").removeClass('error-border');
+        return true;
+    }
     
     $(document).ready (function() {
         var input = document.getElementById('address_field');
@@ -39,21 +51,21 @@
             var place = autocomplete.getPlace();
             var address = '';
             if (place.address_components) {
-                var loc_addr1 = document.getElementById('loc_addr1');
-                var loc_city = document.getElementById('loc_city');
-                var loc_state = document.getElementById('loc_state');
-                var loc_zip = document.getElementById('loc_zip');
+                var street = document.getElementById('street');
+                var city = document.getElementById('city');
+                var state = document.getElementById('state');
+                var zip = document.getElementById('zip');
 
                 // reset fields
-                loc_addr1.value = '';
-                loc_city.value = '';
-                loc_state.value = '';
-                loc_zip.value = '';
+                street.value = '';
+                city.value = '';
+                state.value = '';
+                zip.value = '';
 
 
-                //loc_addr1.value = place.address_components[0] && place.address_components[0].short_name || '';
-                //loc_city.value = place.address_components[1] && place.address_components[1].short_name || '';
-                //loc_state.value = place.address_components[2] && place.address_components[2].short_name || '';
+                //street.value = place.address_components[0] && place.address_components[0].short_name || '';
+                //city.value = place.address_components[1] && place.address_components[1].short_name || '';
+                //state.value = place.address_components[2] && place.address_components[2].short_name || '';
                 var street_number;
                 var street_name;
 
@@ -64,7 +76,7 @@
                         //console.log('type:' + place.address_components[i].types[j] + ' => short_name:' + place.address_components[i].short_name + ' , long_name:' + place.address_components[i].long_name);
                         if (place.address_components[i].types[j] == "postal_code")
                         {
-                            loc_zip.value = place.address_components[i].long_name;
+                            zip.value = place.address_components[i].long_name;
                         }
                         else if (place.address_components[i].types[j] == "street_number")
                         {
@@ -76,33 +88,38 @@
                         }
                         else if (place.address_components[i].types[j] == "locality")
                         {
-                            loc_city.value = place.address_components[i].long_name;
+                            city.value = place.address_components[i].long_name;
                         }
                         else if (place.address_components[i].types[j] == "administrative_area_level_1")
                         {
-                            loc_state.value = place.address_components[i].short_name;
+                            state.value = place.address_components[i].short_name;
                         }
                     }
                 }
                 if (street_number && street_name) {
-                    loc_addr1.value = street_number + ' ' + street_name;
+                    street.value = street_number + ' ' + street_name;
                 } else if (street_name) {
-                    loc_addr1.value = street_name;
+                    street.value = street_name;
                 } else {
-                    loc_addr1.value = '';
+                    street.value = '';
                 }
             }
 
-            if (loc_city.value == '' || loc_addr1.value == '' ) {
+            if (city.value == '' || street.value == '' ) {
+                $("#address_field").addClass('error-border');
                 $("#address_field").css('border', 'solid red 2px');
-                $("#address_field").after("Please enter a valid address.");
+                $("#error-msg").show();
+            } else {
+                $("#address_field").removeClass('error-border');
+                $("#error-msg").hide();
             }
 
+
             console.log(input.value);
-            console.log(loc_addr1.value);
-            console.log(loc_city.value);
-            console.log(loc_state.value);
-            console.log(loc_zip.value);
+            console.log(street.value);
+            console.log(city.value);
+            console.log(state.value);
+            console.log(zip.value);
         });
         // // get latitude and longitude
         //   geocoder.geocode( { 'address': place}, function(results, status) {

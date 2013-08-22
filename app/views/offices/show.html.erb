@@ -129,7 +129,13 @@
         pov: {
           heading: 34,
           pitch: 10
-        }
+        },
+         linksControl: false,
+          panControl: false,
+          zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+          },
+          enableCloseButton: false
       };
       var pano = new google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
 

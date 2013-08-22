@@ -49,6 +49,11 @@ class OfficesController < ApplicationController
   # GET /offices/new.json
   def new
     @office = Office.new
+    @address = params[:address]
+    @street = params[:street]
+    @city = params[:city]
+    @state = params[:state]
+    @zip = params[:zip]
 
     track_event("Viewed AddListing")
 
