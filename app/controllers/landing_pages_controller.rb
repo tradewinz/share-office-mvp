@@ -2,10 +2,12 @@ class LandingPagesController < ApplicationController
 
 	def home
     # must be true for staging and "true" for local
-    @featured_offices = Office.where("featured = ?", "true")
+    @featured_offices = Office.where("featured = ?", true)
     if (@featured_offices.length % 2 != 0)
       @featured_offices.pop
     end
+    session[:query] = @featured_offices.map(&:id)
+    session[:featured] = home_path
     track_event("Visited Homepage")
     @alert = Alert.new
   end

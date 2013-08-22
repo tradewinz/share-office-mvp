@@ -17,13 +17,19 @@ class OfficesController < ApplicationController
     @office = Office.find(params[:id])
     #@reserf = Reserve.new
 
-    # make sure next and prev are only found when searching; if not search, clear session
-    if (session[:query] and session[:search_results] and session[:query].include? @office.id and (request.referer.include? "offices/" or request.referer.include? "listings"))
+    # make sure next and prev are only found when searching; if not search, clear session - if not clear session, what would happen?
+    if (session[:query] and session[:search_results] and session[:query].include? @office.id and (request.referer.present? and (request.referer.include? "offices/" or request.referer.include? "listings")))
       @next_office = @office.next(session[:query])
       @prev_office = @office.previous(session[:query])
     else
-      session[:query] = nil
       session[:search_results] = nil
+    end 
+
+    if (session[:query] and session[:featured] and session[:query].include? @office.id and (request.referer.present? and (request.referer.include? "offices/" or Rails.application.routes.recognize_path(request.referrer)==Rails.application.routes.recognize_path(home_path))))
+      @next_office = @office.next(session[:query])
+      @prev_office = @office.previous(session[:query])
+    else
+      session[:featured] = nil
     end 
 
     @json = @office.to_gmaps4rails
