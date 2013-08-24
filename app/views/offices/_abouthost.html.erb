@@ -1,31 +1,31 @@
-<% if @office.user.industry? or @office.user.location? or @office.user.website? %>
-<div class="row-fluid">
-  <div class="small-padding" style="height:80px;">
-      <div class="span4"%>
-        <% if @office.user.photo? %>
-            <%= image_tag(@office.user.photo) %>
-        <% else %>
-            <%= image_tag("default_person.png", width: '75px')  %>
-        <% end %>
-      </div>
-   
+<div class="side-container">
+    <% if @office.user.industry? or @office.user.location? or @office.user.website? %>
+        <div class="row text-center">
+          <% if @office.user.photo? %>
+              <img src="<%= @office.user.photo %>" class="img-polaroid">
+          <% else %>
+              <%= image_tag("default_person.png", width: '75px')  %>
+          <% end %>
+        </div>
+        <br/>
+        <div class="row text-center">
+          <% if user_signed_in? %>
+              <div>
+                <% if @office.user.website? %>
+                    <p><i class="icon-user"></i> <strong><%= link_to @office.user.name, @office.user.website, :target => "_blank" %></strong></p>
+                <% else %>
+                    <div style="margin-left:20px;"><b><%= @office.user.name %></b></div>
+                <% end %>
 
-    <div class="span8 text-left">
-      <% if @office.user.name? %>
-            <div class="officeicon accomodates about"></div>
-            <div style="margin-left:20px;"><b><%= @office.user.name %></b></div>
-        <% end %>
-
-        <% if @office.user.industry? %>
-            <div class="officeicon industry about"></div>
-            <div style="margin-left:20px;"><b><%= @office.user.industry %></b></div>
-        <% end %>
-    </div>
-    <div style="position:absolute; bottom:0px; margin-left:94px;">
-      <% if @office.user.website? %>
-        <b><%= link_to "&#8627; LinkedIn profile".html_safe, @office.user.website, :target => "_blank" %></b>
-      <% end %>
-    </div>
-  </div>
+                <% if @office.user.industry? %>
+                    <div style="margin-left:20px;"><i class="icon-briefcase"></i> <b><%= @office.user.industry %></b></div>
+                <% end %>
+              </div>
+          <% else %>
+            <div>
+              <p><i class="icon-lock"></i> <%= link_to "Contact host", new_user_session_path %></p>
+            </div>
+          <% end %>
+        </div>
+    <% end %>
 </div>
-<% end %>

@@ -434,3 +434,9 @@ paperPanel {
 .span15 {
   width:30px;
 }
+
+.table-borderless tbody + tbody,
+.table-borderless td,
+.table-borderless th {
+  border: 0;
+}
