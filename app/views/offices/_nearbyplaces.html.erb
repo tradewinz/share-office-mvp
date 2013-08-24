@@ -1,0 +1,42 @@
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+
+<!-- nearby results -->
+<div id="map-canvas2" class="hidden"></div>
+<table id="places" class="table table-borderless table-condensed">
+</table>
+
+
+<!-- image gallery  -->
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        var latlng = new google.maps.LatLng("<%=@office.latitude%>", "<%=@office.longitude%>");
+        // start nearby service
+        var request = {
+            location: latlng,
+            rankBy: google.maps.places.RankBy.PROMINENCE,
+            radius: 500,
+            types: ['cafe', 'restaurant']
+        };
+
+        var placesList = document.getElementById('places');
+        var service = new google.maps.places.PlacesService(placesList);
+        service.nearbySearch(request, placescallback);
+
+    });
+
+    function placescallback(results, status, pagination) {
+        var placesList = document.getElementById('places');
+        if (status != google.maps.places.PlacesServiceStatus.OK) {
+            console.log('status not ok');
+            placesList.innerHTML += '<li>status not ok</li>';
+            return;
+        } else {
+            for (var i = 0, place; place = results[i]; i++) {
+                placesList.innerHTML += '<tr><td><img height=\"16\" width=\"16\" src=\"' + place.icon + '\"/></td><td>' + place.name + '</td><td>' + place.vicinity + '</td></tr>';
+                if (i == 10) break;
+            }
+        }
+    }
+
+</script>
