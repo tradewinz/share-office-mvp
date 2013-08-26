@@ -1,22 +1,21 @@
-<script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry,places&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE">
-</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry,places&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE"></script>
 
     <div id="first">
       <div class="listing-header">What's the address?</div> 
         <div class="row panel panel-border">       
           <fieldset class="padtop_big padbottom_big side-margins">
-            <%= form_tag(new_office_path, :method => "get", :id => "address_form" ) do %>
-            <div class="control-group">                              
-              <%= text_field_tag 'address', '', :style => "height:40px; font-size:20px; padding-left: 15px; width:716px;", :placeholder => "2000 Coast Ave, Mountain View, CA 94043", id: "address_field"%>
+            <%= simple_form_for(@office, :html => { :id => "address_form" } ) do |f| %>
+            <div class="control-group">
+              <%= f.text_field :loc_address, :style => "height:40px; font-size:20px; padding-left: 15px; width:716px;", :placeholder => "e.g. 2000 Coast Ave, Mountain View, CA 94043", id: "address_field"%>
             </div>
             <div class="hide" id="error-msg">Please enter a valid address.</div>
             
             <div class="hide">
-                <%= text_field_tag :street %>
-                <%= text_field_tag :city %>
-                <%= text_field_tag :state %>
-                <%=text_field_tag :zip %>
+              <%= f.text_field :loc_addr1, id: "street" %>
+              <%= f.text_field :loc_city, id: "city" %>
+              <%= f.text_field :loc_state, id: "state" %>
+              <%= f.text_field :loc_zip, id: "zip" %>
+              <%= f.text_field :active_flag, :value => 0 %>
             </div>
             
             <%= submit_tag "Continue", :class => "btn btn-large btn-primary pull-right", :id => "continueBtn", :style => "width: 150px", onclick:"return validate();" %>

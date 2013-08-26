@@ -29,8 +29,18 @@ function iePlaceholderFix() {
     }
 }
 
-function addressAutocompleteOffice() {
+//Finds y value of given object
+function findPos(obj) {
+    var curtop = 0;
+    if (obj.offsetParent) {
+        do {
+            curtop += obj.offsetTop;
+        } while (obj = obj.offsetParent);
+    return [curtop];
+    }
+}
 
+function addressAutocompleteOffice() {
         var input = document.getElementById('address_field');
         var autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.setTypes(['geocode']);
@@ -39,7 +49,6 @@ function addressAutocompleteOffice() {
 
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
             var place = autocomplete.getPlace();
-            var address = '';
             if (place.address_components) {
                 var street = document.getElementById('street');
                 var city = document.getElementById('city');

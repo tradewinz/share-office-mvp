@@ -89,29 +89,20 @@
         src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry,places&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE"></script>
 <!-- image gallery  -->
 <script type="text/javascript">
-var latlng;
-  $(document).ready(function(){
-    iePlaceholderFix();
-     latlng = new google.maps.LatLng("<%=@office.latitude%>", "<%=@office.longitude%>");
-     var sv = new google.maps.StreetViewService();
-      sv.getPanoramaByLocation(latlng, 50, processSVData);
-    //google.maps.StreetViewService.getPanoramaByLocation( latlng, 50, processSVData());
-  });
-
-
-
-  // function processSVData(data, status) {
-  //   if (status != google.maps.StreetViewStatus.OK) {
-  //     $("#streetview-tab").hide();
-  //   }
-  // }
-
   function galleria(){
       Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
       Galleria.run('#galleria');
   }
 
   galleria();
+
+var latlng;
+  $(document).ready(function(){
+    iePlaceholderFix();
+     latlng = new google.maps.LatLng("<%=@office.latitude%>", "<%=@office.longitude%>");
+     var sv = new google.maps.StreetViewService();
+      sv.getPanoramaByLocation(latlng, 50, processSVData);
+  });
 
 
   function processSVData(data, status) {
@@ -148,8 +139,15 @@ var latlng;
           enableCloseButton: false
       };
 
+      var move;
+      
+      $('#myTab a[href="#photos"]').on('shown', function(e) {
+        move = false;
+      });
+
 
       $('#myTab a[href="#googlemap"]').on('shown', function(e) {
+        move = false;
         map = new google.maps.Map(document.getElementById("map-canvas"),
           mapOptions);
 
@@ -157,19 +155,24 @@ var latlng;
             position: latlng,
             map: map
         });
-
-        // google.maps.event.trigger(map, 'resize');
-        // map.setCenter(latlng);
       });
 
+      
       $('#myTab a[href="#streetview"]').on('shown', function(e) {
         pano = new google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
-        window.setInterval(function() {
-        var pov = pano.getPov();
-        pov.heading += 0.2;
-        pano.setPov(pov);
-      }, 10);
-        // google.maps.event.trigger(pano, 'resize');
+        var move = true;
+        $("#pano").click(function () {
+            move = !move;
+        });
+
+        
+          window.setInterval(function() {
+            if (move) {
+              var pov = pano.getPov();
+              pano.setPov(pov);
+              pov.heading += 0.2;
+            }
+          }, 10);
       });
 
     }

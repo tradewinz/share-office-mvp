@@ -21,7 +21,7 @@
         <div class="text-center"><legend class="form_headline">Rent</legend></div>
 
         <div class="control-group">
-          <label class="control-label">Rent Amount</label>
+          <label class="control-label" id="rent-label">Rent Amount*</label>
 
           <div class="controls">
             <%= f.text_field :rent, :placeholder => "$",  :style => "width: 130px"%> per month
@@ -29,7 +29,7 @@
         </div>
 
         <div class="control-group">
-          <label class="control-label">Minimum lease</label>
+          <label class="control-label">Minimum lease*</label>
 
           <div class="controls">
            <%= f.number_field :min_lease, :in => 0..12, :style => "width: 10%"  %> month(s)
@@ -41,14 +41,20 @@
         <div class="text-center"><legend class="form_headline">Office</legend></div>
 
         <div class="control-group">
-          <label class="control-label">Address</label>
-          <div class="controls"><%= f.text_field :address, :value => params[:address], :style => "width:568px;", id: "address_field" %></div>
+          <label class="control-label">Address*</label>
+          <div class="controls"><%= f.text_field :loc_address, :style => "width:568px;", id: "address_field" %>
+            <div class="hide" id="error-msg">Please enter a valid address.</div></div>
         </div>
         <div class="hide">
-          <%= f.text_field :loc_addr1, :value =>  params[:street], id: "street" %>
-          <%= f.text_field :loc_city, :value => params[:city], id: "city" %>
-          <%= f.text_field :loc_state, :value => params[:state], id: "state" %>
-          <%= f.text_field :loc_zip, :value => params[:zip], id: "zip" %>
+          <%= f.text_field :loc_addr1, id: "street" %>
+          <%= f.text_field :loc_city, id: "city" %>
+          <%= f.text_field :loc_state, id: "state" %>
+          <%= f.text_field :loc_zip, id: "zip" %>
+
+          <!-- is there a better way to set this flag? also change this flag if address is changed. -->
+          <% if @office.active_flag==1 %>
+            <%= f.text_field :active_flag, :value => 2 %>
+          <% end %>
         </div>
 
         <div class="control-group">
@@ -120,31 +126,24 @@
         <div class="control-group checkbox-group">
           <label class="control-label">Ideal for</label>
           <div class="row">
-            <div class="span1.5">
+            <div class="span" style="margin-right:100px">
               <label class="checkbox">
-                <%= f.check_box :quiet %>
-                Quiet work
+                <%= f.check_box :private %>
+                Private office/ desk
               </label>
-            </div>
-
-            <div class="span1.5">
               <label class="checkbox">
                 <%= f.check_box :creative %>
-                Creative work
-              </label>
+                Design/ creative space
             </div>
 
-            <div class="span1.5">
+            <div>
               <label class="checkbox">
-                <%= f.check_box :client %>
-                Client work
+                <%= f.check_box :counseling %>
+                Counseling/ therapy office
               </label>
-            </div>
-
-            <div class="span1.5">
                 <label class="checkbox">
-                  <%= f.check_box :team %>
-                 Team work
+                  <%= f.check_box :treatment %>
+                 Treatment/ bodywork room
                 </label>
             </div>
         </div>
@@ -186,15 +185,58 @@
        </fieldset>
       <% end %>
 
-      <div class="text-center"><button class="btn btn-primary btn-large" type="submit" id="saveListingBtn">SAVE MY LISTING</button></div>
+      <div class="text-center">
+        <% if @office.active_flag == 0 %>
+          <%= submit_tag "PREVIEW MY LISTING", :class => "btn btn-large btn-primary", :id => "saveListingBtn", onclick:"return validate();" %>
+        <% else %>
+          <%= submit_tag "SAVE MY LISTING", :class => "btn btn-large btn-primary", :id => "saveListingBtn", onclick:"return validate();" %>
+        <% end %>
+      </div>
       <% end %> 
   </div>
 </div>
+<%= tinymce_assets %>
 <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry,places&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE">
 </script>
 <!-- other JS code -->
 <script type="text/javascript">
+    var correctInput = "<%=@office.loc_address%>";
+    console.log("correct input: " +correctInput);
+
+    // validate address field separately to make sure city and street address (hidden fields) are included
+    function validate() {   
+        var currentInput = document.getElementById('address_field').value;
+        console.log(correctInput);
+        console.log(currentInput);
+        if (city.value == '' || street.value == '' || correctInput!=currentInput) {
+            $("#address_field").addClass('error-border');
+            $("#error-msg").show();
+            window.scroll(0,findPos(document.getElementById('rent-label')));
+            return false;
+        }
+        $("#error-msg").hide();
+        $("#address_field").removeClass('error-border');
+        return true;
+    }
+
+    // validate rent and min_lease present
+    $("#saveListingBtn").click(function() {
+      $("#office_listing").validate({
+        rules: {
+          "office[rent]": {required: true},
+          "office[min_lease]": {required: true, range:[1,12]}
+        },
+        messages: {
+          "office[rent]": "Providing a rent amount increase the chances of finding a match quickly!",
+          "office[min_lease]": "Please provide a minimum lease between 1 and 12 months."
+        },
+        errorPlacement: function(error, element) {
+          element.after(error);
+          element.css('border', 'solid red 2px');
+        }
+      });
+    });
 
     function showLoadingImage() {
         $('#second').append('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %> </div>');
@@ -205,31 +247,13 @@
     }
 
 
-    $("#saveListingBtn").click(function() {
-      $("#office_listing").validate({
-        rules: {
-          "office[city]": {required: true},
-          "office[title]": {required: true}
-        },
-        messages: {
-          "office[city]": "Please tell us the address or city of your office",
-          "office[title]": "Please provide a title for your listing"
-        },
-        errorPlacement: function(error, element) {
-          element.after(error);
-          element.css('border', 'solid red 2px');
-        }
-      });
-
-      if ($("#office_listing").valid()) {
-        _gaq.push(['_trackEvent', 'SaveListing', 'User saves a listing']);
-      }
-    });
+    
 
 
   var latlng;
   geocoder = new google.maps.Geocoder();
-  geocoder.geocode( { 'address': "<%=params[:address]%>"}, function(results, status) {
+  var address = document.getElementById('address_field').value;
+  geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       latlng = results[0].geometry.location;
       var sv = new google.maps.StreetViewService();
@@ -248,41 +272,44 @@
 
 
   function initialize() {
-
-      var panoramaOptions = {
-        position: latlng,
-        addressControl: false,
-        zoom: .5,
-        pov: {
-          heading: 34,
-          pitch: 5
+    var panoramaOptions = {
+      position: latlng,
+      addressControl: false,
+      zoom: .5,
+      pov: {
+        heading: 34,
+        pitch: 5
+      },
+       linksControl: false,
+        panControl: false,
+        zoomControlOptions: {
+          style: google.maps.ZoomControlStyle.SMALL
         },
-         linksControl: false,
-          panControl: false,
-          zoomControlOptions: {
-            style: google.maps.ZoomControlStyle.SMALL
-          },
-          enableCloseButton: false
-      };
-      var pano = new google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
+        enableCloseButton: false
+    };
+    var pano = new google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
 
+    var move = true;
+    $("#pano").click(function () {
+        move = !move;
+    });
+
+    
       window.setInterval(function() {
-        var pov = pano.getPov();
-        pov.heading += 0.2;
-        pano.setPov(pov);
+        if (move) {
+          var pov = pano.getPov();
+          pano.setPov(pov);
+          pov.heading += 0.2;
+        }
       }, 10);
-      
-    }
+    
+  }
     
 
   google.maps.event.addDomListener(window, 'load', initialize);
 
     
 
-</script>
-
-<%= tinymce_assets %>
-<script type="text/javascript">
     tinyMCE.init({
         selector: "textarea",
         theme_advanced_toolbar_location: "top",
@@ -297,11 +324,6 @@
         //content_css : "/tinymce_editor.css?" + new Date().getTime()
         content_css: '<%= asset_path 'application.css' %>'
     });
-
-</script>
-
-
-<script type="text/javascript">
 
 
 <!-- file upload -->
@@ -358,8 +380,7 @@ $(document).ready(function() {
 //    var autocomplete = new google.maps.places.Autocomplete(input);
 //    autocomplete.setTypes(['geocode']);
 
-
-
-});
+  
+  });
 
 </script>
