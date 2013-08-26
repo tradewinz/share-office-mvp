@@ -46,8 +46,15 @@
 
         <% else %>
 
+            <!------------------ MAP VIEW ------------------------>
+            <div class = "span3" id="filtersview">
+
+                
+            </div>
+
           <!------------------ MAP VIEW ------------------------>
-            <div id="mapview">
+            <div class = "span3" id="mapview">
+
                 <%= gmaps("markers" => {"data" => @json},
                       "map_options" =>  { "provider" => "google",
                                   #       "client" => "gme-intuitinc",
@@ -59,10 +66,9 @@
                     )
                 %>
             </div>
-
             <!------------------ LIST VIEW ------------------------>
 
-            <div id="listview">
+            <div class="span8" id="listview">
                 <div class="row">
                     <div class="sortmenu span12">
                       <ul class="nav" role="navigation">
@@ -109,7 +115,7 @@
                       <div class="row search_result">
 
 
-                        <div class="span3">
+                        <div class="span2">
                           <a href= "<%= office_path(office)  %>" >
                             <% if (office.office_images.first != nil) %>
                                 <%= cl_image_tag office.office_images.first.path, :size => '220x165', :crop => :fit, :class => "img-polaroid" %>
@@ -123,7 +129,7 @@
                         </div>
 
 
-                        <div class="span7">
+                        <div class="span4">
                           <div class="row">
 
                             <div class="span" style="width:44px;">
@@ -136,16 +142,16 @@
                               </div>
                             </div>
 
-                            <div class="span6">
+                            <div class="span3">
                               <h4><%= link_to office.title, office %></h4>
                               <p><%= office.loc_city %> <%= office.loc_state %> </p>
                               <br>
                             </div>
                           </div>
 
-                          <div class="row">
+                          <div class="row hide">
 
-                            <div class="span" style="width:44px;"></div>
+                            <!--div class="span" style="width:44px;"></div-->
                             <div class="span1.25">
                               <p><% if office.wifi? %>
                                   <div class="officeicon wifi_on"></div>
@@ -243,6 +249,8 @@
                                 <% else %>
                                     <h4>Contact us</h4>
                                 <% end %>
+                              
+                              <div class="hide">
                                 <br>
                                 <p>
                                   <% if office.accomodate? %>
@@ -274,6 +282,8 @@
                                 <% end %>
                                 </p>
                               </div>
+
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -290,7 +300,7 @@
                   </div-->
                   <%= will_paginate @offices, :container => false %>
                   </div>
-                  <div class="text-center listing_footer">Haven't found your perfect space? <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city.</div>
+                  <div class="listing_footer">Haven't found your perfect space? <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city.</div>
                 </div>
 
             </div>
@@ -314,29 +324,37 @@
         //alert( $.cookie("mapview") );
 
         if($.cookie ('mapview') == "true") {
-            $('#mapview').show();
-            $('#listview').hide();
+            showmapview();
+
         }
         else {
-            $('#mapview').hide();
-            $('#listview').show();
+            showlistview();
         }
     });
 
+    function showmapview() {
+        $('#listview').hide();
+        $('#mapview').attr('class', 'span9 offset3');
+        Gmaps.loadMaps();
+
+    }
+
+    function showlistview() {
+        $('#mapview').attr('class', 'span3');
+        $('#listview').show();
+        Gmaps.loadMaps();
+
+    }
 
     $("#showMapBtn").click(function() {
         $.cookie ('mapview', 'true');
-        $('#mapview').show();
-        $('#listview').hide();
-
-        Gmaps.loadMaps();
+        showmapview();
         mixpanel.track("Clicked MapView button");
     });
 
     $("#showListBtn").click(function() {
         $.cookie ('mapview', 'false');
-        $('#mapview').hide();
-        $('#listview').show();
+        showlistview();
         mixpanel.track("Clicked ListView button");
 
     });
