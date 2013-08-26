@@ -2,12 +2,12 @@ class Office < ActiveRecord::Base
   attr_accessible :office_type, :accomodate, :size, :wifi, :confroom, :kitchen, :parking, :ac, :printer,
                   :loc_zip, :loc_addr1, :loc_addr2, :loc_city, :loc_state,
                   :title, :description, :rent, :rent_type, :available,
-                  :user_id, :latitude, :longitude, :gmaps, :window, :featured
+                  :user_id, :latitude, :longitude, :gmaps, :window, :featured,
+                  :quiet, :creative, :client, :team, :min_lease, :security, :cleaning, :address
 
   belongs_to :user
   has_many :reserve
 
-  validates :title, :presence => true
   validates :loc_city, :presence => true
 
   #change to simple form before adding error

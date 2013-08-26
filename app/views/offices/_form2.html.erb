@@ -1,166 +1,198 @@
 <%= simple_form_for(@office, :html => { :id => "office_listing" }) do |f| %>
 
-    <% if @office.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@office.errors.count, "error") %> prohibited this listing from being saved:</h2>
-          <ul style="margin-left:10;">
-            <% @office.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-
-
-      <div class="listing-header">Tell us about your space</div>
-        <div class="row panel panel-border">
-            <div id="pano" style="height:200px;"></div>   
-
-          <fieldset class="padtop_big padbottom_big side-margins">                 
-
-<div class="control-group">
-  <label class="control-label">Address</label>
-  <div class="controls"><%= f.text_field :address, :value => params[:address], :style => "width:540px;" %></div>
-</div>
-<div class="hide">
-  <%= f.text_field :loc_addr1, :value =>  params[:street] %>
-  <%= f.text_field :loc_city, :value => params[:city] %>
-  <%= f.text_field :loc_state, :value => params[:state] %>
-  <%= f.text_field :loc_zip, :value => params[:zip] %>
-</div>
-
-<div class="control-group">
-  <label class="control-label">Type of space</label>
-
-  <div class="controls">
-    <%= f.select :office_type, [['Office Space', 1], ['Meeting Room', 2], ['Desk', 3]] %>
-  </div>
-</div>
-
-<div class="control-group">
-  <label class="control-label">Accommodates</label>
-
-  <div class="controls">  <%= f.number_field :accomodate, :in => 0..20, :style => "width: 10%" %>  </div>
-</div>
-
-<div class="control-group">
-  <label class="control-label">Size</label>
-
-  <div class="controls"> <%= f.text_field :size, :style => "width: 10%" %> sq. ft.</div>
-</div>
-
-<div class="control-group">
-  <label class="control-label">Amenities</label>
-
-  <div class="row">
-    <div class="span1.5">
-      <label class="checkbox">
-        <%= f.check_box :wifi %>
-        <div class="officeicon wifi_on"></div>
-        Wi-Fi
-      </label>
-      <label class="checkbox">
-        <%= f.check_box :parking %>
-        <div class="officeicon park_on"></div>
-        Parking
-      </label>
-
-
-    </div>
-
-    <div class="span1.5">
-      <label class="checkbox ">
-        <%= f.check_box :confroom %>
-        <div class="officeicon conf_on"></div>
-        Conference Room
-      </label>
-      <label class="checkbox">
-        <%= f.check_box :ac %>
-        <div class="officeicon ac_on"></div>
-        Air Conditioning
-      </label>
-    </div>
-
-    <div class="span1.5">
-      <label class="checkbox">
-        <%= f.check_box :kitchen %>
-        <div class="officeicon kitchen_on"></div>
-        Kitchen
-      </label>
-      <label class="checkbox">
-        <%= f.check_box :printer %>
-        <div class="officeicon printer_on"></div>
-        Printer
-      </label>
-
-    </div>
-
-    <div class="span1.5">
-        <label class="checkbox">
-          <%= f.check_box :window %>
-          <div class="officeicon window_on"></div>
-          Window Office
-        </label>
-    </div>
-
-  </div>
-
-<div style="height:20px"></div>
-
-<div class= "control-group">
-  <label class="control-label">Upload photos (up to 4)</label>
-  <div class="controls">
-    <button class="btn btn-success span-attachinary-input controls"> <%= f.attachinary_file_field :office_images, :cloudinary => {
-                 :eager => [{:width => 600, :height => 400, :crop => :fill, :angle => :exif}]}%><i class="icon-plus icon-white"> </i>
-        <span> Add files.... </span></button>
-  </div>
-
- <div class="row ">
-  
-  <div class="offset2 span10 thumbs"> </div>
-  </div>
-  </div>
-
-<div class="control-group">
-  <label class="control-label">Rent Amount</label>
-
-  <div class="controls">
-    <%= f.text_field :rent, :placeholder => "$",  :style => "width: 130px"%> per
-    <%= f.select :rent_type, [['Month', 1], ['Week', 2], ['Day', 3]], :style => "width: 10px" %>
-  </div>
-</div>
-
-<div class="control-group">
-  <label class="control-label"><strong>* Title</strong></label>
-
-  <div class="controls"> <%= f.text_field :title, :style => "width: 350px",
-                        :placeholder => "e.g. Private Office with conference room" %>
-  </div>
-</div>
-
-<div class="control-group">
-  <label class="control-label">Description</label>
-
-  <div class="controls"> <%= f.text_area :description, :style => "width: 540px", :class => "tinymce",
-             :placeholder => "List availability, rental terms, house rules, additional amenities, etc.", :rows => 50 %>
-  </div>
-</div>
-
-<% if current_user.admin? %>
-    <div class="control-group">
-     <label class="control-label">Featured Listing:</label>
-     <div class="controls"> <%= f.check_box :featured %>  </div>
-   </div>
-<% end %>
-
-<button class="btn btn-primary btn-large" type="submit" id="saveListingBtn">SAVE MY LISTING</button>
-<% end %> 
-        </fieldset>
+  <% if @office.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@office.errors.count, "error") %> prohibited this listing from being saved:</h2>
+        <ul style="margin-left:10;">
+          <% @office.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </ul>
       </div>
+  <% end %>
 
-          <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
+
+  <div class="listing-header">Tell us about your space</div>
+  <div class="row panel panel-border">
+    <div id="pano" style="height:200px;"></div>   
+    <div class="padtop padbottom_big side-margins">   
+      <fieldset>
+        <div class="text-center"><legend class="form_headline">Rent info</legend></div>
+
+        <div class="control-group">
+          <label class="control-label">Rent Amount</label>
+
+          <div class="controls">
+            <%= f.text_field :rent, :placeholder => "$",  :style => "width: 130px"%> per month
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Minimum lease</label>
+
+          <div class="controls">
+           <%= f.number_field :min_lease, :in => 0..12, :style => "width: 10%"  %> month(s)
+          </div>
+        </div>
+      </fieldset>
+
+       <fieldset>              
+        <div class="text-center"><legend class="form_headline">Office info</legend></div>
+
+        <div class="control-group">
+          <label class="control-label">Address</label>
+          <div class="controls"><%= f.text_field :address, :value => params[:address], :style => "width:568px;" %></div>
+        </div>
+        <div class="hide">
+          <%= f.text_field :loc_addr1, :value =>  params[:street] %>
+          <%= f.text_field :loc_city, :value => params[:city] %>
+          <%= f.text_field :loc_state, :value => params[:state] %>
+          <%= f.text_field :loc_zip, :value => params[:zip] %>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Accommodates</label>
+
+          <div class="controls">  <%= f.number_field :accomodate, :in => 0..20, :style => "width: 10%" %>  </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Size</label>
+
+          <div class="controls"> <%= f.text_field :size, :style => "width: 10%" %> sq. ft.</div>
+        </div>
+
+        <div class="control-group checkbox-group">
+          <label class="control-label">Amenities</label>
+
+          <div class="row">
+            <div class="span1.5">
+              <label class="checkbox">
+                <%= f.check_box :wifi %>
+                <div class="officeicon wifi_on"></div>
+                Wi-Fi
+              </label>
+              <label class="checkbox">
+                <%= f.check_box :parking %>
+                <div class="officeicon park_on"></div>
+                Parking
+              </label>
+            </div>
+
+            <div class="span1.5">
+              <label class="checkbox ">
+                <%= f.check_box :confroom %>
+                <div class="officeicon conf_on"></div>
+                Conference Room
+              </label>
+              <label class="checkbox">
+                <%= f.check_box :ac %>
+                <div class="officeicon ac_on"></div>
+                Air Conditioning
+              </label>
+            </div>
+
+            <div class="span1.5">
+              <label class="checkbox">
+                <%= f.check_box :kitchen %>
+                <div class="officeicon kitchen_on"></div>
+                Kitchen
+              </label>
+              <label class="checkbox">
+                <%= f.check_box :printer %>
+                <div class="officeicon printer_on"></div>
+                Printer
+              </label>
+
+            </div>
+
+            <div class="span1.5">
+                <label class="checkbox">
+                  <%= f.check_box :window %>
+                  <div class="officeicon window_on"></div>
+                  Window Office
+                </label>
+            </div>
+          </div>
+         </div>
+
+        <div class="control-group checkbox-group">
+          <label class="control-label">Ideal for</label>
+          <div class="row">
+            <div class="span1.5">
+              <label class="checkbox">
+                <%= f.check_box :quiet %>
+                Quiet work
+              </label>
+            </div>
+
+            <div class="span1.5">
+              <label class="checkbox">
+                <%= f.check_box :creative %>
+                Creative work
+              </label>
+            </div>
+
+            <div class="span1.5">
+              <label class="checkbox">
+                <%= f.check_box :client %>
+                Client work
+              </label>
+            </div>
+
+            <div class="span1.5">
+                <label class="checkbox">
+                  <%= f.check_box :team %>
+                 Team work
+                </label>
+            </div>
+        </div>
+          </div>
+
+        <div class="control-group">
+          <label class="control-label">Description</label>
+
+          <div class="controls"> <%= f.text_area :description, :style => "width: 570px", :class => "tinymce",
+                     :placeholder => "List availability, rental terms, house rules, additional amenities, etc.", :rows => 50 %>
+          </div>
+        </div>
+        </fieldset>
+
+        <fieldset>
+        <div class="text-center"><legend class="form_headline">Photos</legend></div>
+
+        <div class= "control-group">
+          <label class="control-label">Upload photos</label>
+          <div class="controls">
+            <button class="btn btn-success span-attachinary-input controls"> <%= f.attachinary_file_field :office_images, :cloudinary => {
+                         :eager => [{:width => 600, :height => 400, :crop => :fill, :angle => :exif}]}%><i class="icon-plus icon-white"> </i>
+                <span> Add files.... </span></button>
+          </div>
+
+        <div class="row-fluid">
+          <div class="offset2 span10 thumbs"> </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <% if current_user.admin? %>
+      <fieldset>
+        <div class="text-center"><legend class="form_headline">Admin</legend></div>
+          <div class="control-group">
+           <label class="control-label">Featured Listing:</label>
+           <div class="controls"> <%= f.check_box :featured %>  </div>
+         </div>
+       </fieldset>
+      <% end %>
+
+      <div class="text-center"><button class="btn btn-primary btn-large" type="submit" id="saveListingBtn">SAVE MY LISTING</button></div>
+      <% end %> 
+  </div>
+</div>
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry,places&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE">
+</script>
 <!-- other JS code -->
 <script type="text/javascript">
 
@@ -195,17 +227,18 @@
     });
 
 
+  var latlng;
+  geocoder = new google.maps.Geocoder();
+  geocoder.geocode( { 'address': "<%=params[:address]%>"}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      latlng = results[0].geometry.location;
+    } else {
+      $('#pano').hide;
+    }
+  });
+
 
   function initialize() {
-    var latlng = new google.maps.LatLng(37.430, -122.097);
-
-    geocoder.geocode( { 'address': "<%=params[:address]%>"}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-       var latlng = results[0].geometry.location;
-      } else {
-        $('#pano').hide;
-      }
-    });
 
       var panoramaOptions = {
         position: latlng,
@@ -231,14 +264,7 @@
       }, 10);
     }
     
-    function loadScript() {
-      var script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE";
-      document.body.appendChild(script);
-    }
-
-    window.onload = loadScript;
+  google.maps.event.addDomListener(window, 'load', initialize);
 
     
 
