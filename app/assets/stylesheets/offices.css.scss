@@ -67,12 +67,27 @@
   padding-bottom: 30px;
 }
 
+.padtop_big {
+    padding-top: 50px;
+}
+
+.padbottom_big {
+  padding-bottom: 70px;
+}
+
 .control-label {
     float: left;
     padding-top: 5px;
     text-align: right;
     width: 140px;
-  font-weight: bold;
+    font-weight: bold;
+}
+
+.control-label.address {
+    float: left;
+    padding-top: 5px;
+    text-align: left;
+    font-weight: bold;
 }
 
 .controls {
@@ -123,10 +138,6 @@ a {
 
 }
 
-text-right{
-  text-align: right;
-}
-
 .officelocation {
  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -142,14 +153,17 @@ text-right{
 
 }
 
-officedetailstitle  {
+.listing-header {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: bold;
+  font-weight: lighter;
+  font-size: 32px;
+  text-align: center;
   color: #333333;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
-officedetailstext  {
+.officedetailstext  {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
@@ -435,8 +449,54 @@ paperPanel {
   width:30px;
 }
 
+
 .table-borderless tbody + tbody,
 .table-borderless td,
 .table-borderless th {
   border: 0;
 }
+
+.side-margins {
+  margin-left:100px;
+  margin-right:100px;
+}
+
+.address_input {
+
+  width: 100%;
+  font-size: 18;
+}
+.error-border {
+  border: 2px solid red !important; 
+}
+
+.checkbox-group {
+  margin-bottom:20px;
+}
+
+.form_headline {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #767676;
+  font-size: 18px;
+}
+
+.form_headline:before {
+    margin-bottom:20px;
+    content:' ';
+    display:block;
+}
+
+/*.form_headline:after {
+  margin-top:5px;
+    margin-bottom:20px;
+    content:' ';
+    display:block;
+    border:1px solid #d0d0d0;
+    border-radius:2px;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+    -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+    -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+}*/
+

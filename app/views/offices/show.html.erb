@@ -1,16 +1,16 @@
 <% if (session[:search_results] and (request.referer.present? and (request.referer.include? "offices/" or request.referer.include? "listings"))) %>
-  <div class="listing-nav">
-    <%= link_to "&larr; Back to search results".html_safe, session[:search_results] %>
-    <span style="float:right;"><% if @prev_office %><%= link_to "&laquo; Previous listing".html_safe, office_path(@prev_office) %><% end %> <% if @prev_office and @next_office%>|<% end %> <% if @next_office %><%= link_to "Next listing &raquo;".html_safe, office_path(@next_office) %><% end %></span>
-  </div>
-<% end %>  
+    <div class="listing-nav">
+      <%= link_to "&larr; Back to search results".html_safe, session[:search_results] %>
+      <span style="float:right;"><% if @prev_office %><%= link_to "&laquo; Previous listing".html_safe, office_path(@prev_office) %><% end %> <% if @prev_office and @next_office%>|<% end %> <% if @next_office %><%= link_to "Next listing &raquo;".html_safe, office_path(@next_office) %><% end %></span>
+    </div>
+<% end %>
 
- <% if (session[:featured] and (request.referer.present? and (request.referer.include? "offices/" or Rails.application.routes.recognize_path(request.referrer)==Rails.application.routes.recognize_path(home_path)))) %> 
-  <div class="listing-nav">
-    <%= link_to "&larr; Back to home".html_safe, home_path %>
-    <span style="float:right;"><% if @prev_office %><%= link_to "&laquo; Previous listing".html_safe, office_path(@prev_office) %><% end %> <% if @prev_office and @next_office%>|<% end %> <% if @next_office %><%= link_to "Next listing &raquo;".html_safe, office_path(@next_office) %><% end %></span>
-  </div>
-<% end %>  
+<% if (session[:featured] and (request.referer.present? and (request.referer.include? "offices/" or Rails.application.routes.recognize_path(request.referrer)==Rails.application.routes.recognize_path(home_path)))) %>
+    <div class="listing-nav">
+      <%= link_to "&larr; Back to home".html_safe, home_path %>
+      <span style="float:right;"><% if @prev_office %><%= link_to "&laquo; Previous listing".html_safe, office_path(@prev_office) %><% end %> <% if @prev_office and @next_office%>|<% end %> <% if @next_office %><%= link_to "Next listing &raquo;".html_safe, office_path(@next_office) %><% end %></span>
+    </div>
+<% end %>
 
 
 <div class="row panel panel-border">
@@ -22,7 +22,7 @@
 
       <p class="officelocation">
         <% if user_signed_in? %>
-          <strong><%= @office.loc_addr1 %></strong>
+            <strong><%= @office.loc_addr1 %></strong>
         <% else %>
             <i class="icon-lock"></i> <%= link_to "show exact address", new_user_session_path %>
         <% end %>
@@ -42,9 +42,9 @@
     <div class="span8">
 
       <div class="row room-detail">
-        
+
         <div class="span8">
-          <ul id="myTab" class="nav nav-tabs">            
+          <ul id="myTab" class="nav nav-tabs">
             <li class="active"><a href="#photos" data-toggle="tab">Photos</a></li>
             <li><a href="#googlemap" data-toggle="tab">Map</a></li>
             <li><a href="#streetview" data-toggle="tab" id="streetview-tab">Street view</a></li>
@@ -52,30 +52,30 @@
 
           <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade in active" id="photos">
-             <% if (@office.office_images.first != nil) %>
-              <div id="galleria">
-                <% @office.office_images.each do |photo| %>
-                    <%= cl_image_tag(photo.path, :width => 600, :height=>400, :crop=> :fill, :angle => :exif) %>
-                <% end %>
-              </div>
-            <% else %>
-              <div id="galleria">
-                <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=600x400&location=#{@office.latitude},%20#{@office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fill, :class => "img-polaroid" %>
-              </div>
+              <% if (@office.office_images.first != nil) %>
+                  <div id="galleria">
+                    <% @office.office_images.each do |photo| %>
+                        <%= cl_image_tag(photo.path, :width => 600, :height=>400, :crop=> :fill, :angle => :exif) %>
+                    <% end %>
+                  </div>
+              <% else %>
+                  <div id="galleria">
+                    <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=600x400&location=#{@office.latitude},%20#{@office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fill, :class => "img-polaroid" %>
+                  </div>
 
-           <% end %>
+              <% end %>
             </div>
 
             <div class="tab-pane fade" id="googlemap">
-                <div id="map-canvas"></div>
+              <div id="map-canvas"></div>
             </div>
 
             <div class="tab-pane fade" id="streetview">
-                <div id="pano"></div>
+              <div id="pano"></div>
             </div>
 
           </div>
-          
+
         </div>
         <div class="span8" style="margin-top: 10px;">
           <% if @office.description? %>
@@ -85,7 +85,7 @@
         </div>
         <div class="span8">
           <h4>Amenities</h4>
-            <%= render 'amenities'%>
+          <%= render 'amenities'%>
         </div>
         <div class="span8">
           <h4>What's nearby</h4>
@@ -101,26 +101,10 @@
   </div>
 </div>
 
-
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry,places&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE"></script>
 <!-- image gallery  -->
 <script type="text/javascript">
-    $(document).ready(function(){
-        $("#thankyou").hide();
-        $("#sending").hide();
-        $("#reserve").show();
-        iePlaceholderFix();
-        //google.maps.StreetViewService.getPanoramaByLocation( latlng, 50, processSVData());
-
-    });
-
-
-
-    // function processSVData(data, status) {
-    //   if (status != google.maps.StreetViewStatus.OK) {
-    //     $("#streetview-tab").hide();
-    //   }
-    // }
-
     function galleria(){
         Galleria.loadTheme("<%= javascript_path('galleria.classic.js') %>");
         Galleria.run('#galleria');
@@ -128,8 +112,28 @@
 
     galleria();
 
+    var latlng;
+    $(document).ready(function(){
+        iePlaceholderFix();
+        latlng = new google.maps.LatLng("<%=@office.latitude%>", "<%=@office.longitude%>");
+        var sv = new google.maps.StreetViewService();
+        sv.getPanoramaByLocation(latlng, 50, processSVData);
+    });
+
+
+    function processSVData(data, status) {
+        if (status != google.maps.StreetViewStatus.OK) {
+            $('#streetview-tab').remove();
+        } else {
+            console.log("ok!");
+        }
+    }
+
     function initialize() {
-        var latlng = new google.maps.LatLng("<%=@office.latitude%>", "<%=@office.longitude%>");
+        var pano;
+        var map;
+
+
         var mapOptions = {
             center: latlng,
             zoom: 16,
@@ -137,73 +141,93 @@
             streetViewControl: false
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),
-          mapOptions);
+                mapOptions);
 
         <% if user_signed_in? %>
-          var marker = new google.maps.Marker({
-              position: latlng,
-              map: map
-          });
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map
+        });
         <% else %>
-          // begin radius
+        // begin radius
 
-          var regionMarker = {
-              center: latlng
-          };
+        var regionMarker = {
+            center: latlng
+        };
 
-          var regionOptions = {
-              strokeColor: "#FF0000",
-              strokeOpacity: 0.4,
-              strokeWeight: 2,
-              fillColor: "#FF0000",
-              fillOpacity: 0.15,
-              map: map,
-              center: regionMarker.center,
-              radius: 100
-          };
+        var regionOptions = {
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.4,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.15,
+            map: map,
+            center: regionMarker.center,
+            radius: 100
+        };
 
-          var circleMarker = new google.maps.Circle(regionOptions);
+        var circleMarker = new google.maps.Circle(regionOptions);
 
-          // end of radius
+        // end of radius
         <% end %>
+
 
         var panoramaOptions = {
-        position: latlng,
-        <% if !user_signed_in? %>
+            position: latlng,
+            <% if !user_signed_in? %>
             addressControl: false,
-        <% end %>
-        pov: {
-          heading: 34,
-          pitch: 10
-        }
+            <% end %>
+            pov: {
+                heading: 34,
+                pitch: 10
+            },
+            linksControl: false,
+            panControl: false,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.SMALL
+            },
+            enableCloseButton: false
         };
-        var pano = new google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
 
-        window.setInterval(function() {
-        var pov = pano.getPov();
-        pov.heading += 0.2;
-        pano.setPov(pov);
-        }, 10);
+        var move;
 
-        $('#myTab a[href="#googlemap"]').on('shown', function(e){
-        google.maps.event.trigger(map, 'resize');
-        map.setCenter(latlng);
+        $('#myTab a[href="#photos"]').on('shown', function(e) {
+            move = false;
         });
 
-        $('#myTab a[href="#streetview"]').on('shown', function(e){
-        google.maps.event.trigger(pano, 'resize');
+
+        $('#myTab a[href="#googlemap"]').on('shown', function(e) {
+            move = false;
+            map = new google.maps.Map(document.getElementById("map-canvas"),
+                    mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: latlng,
+                map: map
+            });
+        });
+
+
+        $('#myTab a[href="#streetview"]').on('shown', function(e) {
+            pano = new google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
+            var move = true;
+            $("#pano").click(function () {
+                move = !move;
+            });
+
+
+            window.setInterval(function() {
+                if (move) {
+                    var pov = pano.getPov();
+                    pano.setPov(pov);
+                    pov.heading += 0.2;
+                }
+            }, 10);
         });
 
     }
 
-    function loadScript() {
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE";
-        document.body.appendChild(script);
-    }
-
-    window.onload = loadScript;
+    google.maps.event.addDomListener(window, 'load', initialize);
 
     mixpanel.track_links('#reserve a', 'Clicked Contact Us');
 

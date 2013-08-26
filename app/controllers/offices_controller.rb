@@ -73,19 +73,9 @@ class OfficesController < ApplicationController
 
     respond_to do |format|
       if @office.save
-        # send email to user and us on successful listing create
-        OfficeMailer.add_listing_confirm(@office).deliver
-
-        track_event("Added Listing");
-
-        format.html { redirect_to confirm_path(:id => @office.id)}
+        track_event("Added Listing Address");
+        format.html { redirect_to edit_office_path(:id => @office.id)}
         format.json { render json: @office, status: :created, location: @office }
-
-        # send email to users who have set alerts
-        @alerts = Alert.where("lower(city) = ?", @office.loc_city.downcase)
-        @alerts.each do |alert|
-          AlertMailer.match_found(@office,alert).deliver
-        end
       else
         format.html { render action: "new" }
         format.json { render json: @office.errors, status: :unprocessable_entity }
@@ -102,13 +92,28 @@ class OfficesController < ApplicationController
 
     respond_to do |format|
       if @office.update_attributes(params[:office])
-        # send email to us on successful listing edit
-        OfficeMailer.edit_listing_confirm(@office).deliver
-
-        track_event("Updated Listing");
-
         format.html { redirect_to confirm_path(:id => @office.id) }
         format.json { head :no_content }
+
+        if @office.active_flag == 1
+          # send email to user and us on successful listing create
+          OfficeMailer.add_listing_confirm(@office).deliver
+
+          track_event("Added Listing");
+
+          # send email to users who have set alerts
+          @alerts = Alert.where("lower(city) = ?", @office.loc_city.downcase)
+          @alerts.each do |alert|
+            AlertMailer.match_found(@office,alert).deliver
+          end
+        end
+
+        if @office.active_flag == 2
+          # send email to us on successful listing edit
+          OfficeMailer.edit_listing_confirm(@office).deliver
+
+          track_event("Updated Listing");
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @office.errors, status: :unprocessable_entity }
