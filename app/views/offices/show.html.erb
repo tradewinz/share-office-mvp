@@ -109,6 +109,8 @@
   galleria();
 
   function initialize() {
+    var pano;
+    var map;
      var latlng = new google.maps.LatLng("<%=@office.latitude%>", "<%=@office.longitude%>");
       var mapOptions = {
         center: latlng,
@@ -132,20 +134,21 @@
       };
 
 
-      $('#myTab a[href="#googlemap"]').on('shown', function(e){
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
+      $('#myTab a[href="#googlemap"]').on('shown', function(e) {
+        map = new google.maps.Map(document.getElementById("map-canvas"),
           mapOptions);
 
         var marker = new google.maps.Marker({
             position: latlng,
             map: map
         });
+
         // google.maps.event.trigger(map, 'resize');
         // map.setCenter(latlng);
       });
 
-      $('#myTab a[href="#streetview"]').on('shown', function(e){
-        var pano = new google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
+      $('#myTab a[href="#streetview"]').on('shown', function(e) {
+        pano = new google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
         window.setInterval(function() {
         var pov = pano.getPov();
         pov.heading += 0.2;
