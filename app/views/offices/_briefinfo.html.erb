@@ -1,53 +1,33 @@
-    <p class="officecost text-right">
-     <% if @office.rent? %>
-          <strong><%= number_to_currency(@office.rent, :locale => 'en_us', :precision => 0) %></strong>
-          <% if @office.rent_type == 1 %>/ month
-          <% else %>
-              <% if @office.rent_type == 2 %>/ week
-              <% else %>
-                  <% if @office.rent_type == 3 %>/ day
-                  <% else %>month
-                  <% end %>
-              <% end %>
-          <% end %>
-     <% else %>
-       Contact us for rent
-     <% end %>
-    </p>
-
-    <span class="pull-right">
-      <% if @office.office_type == 1 %>
-        <div class="officeicon office"></div>
-        <span class="text-right">Office space</span>
-    <% else %>
-        <% if @office.office_type == 2 %>
-            <div class="officeicon meeting"></div>
-            <span class="text-right">Meeting room</span>
+  <table class="table table-bordered">
+    <tr>
+      <td>
+        <% if @office.rent? %>
+            <div class="text-center"><strong><%= number_to_currency(@office.rent, :locale => 'en_us', :precision => 0) %></strong></div>
         <% else %>
-            <% if @office.office_type == 3 %>
-                <div class="officeicon desk"></div>
-                <span class="text-right">Desk</span>
-            <% else %>
-                <div class="officeicon office"></div>
-                <span class="text-right">Office space</span>
-            <% end %>
+            <div class="text-center"><strong>--</strong></div>
         <% end %>
-    <% end %>
- 
+        <div class="text-center"><small>per month</small></div>
+      </td>
+      <td>
+        <% if @office.size? %>
+            <div class="text-center"><strong><%= @office.size %></strong></div>
+        <% else %>
+            <div class="text-center"><strong>--</strong></div>
+        <% end %>
+        <div class="text-center"><small>sq. ft</small></div>
+      </td>
+      <td>
+        <div class="text-center"><strong>1 Month</strong></div>
+        <div class="text-center"><small>Minimum Lease</small></div>
+      </td>
+    </tr>
+  </table>
 
+  <% if false %>   <!-- hide accomodates -->
+      <% if @office.accomodate? %>
+          <div class="officeicon accomodates"></div>
+          <%= @office.accomodate %>
+          <span class="text-right"><% if @office.accomodate == 1 %>person<% else %>people <% end %></span>
+      <% end %>
+  <% end %>
 
-    <% if @office.accomodate? %>
-        <div class="officeicon accomodates"></div>
-        <%= @office.accomodate %>
-        <span class="text-right"><% if @office.accomodate == 1 %>person<% else %>people <% end %></span>
-    <% end %>
-
-    <% if @office.size? %>
-        <div class="officeicon size"></div>
-        <%= @office.size %>
-        <span class="text-right">sq. ft</span>
-    <% end %>
-
-  </span>
-</p>
-<div style="height:67px;"></div>

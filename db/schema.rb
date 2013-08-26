@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(:version => 20130808173738) do
     t.string   "address"
   end
 
+  create_table "alerts_confirm_unsubscribes", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "attachinary_files", :force => true do |t|
     t.integer  "attachinariable_id"
     t.string   "attachinariable_type"

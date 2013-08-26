@@ -1,4 +1,4 @@
-<div class="paperPanel3D show_office text-center">
+<div class="panel-background-well">
   <div class="row">
     <div class="span4">
         <% if can? :update, @office %>
@@ -10,11 +10,12 @@
             </div>
         <% else %>
             <div id="reserve">
-              <h4 class="panel-header-gray">Contact host</h4>
               <% if @office.user %>
                 <%= render 'abouthost' %>
               <% end %>
-              <%= render 'reserves/form' %>
+              <% if user_signed_in? %>
+                <%= render 'reserves/form' %>
+              <% end %>
             </div>
 
             <div id="sending">
@@ -31,7 +32,6 @@
                    <div class="airplane"><%= image_tag "airplane.png"%></div>
                 </div>
             </div>
-
         <% end %>
     </div>
   </div>
