@@ -20,13 +20,6 @@
 
     <div class="span5">
 
-      <!-- hide office title -->
-      <% if false %>
-      <p class="officetitle">
-        <%= @office.title %>
-      </p>
-      <% end %>
-
       <p class="officelocation">
         <% if user_signed_in? %>
           <strong><%= @office.loc_addr1 %></strong>
@@ -104,9 +97,6 @@
 
     <div class="span4 room-action-area">
       <%= render 'contacthost' %>
-      <% if false %>  <!-- hide walkscore widget -->
-      <% if @office.loc_addr1? %><%= render 'walkscore' %><%end%>
-      <% end %>
     </div>
   </div>
 </div>
