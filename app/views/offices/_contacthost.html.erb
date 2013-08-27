@@ -1,4 +1,4 @@
-<div class="panel-background-well">
+<div class="paperPanel3D show_office text-center">
   <div class="row">
     <div class="span4">
         <% if can? :update, @office %>
@@ -10,6 +10,7 @@
             </div>
         <% else %>
             <div id="reserve">
+              <h4 class="panel-header-gray">Contact host</h4>
               <% if @office.user %>
                 <%= render 'abouthost' %>
               <% end %>
@@ -36,3 +37,4 @@
     </div>
   </div>
 </div>
+
