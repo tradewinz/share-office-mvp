@@ -18,7 +18,10 @@ ShareOfficeMvp::Application.routes.draw do
   match '/reserve/:id', to:'offices#reserve'
 
   resources :offices do
-    get 'address', on: :collection
+    member do
+      get 'publish'
+      get 'disable'
+    end
     resources :reserves
   end
 

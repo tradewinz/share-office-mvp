@@ -3,7 +3,7 @@ class Office < ActiveRecord::Base
                   :loc_zip, :loc_addr1, :loc_addr2, :loc_city, :loc_state,
                   :title, :description, :rent, :rent_type, :available,
                   :user_id, :latitude, :longitude, :gmaps, :window, :featured,
-                  :quiet, :creative, :client, :team, :min_lease, :security, :cleaning, :loc_address, :active_flag
+                  :private, :creative, :counseling, :treatment, :min_lease, :security, :cleaning, :loc_address, :active_flag
 
   belongs_to :user
   has_many :reserve

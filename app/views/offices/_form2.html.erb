@@ -24,7 +24,7 @@
           <label class="control-label" id="rent-label">Rent Amount*</label>
 
           <div class="controls">
-            <%= f.text_field :rent, :placeholder => "$",  :style => "width: 130px"%> per month
+            <%= f.text_field :rent, :placeholder => "$", :style => "width: 130px"%> per month
           </div>
         </div>
 
@@ -32,7 +32,7 @@
           <label class="control-label">Minimum lease*</label>
 
           <div class="controls">
-           <%= f.number_field :min_lease, :in => 0..12, :style => "width: 10%"  %> month(s)
+           <%= f.number_field :min_lease, :style => "width: 10%"  %> month(s)
           </div>
         </div>
       </fieldset>
@@ -124,7 +124,7 @@
          </div>
 
         <div class="control-group checkbox-group">
-          <label class="control-label">Ideal for</label>
+          <label class="control-label">Office type</label>
           <div class="row">
             <div class="span" style="margin-right:100px">
               <label class="checkbox">
@@ -229,7 +229,10 @@
         },
         messages: {
           "office[rent]": "Providing a rent amount increase the chances of finding a match quickly!",
-          "office[min_lease]": "Please provide a minimum lease between 1 and 12 months."
+          "office[min_lease]": {
+            required: "Please provide a minimum lease.",
+            range: "Minimum lease should be between 1 and 12 months."
+          }
         },
         errorPlacement: function(error, element) {
           element.after(error);

@@ -15,7 +15,7 @@
       <div class="row search_result">
 
         <div class="span2">
-          <a href= "<%= office_path(office)  %>" >
+          <a href= "<%= office_path(office) %>" >
             <% if (office.office_images.first != nil) %>
                 <%= cl_image_tag office.office_images.first.path, :size => '100x75', :crop => :fit, :class => "img-polaroid" %>
             <% else %>
@@ -25,7 +25,7 @@
           </a>
         </div>
 
-        <div class="span4">
+        <div class="span3">
             <%= link_to office.title, office %>
         </div>
 
@@ -41,10 +41,15 @@
           <%= office.loc_zip %>
         </div>
 
-        <div class="span2">
+        <div class="span3">
           <!--%= link_to 'View', office %-->
 
           <% if can? :update, office %>
+            <% if office.active_flag == 0 %>
+              <%= link_to 'Publish |', publish_office_path(office) %>
+            <% else %>
+            <%= link_to 'Disable |', disable_office_path(office), :data => { confirm: 'Are you sure?' } %>
+            <% end %>
             <%= link_to 'Update |', edit_office_path(office) %>
           <% end %>
           
