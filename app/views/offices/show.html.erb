@@ -20,11 +20,11 @@
 
     <div class="span5">
 
-      <p class="officelocation">
+      <p class="officetitle">
         <% if user_signed_in? %>
-            <strong><%= @office.loc_addr1 %></strong>
+            <%= @office.loc_addr1 %>
         <% else %>
-            <i class="icon-lock"></i> <%= link_to "show exact address", new_user_session_path %>
+           <%= link_to new_user_session_path do %><i class="icon-lock"></i> show exact address <% end %>
         <% end %>
         <br/> <%= @office.loc_city %> <%= @office.loc_state %> <%= @office.loc_zip %>
       </p>
