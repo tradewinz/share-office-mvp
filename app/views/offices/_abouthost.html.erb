@@ -1,3 +1,4 @@
+<h4 class="panel-header-gray">Contact host</h4>
 <% if @office.user.industry? or @office.user.location? or @office.user.website? %>
 <div class="row-fluid">
   <div class="small-padding" style="height:80px;">
@@ -8,8 +9,6 @@
             <%= image_tag("default_person.png", width: '75px')  %>
         <% end %>
       </div>
-   
-    <% if user_signed_in? %>
 
     <div class="span8 text-left">
       <% if @office.user.name? %>
@@ -28,11 +27,6 @@
       <% end %>
     </div>
 
-    <% else %>
-     <div class="span8 text-left">
-        <p><i class="icon-lock"></i> <%= link_to "Contact host", new_user_session_path %></p>
-      </div>
-    <% end %>
   </div>
 </div>
 <% end %>

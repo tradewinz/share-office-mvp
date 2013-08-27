@@ -10,12 +10,13 @@
             </div>
         <% else %>
             <div id="reserve">
-              <h4 class="panel-header-gray">Contact host</h4>
               <% if @office.user %>
-                <%= render 'abouthost' %>
-              <% end %>
-              <% if user_signed_in? %>
-                <%= render 'reserves/form' %>
+                <% if user_signed_in? %>
+                  <%= render 'abouthost' %>
+                  <%= render 'reserves/form' %>
+                <% else %>
+                  <%= render 'aboutlocked' %>
+                <% end %>  
               <% end %>
             </div>
 
