@@ -25,32 +25,44 @@ class LandingPagesController < ApplicationController
     @search_string = params[:city]
     @sort = params[:sort]
     @direction = params[:dir]
+    @rentto = params[:rentto]
+    @rentfrom = params[:rentfrom]
+    
+    if (@rentto == nil)  
+      @rentto = '10000' 
+    end 
+    if(@rentfrom == nil) 
+      @rentfrom = '0' 
+    end
+    
+    rentfilter = 'rent >=  ? AND rent <= ?'
 
     if (@search_string != "")
-      @mappable_offices = Office.near(@search_string, 20)
+      @mappable_offices = Office.near(@search_string, 20).where(rentfilter, @rentfrom, @rentto)
       if(@sort == "rent")
+
         if(@direction == "asc")
           #@sorted_offices = Office.order('rent IS NULL, rent ASC').page(params[:page])
           #@offices = @mappable_offices.sort! { |a,b| a.rent.to_i <=> b.rent.to_i}
-          @offices = Office.near(@search_string, 20, :order => 'rent IS NULL, rent = 0, rent ASC').page(params[:page])
+          @offices = Office.near(@search_string, 20, :order => 'rent IS NULL, rent > 0, rent ASC').where(rentfilter, @rentfrom, @rentto).page(params[:page])
         else
           #@sorted_offices = Office.order('rent IS NULL, rent DESC').page(params[:page])
           #@offices = @mappable_offices.sort! { |a,b| b.rent.to_i <=> a.rent.to_i}
-          @offices = Office.near(@search_string, 20, :order => 'rent IS NULL, rent = 0, rent DESC').page(params[:page])
+          @offices = Office.near(@search_string, 20, :order => 'rent IS NULL, rent > 0, rent DESC').where(rentfilter, @rentfrom, @rentto).page(params[:page])
         end
       else
-         @offices = Office.near(@search_string, 20).page(params[:page])
+         @offices = Office.near(@search_string, 20).where(rentfilter, @rentfrom, @rentto).page(params[:page])
       end
     else
-      @mappable_offices = Office.all
+      @mappable_offices = Office.where(rentfilter, @rentfrom, @rentto)
       if(@sort == "rent")
         if(@direction == "asc")
-          @offices =  Office.order('rent IS NULL, rent = 0, rent ASC').page(params[:page])
+          @offices =  Office.order('rent IS NULL, rent = 0, rent ASC').where(rentfilter, @rentfrom, @rentto).page(params[:page])
         else
-          @offices =  Office.order('rent IS NULL, rent = 0, rent DESC').page(params[:page])
+          @offices =  Office.order('rent IS NULL, rent = 0, rent DESC').where(rentfilter, @rentfrom, @rentto).page(params[:page])
         end
       else
-        @offices =  Office.order('created_at DESC').page(params[:page])
+        @offices =  Office.order('created_at DESC').where(rentfilter, @rentfrom, @rentto).page(params[:page])
       end
     end
 

@@ -11,6 +11,9 @@
   <%= form_tag(listings_path, :method => "get", :id => "search_form") do %>
       <div class="span5">
           <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "Enter a City" %>
+          Rent <%= text_field_tag 'rentfrom', @rentfrom, :class=> "l_input", :placeholder => "Rent From" %> To
+          <%= text_field_tag 'rentto', @rentto, :class=> "l_input", :placeholder => "Rent To" %>
+
       </div>
 
 
@@ -46,11 +49,7 @@
 
         <% else %>
 
-            <!------------------ MAP VIEW ------------------------>
-            <div class = "span3" id="filtersview">
-
-                
-            </div>
+            
 
           <!------------------ MAP VIEW ------------------------>
             <div class = "span3" id="mapview">
@@ -66,11 +65,14 @@
                     )
                 %>
             </div>
+
+           
+
             <!------------------ LIST VIEW ------------------------>
 
             <div class="span8" id="listview">
                 <div class="row">
-                    <div class="sortmenu span12">
+                    <div class="sortmenu span9">
                       <ul class="nav" role="navigation">
                         <li class="dropdown">
                           <a id="sortdrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
@@ -292,7 +294,7 @@
 
                   <% end %>
 
-                <div class="pagemarker span12">
+                <div class="pagemarker span9">
                   <div class="apple_pagination">
 
                   <!--div class="page_info">
@@ -334,7 +336,7 @@
 
     function showmapview() {
         $('#listview').hide();
-        $('#mapview').attr('class', 'span9 offset3');
+        $('#mapview').attr('class', 'span12');
         Gmaps.loadMaps();
 
     }
