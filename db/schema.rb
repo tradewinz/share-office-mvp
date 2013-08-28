@@ -87,12 +87,17 @@ ActiveRecord::Schema.define(:version => 20130826045910) do
     t.integer  "rent_type"
     t.boolean  "window"
     t.boolean  "featured",    :default => false
+    t.string   "address"
+    t.boolean  "quiet",       :default => false
+    t.boolean  "client",      :default => false
+    t.boolean  "team",        :default => false
+    t.boolean  "therapy",     :default => false
     t.string   "loc_address"
     t.boolean  "private",     :default => false
     t.boolean  "creative",    :default => false
     t.boolean  "counseling",  :default => false
     t.boolean  "treatment",   :default => false
-    t.integer  "min_lease",   :default => 1
+    t.integer  "min_lease"
     t.boolean  "security"
     t.boolean  "cleaning"
     t.integer  "active_flag", :default => 1

@@ -18,11 +18,11 @@
               <div class="row spacebottom">
                   <div class="leftgap">
                     <div class="span">
-                    <%= text_field_tag 'city', "", :class=> :l_input, :style => "margin-bottom: 5px; height:30px", :placeholder => "Enter an Address, City, or Zip" %>
+                    <%= text_field_tag 'city', "", :class=> :l_input, :style => "margin-bottom: 5px; height:30px; width:600px;", :placeholder => "Enter an Address, City, or Zip" %>
                   </div>
                   </div>
 
-                 <div class="span"><%= submit_tag "SEARCH", :class => "l_button btn btn-large btn-primary", :id => "searchBtn" %></div>
+                 <div class="span"><%= submit_tag "SEARCH", :class => "l_button btn btn-large btn-primary", style: "height:43px; margin-top:3px;", :id => "searchBtn" %></div>
             <%end%>
             </div>
           </div>
