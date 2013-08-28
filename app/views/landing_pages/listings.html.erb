@@ -87,7 +87,7 @@
             <!------------------ LIST VIEW ------------------------>
 
             <div class="span8" id="listview">
-                <div class="row">
+                <div class="row hide">
                     <div class="sortmenu span9">
                       <ul class="nav" role="navigation">
                         <li class="dropdown">
@@ -161,8 +161,11 @@
                             </div>
 
                             <div class="span3">
-                              <h4><%= link_to office.title, office %></h4>
-                              <p><%= office.loc_city %> <%= office.loc_state %> </p>
+                              <% if user_signed_in? %>
+                                <h5><%= link_to office.address, office %></h5>
+                              <% else %>  
+                                <p><%= link_to office.loc_city + " , " + office.loc_state, office %> </p>
+                              <% end %>
                               <br>
                             </div>
                           </div>

@@ -23,12 +23,6 @@ ActiveRecord::Schema.define(:version => 20130826045910) do
     t.string   "address"
   end
 
-  create_table "alerts_confirm_unsubscribes", :force => true do |t|
-    t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "attachinary_files", :force => true do |t|
     t.integer  "attachinariable_id"
     t.string   "attachinariable_type"
@@ -93,20 +87,15 @@ ActiveRecord::Schema.define(:version => 20130826045910) do
     t.integer  "rent_type"
     t.boolean  "window"
     t.boolean  "featured",    :default => false
-    t.string   "address"
-    t.boolean  "quiet",       :default => false
-    t.boolean  "client",      :default => false
-    t.boolean  "team",        :default => false
-    t.boolean  "therapy",     :default => false
     t.string   "loc_address"
     t.boolean  "private",     :default => false
     t.boolean  "creative",    :default => false
     t.boolean  "counseling",  :default => false
     t.boolean  "treatment",   :default => false
-    t.integer  "min_lease"
+    t.integer  "min_lease",   :default => 1
     t.boolean  "security"
     t.boolean  "cleaning"
-    t.integer  "active_flag"
+    t.integer  "active_flag", :default => 1
   end
 
   create_table "rails_admin_histories", :force => true do |t|
