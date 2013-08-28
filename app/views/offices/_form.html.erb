@@ -1,12 +1,11 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry,places&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE"></script>
 
-    <div id="first">
       <div class="listing-header">What's the address?</div> 
         <div class="row panel panel-border">       
           <fieldset class="padtop_big padbottom_big side-margins">
             <%= simple_form_for(@office, :html => { :id => "address_form" } ) do |f| %>
             <div class="control-group">
-              <%= f.text_field :loc_address, :style => "height:40px; font-size:20px; padding-left: 15px; width:716px;", :placeholder => "e.g. 2000 Coast Ave, Mountain View, CA 94043", id: "address_field"%>
+              <%= text_field_tag "address", "", :style => "height:40px; font-size:20px; padding-left: 15px; width:716px;", :placeholder => "e.g. 2000 Coast Ave, Mountain View, CA 94043", id: "address_field"%>
             </div>
             <div class="hide" id="error-msg">Please enter a valid address.</div>
             
@@ -23,7 +22,6 @@
             <% end %>
           </fieldset>
         </div>
-      </div>
 
 <!-- other JS code -->
 <script type="text/javascript">

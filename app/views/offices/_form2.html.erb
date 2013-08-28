@@ -42,7 +42,7 @@
 
         <div class="control-group">
           <label class="control-label">Address*</label>
-          <div class="controls"><%= f.text_field :loc_address, :style => "width:568px;", id: "address_field" %>
+          <div class="controls"><%= text_field_tag "address", '', value: @office.address, :style => "width:568px;", id: "address_field" %>
             <div class="hide" id="error-msg">Please enter a valid address.</div></div>
         </div>
         <div class="hide">
@@ -201,7 +201,7 @@
 </script>
 <!-- other JS code -->
 <script type="text/javascript">
-    var correctInput = "<%=@office.loc_address%>";
+    var correctInput = "<%=@office.address%>";
     console.log("correct input: " +correctInput);
 
     // validate address field separately to make sure city and street address (hidden fields) are included
