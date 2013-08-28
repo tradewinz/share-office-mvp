@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20130826045910) do
     t.boolean  "creative",    :default => false
     t.boolean  "counseling",  :default => false
     t.boolean  "treatment",   :default => false
-    t.integer  "min_lease",   :default => 1
+    t.integer  "min_lease"
     t.boolean  "security"
     t.boolean  "cleaning"
     t.integer  "active_flag", :default => 1
