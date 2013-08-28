@@ -96,31 +96,28 @@ body{
   border-radius: 10px;
   opacity: 0.80;
   margin-top:140px;
+ -webkit-box-shadow: 0 1px 10px #000;
+  -moz-box-shadow: 0 1px 10px #000;
+  box-shadow: 0 1px 10px #000;
  }
 
  .l_text {
-   font-family: "Helvetica Neue Bold";
-   font-size: 30px;
+   font-family: "Helvetica Neue";
+   font-size: 28px;
    color: black;
    text-shadow:#FFFFFF;
    background-color: $lightbox;
  }
 
  .l_button {
-  width: 100%;
-  opacity: 1.0;
- }
-
-.l_button .hover{
-  width: 100%;
-  opacity: 1.0;
+   height:43px; 
+  margin-top:3px;
 }
 
 .l_input {
   margin-top: 5px;
   height: 30px;
-  width: 100%;
-  opacity: 1.0;
+  width: 600px;
  }
 
  .l_fpo {
