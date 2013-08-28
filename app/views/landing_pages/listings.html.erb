@@ -6,27 +6,43 @@
 <% end %>
 
 
-<div class="row padtopsmall padbottomsmall" >
+<div class="row padtopsmall" >
 
   <%= form_tag(listings_path, :method => "get", :id => "search_form") do %>
-      <div class="span5">
-          <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "Enter a City" %>
-          Rent <%= text_field_tag 'rentfrom', @rentfrom, :class=> "l_input", :placeholder => "Rent From" %> To
-          <%= text_field_tag 'rentto', @rentto, :class=> "l_input", :placeholder => "Rent To" %>
-
+    <div class = "row">
+      <div class="span1 padtoptiny">
+          <%= label_tag(:city, "Location:") %>
       </div>
-
-
+      <div class = "span5">    
+          <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "Enter a City" %>
+      </div>
       <div class="span2" id="search">
           <%= submit_tag "SEARCH", :class => "l_button btn btn-primary", :id => "searchBtn", :style => "margin-top:5px" %>
       </div>
-
-    <div class="offset2 span3">
-      <div class="btn-group" data-toggle="buttons-radio">
-        <button class="btn btn-medium" type="button" id="showMapBtn">Map View</button>
-        <button class="btn btn-medium" type="button" id="showListBtn">List View</button>
+      <div class="offset1 span3">
+        <div class="btn-group" data-toggle="buttons-radio">
+          <button class="btn btn-medium" type="button" id="showMapBtn">Map View</button>
+          <button class="btn btn-medium" type="button" id="showListBtn">List View</button>
+        </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class = "span1 padtoptiny text-right">
+         <%= label_tag(:rentfrom, "Rent:") %>
+      </div>
+      <div class="span1"> 
+            <%= text_field_tag 'rentfrom', @rentfrom, :class=> "l_input", :placeholder => "min" %>
+      </div>   
+      <div class = "span0.5 padtoptiny text-right" style="padding-left: 5px">
+         <%= label_tag(:rentto, "To:") %>
+      </div>
+      <div class="span1" style="margin-left: 10px">
+            <%= text_field_tag 'rentto', @rentto, :class=> "l_input", :placeholder => "max" %>
+      </div>
+
+    </div>
+
   <% end %>
 </div>
 
@@ -52,7 +68,7 @@
             
 
           <!------------------ MAP VIEW ------------------------>
-            <div class = "span3" id="mapview">
+            <div class = "span" id="mapview">
 
                 <%= gmaps("markers" => {"data" => @json},
                       "map_options" =>  { "provider" => "google",
