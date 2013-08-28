@@ -1,3 +1,4 @@
+<h4 class="panel-header-gray">Contact host</h4>
 <% if @office.user.industry? or @office.user.location? or @office.user.website? %>
 <div class="row-fluid">
   <div class="small-padding" style="height:80px;">
@@ -8,7 +9,6 @@
             <%= image_tag("default_person.png", width: '75px')  %>
         <% end %>
       </div>
-   
 
     <div class="span8 text-left">
       <% if @office.user.name? %>
@@ -26,6 +26,7 @@
         <b><%= link_to "&#8627; LinkedIn profile".html_safe, @office.user.website, :target => "_blank" %></b>
       <% end %>
     </div>
+
   </div>
 </div>
 <% end %>

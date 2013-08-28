@@ -1,0 +1,124 @@
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+<!-- style type="text/css">
+        /* styles for displaying scores from the Walk Score API */
+    .walkscore-scoretext, .walkscore-noscoretext {
+        position: relative;
+        top: -2px;
+        color: #b14900;
+        margin-left: 3px;
+        text-decoration: underline;
+        font-weight: normal;
+    }
+    .walkscore-scoretext {
+        margin-left: 7px;
+        font-weight: bold;
+        font-size: 15px;
+        text-decoration:none;
+    }
+    #walkscore-div a {
+        text-decoration:none;
+    }
+
+        /* styles for the info icon */
+    #ws_info {
+        position: relative;
+        top: -5px;
+        margin-left: 4px;
+    }
+</style -->
+
+<!-- nearby results -->
+<div id="map-canvas2" class="hidden"></div>
+<table id="places" class="table table-borderless table-condensed">
+</table>
+
+<!-- div id="walkscore-div"></div -->
+
+<!-- image gallery  -->
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        var latlng = new google.maps.LatLng("<%=@office.latitude%>", "<%=@office.longitude%>");
+        // start nearby service
+        var request = {
+            location: latlng,
+            rankBy: google.maps.places.RankBy.PROMINENCE,
+            radius: 500,
+            types: ['cafe', 'restaurant']
+        };
+
+        var placesList = document.getElementById('places');
+        var service = new google.maps.places.PlacesService(placesList);
+        service.nearbySearch(request, placescallback);
+
+        //injectWalkScore("<%= @office.loc_addr1 %>","<%=@office.latitude%>", "<%=@office.longitude%>");
+    });
+
+    function placescallback(results, status, pagination) {
+        var placesList = document.getElementById('places');
+        if (status != google.maps.places.PlacesServiceStatus.OK) {
+            return;
+        } else {
+            var placeshtml = "<tr>";
+            for (var i = 0, place; place = results[i]; i++) {
+                if (i > 0 && i % 2 == 0)
+                    placeshtml += "</tr><tr>";
+                placeshtml += '<td><img height=\"16\" width=\"16\" src=\"' + place.icon + '\"/></td><td>' + place.name + '</td>';
+                if (i == 9) break; // show top 10 results
+            }
+            placeshtml += "</tr>";
+            placesList.innerHTML += placeshtml;
+        }
+    }
+
+    /*
+    // walkscore api
+    //Make an ajax call to a php page on your domain that will fetch json data from the Walk Score API
+    //here we use the JQuery library for our Ajax call, but you can use whatever system you like
+    function injectWalkScore(address,lat,lon){
+        address = encodeURIComponent(address);
+        var url="http://api.walkscore.com/score?format=json&address=" + address + "&lat=" + lat + "&lon=" + lon + "&wsapikey=ade0d53718646df2300c3fe11be3787f";
+        $.ajax( {
+                    url: url,
+                    type:'GET',
+                    success: function(data) { displayWalkScores(data); },
+                    error: function(){ displayWalkScores(""); }
+                }
+        );
+    }
+    //to demonstrate all of our formatting options, we'll pass the json on to a series of display functions.
+    //in practice, you'll only need one of these, and the ajax call could call it directly as it's onSuccess callback
+    function displayWalkScores(jsonStr) {
+        displayWalkScore(jsonStr);
+    }
+
+    //show the walk score -- inserts walkscore html into the page.  Also needs CSS from top of file
+    function displayWalkScore(jsonStr) {
+        if (jsonStr == "")
+            console.log("returned empty");
+        else
+            console.log("returned : " + jsonStr);
+        var json=(jsonStr) ? eval('(' + jsonStr + ')') : ""; //if no response, bypass the eval
+
+        //if we got a score
+        if (json && json.status == 1) {
+            var htmlStr = '<a target="_blank" href="' + json.ws_link + '"><img src="' + json.logo_url + '" /><span class="walkscore-scoretext">' + json.walkscore + '</span></a>';
+        }
+        //if no score was available
+        else if (json && json.status == 2) {
+            var htmlStr = '<a target="_blank" href="' + json.ws_link + '"><img src="' + json.logo_url + '" /> <span class="walkscore-noscoretext">Get Score</span></a>';
+        }
+        //if didn't even get a json response
+        else {
+            var htmlStr = '<a target="_blank" href="http://www.walkscore.com"><img src="http://www2.walkscore.com/images/api-logo.gif" /> <span class="walkscore-noscoretext">Get Score</span></a> ';
+        }
+        var infoIconHtml = '<span id="ws_info"><a href="http://www.walkscore.com/live-more/#how-it-works" target="_blank"><img src="http://cdn2.walk.sc/images/api-more-info.gif" width="13" height="13"" /></a></span>';
+
+        //if you want to wrap extra tags around the html, can do that here before inserting into page element
+        htmlStr = '<p>' + htmlStr + infoIconHtml + '</p>';
+
+        //insert our new content into the container div:
+        $("#walkscore-div").html(htmlStr);
+    }*/
+
+</script>
