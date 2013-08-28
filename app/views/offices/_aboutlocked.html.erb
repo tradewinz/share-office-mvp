@@ -1,0 +1,25 @@
+<%= link_to new_user_session_path do %>
+	<div id="reserve">
+		<h4 class="panel-header-gray" id="contact-label"><i class="icon-lock"></i> &nbsp; Contact host</h4>
+		<% if @office.user.photo? %>
+			<%= image_tag(@office.user.photo, width: '90px', class: "img-polaroid", id: "profile-photo") %>
+		<% else %>
+			<%= image_tag("default_person.png", width: '90px', class: "img-polaroid", id: "profile-photo") %>
+		<% end %>
+	</div>
+<% end %>
+
+<script>
+	$("#reserve").mouseover(function() {
+		$("#show-office").addClass('contact-hover');
+		$("#profile-photo").addClass('profile-hover');
+		$("#contact-label").addClass('label-hover');
+	});
+	$("#reserve").mouseout(function() {
+		$("#show-office").removeClass('contact-hover');
+		$("#profile-photo").removeClass('profile-hover');
+		$("#contact-label").removeClass('label-hover');
+	});
+
+
+</script>
