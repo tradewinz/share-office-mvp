@@ -8,6 +8,6 @@ class AddNewFieldsToOfficeForm < ActiveRecord::Migration
     add_column :offices, :min_lease, :integer
     add_column :offices, :security, :boolean
     add_column :offices, :cleaning, :boolean
-    add_column :offices, :active_flag, :integer
+    add_column :offices, :active_flag, :integer, :default => 1
   end
 end

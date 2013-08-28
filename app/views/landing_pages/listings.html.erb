@@ -6,24 +6,43 @@
 <% end %>
 
 
-<div class="row padtopsmall padbottomsmall" >
+<div class="row padtopsmall" >
 
   <%= form_tag(listings_path, :method => "get", :id => "search_form") do %>
-      <div class="span5">
-          <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "Enter an Address, City, or Zip" %>
+    <div class = "row">
+      <div class="span1 padtoptiny">
+          <%= label_tag(:city, "Location:") %>
       </div>
-
-
+      <div class = "span5">    
+          <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "Enter a City" %>
+     </div>
       <div class="span2" id="search">
           <%= submit_tag "SEARCH", :class => "l_button btn btn-primary", :id => "searchBtn", :style => "margin-top:5px" %>
       </div>
-
-    <div class="offset2 span3">
-      <div class="btn-group" data-toggle="buttons-radio">
-        <button class="btn btn-medium" type="button" id="showMapBtn">Map View</button>
-        <button class="btn btn-medium" type="button" id="showListBtn">List View</button>
+      <div class="offset1 span3">
+        <div class="btn-group" data-toggle="buttons-radio">
+          <button class="btn btn-medium" type="button" id="showMapBtn">Map View</button>
+          <button class="btn btn-medium" type="button" id="showListBtn">List View</button>
+        </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class = "span1 padtoptiny text-right">
+         <%= label_tag(:rentfrom, "Rent:") %>
+      </div>
+      <div class="span1"> 
+            <%= text_field_tag 'rentfrom', @rentfrom, :class=> "l_input", :placeholder => "min" %>
+      </div>   
+      <div class = "span0.5 padtoptiny text-right" style="padding-left: 5px">
+         <%= label_tag(:rentto, "To:") %>
+      </div>
+      <div class="span1" style="margin-left: 10px">
+            <%= text_field_tag 'rentto', @rentto, :class=> "l_input", :placeholder => "max" %>
+      </div>
+
+    </div>
+
   <% end %>
 </div>
 
@@ -46,8 +65,11 @@
 
         <% else %>
 
+            
+
           <!------------------ MAP VIEW ------------------------>
-            <div id="mapview">
+            <div class = "span" id="mapview">
+
                 <%= gmaps("markers" => {"data" => @json},
                       "map_options" =>  { "provider" => "google",
                                   #       "client" => "gme-intuitinc",
@@ -60,11 +82,13 @@
                 %>
             </div>
 
+           
+
             <!------------------ LIST VIEW ------------------------>
 
-            <div id="listview">
-                <div class="row">
-                    <div class="sortmenu span12">
+            <div class="span8" id="listview">
+                <div class="row hide">
+                    <div class="sortmenu span9">
                       <ul class="nav" role="navigation">
                         <li class="dropdown">
                           <a id="sortdrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
@@ -109,7 +133,7 @@
                       <div class="row search_result">
 
 
-                        <div class="span3">
+                        <div class="span2">
                           <a href= "<%= office_path(office)  %>" >
                             <% if (office.office_images.first != nil) %>
                                 <%= cl_image_tag office.office_images.first.path, :size => '220x165', :crop => :fit, :class => "img-polaroid" %>
@@ -123,7 +147,7 @@
                         </div>
 
 
-                        <div class="span7">
+                        <div class="span4">
                           <div class="row">
 
                             <div class="span" style="width:44px;">
@@ -136,16 +160,19 @@
                               </div>
                             </div>
 
-                            <div class="span6">
-                              <h4><%= link_to office.title, office %></h4>
-                              <p><%= office.loc_city %> <%= office.loc_state %> </p>
+                            <div class="span3">
+                              <% if user_signed_in? %>
+                                <h5><%= link_to office.address, office %></h5>
+                              <% else %>  
+                                <p><%= link_to office.loc_city + " , " + office.loc_state, office %> </p>
+                              <% end %>
                               <br>
                             </div>
                           </div>
 
-                          <div class="row">
+                          <div class="row hide">
 
-                            <div class="span" style="width:44px;"></div>
+                            <!--div class="span" style="width:44px;"></div-->
                             <div class="span1.25">
                               <p><% if office.wifi? %>
                                   <div class="officeicon wifi_on"></div>
@@ -243,6 +270,8 @@
                                 <% else %>
                                     <h4>Contact us</h4>
                                 <% end %>
+                              
+                              <div class="hide">
                                 <br>
                                 <p>
                                   <% if office.accomodate? %>
@@ -274,6 +303,8 @@
                                 <% end %>
                                 </p>
                               </div>
+
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -282,7 +313,7 @@
 
                   <% end %>
 
-                <div class="pagemarker span12">
+                <div class="pagemarker span9">
                   <div class="apple_pagination">
 
                   <!--div class="page_info">
@@ -290,7 +321,7 @@
                   </div-->
                   <%= will_paginate @offices, :container => false %>
                   </div>
-                  <div class="text-center listing_footer">Haven't found your perfect space? <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city.</div>
+                  <div class="listing_footer">Haven't found your perfect space? <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city.</div>
                 </div>
 
             </div>
@@ -314,29 +345,37 @@
         //alert( $.cookie("mapview") );
 
         if($.cookie ('mapview') == "true") {
-            $('#mapview').show();
-            $('#listview').hide();
+            showmapview();
+
         }
         else {
-            $('#mapview').hide();
-            $('#listview').show();
+            showlistview();
         }
     });
 
+    function showmapview() {
+        $('#listview').hide();
+        $('#mapview').attr('class', 'span12');
+        Gmaps.loadMaps();
+
+    }
+
+    function showlistview() {
+        $('#mapview').attr('class', 'span3');
+        $('#listview').show();
+        Gmaps.loadMaps();
+
+    }
 
     $("#showMapBtn").click(function() {
         $.cookie ('mapview', 'true');
-        $('#mapview').show();
-        $('#listview').hide();
-
-        Gmaps.loadMaps();
+        showmapview();
         mixpanel.track("Clicked MapView button");
     });
 
     $("#showListBtn").click(function() {
         $.cookie ('mapview', 'false');
-        $('#mapview').hide();
-        $('#listview').show();
+        showlistview();
         mixpanel.track("Clicked ListView button");
 
     });
