@@ -79,9 +79,17 @@
         </div>
         <div class="span8" style="margin-top: 10px;">
           <% if @office.description? %>
-              <!-- h4>Description</h4 -->
+              <h4>Description</h4>
               <p class="officedetailstext"><%= @office.description.html_safe %> </p>
           <% end %>
+        </div>
+        <div class="span8">
+          <h4>Amenities</h4>
+          <%= render 'amenities'%>
+        </div>
+        <div class="span8">
+          <h4>What's nearby</h4>
+          <%= render 'nearbyplaces'%>
         </div>
       </div>
 
@@ -91,16 +99,6 @@
       <%= render 'contacthost' %>
     </div>
   </div>
-   <div style="margin-top: 30px;">
-        <div>
-          <h4>Amenities</h4>
-          <%= render 'amenities'%>
-        </div>
-        <div >
-          <h4>What's nearby</h4>
-          <%= render 'nearbyplaces'%>
-        </div>
-      </div>
 </div>
 
 <script type="text/javascript"

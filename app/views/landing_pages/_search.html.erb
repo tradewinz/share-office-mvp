@@ -16,15 +16,13 @@
 
             <%= form_tag(listings_path, :method => "get") do %>
               <div class="row spacebottom">
-                <div class="span7">
                   <div class="leftgap">
+                    <div class="span">
                     <%= text_field_tag 'city', "", :class=> :l_input, :style => "margin-bottom: 5px; height:30px", :placeholder => "Enter an Address, City, or Zip" %>
                   </div>
-                </div>
+                  </div>
 
-              <div class="span2" id="search">
-                 <%= submit_tag "SEARCH", :class => "l_button btn btn-large btn-primary", :id => "searchBtn",  :style => "width: 100%" %>
-              </div>
+                 <div class="span"><%= submit_tag "SEARCH", :class => "l_button btn btn-large btn-primary", :id => "searchBtn" %></div>
             <%end%>
             </div>
           </div>
