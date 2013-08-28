@@ -48,11 +48,12 @@ body{
 }
 
  .hero-bg{
- background-image: url('hero_image.jpg');
- height:430px;
- background-size: 100%;
- background-repeat:no-repeat;
- display: compact;
+   background-image: url('hero_image.jpg');
+   height:430px;
+   background-size: 100%;
+   background-repeat:no-repeat;
+   display: compact;
+   position:relative;
  }
 
  .spacetop {
@@ -91,11 +92,24 @@ body{
   margin-top: 20px;
 }
 
+.shadow {
+  -moz-box-shadow: 0 5px 10px 5px #ccc;
+  -webkit-box-shadow: 0 5px 10px 5px #ccc;
+  box-shadow: 0 5px 10px 5px #ccc;
+}
+
+.fromtop {
+  margin-top:170px;
+  position:absolute;
+  z-index:1000;
+}
+
  .l_search {
   background-color: $lightbox;
-  border-radius: 10px;
+  border-radius: 8px;
   opacity: 0.80;
-  margin-top:140px;
+  margin-top:120px;
+  height:118px;
  -webkit-box-shadow: 0 1px 10px #000;
   -moz-box-shadow: 0 1px 10px #000;
   box-shadow: 0 1px 10px #000;
@@ -105,7 +119,7 @@ body{
    font-family: "Helvetica Neue";
    font-size: 28px;
    color: black;
-   text-shadow:#FFFFFF;
+   //text-shadow:#FFFFFF;
    background-color: $lightbox;
  }
 
