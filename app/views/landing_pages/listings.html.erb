@@ -7,43 +7,43 @@
 
 
 <div class="row padtopsmall" >
+<div class ="well padbottom">
 
   <%= form_tag(listings_path, :method => "get", :id => "search_form") do %>
-    <div class = "row">
-      <div class="span1 padtoptiny">
-          <%= label_tag(:city, "Location:") %>
+
+      <div class = "span4">    
+          <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "City, address, or zip code" %>
       </div>
-      <div class = "span5">    
-          <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "Enter a City" %>
-     </div>
+      
+      <!--div class = "span0.5 padtoptiny text-right" style="padding-left: 5px">
+         <%= label_tag(:rentdeom, "Rent:") %>
+      </div-->
+      <div class="span1"> 
+            <%= text_field_tag 'rentfrom', @rentfrom, :class=> "l_input", :placeholder => "Min Rent" %>
+      </div>   
+      
+      <!--div class = "span0.5 padtoptiny text-right" style="padding-left: 5px">
+         <%= label_tag(:rentto, "To:") %>
+      </div-->
+      
+      <div class="span1">
+            <%= text_field_tag 'rentto', @rentto, :class=> "l_input", :placeholder => "Max Rent" %>
+      </div>
+      
       <div class="span2" id="search">
           <%= submit_tag "SEARCH", :class => "l_button btn btn-primary", :id => "searchBtn", :style => "margin-top:5px" %>
       </div>
-      <div class="offset1 span3">
+
+      <div class="offset1 span2">
         <div class="btn-group" data-toggle="buttons-radio">
           <button class="btn btn-medium" type="button" id="showMapBtn">Map View</button>
           <button class="btn btn-medium" type="button" id="showListBtn">List View</button>
         </div>
       </div>
-    </div>
-
-    <div class="row">
-      <div class = "span1 padtoptiny text-right">
-         <%= label_tag(:rentfrom, "Rent:") %>
-      </div>
-      <div class="span1"> 
-            <%= text_field_tag 'rentfrom', @rentfrom, :class=> "l_input", :placeholder => "min" %>
-      </div>   
-      <div class = "span0.5 padtoptiny text-right" style="padding-left: 5px">
-         <%= label_tag(:rentto, "To:") %>
-      </div>
-      <div class="span1" style="margin-left: 10px">
-            <%= text_field_tag 'rentto', @rentto, :class=> "l_input", :placeholder => "max" %>
-      </div>
-
-    </div>
 
   <% end %>
+
+</div>
 </div>
 
 
@@ -68,8 +68,11 @@
             
 
           <!------------------ MAP VIEW ------------------------>
-            <div class = "span" id="mapview">
+            <div class = "span3" id="mapview">
+              
 
+
+              <div class= "row" >
                 <%= gmaps("markers" => {"data" => @json},
                       "map_options" =>  { "provider" => "google",
                                   #       "client" => "gme-intuitinc",
@@ -80,15 +83,17 @@
                       }
                     )
                 %>
-            </div>
-
+              </div>  
+            
+              
+          </div>
            
 
             <!------------------ LIST VIEW ------------------------>
 
             <div class="span8" id="listview">
-                <div class="row hide">
-                    <div class="sortmenu span9">
+                <div class="row">
+                    <div class="sortmenu span3">
                       <ul class="nav" role="navigation">
                         <li class="dropdown">
                           <a id="sortdrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
@@ -109,7 +114,7 @@
                           </a>
                           <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                             <li role="presentation">
-                              <%= link_to "Rent", listings_path(:city => @search_string, :sort => "rent", :dir => "asc"), :role => "menuitem", :tabindex => "-1" %>
+                              <%= link_to "Rent", listings_path(:city => @search_string, :rentto => @rentto, :rentfrom => @rentfrom, :sort => "rent", :dir => "asc"), :role => "menuitem", :tabindex => "-1" %>
                             </li>
 
                             <!--li role="presentation">
@@ -119,7 +124,7 @@
                             <% if @search_string != "" %>
                                 <li role="presentation" class="divider"> </li>
                                 <li role="presentation">
-                                  <%= link_to "Distance", listings_path(:city => @search_string), :role => "menuitem", :tabindex => "-1" %>
+                                  <%= link_to "Distance", listings_path(:city => @search_string, :rentto => @rentto, :rentfrom => @rentfrom), :role => "menuitem", :tabindex => "-1" %>
                                 </li>
                             <% end %>
 
@@ -127,6 +132,7 @@
                         </li>
                       </ul>
                     </div>
+                    
                 </div>
                 <% @offices.each do |office| %>
 
