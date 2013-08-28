@@ -10,12 +10,10 @@
 
            <div class="row spacebottom fromtop">
                   <%= form_tag(listings_path, :method => "get") do %>     
-                    <div class="leftgap">
-                      <div class="span">
-                        <%= text_field_tag 'city', "", :class=> :l_input, :style => "margin-bottom: 5px; height:30px; width:600px;", :placeholder => "Enter an Address, City, or Zip" %>
-                      </div>
-                    </div>
-                   <div class="span"><%= submit_tag "SEARCH", :class => "l_button btn btn-large btn-primary", style: "height:43px; margin-top:3px;", :id => "searchBtn" %></div>
+                      <span>
+                        <%= text_field_tag 'city', "", :class=> "l_input", :style => "margin-left:40px; margin-bottom: 5px; height:30px; width:600px;", :placeholder => "Enter an Address, City, or Zip" %>
+                      </span>
+                       <span><%= submit_tag "SEARCH", :class => "l_button btn btn-large btn-primary", style: "height:43px; margin-left:7px;", :id => "searchBtn" %></span>
                   <%end%>
               </div>
           <div class="l_search">
