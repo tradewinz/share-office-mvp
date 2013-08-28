@@ -87,6 +87,11 @@ ActiveRecord::Schema.define(:version => 20130826045910) do
     t.integer  "rent_type"
     t.boolean  "window"
     t.boolean  "featured",    :default => false
+    t.string   "address"
+    t.boolean  "quiet",       :default => false
+    t.boolean  "client",      :default => false
+    t.boolean  "team",        :default => false
+    t.boolean  "therapy",     :default => false
     t.string   "loc_address"
     t.boolean  "private",     :default => false
     t.boolean  "creative",    :default => false
