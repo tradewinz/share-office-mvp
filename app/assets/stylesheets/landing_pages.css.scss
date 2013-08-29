@@ -223,6 +223,7 @@ body{
   min-height: 1px;
   margin-left: 20px;
 }
+<<<<<<< HEAD
 
 .listing-address {
   float: left;
@@ -263,4 +264,29 @@ body{
 .amenities-margin {
   margin-right:15px;
 }
+    
+.resultsbar {
+position: fixed;
+top: 168px;
+right: 0;
+bottom: 0;
+width: 60%;
+overflow-y: scroll;
+background: #f7f7f7;
+}
 
+.mapbar  {
+position: fixed;
+top: 168px;
+left: 0;
+bottom: 0;
+width: 40%;
+}
+
+.mapbarfull  {
+position: fixed;
+top: 168px;
+left: 0;
+bottom: 0;
+width: 100%;
+}
