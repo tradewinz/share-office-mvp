@@ -73,6 +73,10 @@
   padding-bottom: 30px;
 }
 
+.padbottom_small {
+  padding-bottom: 15px;
+}
+
 .padtop_big {
     padding-top: 50px;
 }
@@ -129,7 +133,7 @@ a {
 
 .officetitle {
     font-family: "Helvetica Neue Regular", Helvetica, Arial, sans-serif;
-    font-size: 28px;
+    font-size: 30px;
     line-height: 35px;
     color: #333333;
 
@@ -514,4 +518,9 @@ a:hover {
   box-shadow: 0 1px 4px #0088cc;
   z-index:-.5;
   position: absolute;
+}
+
+.small-font {
+  font-size:20px; 
+  font-weight:lighter;
 }
