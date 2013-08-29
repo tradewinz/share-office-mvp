@@ -23,12 +23,6 @@ ActiveRecord::Schema.define(:version => 20130826045910) do
     t.string   "address"
   end
 
-  create_table "alerts_confirm_unsubscribes", :force => true do |t|
-    t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "attachinary_files", :force => true do |t|
     t.integer  "attachinariable_id"
     t.string   "attachinariable_type"
@@ -70,8 +64,8 @@ ActiveRecord::Schema.define(:version => 20130826045910) do
     t.string   "image2"
     t.string   "image3"
     t.string   "image4"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "accomodate"
     t.text     "available"
     t.string   "loc_addr1"
@@ -89,19 +83,25 @@ ActiveRecord::Schema.define(:version => 20130826045910) do
     t.boolean  "parking"
     t.boolean  "ac"
     t.boolean  "printer"
-    t.integer  "office_type"
     t.integer  "rent_type"
     t.boolean  "window"
     t.boolean  "featured",    :default => false
+    t.string   "address"
+    t.boolean  "quiet",       :default => false
+    t.boolean  "client",      :default => false
+    t.boolean  "team",        :default => false
+    t.boolean  "therapy",     :default => false
     t.string   "loc_address"
     t.boolean  "private",     :default => false
     t.boolean  "creative",    :default => false
     t.boolean  "counseling",  :default => false
     t.boolean  "treatment",   :default => false
-    t.integer  "min_lease"
+    t.string   "office_type", :default => "private"
+    t.integer  "type_office", :default => 1
+    t.integer  "min_lease",   :default => 1
     t.boolean  "security"
     t.boolean  "cleaning"
-    t.integer  "active_flag", :default => 1
+    t.integer  "active_flag", :default => 2
   end
 
   create_table "rails_admin_histories", :force => true do |t|

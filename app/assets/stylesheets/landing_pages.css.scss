@@ -194,7 +194,6 @@ body{
 }
 
 .profile-pic-list {
-  display: inline-block;
   width: 44px;
   height: 44px;
   float: none;
@@ -224,7 +223,58 @@ body{
   min-height: 1px;
   margin-left: 20px;
 }
-    
+
+.listing-address {
+  float: left;
+  font-weight:bold;
+  font-size:14px;
+}
+
+.listing-price {
+  float: right;
+  font-weight:bold;
+  font-size:14px;
+}
+
+.listing-header-container {
+  z-index:1;
+  position:absolute;
+  width:100%;
+}
+
+.listing-body-container {
+  padding-top: 10px;
+  border-top: 1px solid #000;
+  width:100%;
+  position:absolute;
+  margin-top:20px;
+}
+
+.listing-container {
+  padding:10px;
+  height:210px;
+  position: relative;
+}
+
+.office-summary {
+  color: #555555;
+}
+
+.amenities-margin {
+  margin-right:15px;
+}
+
+.signin_subheading {
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.signin_getstarted {
+  font-size: 18px;
+  line-height: 30px;
+  vertical-align: middle;
+}
+
 .resultsbar {
 position: fixed;
 top: 168px;
@@ -258,3 +308,4 @@ bottom: 0;
 left: 0;
 right: 0;
 }
+
