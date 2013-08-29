@@ -16,23 +16,25 @@
 <div class="row panel panel-border">
 
   <!-- frame -->
-  <div class="row" id="office_heading">
+  <div class="row padbottom_small" id="office_heading">
 
-    <div class="span5">
+    <div class="span9">
 
-      <p class="officetitle">
+      
         <% if user_signed_in? %>
-            <%= @office.loc_addr1 %>
+            <p class="officetitle"><%= @office.address %></p>
         <% else %>
-           <%= link_to new_user_session_path do %><i class="icon-lock"></i> show exact address <% end %>
+          <p class="officetitle"><%= @office.loc_city %>, <%= @office.loc_state %> <%= @office.loc_zip %>
+            <span class="small-font"> / <%= link_to new_user_session_path do %><i class="icon-lock"></i> show exact address<% end %></span> 
+          </p>
         <% end %>
-        <br/> <%= @office.loc_city %> <%= @office.loc_state %> <%= @office.loc_zip %>
-      </p>
+
+      <%= render 'briefinfo' %>
 
     </div>
 
-    <div class="span7">
-      <%= render 'briefinfo' %>
+    <div class="span3">
+      <%= render 'rentinfo' %>
     </div>
 
   </div>

@@ -1,33 +1,20 @@
-  <table class="table table-bordered">
-    <tr>
-      <td>
-        <% if @office.rent? %>
-            <div class="text-center"><strong><%= number_to_currency(@office.rent, :locale => 'en_us', :precision => 0) %></strong></div>
-        <% else %>
-            <div class="text-center"><strong>--</strong></div>
-        <% end %>
-        <div class="text-center"><small>per month</small></div>
-      </td>
-      <td>
-        <% if @office.size? %>
-            <div class="text-center"><strong><%= @office.size %></strong></div>
-        <% else %>
-            <div class="text-center"><strong>--</strong></div>
-        <% end %>
-        <div class="text-center"><small>sq. ft</small></div>
-      </td>
-      <td>
-        <div class="text-center"><strong>1 Month</strong></div>
-        <div class="text-center"><small>Minimum Lease</small></div>
-      </td>
-    </tr>
-  </table>
+<p class="text-left">
+    <span class="pull-left">
+    <% if @office.accomodate? %>
+        <div class="officeicon accomodates"></div>
+        <%= pluralize @office.accomodate, 'person', 'people' %>&nbsp;
+    <% end %>
 
-  <% if false %>   <!-- hide accomodates -->
-      <% if @office.accomodate? %>
-          <div class="officeicon accomodates"></div>
-          <%= @office.accomodate %>
-          <span class="text-right"><% if @office.accomodate == 1 %>person<% else %>people <% end %></span>
-      <% end %>
-  <% end %>
+    <% if @office.size? %>
+        <div class="officeicon size"></div>
+        <%= @office.size %> sq. ft &nbsp;
+    <% end %>
 
+     <% if @office.private? %><i class="icon-building orange"></i> private office/ desk &nbsp;<% end %>
+     <% if @office.creative? %><i class="icon-lightbulb orange"></i> design/ creative space &nbsp;<% end %>
+     <% if @office.counseling? %><i class="icon-user-md orange"></i> counseling/ therapy office &nbsp;<% end %>
+     <% if @office.treatment? %><i class="icon-male orange"></i> treatment/ bodywork room &nbsp;<% end %>
+
+
+  </span>
+</p>

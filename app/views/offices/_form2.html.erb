@@ -60,7 +60,7 @@
         <div class="control-group">
           <label class="control-label">Accommodates</label>
 
-          <div class="controls">  <%= f.number_field :accomodate, :in => 0..20, :style => "width: 10%" %>  </div>
+          <div class="controls">  <%= f.number_field :accomodate, :style => "width: 10%" %>  </div>
         </div>
 
         <div class="control-group">
@@ -225,14 +225,16 @@
       $("#office_listing").validate({
         rules: {
           "office[rent]": {required: true},
-          "office[min_lease]": {required: true, range:[1,12]}
+          "office[min_lease]": {required: true, range:[1,12]},
+          "office[accomodate]": {range:[1,20]}
         },
         messages: {
           "office[rent]": "Providing a rent amount increase the chances of finding a match quickly!",
           "office[min_lease]": {
             required: "Please provide a minimum lease.",
             range: "Minimum lease should be between 1 and 12 months."
-          }
+          },
+          "office[accomodate]": "We currrently only serve small offices. Please enter a value under 20.",
         },
         errorPlacement: function(error, element) {
           element.after(error);
