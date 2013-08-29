@@ -235,3 +235,30 @@ body{
   line-height: 30px;
   vertical-align: middle;
 }
+
+.resultsbar {
+position: fixed;
+top: 168px;
+right: 0;
+bottom: 0;
+width: 60%;
+overflow-y: scroll;
+background: #f7f7f7;
+}
+
+.mapbar  {
+position: fixed;
+top: 168px;
+left: 0;
+bottom: 0;
+width: 40%;
+}
+
+.mapbarfull  {
+position: fixed;
+top: 168px;
+left: 0;
+bottom: 0;
+width: 100%;
+}
+

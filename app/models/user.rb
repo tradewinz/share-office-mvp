@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   validates(:email, presence: true, format: { with: VALID_EMAIL_REGEX })
   validates(:name, presence: true)
 
-
-  has_many :office
+  #each user has zero or many offices, all of which are immidiately deleted if user deletes the account
+  has_many :office, :dependent => :delete_all
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
