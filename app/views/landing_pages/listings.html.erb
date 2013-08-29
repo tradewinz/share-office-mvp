@@ -7,52 +7,49 @@
 
 
 <div class="row padtopsmall" >
-<div class ="well well-small padbottom">
+  <div class ="well well-small padbottom">
 
-  <%= form_tag(listings_path, :method => "get", :id => "search_form") do %>
+    <%= form_tag(listings_path, :method => "get", :id => "search_form") do %>
 
-      <div class = "span4">    
-          <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "City, address, or zip code" %>
-      </div>
-      
-      <div class = "span0.25 padtoptiny" style="padding-left: 5px">
-         <%= label_tag(:rentdeom, "Rent:") %>
-      </div>
-      <div class="span1"> 
-            <%= text_field_tag 'rentfrom', @rentfrom, :class=> "l_input", :placeholder => "Min Rent" %>
-      </div>   
-      
-      <div class = "span0.25 padtoptiny">
-         <%= label_tag(:rentto, "-") %>
-      </div>
-      
-      <div class="span1">
-            <%= text_field_tag 'rentto', @rentto, :class=> "l_input", :placeholder => "Max Rent" %>
-      </div>
-      
-      <div class="span2" id="search">
-          <%= submit_tag "SEARCH", :class => "l_button btn btn-primary", :id => "searchBtn", :style => "margin-top:5px" %>
-      </div>
-
-      <!--div class="span2" style="margin-top: 5px">
-        <div class="btn-group" data-toggle="buttons-radio">
-          <button class="btn btn-medium" type="button" id="showMapBtn">Map View</button>
-          <button class="btn btn-medium" type="button" id="showListBtn">List View</button>
+        <div class = "span4">    
+            <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "City, address, or zip code" %>
         </div>
-      </div-->
+        
+        <div class = "span padtoptiny" style="padding-left: 5px">
+           <%= label_tag(:rentdeom, "Rent:") %>
+        </div>
+        <div class="span1"> 
+              <%= text_field_tag 'rentfrom', @rentfrom, :class=> "l_input", :placeholder => "Min Rent" %>
+        </div>   
+        
+        <div class = "span padtoptiny" style="padding-left: 5px">
+           <%= label_tag(:rentto, "To:") %>
+        </div>
+        
+        <div class="span1">
+              <%= text_field_tag 'rentto', @rentto, :class=> "l_input", :placeholder => "Max Rent" %>
+        </div>
+        
+        <div class="span2" id="search">
+            <%= submit_tag "SEARCH", :class => "l_button btn btn-primary", :id => "searchBtn", :style => "margin-top:5px" %>
+        </div>
 
-  <% end %>
+        <!--div class="span2" style="margin-top: 5px">
+          <div class="btn-group" data-toggle="buttons-radio">
+            <button class="btn btn-medium" type="button" id="showMapBtn">Map View</button>
+            <button class="btn btn-medium" type="button" id="showListBtn">List View</button>
+          </div>
+        </div-->
 
+    <% end %>
+
+  </div>
 </div>
-</div>
 
 
-<div class="row padtopsmall padbottomsmall" style="margin-right: -20px; background-color: #ffffff;">
 
-      <div class="span12">
-        <% if @offices.count == 0 %>
+    <% if @offices.count == 0 %>
             <div class="row search result">
-              <div class="span12">
                 <p>
                   Oops! We could not find any offices near your city. Try one of our popular locations -
                   <%= link_to "San Francisco", listings_path(:city => "San Francisco, CA") %> and
@@ -61,12 +58,8 @@
                   Didn't find your city?  <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city. 
                 </p>
               </div>
-            </div>
-
-        <% else %>
-
-            
-
+    <% else %>               
+       <div class="map-search">
           <!------------------ MAP VIEW ------------------------>
             <div class = "mapbar" id="mapview">
               
@@ -82,7 +75,6 @@
                     )
                 %>
               </div>  
-            
               
           </div>
            
@@ -381,12 +373,10 @@
                 </div>
 
             </div>
+        
+        </div>
 
-
-        <% end %>
-      </div>
-
-</div>
+    <% end %>
 
 
 <%= render 'alerts/form' %>
@@ -399,11 +389,6 @@
       iePlaceholderFix();
     });
 
-    $( window ).load(function() {
-        //alert( $.cookie("mapview") );
-
-        
-    });
 
     function showmapview() {
         $('#listview').hide();
