@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20130826045910) do
     t.boolean  "counseling",  :default => false
     t.boolean  "treatment",   :default => false
     t.string   "office_type", :default => "private"
-    t.string   "type_office", :default => "private"
+    t.integer  "type_office", :default => 1
     t.integer  "min_lease",   :default => 1
     t.boolean  "security"
     t.boolean  "cleaning"

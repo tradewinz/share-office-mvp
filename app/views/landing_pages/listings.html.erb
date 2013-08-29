@@ -178,19 +178,17 @@
                           <div class="span4">
                             <a href= "<%= office_path(office)  %>" >
                               <% if (office.office_images.first != nil) %>
-                                  <%= cl_image_tag office.office_images.first.path, size: '186x140', :crop => :fill, :class => "img-polaroid" %>
+                                  <%= cl_image_tag office.office_images.first.path, size: '186x140', :crop => :fill, :class => "img-polaroid"%>
                               <% else %>
                                   <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=186x140&location=#{office.latitude},%20#{office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fill, :class => "img-polaroid" %>
                               <% end %>
                             </a>
                           </div>
                           <div class="span5 office-summary">
-                             <% if office.type_office=="private" %><i class="icon-building orange"></i> private office/ desk &nbsp;<% end %>
-                             <% if office.type_office=="creative" %><i class="icon-lightbulb orange"></i> design/ creative space &nbsp;<% end %>
-                             <% if office.type_office=="counseling" %><i class="icon-user-md orange"></i> counseling/ therapy office &nbsp;<% end %>
-                             <% if office.type_office=="treatment" %><i class="icon-male orange"></i> treatment/ bodywork room &nbsp;<% end %>
-
-
+                             <% if office.type_office==1 %><i class="icon-building orange"></i> private office/ desk &nbsp;<% end %>
+                             <% if office.type_office==2 %><i class="icon-lightbulb orange"></i> design/ creative space &nbsp;<% end %>
+                             <% if office.type_office==3 %><i class="icon-user-md orange"></i> counseling/ therapy office &nbsp;<% end %>
+                             <% if office.type_office==4 %><i class="icon-male orange"></i> treatment/ bodywork room &nbsp;<% end %>
                           </div>
                           <div class="span3 pull-right text-right">
                               <% if office.min_lease? %><%= pluralize office.min_lease, 'month', 'months' %> min</br><% end %>
@@ -199,8 +197,85 @@
                                 <%= office.size %> sq. ft
                             <% end %>
                           </div>
+                          <div class="span8" style="margin-top:20px;">
+                            <div class="row-fluid">
+                            <div class="pull-left amenities-margin">
+                              <p><% if office.wifi? %>
+                                  <div class="officeicon wifi_on"></div>
+                                  Wi-fi
+                              <% else %>
+                                  <div class="officeicon wifi_off"></div>
+                                  <span class="text-gray"> Wi-fi</span>
+                              <% end %>
+                              </p>
+
+                              <p><% if office.parking? %>
+                                  <div class="officeicon park_on"></div>
+                                  Parking
+                              <% else %>
+                                  <div class="officeicon park_off"></div>
+                                  <span class="text-gray"> Parking</span>
+                              <% end %>
+                              </p>
+
+
+                            </div>
+
+                            <div class="pull-left amenities-margin">
+                              <p><% if office.ac? %>
+                                  <div class="officeicon ac_on"></div>
+                                  Air Conditioning
+                              <% else %>
+                                  <div class="officeicon ac_off"></div>
+                                  <span class="text-gray">Air Conditioning</span>
+                              <% end %>
+                              </p>
+
+                              <p><% if office.confroom? %>
+                                  <div class="officeicon conf_on"></div>
+                                  Conference Room
+                              <% else %>
+                                  <div class="officeicon conf_off"></div>
+                                  <span class="text-gray">Conference Room</span>
+                              <% end %>
+                              </p>
+
+                            </div>
+
+                            <div class="pull-left amenities-margin">
+                              <p><% if office.printer? %>
+                                  <div class="officeicon printer_on"></div>
+                                  Printer
+                              <% else %>
+                                  <div class="officeicon printer_off"></div>
+                                  <span class="text-gray">Printer</span>
+                              <% end %>
+                              </p>
+
+                              <p><% if office.kitchen? %>
+                                  <div class="officeicon kitchen_on"></div>
+                                  Kitchen
+                              <% else %>
+                                  <div class="officeicon kitchen_off"></div>
+                                  <span class="text-gray">Kitchen</span>
+                              <% end %>
+                              </p>
+
+                            </div>
+
+                            <div class="pull-left amenities-margin">
+                                <p><% if office.window? %>
+                                    <div class="officeicon window_on"></div>
+                                    Window
+                                <% else %>
+                                    <div class="officeicon window_off"></div>
+                                    <span class="text-gray">Window</span>
+                                <% end %>
+                                </p>
+                            </div>
+                          </div>
+                          </div>
                         </div>
-                        <!--div class="row"></div-->
                       </div>
                  </div>
 

@@ -244,7 +244,7 @@ body{
 
 .listing-body-container {
   padding-top: 10px;
-  border-top: 1px solid #D8D8D8;
+  border-top: 1px solid #000;
   width:100%;
   position:absolute;
   margin-top:20px;
@@ -259,3 +259,8 @@ body{
 .office-summary {
   color: #555555;
 }
+
+.amenities-margin {
+  margin-right:15px;
+}
+
