@@ -6,45 +6,7 @@
 <% end %>
 
 
-<div class="row padtopsmall" >
-<div class ="well well-small padbottom">
 
-  <%= form_tag(listings_path, :method => "get", :id => "search_form") do %>
-
-      <div class = "span4">    
-          <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "City, address, or zip code" %>
-      </div>
-      
-      <div class = "span0.25 padtoptiny" style="padding-left: 5px">
-         <%= label_tag(:rentdeom, "Rent:") %>
-      </div>
-      <div class="span1"> 
-            <%= text_field_tag 'rentfrom', @rentfrom, :class=> "l_input", :placeholder => "Min Rent" %>
-      </div>   
-      
-      <div class = "span0.25 padtoptiny">
-         <%= label_tag(:rentto, "-") %>
-      </div>
-      
-      <div class="span1">
-            <%= text_field_tag 'rentto', @rentto, :class=> "l_input", :placeholder => "Max Rent" %>
-      </div>
-      
-      <div class="span2" id="search">
-          <%= submit_tag "SEARCH", :class => "l_button btn btn-primary", :id => "searchBtn", :style => "margin-top:5px" %>
-      </div>
-
-      <!--div class="span2" style="margin-top: 5px">
-        <div class="btn-group" data-toggle="buttons-radio">
-          <button class="btn btn-medium" type="button" id="showMapBtn">Map View</button>
-          <button class="btn btn-medium" type="button" id="showListBtn">List View</button>
-        </div>
-      </div-->
-
-  <% end %>
-
-</div>
-</div>
 
 
 <div class="row padtopsmall padbottomsmall" style="margin-right: -20px; background-color: #ffffff;">
