@@ -7,7 +7,7 @@
 
 
 <div class="row padtopsmall" >
-<div class ="well padbottom">
+<div class ="well well-small padbottom">
 
   <%= form_tag(listings_path, :method => "get", :id => "search_form") do %>
 
@@ -15,16 +15,16 @@
           <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "City, address, or zip code" %>
       </div>
       
-      <!--div class = "span0.5 padtoptiny text-right" style="padding-left: 5px">
+      <div class = "span0.25 padtoptiny" style="padding-left: 5px">
          <%= label_tag(:rentdeom, "Rent:") %>
-      </div-->
+      </div>
       <div class="span1"> 
             <%= text_field_tag 'rentfrom', @rentfrom, :class=> "l_input", :placeholder => "Min Rent" %>
       </div>   
       
-      <!--div class = "span0.5 padtoptiny text-right" style="padding-left: 5px">
-         <%= label_tag(:rentto, "To:") %>
-      </div-->
+      <div class = "span0.25 padtoptiny">
+         <%= label_tag(:rentto, "-") %>
+      </div>
       
       <div class="span1">
             <%= text_field_tag 'rentto', @rentto, :class=> "l_input", :placeholder => "Max Rent" %>
@@ -34,12 +34,12 @@
           <%= submit_tag "SEARCH", :class => "l_button btn btn-primary", :id => "searchBtn", :style => "margin-top:5px" %>
       </div>
 
-      <div class="offset1 span2">
+      <!--div class="span2" style="margin-top: 5px">
         <div class="btn-group" data-toggle="buttons-radio">
           <button class="btn btn-medium" type="button" id="showMapBtn">Map View</button>
           <button class="btn btn-medium" type="button" id="showListBtn">List View</button>
         </div>
-      </div>
+      </div-->
 
   <% end %>
 
@@ -68,11 +68,9 @@
             
 
           <!------------------ MAP VIEW ------------------------>
-            <div class = "span3" id="mapview">
+            <div class = "mapbar" id="mapview">
               
-
-
-              <div class= "row" >
+              <div class= "row">
                 <%= gmaps("markers" => {"data" => @json},
                       "map_options" =>  { "provider" => "google",
                                   #       "client" => "gme-intuitinc",
@@ -91,7 +89,7 @@
 
             <!------------------ LIST VIEW ------------------------>
 
-            <div class="span8" id="listview">
+            <div class="resultsbar hide" id="listview">
                 <div class="row">
                     <div class="sortmenu span3">
                       <ul class="nav" role="navigation">
@@ -331,6 +329,60 @@
                 </div>
 
             </div>
+
+            <!-------------------PHOTO VIEW ------------------------>
+
+            <div class="resultsbar" id="photoview">
+                <div class="row">
+                  <ul class="thumbnails">
+                  <% @offices.each do |office| %>
+
+                          <li class="span4">
+                            <div class="thumbnail">
+                              <a href= "<%= office_path(office)  %>" >
+                                <% if (office.office_images.first != nil) %>
+                                    <%= cl_image_tag office.office_images.first.path, :size => '280x165', :crop => :fit, :class => "img-polaroid" %>
+                                <% else %>
+
+                                    <!--%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=220x165&location=40.720032,%20-73.988354&fov=90&heading=235&pitch=10&sensor=false", :crop => :fit, :class => "img-polaroid" %-->
+                                    <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=280x165&location=#{office.latitude},%20#{office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fit, :class => "img-polaroid" %>
+                                <% end %>
+
+                              </a>
+                              <!-- img src="/assets/medium_default-studio.png" alt="" -->
+                              <div class="media">
+                                <% if office.user && office.user.photo? %>
+                                    <img class="media-object pull-right" src="<%= office.user.photo %>" height="80px" width="80px">
+                                <% else %>
+                                    <img class="media-object pull-right" src="/assets/default_person.png" height="80px" width="80px">
+                                <% end %>
+                                <div class="media-body">
+                                  <h4 class="media-heading"><%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %> per month</h4>
+                                  <p><%= pluralize(office.min_lease, 'Month') %> lease</p>
+                                  <p><%= office.loc_city %></p>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+
+                    <% end %>
+                  </ul>
+                </div>
+
+                <div class="pagemarker span9">
+                  <div class="apple_pagination">
+
+                  <!--div class="page_info">
+                    <#%= page_entries_info @offices %>
+                  </div-->
+                  <%= will_paginate @offices, :container => false %>
+                  </div>
+                  <div class="listing_footer">Haven't found your perfect space? <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city.</div>
+                </div>
+
+            </div>
+
+
         <% end %>
       </div>
 
@@ -350,24 +402,18 @@
     $( window ).load(function() {
         //alert( $.cookie("mapview") );
 
-        if($.cookie ('mapview') == "true") {
-            showmapview();
-
-        }
-        else {
-            showlistview();
-        }
+        
     });
 
     function showmapview() {
         $('#listview').hide();
-        $('#mapview').attr('class', 'span12');
+        $('#mapview').attr('class', 'mapfull');
         Gmaps.loadMaps();
 
     }
 
     function showlistview() {
-        $('#mapview').attr('class', 'span3');
+        $('#mapview').attr('class', 'mapbar');
         $('#listview').show();
         Gmaps.loadMaps();
 

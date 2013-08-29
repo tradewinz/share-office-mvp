@@ -6,7 +6,7 @@ class Office < ActiveRecord::Base
                   :private, :creative, :counseling, :treatment, :min_lease, :security, :cleaning, :active_flag
 
   belongs_to :user
-  has_many :reserve
+  has_many :reserve, :dependent => :delete_all
 
   validates :loc_city, :presence => true
 
