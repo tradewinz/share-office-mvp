@@ -1,9 +1,11 @@
+
 <p class="text-left">
     <span class="pull-left">
     <% if @office.accomodate? %>
         <div class="officeicon accomodates"></div>
         <%= pluralize @office.accomodate, 'person', 'people' %>&nbsp;
     <% end %>
+
 
     <% if @office.size? %>
         <div class="officeicon size"></div>
