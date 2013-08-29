@@ -82,10 +82,10 @@
 }
 
 .control-label {
-    float: left;
+    /*float: left;*/
     padding-top: 5px;
-    text-align: right;
-    width: 140px;
+    /*text-align: right;*/
+    /*width: 140px;*/
     font-weight: bold;
 }
 
@@ -97,7 +97,7 @@
 }
 
 .controls {
-    margin-left: 160px;
+    /*margin-left: 160px;*/
 }
 
 textarea {
@@ -185,6 +185,10 @@ a {
   background-color: white ;
   //float:none;
   // margin:0 auto;
+}
+
+.min_lease_dropdown {
+  width: 130px !important;
 }
 
 // Icons

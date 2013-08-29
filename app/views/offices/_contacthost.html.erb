@@ -9,7 +9,7 @@
               <%= link_to 'Update this listing', edit_office_path(@office), :class => "btn btn-large btn-warning" %>
               <div style="padding-top: 7px;">
                 <% if can? :destroy, @office %>
-                    <%= link_to 'Disable this listing', disable_office_path(@office), :data => { confirm: 'Are you sure?' } %>
+                    <i class="icon-ban-circle"></i> <%= link_to 'Stop showing', disable_office_path(@office), :data => { confirm: 'Stop showing office in search results? You can always reactivate by going to My Listings.' } %>
                 <% end %>
               </div>
             <% end %>

@@ -17,7 +17,7 @@
         <div class="text-center"><small>sq. ft</small></div>
       </td>
       <td>
-        <div class="text-center"><strong>1 Month</strong></div>
+        <div class="text-center"><strong><%= pluralize(@office.min_lease, 'Month') %></strong></div>
         <div class="text-center"><small>Minimum Lease</small></div>
       </td>
     </tr>
