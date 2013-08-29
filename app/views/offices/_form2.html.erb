@@ -18,31 +18,11 @@
     <div id="pano" style="height:200px;"></div>   
     <div class="padtop padbottom_big side-margins">   
       <fieldset>
-        <div class="text-center"><legend class="form_headline">Rent</legend></div>
+        <div class="text-center"><legend class="form_headline">Location & Rent</legend></div>
 
         <div class="control-group">
-          <label class="control-label" id="rent-label">Rent Amount*</label>
-
-          <div class="controls">
-            <%= f.text_field :rent, :placeholder => "$", :style => "width: 130px"%> per month
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label class="control-label">Minimum lease*</label>
-
-          <div class="controls">
-           <%= f.number_field :min_lease, :style => "width: 10%"  %> month(s)
-          </div>
-        </div>
-      </fieldset>
-
-       <fieldset>              
-        <div class="text-center"><legend class="form_headline">Office</legend></div>
-
-        <div class="control-group">
-          <label class="control-label">Address*</label>
-          <div class="controls"><%= text_field_tag "address", '', value: @office.address, :style => "width:568px;", id: "address_field" %>
+          <label class="control-label">Where is it located?*</label>
+          <div class="controls"><%= text_field_tag "address", '', value: @office.address, :style => "width:468px;", id: "address_field" %>
             <div class="hide" id="error-msg">Please enter a valid address.</div></div>
         </div>
         <div class="hide">
@@ -53,24 +33,74 @@
 
           <!-- is there a better way to set this flag? also change this flag if address is changed. -->
           <% if @office.active_flag==1 %>
-            <%= f.text_field :active_flag, :value => 2 %>
+              <%= f.text_field :active_flag, :value => 2 %>
           <% end %>
         </div>
 
         <div class="control-group">
-          <label class="control-label">Accommodates</label>
+          <label class="control-label" id="rent-label">How much is the rent per month?*</label>
 
-          <div class="controls">  <%= f.number_field :accomodate, :in => 0..20, :style => "width: 10%" %>  </div>
+          <div class="controls">
+            <%= f.text_field :rent, :placeholder => "$", :style => "width: 130px"%>
+          </div>
         </div>
 
         <div class="control-group">
-          <label class="control-label">Size</label>
+          <label class="control-label">What is the minimum lease term?*</label>
 
-          <div class="controls"> <%= f.text_field :size, :style => "width: 10%" %> sq. ft.</div>
+          <div class="controls">
+            <%= f.select :min_lease, (1..12), {}, :class => 'min_lease_dropdown' %> month(s)
+          </div>
         </div>
 
+      </fieldset>
+
+       <fieldset>              
+        <div class="text-center"><legend class="form_headline">Additional Information</legend></div>
+
+         <div class="control-group checkbox-group">
+           <label class="control-label">What kind of space is it?</label>
+           <div class="row">
+             <div class="span" style="margin-right:100px">
+               <label class="checkbox">
+                 <%= f.check_box :private %>
+                 Private Office/Desk
+               </label>
+               <label class="checkbox">
+                 <%= f.check_box :creative %>
+                 Design/Creative Space
+             </div>
+
+             <div>
+               <label class="checkbox">
+                 <%= f.check_box :counseling %>
+                 Counseling/Therapy Office
+               </label>
+               <label class="checkbox">
+                 <%= f.check_box :treatment %>
+                 Room for Bodywork/Treatment
+               </label>
+             </div>
+           </div>
+         </div>
+
+         <div class="control-group">
+           <label class="control-label">How big is it?</label>
+
+           <div class="controls"> <%= f.text_field :size, :style => "width: 10%" %> sq. ft.</div>
+         </div>
+
+
+         <% if false %>
+        <div class="control-group">
+          <label class="control-label">Accommodates</label>
+
+          <div class="controls">  <%= f.number_field :accomodate, :style => "width: 10%" %>  </div>
+        </div>
+        <% end %>
+
         <div class="control-group checkbox-group">
-          <label class="control-label">Amenities</label>
+          <label class="control-label">What's included in the rent?</label>
 
           <div class="row">
             <div class="span1.5">
@@ -123,34 +153,8 @@
           </div>
          </div>
 
-        <div class="control-group checkbox-group">
-          <label class="control-label">Office type</label>
-          <div class="row">
-            <div class="span" style="margin-right:100px">
-              <label class="checkbox">
-                <%= f.check_box :private %>
-                Private office/ desk
-              </label>
-              <label class="checkbox">
-                <%= f.check_box :creative %>
-                Design/ creative space
-            </div>
-
-            <div>
-              <label class="checkbox">
-                <%= f.check_box :counseling %>
-                Counseling/ therapy office
-              </label>
-                <label class="checkbox">
-                  <%= f.check_box :treatment %>
-                 Treatment/ bodywork room
-                </label>
-            </div>
-        </div>
-          </div>
-
         <div class="control-group">
-          <label class="control-label">Description</label>
+          <label class="control-label">What is it like working here?</label>
 
           <div class="controls"> <%= f.text_area :description, :style => "width: 570px",
                      :placeholder => "List availability, rental terms, house rules, additional amenities, etc.", :rows => 50 %>
@@ -159,10 +163,10 @@
         </fieldset>
 
         <fieldset>
-        <div class="text-center"><legend class="form_headline">Photos</legend></div>
+        <div class="text-center"><legend class="form_headline">Office Photos</legend></div>
 
         <div class= "control-group">
-          <label class="control-label">Upload photos</label>
+          <label class="control-label">Are there pictures?</label>
           <div class="controls">
             <button class="btn btn-success span-attachinary-input controls"> <%= f.attachinary_file_field :office_images, :cloudinary => {
                          :eager => [{:width => 600, :height => 400, :crop => :fill, :angle => :exif}]}%><i class="icon-plus icon-white"> </i>
@@ -225,14 +229,16 @@
       $("#office_listing").validate({
         rules: {
           "office[rent]": {required: true},
-          "office[min_lease]": {required: true, range:[1,12]}
+          "office[min_lease]": {required: true, range:[1,12]},
+          "office[accomodate]": {range:[1,20]}
         },
         messages: {
           "office[rent]": "Providing a rent amount increase the chances of finding a match quickly!",
           "office[min_lease]": {
             required: "Please provide a minimum lease.",
             range: "Minimum lease should be between 1 and 12 months."
-          }
+          },
+          "office[accomodate]": "We currrently only serve small offices. Please enter a value under 20.",
         },
         errorPlacement: function(error, element) {
           element.after(error);

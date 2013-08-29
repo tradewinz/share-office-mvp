@@ -73,6 +73,10 @@
   padding-bottom: 30px;
 }
 
+.padbottom_small {
+  padding-bottom: 15px;
+}
+
 .padtop_big {
     padding-top: 50px;
 }
@@ -82,10 +86,10 @@
 }
 
 .control-label {
-    float: left;
+    /*float: left;*/
     padding-top: 5px;
-    text-align: right;
-    width: 140px;
+    /*text-align: right;*/
+    /*width: 140px;*/
     font-weight: bold;
 }
 
@@ -97,7 +101,7 @@
 }
 
 .controls {
-    margin-left: 160px;
+    /*margin-left: 160px;*/
 }
 
 textarea {
@@ -129,7 +133,7 @@ a {
 
 .officetitle {
     font-family: "Helvetica Neue Regular", Helvetica, Arial, sans-serif;
-    font-size: 28px;
+    font-size: 30px;
     line-height: 35px;
     color: #333333;
 
@@ -185,6 +189,10 @@ a {
   background-color: white ;
   //float:none;
   // margin:0 auto;
+}
+
+.min_lease_dropdown {
+  width: 130px !important;
 }
 
 // Icons
@@ -510,4 +518,9 @@ a:hover {
   box-shadow: 0 1px 4px #0088cc;
   z-index:-.5;
   position: absolute;
+}
+
+.small-font {
+  font-size:20px; 
+  font-weight:lighter;
 }
