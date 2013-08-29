@@ -212,6 +212,12 @@ body {
   color: #ffb000;
 }
 
+.circle {
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+}
+
 // ENd devise sign in page
 
 // don;t want to deal with responsive design jnow

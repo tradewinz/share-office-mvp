@@ -1,22 +1,15 @@
 
 <p class="text-left">
     <span class="pull-left">
-    <% if @office.accomodate? %>
-        <div class="officeicon accomodates"></div>
-        <%= pluralize @office.accomodate, 'person', 'people' %>&nbsp;
-    <% end %>
-
-
     <% if @office.size? %>
         <div class="officeicon size"></div>
         <%= @office.size %> sq. ft &nbsp;
     <% end %>
 
-     <% if @office.private? %><i class="icon-building orange"></i> private office/ desk &nbsp;<% end %>
-     <% if @office.creative? %><i class="icon-lightbulb orange"></i> design/ creative space &nbsp;<% end %>
-     <% if @office.counseling? %><i class="icon-user-md orange"></i> counseling/ therapy office &nbsp;<% end %>
-     <% if @office.treatment? %><i class="icon-male orange"></i> treatment/ bodywork room &nbsp;<% end %>
-
+  <% if office.type_office=="private" %><i class="icon-building orange"></i> private office/ desk &nbsp;<% end %>
+  <% if office.type_office=="creative" %><i class="icon-lightbulb orange"></i> design/ creative space &nbsp;<% end %>
+  <% if office.type_office=="counseling" %><i class="icon-user-md orange"></i> counseling/ therapy office &nbsp;<% end %>
+  <% if office.type_office=="treatment" %><i class="icon-male orange"></i> treatment/ bodywork room &nbsp;<% end %>
 
   </span>
 </p>

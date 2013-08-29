@@ -194,7 +194,6 @@ body{
 }
 
 .profile-pic-list {
-  display: inline-block;
   width: 44px;
   height: 44px;
   float: none;
@@ -223,4 +222,40 @@ body{
   float: left;
   min-height: 1px;
   margin-left: 20px;
+}
+
+.listing-address {
+  float: left;
+  font-weight:bold;
+  font-size:14px;
+}
+
+.listing-price {
+  float: right;
+  font-weight:bold;
+  font-size:14px;
+}
+
+.listing-header-container {
+  z-index:1;
+  position:absolute;
+  width:100%;
+}
+
+.listing-body-container {
+  padding-top: 10px;
+  border-top: 1px solid #D8D8D8;
+  width:100%;
+  position:absolute;
+  margin-top:20px;
+}
+
+.listing-container {
+  padding:10px;
+  height:210px;
+  position: relative;
+}
+
+.office-summary {
+  color: #555555;
 }

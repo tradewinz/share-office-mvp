@@ -63,21 +63,21 @@
            <div class="row">
              <div class="span" style="margin-right:100px">
                <label class="checkbox">
-                 <%= f.check_box :private %>
+                 <%= f.radio_button(:type_office, "private") %>
                  Private Office/Desk
                </label>
                <label class="checkbox">
-                 <%= f.check_box :creative %>
+                 <%= f.radio_button(:type_office, "creative") %>
                  Design/Creative Space
              </div>
 
              <div>
                <label class="checkbox">
-                 <%= f.check_box :counseling %>
+                 <%= f.radio_button(:type_office, "counseling") %>
                  Counseling/Therapy Office
                </label>
                <label class="checkbox">
-                 <%= f.check_box :treatment %>
+                 <%= f.radio_button(:type_office, "treatment") %>
                  Room for Bodywork/Treatment
                </label>
              </div>

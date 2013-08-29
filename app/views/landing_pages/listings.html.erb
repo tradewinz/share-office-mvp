@@ -134,197 +134,81 @@
                     </div>
                     
                 </div>
-                <% @offices.each do |office| %>
 
-                      <div class="row search_result">
-
-
-                        <div class="span2">
-                          <a href= "<%= office_path(office)  %>" >
-                            <% if (office.office_images.first != nil) %>
-                                <%= cl_image_tag office.office_images.first.path, :size => '220x165', :crop => :fit, :class => "img-polaroid" %>
+                <!------------------ OFFICES VIEW ------------------------>
+                    <% @offices.each do |office| %>
+                      <div class="listing-container">
+                       <div class="listing-header-container">
+                         <div class="pull-left">
+                            <% if office.user && office.user.photo? %>
+                                <%= image_tag office.user.photo, class: "circle", size: '50x50' %>
                             <% else %>
-
-                                <!--%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=220x165&location=40.720032,%20-73.988354&fov=90&heading=235&pitch=10&sensor=false", :crop => :fit, :class => "img-polaroid" %-->
-                                <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=220x165&location=#{office.latitude},%20#{office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fit, :class => "img-polaroid" %>
+                                <%= image_tag "default_person.png", class: "circle", size: '50x50' %>
                             <% end %>
-
-                          </a>
-                        </div>
-
-
-                        <div class="span4">
-                          <div class="row">
-
-                            <div class="span" style="width:44px;">
-                              <div class="profile-pic-list">
-                                <% if office.user && office.user.photo? %>
-                                    <%= image_tag(office.user.photo) %>
-                                <% else %>
-                                    <%= image_tag("default_person.png") %>
-                                <% end %>
-                              </div>
-                            </div>
-
-                            <div class="span3">
-                              <% if user_signed_in? %>
-                                <h5><%= link_to office.address, office %></h5>
-                              <% else %>  
-                                <p><%= link_to office.loc_city + " , " + office.loc_state, office %> </p>
-                              <% end %>
-                              <br>
-                            </div>
                           </div>
 
-                          <div class="row hide">
-
-                            <!--div class="span" style="width:44px;"></div-->
-                            <div class="span1.25">
-                              <p><% if office.wifi? %>
-                                  <div class="officeicon wifi_on"></div>
-                                  Wi-fi
-                              <% else %>
-                                  <div class="officeicon wifi_off"></div>
-                                  <span class="text-gray"> Wi-fi</span>
-                              <% end %>
-                              </p>
-
-                              <p><% if office.parking? %>
-                                  <div class="officeicon park_on"></div>
-                                  Parking
-                              <% else %>
-                                  <div class="officeicon park_off"></div>
-                                  <span class="text-gray"> Parking</span>
-                              <% end %>
-                              </p>
-
-
-                            </div>
-
-                            <div class="span1.25">
-                              <p><% if office.ac? %>
-                                  <div class="officeicon ac_on"></div>
-                                  Air Conditioning
-                              <% else %>
-                                  <div class="officeicon ac_off"></div>
-                                  <span class="text-gray">Air Conditioning</span>
-                              <% end %>
-                              </p>
-
-                              <p><% if office.confroom? %>
-                                  <div class="officeicon conf_on"></div>
-                                  Conference Room
-                              <% else %>
-                                  <div class="officeicon conf_off"></div>
-                                  <span class="text-gray">Conference Room</span>
-                              <% end %>
-                              </p>
-
-                            </div>
-
-                            <div class="span1.25">
-                              <p><% if office.printer? %>
-                                  <div class="officeicon printer_on"></div>
-                                  Printer
-                              <% else %>
-                                  <div class="officeicon printer_off"></div>
-                                  <span class="text-gray">Printer</span>
-                              <% end %>
-                              </p>
-
-                              <p><% if office.kitchen? %>
-                                  <div class="officeicon kitchen_on"></div>
-                                  Kitchen
-                              <% else %>
-                                  <div class="officeicon kitchen_off"></div>
-                                  <span class="text-gray">Kitchen</span>
-                              <% end %>
-                              </p>
-
-                            </div>
-
-                            <div class="span1.25">
-                              <p><% if office.window? %>
-                                  <div class="officeicon window_on"></div>
-                                  Window Office
-                              <% else %>
-                                  <div class="officeicon window_off"></div>
-                                  <span class="text-gray">Window Office</span>
-                              <% end %>
-                              </p>
-                            </div>
-
-
-                          </div>
-                        </div>
-
-                        <div class="span2">
-                          <div class="row">
-                            <div class="span2" id="rent">
-                              <div class="text-right" style="margin-right: 20px">
-                                <% if office.rent? %>
-                                    <h4><%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
-                                      <% if office.rent_type == 1 %>/month
-                                      <% else %>
-                                          <% if office.rent_type == 2 %>/week
-                                          <% else %>
-                                              <% if office.rent_type == 3 %>/day
-                                              <% else %>month
-                                              <% end %>
-                                          <% end %>
-                                      <% end %> </h4>
-                                <% else %>
-                                    <h4>Contact us</h4>
-                                <% end %>
-                              
-                              <div class="hide">
-                                <br>
-                                <p>
-                                  <% if office.accomodate? %>
-                                    <div class="officeicon accomodates"></div>
-                                    <%= office.accomodate %>
-                                    people</p>
-                                <%end %>
-                                <p>
-                                  <% if office.office_type == 1 %>
-                                    <div class="officeicon office"></div>
-                                    Office
-                                <% else %>
-                                    <% if office.office_type == 2 %>
-                                        <div class="officeicon meeting"></div>
-                                        Meeting room
+                          <span class="listing-address">
+                            <% if user_signed_in? %>
+                              <%= link_to office.address, office %>
+                            <% else %>  
+                              <%= link_to office.loc_city + " , " + office.loc_state, office %>
+                            <% end %>
+                          </span>
+                            <span class="listing-price">
+                              <% if office.rent? %>
+                                  <%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
+                                    <% if office.rent_type == 1 %>/month
                                     <% else %>
-                                        <% if office.office_type == 3 %>
-                                            <div class="officeicon desk"></div>
-                                            Desk
-                                        <% else %>month
+                                        <% if office.rent_type == 2 %>/week
+                                        <% else %>
+                                            <% if office.rent_type == 3 %>/day
+                                            <% else %>/month
+                                            <% end %>
                                         <% end %>
                                     <% end %>
-                                <% end %>
-                                </p>
-                                <p>
-                                  <% if office.size? %>
-                                    <div class="officeicon size"></div>
-                                    <%= office.size %> sq. ft.
-                                <% end %>
-                                </p>
-                              </div>
-
-                              </div>
-                            </div>
-                          </div>
+                              <% else %>
+                                Contact us
+                              <% end %>
+                            </span>
+                          </span>
                         </div>
 
+                      <div class="listing-body-container">
+                        <div class="row-fluid">
+                          <div class="span4">
+                            <a href= "<%= office_path(office)  %>" >
+                              <% if (office.office_images.first != nil) %>
+                                  <%= cl_image_tag office.office_images.first.path, size: '186x140', :crop => :fill, :class => "img-polaroid" %>
+                              <% else %>
+                                  <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=186x140&location=#{office.latitude},%20#{office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fill, :class => "img-polaroid" %>
+                              <% end %>
+                            </a>
+                          </div>
+                          <div class="span5 office-summary">
+                             <% if office.type_office=="private" %><i class="icon-building orange"></i> private office/ desk &nbsp;<% end %>
+                             <% if office.type_office=="creative" %><i class="icon-lightbulb orange"></i> design/ creative space &nbsp;<% end %>
+                             <% if office.type_office=="counseling" %><i class="icon-user-md orange"></i> counseling/ therapy office &nbsp;<% end %>
+                             <% if office.type_office=="treatment" %><i class="icon-male orange"></i> treatment/ bodywork room &nbsp;<% end %>
+
+
+                          </div>
+                          <div class="span3 pull-right text-right">
+                              <% if office.min_lease? %><%= pluralize office.min_lease, 'month', 'months' %> min</br><% end %>
+                              <% if office.size? %>
+                                <div class="officeicon size"></div>
+                                <%= office.size %> sq. ft
+                            <% end %>
+                          </div>
+                        </div>
+                        <!--div class="row"></div-->
                       </div>
+                 </div>
 
                   <% end %>
 
-                <div class="pagemarker span9">
-                  <div class="apple_pagination">
 
-                  <!--div class="page_info">
-                    <#%= page_entries_info @offices %>
-                  </div-->
+                <div class="pagemarker">
+                  <div class="apple_pagination">
                   <%= will_paginate @offices, :container => false %>
                   </div>
                   <div class="listing_footer">Haven't found your perfect space? <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city.</div>
