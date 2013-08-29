@@ -104,8 +104,6 @@ GEM
     newrelic_rpm (3.6.4.122)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
-    nokogiri (1.6.0-x86-mingw32)
-      mini_portile (~> 0.5.0)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)

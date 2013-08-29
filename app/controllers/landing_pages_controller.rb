@@ -34,7 +34,7 @@ class LandingPagesController < ApplicationController
     if(@rentfrom == nil) 
       @rentfrom = '0' 
     end
-    activefilter = 'active_flag = 1'
+    activefilter = 'active_flag != 0'
     rentfilter = 'rent >=  ? AND rent <= ?'
 
     if (@search_string != "")
