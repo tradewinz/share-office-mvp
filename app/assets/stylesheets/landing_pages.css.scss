@@ -358,11 +358,11 @@ body{
   color: black; 
   padding: 10px 20px; 
   bottom: 0; 
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, rgba(0,0,0,.5), to(transparent));
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, rgba(255,255,255,.9), to(transparent));
   background: -webkit-linear-gradient(bottom, rgba(255,255,255,.9), transparent);
-  background: -moz-linear-gradient(bottom, rgba(0,0,0,.5), transparent);
-  background: -ms-linear-gradient(bottom, rgba(0,0,0,.5), transparent);
-  background: -o-linear-gradient(bottom, rgba(0,0,0,.5), transparent);
+  background: -moz-linear-gradient(bottom, rgba(255,255,255,.9), transparent);
+  background: -ms-linear-gradient(bottom, rgba(255,255,255,.9), transparent);
+  background: -o-linear-gradient(bottom, rgba(255,255,255,.9), transparent);
    transition: opacity .25s ease-in-out;
    -moz-transition: opacity .25s ease-in-out;
    -webkit-transition: opacity .25s ease-in-out;
