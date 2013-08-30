@@ -350,17 +350,18 @@ body{
   position: absolute; 
   width:417px;
   background: rgba(0,0,0,0.75); 
-  color: white; 
-  font-size:14px;
-  text-shadow: 2px 2px 1px #000;
+  color: black; 
   padding: 10px 20px; 
   bottom: 0; 
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#000), to(transparent));
-  background: -webkit-linear-gradient(bottom, rgba(0,0,0,.5), transparent);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, rgba(0,0,0,.5), to(transparent));
+  background: -webkit-linear-gradient(bottom, rgba(255,255,255,.9), transparent);
   background: -moz-linear-gradient(bottom, rgba(0,0,0,.5), transparent);
   background: -ms-linear-gradient(bottom, rgba(0,0,0,.5), transparent);
   background: -o-linear-gradient(bottom, rgba(0,0,0,.5), transparent);
-  // opacity: 0;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+  opacity: 0;
   // left: -30%;
   // -webkit-transition: all 0.6s ease;
   // -moz-transition:    all 0.6s ease;
@@ -369,7 +370,6 @@ body{
 
 .office-photo-container:hover .office-photo-caption {
   opacity: 1;
-  left: 0;
 }
 
 .rounded-img {
@@ -393,9 +393,19 @@ right: 0;
 }
 
 .office-hover {
-  -webkit-box-shadow: 0 1px 4px #0088cc;
-  -moz-box-shadow: 0 1px 4px #0088cc;
-  box-shadow: 0 1px 4px #0088cc;
+  -webkit-box-shadow: 0 0 2px 2px #0088cc;
+  -moz-box-shadow: 0 0 2px 2px #0088cc;
+  box-shadow: 0 0 2px 2px #0088cc;
   z-index:1;
-  position: absolute;
+}
+
+.fade {
+   opacity: .85;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+}
+
+.fade:hover {
+  opacity: 1;
 }

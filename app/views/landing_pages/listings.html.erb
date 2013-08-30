@@ -1,3 +1,5 @@
+          <!--%= render 'listview' %-->
+
           <!------------------ MAP VIEW ------------------------>
             <div class="mapbar" id="mapview">
               
@@ -38,10 +40,10 @@
                 <% else %>
                        <% @offices.each do |office| %>
 
-                          <div class="span6 eachoffice-container">
+                          <div class="span6 eachoffice-container" id="office<%=office.id%>">
                             <div class="thumbnail" style="padding:0px;">
                               <a href= "<%= office_path(office)  %>" >
-                                <div class="office-photo-container"> 
+                                <div class="office-photo-container fade"> 
                                   <% if (office.office_images.first != nil) %>
                                       <%= cl_image_tag office.office_images.first.path, :size => '460x271', :crop => :fill %>
                                   <% else %>
@@ -49,12 +51,8 @@
                                       <!--%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=220x165&location=40.720032,%20-73.988354&fov=90&heading=235&pitch=10&sensor=false", :crop => :fit, :class => "img-polaroid" %-->
                                       <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=460x271&location=#{office.latitude},%20#{office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fill %>
                                   <% end %>
-                                  <div class="office-photo-caption hide"> 
-                                    <% if user_signed_in? %> 
-                                      <%= office.address %>
-                                    <% else %> 
-                                      <%=office.loc_city + ", " + office.loc_state%>
-                                    <% end %>
+                                  <div class="office-photo-caption text-right"> 
+                                   <% if office.size? %><%= office.size %> sq. ft. &#8901; <% end %><% if office.min_lease? %><%= pluralize office.min_lease, 'month', 'months' %> min.<% end %>
                                   </div>
                                 </div>
                               </a>
@@ -118,13 +116,14 @@
 
 <script type="text/javascript">
 
-  $("#eachoffice-container").mouseover(function() {
-    console.log();
-    $("#eachoffice-container").addClass('office-hover');
-  });
-  $("#eachoffice-container").mouseout(function() {
-    $("#eachoffice-container").removeClass('office-hover');
-  });
+//  $(".eachoffice-container").hover (
+//   function() {
+//     $(this).addClass('office-hover');
+//   },
+//   function() {
+//     $(this).removeClass('office-hover');
+//   }
+// )
 
 // function initialize() {
 //         var map;

@@ -1,0 +1,194 @@
+            <!------------------ LIST VIEW ------------------------>
+
+            <div class="resultsbar hide" id="listview">
+                <div class="row">
+                    <div class="sortmenu span3">
+                      <ul class="nav" role="navigation">
+                        <li class="dropdown">
+                          <a id="sortdrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                            <strong>Sorted by:
+                              <%if @sort=="rent" %>
+                                  <%if @direction=="asc" %>
+                                      Rent
+                                  <% else %>
+                                      Rent (High to Low)
+                                  <% end %>
+                              <% else %>
+                                  <%if @search_string != "" %>
+                                      Distance
+                                  <% end %>
+                              <% end %>
+                            </strong>
+                            <b class="caret"></b>
+                          </a>
+                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                            <li role="presentation">
+                              <%= link_to "Rent", listings_path(:city => @search_string, :rentto => @rentto, :rentfrom => @rentfrom, :sort => "rent", :dir => "asc"), :role => "menuitem", :tabindex => "-1" %>
+                            </li>
+
+                            <!--li role="presentation">
+                              <#%= link_to "Rent: High to Low", listings_path(:city => @search_string, :sort => "rent", :dir => "desc"), :role => "menuitem", :tabindex => "-1" %>
+                            </li!-->
+
+                            <% if @search_string != "" %>
+                                <li role="presentation" class="divider"> </li>
+                                <li role="presentation">
+                                  <%= link_to "Distance", listings_path(:city => @search_string, :rentto => @rentto, :rentfrom => @rentfrom), :role => "menuitem", :tabindex => "-1" %>
+                                </li>
+                            <% end %>
+
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                </div>
+              </div>
+
+                <!------------------ OFFICES VIEW ------------------------>
+                <div class="hide">
+                    <% @offices.each do |office| %>
+                      <div class="listing-container">
+                       <div class="listing-header-container">
+                         <div class="pull-left">
+                            <% if office.user && office.user.photo? %>
+                                <%= image_tag office.user.photo, class: "circle", size: '50x50' %>
+                            <% else %>
+                                <%= image_tag "default_person.png", class: "circle", size: '50x50' %>
+                            <% end %>
+                          </div>
+
+                          <span class="listing-address">
+                            <% if user_signed_in? %>
+                              <%= link_to office.address, office %>
+                            <% else %>  
+                              <%= link_to office.loc_city + " , " + office.loc_state, office %>
+                            <% end %>
+                          </span>
+                            <span class="listing-price">
+                              <% if office.rent? %>
+                                  <%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
+                                    <% if office.rent_type == 1 %>/month
+                                    <% else %>
+                                        <% if office.rent_type == 2 %>/week
+                                        <% else %>
+                                            <% if office.rent_type == 3 %>/day
+                                            <% else %>/month
+                                            <% end %>
+                                        <% end %>
+                                    <% end %>
+                              <% else %>
+                                Contact us
+                              <% end %>
+                            </span>
+                          </span>
+                        </div>
+
+                      <div class="listing-body-container">
+                        <div class="row-fluid">
+                          <div class="span4">
+                            <a href= "<%= office_path(office)  %>" >
+                              <% if (office.office_images.first != nil) %>
+                                  <%= cl_image_tag office.office_images.first.path, size: '186x140', :crop => :fill, :class => "img-polaroid"%>
+                              <% else %>
+                                  <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=186x140&location=#{office.latitude},%20#{office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fill, :class => "img-polaroid" %>
+                              <% end %>
+                            </a>
+                          </div>
+                          <div class="span5 office-summary">
+                             <% if office.type_office==1 %><i class="icon-building orange"></i> private office/ desk &nbsp;<% end %>
+                             <% if office.type_office==2 %><i class="icon-lightbulb orange"></i> design/ creative space &nbsp;<% end %>
+                             <% if office.type_office==3 %><i class="icon-user-md orange"></i> counseling/ therapy office &nbsp;<% end %>
+                             <% if office.type_office==4 %><i class="icon-male orange"></i> treatment/ bodywork room &nbsp;<% end %>
+                          </div>
+                          <div class="span3 pull-right text-right">
+                              <% if office.min_lease? %><%= pluralize office.min_lease, 'month', 'months' %> min</br><% end %>
+                              <% if office.size? %>
+                                <div class="officeicon size"></div>
+                                <%= office.size %> sq. ft
+                            <% end %>
+                          </div>
+                          <div class="span8" style="margin-top:20px;">
+                            <div class="row-fluid">
+                            <div class="pull-left amenities-margin">
+                              <p><% if office.wifi? %>
+                                  <div class="officeicon wifi_on"></div>
+                                  Wi-fi
+                              <% else %>
+                                  <div class="officeicon wifi_off"></div>
+                                  <span class="text-gray"> Wi-fi</span>
+                              <% end %>
+                              </p>
+
+                              <p><% if office.parking? %>
+                                  <div class="officeicon park_on"></div>
+                                  Parking
+                              <% else %>
+                                  <div class="officeicon park_off"></div>
+                                  <span class="text-gray"> Parking</span>
+                              <% end %>
+                              </p>
+
+
+                            </div>
+
+                            <div class="pull-left amenities-margin">
+                              <p><% if office.ac? %>
+                                  <div class="officeicon ac_on"></div>
+                                  Air Conditioning
+                              <% else %>
+                                  <div class="officeicon ac_off"></div>
+                                  <span class="text-gray">Air Conditioning</span>
+                              <% end %>
+                              </p>
+
+                              <p><% if office.confroom? %>
+                                  <div class="officeicon conf_on"></div>
+                                  Conference Room
+                              <% else %>
+                                  <div class="officeicon conf_off"></div>
+                                  <span class="text-gray">Conference Room</span>
+                              <% end %>
+                              </p>
+
+                            </div>
+
+                            <div class="pull-left amenities-margin">
+                              <p><% if office.printer? %>
+                                  <div class="officeicon printer_on"></div>
+                                  Printer
+                              <% else %>
+                                  <div class="officeicon printer_off"></div>
+                                  <span class="text-gray">Printer</span>
+                              <% end %>
+                              </p>
+
+                              <p><% if office.kitchen? %>
+                                  <div class="officeicon kitchen_on"></div>
+                                  Kitchen
+                              <% else %>
+                                  <div class="officeicon kitchen_off"></div>
+                                  <span class="text-gray">Kitchen</span>
+                              <% end %>
+                              </p>
+
+                            </div>
+
+                            <div class="pull-left amenities-margin">
+                                <p><% if office.window? %>
+                                    <div class="officeicon window_on"></div>
+                                    Window
+                                <% else %>
+                                    <div class="officeicon window_off"></div>
+                                    <span class="text-gray">Window</span>
+                                <% end %>
+                                </p>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                 
+
+                  <% end %>
+                </div>
