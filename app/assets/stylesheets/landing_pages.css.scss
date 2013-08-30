@@ -242,6 +242,10 @@ body{
   width:100%;
 }
 
+.pull-up {
+  margin-top:-20px;
+}
+
 .listing-body-container {
   padding-top: 10px;
   border-top: 1px solid #000;
@@ -276,18 +280,31 @@ body{
 }
 
 .contentbar {
-  width: 60%;
-  background: #fff;
-  position:absolute;
+  position: fixed;
+  top: 68px;
   right: 0;
-  height:100%;
+  bottom: 0;
+  width: 60%;
+  overflow-y: scroll;
+  background: #fff;
+  padding-bottom:20px;
 }
 
+// .contentbar {
+//   width: 60%;
+//   background: #fff;
+//   position:absolute;
+//   right: 0;
+//   height:100%;
+// }
+
 .resultsbar {
-  background: #fff;
+  margin-top:100px;
+  padding: 0 30px;
 }
 
 .well.searchbar {
+    z-index:5;
     position: fixed;
     width:100%;
     -webkit-border-radius: 0px;
@@ -309,7 +326,6 @@ body{
   left: 0;
   width: 40%;
   height:100%;
-  //z-index:1;
 }
 
 .mapbarfull  {
@@ -320,3 +336,50 @@ body{
   width: 100%;
 }
 
+.eachoffice-container {
+  margin: 10px;
+}
+
+.office-photo-container {
+  display: block; 
+  position: relative; 
+  //overflow: hidden; 
+}
+
+.office-photo-caption {
+  position: absolute; 
+  width:417px;
+  background: rgba(0,0,0,0.75); 
+  color: white; 
+  font-size:14px;
+  text-shadow: 2px 2px 1px #000;
+  padding: 10px 20px; 
+  bottom: 0; 
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#000), to(transparent));
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,.5), transparent);
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,.5), transparent);
+  background: -ms-linear-gradient(bottom, rgba(0,0,0,.5), transparent);
+  background: -o-linear-gradient(bottom, rgba(0,0,0,.5), transparent);
+  // opacity: 0;
+  // left: -30%;
+  // -webkit-transition: all 0.6s ease;
+  // -moz-transition:    all 0.6s ease;
+  // -o-transition:      all 0.6s ease;
+}
+
+.office-photo-container:hover .office-photo-caption {
+  opacity: 1;
+  left: 0;
+}
+
+.rounded-img {
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px; /* future proofing */
+
+}
+
+.margin-sides {
+   margin-left:15px;
+   margin-right:5px;
+}
