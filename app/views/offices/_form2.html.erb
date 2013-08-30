@@ -18,7 +18,7 @@
     <div id="pano" style="height:200px;"></div>   
     <div class="padtop padbottom_big side-margins">   
       <fieldset>
-        <div class="text-center"><legend class="form_headline">Location & Rent</legend></div>
+        <div class="text-left"><legend class="form_headline">Location & Rent</legend></div>
 
         <div class="control-group">
           <label class="control-label">Where is it located?*</label>
@@ -56,7 +56,7 @@
       </fieldset>
 
        <fieldset>              
-        <div class="text-center"><legend class="form_headline">Additional Information</legend></div>
+        <div class="text-left"><legend class="form_headline">Additional Information</legend></div>
 
          <div class="control-group checkbox-group">
            <label class="control-label">What kind of space is it?</label>
@@ -163,14 +163,13 @@
         </fieldset>
 
         <fieldset>
-        <div class="text-center"><legend class="form_headline">Office Photos</legend></div>
+        <div class="text-left"><legend class="form_headline">Office Photos</legend></div>
 
         <div class= "control-group">
-          <label class="control-label">Are there pictures?</label>
+          <label class="control-label">Adding interior and exterior photos of your office space makes it more likely you'll get a fast response!</label>
           <div class="controls">
             <button class="btn btn-success span-attachinary-input controls"> <%= f.attachinary_file_field :office_images, :cloudinary => {
-                         :eager => [{:width => 600, :height => 400, :crop => :fill, :angle => :exif}]}%><i class="icon-plus icon-white"> </i>
-                <span> Add files.... </span></button>
+                         :eager => [{:width => 600, :height => 400, :crop => :fill, :angle => :exif}]}%><i class="icon-plus icon-white"> </i> Choose photos.... </button>
           </div>
 
         <div class="row-fluid">
