@@ -47,8 +47,6 @@
                                   <% if (office.office_images.first != nil) %>
                                       <%= cl_image_tag office.office_images.first.path, :size => '460x271', :crop => :fill %>
                                   <% else %>
-
-                                      <!--%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=220x165&location=40.720032,%20-73.988354&fov=90&heading=235&pitch=10&sensor=false", :crop => :fit, :class => "img-polaroid" %-->
                                       <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=460x271&location=#{office.latitude},%20#{office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fill %>
                                   <% end %>
                                   <div class="office-photo-caption text-right"> 
@@ -83,7 +81,7 @@
                                               <% end %>
                                           <% end %>
                                      <% else %>
-                                       Contact us for rent
+                                       -- <span class="small-font">/month</span>
                                      <% end %>
                                     </p>
                                  
@@ -95,15 +93,12 @@
                     <% end %>
                  
 
-                <div class="pagemarker span9">
-                  <div class="apple_pagination">
+               <div class="pagemarker text-center" style="clear:both;">
+                  <div class="listing_footer">Haven't found your perfect space? <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city.</div>
 
-                  <!--div class="page_info">
-                    <#%= page_entries_info @offices %>
-                  </div-->
+                  <div class="apple_pagination">
                   <%= will_paginate @offices, :container => false %>
                   </div>
-                  <div class="listing_footer">Haven't found your perfect space? <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city.</div>
                 </div>
               </div>
               <% end %>

@@ -11,7 +11,7 @@
               <% end %>
           <% end %>
      <% else %>
-       Contact us for rent
+       -- <span class="small-font">/month</span>
      <% end %>
     </p>
     <div class="text-right" style="margin-top:-5px;"><% if @office.min_lease? %><%= pluralize @office.min_lease, 'month', 'months' %> minimum<% end %></div>
