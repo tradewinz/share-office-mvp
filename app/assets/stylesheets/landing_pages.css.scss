@@ -391,3 +391,11 @@ right: 0;
    margin-left:15px;
    margin-right:5px;
 }
+
+.office-hover {
+  -webkit-box-shadow: 0 1px 4px #0088cc;
+  -moz-box-shadow: 0 1px 4px #0088cc;
+  box-shadow: 0 1px 4px #0088cc;
+  z-index:1;
+  position: absolute;
+}
