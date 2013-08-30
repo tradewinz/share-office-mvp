@@ -1,7 +1,21 @@
           <!------------------ MAP VIEW ------------------------>
             <div class="mapbar" id="mapview">
-              
-                <%= gmaps("markers" => {"data" => @json},
+              <% if @offices.count == 0 %>
+                <%= gmaps(
+                  "map_options" =>  { "provider" => "google",
+                              #       "client" => "gme-intuitinc",
+                              #       "channel" => "fms.spaces",
+                                      "provider_key" => "AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE",
+                                      "auto_zoom" => false,
+                                      "libraries" => ["places"],
+                                      "detect_location" => true,
+                                      "center_on_user" => true 
+                                    }
+                  )
+                %>
+            <% else %>
+              <%= gmaps(
+                      "markers"     =>  {"data" => @json},
                       "map_options" =>  { "provider" => "google",
                                   #       "client" => "gme-intuitinc",
                                   #       "channel" => "fms.spaces",
@@ -11,6 +25,8 @@
                       }
                     )
                 %>
+            <% end %>    
+                              
               
           </div>
            
