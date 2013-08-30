@@ -3,11 +3,9 @@ function searchAutocomplete() {
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.setTypes(['geocode']);
     autocomplete.setComponentRestrictions({'country':'us'});
-    google.maps.event.addListener(autocomplete, 'place_changed', function() {
-
-        //$("#search input[type='submit']").click();
-        $("#searchBtn").click();
-    });
+    //google.maps.event.addListener(autocomplete, 'place_changed', function() {    //
+    //      $("#searchBtn").click();
+    //});
 }
 
 function alertAutocomplete() {
