@@ -27,12 +27,10 @@
 
         <div class="span7">
             <%= link_to office.address, office %> |
-            <% if office.active_flag == 1 %>
-              Draft
-            <% elsif office.active_flag == 0 %>
-              InActive
+            <% if office.active_flag == 0 %>
+              Not Published
             <% else %>
-              Active
+              Published
             <% end %>
         </div>
 
