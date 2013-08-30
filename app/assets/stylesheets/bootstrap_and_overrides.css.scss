@@ -223,3 +223,7 @@ body {
 
 // don;t want to deal with responsive design jnow
 //@import "bootstrap-responsive";
+
+
+// this is to fix whitespace issue in listing view
+.thumbnail { height:363px;}
