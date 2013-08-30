@@ -2,6 +2,11 @@
 $lightbox: #FFFFFF;
 $fpobg: #baafa4;
 
+/* IMPORTANT FOR MAPS! DON'T TAKE OUT. */
+html, body {
+  height: 100%;
+}
+
 .list-btn {
  width: 213px;
  height: 36px;
@@ -276,28 +281,29 @@ body{
 }
 
 .resultsbar {
-position: fixed;
-top: 168px;
-right: 0;
-bottom: 0;
-width: 60%;
-overflow-y: scroll;
-background: #f7f7f7;
+  position: fixed;
+  top: 68px;
+  right: 0;
+  bottom: 0;
+  width: 60%;
+  overflow-y: scroll;
+  background: #f7f7f7;
 }
 
 .mapbar  {
-position: fixed;
-top: 168px;
-left: 0;
-bottom: 0;
-width: 40%;
+  position: fixed;
+  top: 68px;
+  left: 0;
+  bottom: 0;
+  width: 40%;
+  height:100%;
 }
 
 .mapbarfull  {
-position: fixed;
-top: 168px;
-left: 0;
-bottom: 0;
-width: 100%;
+  position: fixed;
+  top: 168px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 

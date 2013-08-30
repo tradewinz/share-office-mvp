@@ -46,9 +46,11 @@
 
 
 <!-- Footer -->
-
+<% if (params[:action] != 'listings') %>
   <%= render 'layouts/footer'%>
+<% end %>
 
+<%= yield :scripts %>
 
 <!-- GA code -->
 
