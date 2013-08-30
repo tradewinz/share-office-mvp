@@ -1,66 +1,6 @@
-
-<% if @offices.count == 0 %>
-    <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry,places&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE">
-    </script>
-<% end %>
-
-
-  <div class ="well well-small padbottom">
-
-    <%= form_tag(listings_path, :method => "get", :id => "search_form") do %>
-
-        <div class = "span4">    
-            <%= text_field_tag 'city', @search_string, :class=> "l_input", :placeholder => "City, address, or zip code" %>
-        </div>
-        
-        <div class = "span padtoptiny" style="padding-left: 5px">
-           <%= label_tag(:rentdeom, "Rent:") %>
-        </div>
-        <div class="span1"> 
-              <%= text_field_tag 'rentfrom', @rentfrom, :class=> "l_input", :placeholder => "Min Rent" %>
-        </div>   
-        
-        <div class = "span padtoptiny" style="padding-left: 5px">
-           <%= label_tag(:rentto, "To:") %>
-        </div>
-        
-        <div class="span1">
-              <%= text_field_tag 'rentto', @rentto, :class=> "l_input", :placeholder => "Max Rent" %>
-        </div>
-        
-        <div class="span2" id="search">
-            <%= submit_tag "SEARCH", :class => "l_button btn btn-primary", :id => "searchBtn", :style => "margin-top:5px" %>
-        </div>
-
-        <!--div class="span2" style="margin-top: 5px">
-          <div class="btn-group" data-toggle="buttons-radio">
-            <button class="btn btn-medium" type="button" id="showMapBtn">Map View</button>
-            <button class="btn btn-medium" type="button" id="showListBtn">List View</button>
-          </div>
-        </div-->
-
-    <% end %>
-
-  </div>
-
-
-    <% if @offices.count == 0 %>
-            <div class="row search result">
-                <p>
-                  Oops! We could not find any offices near your city. Try one of our popular locations -
-                  <%= link_to "San Francisco", listings_path(:city => "San Francisco, CA") %> and
-                  <%= link_to "San Jose", listings_path(:city => "San Jose, CA")  %>
-                  <br /> <br />
-                  Didn't find your city?  <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city. 
-                </p>
-              </div>
-    <% else %>               
-       <div class="map-search">
           <!------------------ MAP VIEW ------------------------>
-            <div class = "mapbar" id="mapview">
+            <div class="mapbar" id="mapview">
               
-              <div class= "row">
                 <%= gmaps("markers" => {"data" => @json},
                       "map_options" =>  { "provider" => "google",
                                   #       "client" => "gme-intuitinc",
@@ -71,251 +11,91 @@
                       }
                     )
                 %>
-              </div>  
               
           </div>
            
 
-            <!------------------ LIST VIEW ------------------------>
-
-            <div class="resultsbar hide" id="listview">
-                <div class="row">
-                    <div class="sortmenu span3">
-                      <ul class="nav" role="navigation">
-                        <li class="dropdown">
-                          <a id="sortdrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                            <strong>Sorted by:
-                              <%if @sort=="rent" %>
-                                  <%if @direction=="asc" %>
-                                      Rent
-                                  <% else %>
-                                      Rent (High to Low)
-                                  <% end %>
-                              <% else %>
-                                  <%if @search_string != "" %>
-                                      Distance
-                                  <% end %>
-                              <% end %>
-                            </strong>
-                            <b class="caret"></b>
-                          </a>
-                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                            <li role="presentation">
-                              <%= link_to "Rent", listings_path(:city => @search_string, :rentto => @rentto, :rentfrom => @rentfrom, :sort => "rent", :dir => "asc"), :role => "menuitem", :tabindex => "-1" %>
-                            </li>
-
-                            <!--li role="presentation">
-                              <#%= link_to "Rent: High to Low", listings_path(:city => @search_string, :sort => "rent", :dir => "desc"), :role => "menuitem", :tabindex => "-1" %>
-                            </li!-->
-
-                            <% if @search_string != "" %>
-                                <li role="presentation" class="divider"> </li>
-                                <li role="presentation">
-                                  <%= link_to "Distance", listings_path(:city => @search_string, :rentto => @rentto, :rentfrom => @rentfrom), :role => "menuitem", :tabindex => "-1" %>
-                                </li>
-                            <% end %>
-
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                    
-                </div>
-
-                <!------------------ OFFICES VIEW ------------------------>
-                    <% @offices.each do |office| %>
-                      <div class="listing-container">
-                       <div class="listing-header-container">
-                         <div class="pull-left">
-                            <% if office.user && office.user.photo? %>
-                                <%= image_tag office.user.photo, class: "circle", size: '50x50' %>
-                            <% else %>
-                                <%= image_tag "default_person.png", class: "circle", size: '50x50' %>
-                            <% end %>
-                          </div>
-
-                          <span class="listing-address">
-                            <% if user_signed_in? %>
-                              <%= link_to office.address, office %>
-                            <% else %>  
-                              <%= link_to office.loc_city + " , " + office.loc_state, office %>
-                            <% end %>
-                          </span>
-                            <span class="listing-price">
-                              <% if office.rent? %>
-                                  <%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
-                                    <% if office.rent_type == 1 %>/month
-                                    <% else %>
-                                        <% if office.rent_type == 2 %>/week
-                                        <% else %>
-                                            <% if office.rent_type == 3 %>/day
-                                            <% else %>/month
-                                            <% end %>
-                                        <% end %>
-                                    <% end %>
-                              <% else %>
-                                Contact us
-                              <% end %>
-                            </span>
-                          </span>
-                        </div>
-
-                      <div class="listing-body-container">
-                        <div class="row-fluid">
-                          <div class="span4">
-                            <a href= "<%= office_path(office)  %>" >
-                              <% if (office.office_images.first != nil) %>
-                                  <%= cl_image_tag office.office_images.first.path, size: '186x140', :crop => :fill, :class => "img-polaroid"%>
-                              <% else %>
-                                  <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=186x140&location=#{office.latitude},%20#{office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fill, :class => "img-polaroid" %>
-                              <% end %>
-                            </a>
-                          </div>
-                          <div class="span5 office-summary">
-                             <% if office.type_office==1 %><i class="icon-building orange"></i> private office/ desk &nbsp;<% end %>
-                             <% if office.type_office==2 %><i class="icon-lightbulb orange"></i> design/ creative space &nbsp;<% end %>
-                             <% if office.type_office==3 %><i class="icon-user-md orange"></i> counseling/ therapy office &nbsp;<% end %>
-                             <% if office.type_office==4 %><i class="icon-male orange"></i> treatment/ bodywork room &nbsp;<% end %>
-                          </div>
-                          <div class="span3 pull-right text-right">
-                              <% if office.min_lease? %><%= pluralize office.min_lease, 'month', 'months' %> min</br><% end %>
-                              <% if office.size? %>
-                                <div class="officeicon size"></div>
-                                <%= office.size %> sq. ft
-                            <% end %>
-                          </div>
-                          <div class="span8" style="margin-top:20px;">
-                            <div class="row-fluid">
-                            <div class="pull-left amenities-margin">
-                              <p><% if office.wifi? %>
-                                  <div class="officeicon wifi_on"></div>
-                                  Wi-fi
-                              <% else %>
-                                  <div class="officeicon wifi_off"></div>
-                                  <span class="text-gray"> Wi-fi</span>
-                              <% end %>
-                              </p>
-
-                              <p><% if office.parking? %>
-                                  <div class="officeicon park_on"></div>
-                                  Parking
-                              <% else %>
-                                  <div class="officeicon park_off"></div>
-                                  <span class="text-gray"> Parking</span>
-                              <% end %>
-                              </p>
-
-
-                            </div>
-
-                            <div class="pull-left amenities-margin">
-                              <p><% if office.ac? %>
-                                  <div class="officeicon ac_on"></div>
-                                  Air Conditioning
-                              <% else %>
-                                  <div class="officeicon ac_off"></div>
-                                  <span class="text-gray">Air Conditioning</span>
-                              <% end %>
-                              </p>
-
-                              <p><% if office.confroom? %>
-                                  <div class="officeicon conf_on"></div>
-                                  Conference Room
-                              <% else %>
-                                  <div class="officeicon conf_off"></div>
-                                  <span class="text-gray">Conference Room</span>
-                              <% end %>
-                              </p>
-
-                            </div>
-
-                            <div class="pull-left amenities-margin">
-                              <p><% if office.printer? %>
-                                  <div class="officeicon printer_on"></div>
-                                  Printer
-                              <% else %>
-                                  <div class="officeicon printer_off"></div>
-                                  <span class="text-gray">Printer</span>
-                              <% end %>
-                              </p>
-
-                              <p><% if office.kitchen? %>
-                                  <div class="officeicon kitchen_on"></div>
-                                  Kitchen
-                              <% else %>
-                                  <div class="officeicon kitchen_off"></div>
-                                  <span class="text-gray">Kitchen</span>
-                              <% end %>
-                              </p>
-
-                            </div>
-
-                            <div class="pull-left amenities-margin">
-                                <p><% if office.window? %>
-                                    <div class="officeicon window_on"></div>
-                                    Window
-                                <% else %>
-                                    <div class="officeicon window_off"></div>
-                                    <span class="text-gray">Window</span>
-                                <% end %>
-                                </p>
-                            </div>
-                          </div>
-                          </div>
-                        </div>
-                      </div>
-                 </div>
-
-                  <% end %>
-
-
-                <div class="pagemarker">
-                  <div class="apple_pagination">
-                  <%= will_paginate @offices, :container => false %>
-                  </div>
-                  <div class="listing_footer">Haven't found your perfect space? <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city.</div>
-                </div>
-
-            </div>
 
             <!-------------------PHOTO VIEW ------------------------>
 
-            <div class="resultsbar" id="photoview">
-                <div class="row">
-                  <ul class="thumbnails">
-                  <% @offices.each do |office| %>
+            <div class="contentbar" id="photoview">
+                <div class="searchbar well">
+                  <%= render 'searchbar' %>
+                </div>
 
-                          <li class="span4">
-                            <div class="thumbnail">
+            <div class="resultsbar">
+
+
+              <% if @offices.count == 0 %>
+                <p>
+                  Oops! We could not find any offices near your city. Try one of our popular locations -
+                  <%= link_to "San Francisco", listings_path(:city => "San Francisco, CA") %> and
+                  <%= link_to "San Jose", listings_path(:city => "San Jose, CA")  %>
+                  <br /> <br />
+                  Didn't find your city?  <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city. 
+                </p>
+                            
+                <% else %>
+                       <% @offices.each do |office| %>
+
+                          <div class="span6 eachoffice-container">
+                            <div class="thumbnail" style="padding:0px;">
                               <a href= "<%= office_path(office)  %>" >
-                                <% if (office.office_images.first != nil) %>
-                                    <%= cl_image_tag office.office_images.first.path, :size => '280x165', :crop => :fit, :class => "img-polaroid" %>
-                                <% else %>
+                                <div class="office-photo-container"> 
+                                  <% if (office.office_images.first != nil) %>
+                                      <%= cl_image_tag office.office_images.first.path, :size => '460x271', :crop => :fill %>
+                                  <% else %>
 
-                                    <!--%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=220x165&location=40.720032,%20-73.988354&fov=90&heading=235&pitch=10&sensor=false", :crop => :fit, :class => "img-polaroid" %-->
-                                    <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=280x165&location=#{office.latitude},%20#{office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fit, :class => "img-polaroid" %>
-                                <% end %>
-
+                                      <!--%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=220x165&location=40.720032,%20-73.988354&fov=90&heading=235&pitch=10&sensor=false", :crop => :fit, :class => "img-polaroid" %-->
+                                      <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=460x271&location=#{office.latitude},%20#{office.longitude}&sensor=false&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE", :crop => :fill %>
+                                  <% end %>
+                                  <div class="office-photo-caption hide"> 
+                                    <% if user_signed_in? %> 
+                                      <%= office.address %>
+                                    <% else %> 
+                                      <%=office.loc_city + ", " + office.loc_state%>
+                                    <% end %>
+                                  </div>
+                                </div>
                               </a>
+                             
                               <!-- img src="/assets/medium_default-studio.png" alt="" -->
                               <div class="media">
                                 <% if office.user && office.user.photo? %>
-                                    <img class="media-object pull-right" src="<%= office.user.photo %>" height="80px" width="80px">
+                                    <img class="media-object pull-left rounded-img margin-sides" src="<%= office.user.photo %>" height="60px" width="60px">
                                 <% else %>
-                                    <img class="media-object pull-right" src="/assets/default_person.png" height="80px" width="80px">
+                                    <img class="media-object pull-left rounded-img margin-sides" src="/assets/default_person.png" height="60px" width="60px">
                                 <% end %>
                                 <div class="media-body">
-                                  <h4 class="media-heading"><%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %> per month</h4>
-                                  <p><%= pluralize(office.min_lease, 'Month') %> lease</p>
-                                  <p><%= office.loc_city %></p>
+                                   <p> <% if office.type_office==1 %><i class="icon-building orange"></i> Private office/ desk<% end %>
+                             <% if office.type_office==2 %><i class="icon-lightbulb orange"></i> Design/ creative space<% end %>
+                             <% if office.type_office==3 %><i class="icon-user-md orange"></i> Counseling/ therapy office<% end %>
+                             <% if office.type_office==4 %><i class="icon-male orange"></i> Treatment/ bodywork room<% end %> > <%= office.loc_city %></p>
+
+                                  <p class="officecost">
+                                     <% if office.rent? %>
+                                          <%= number_to_currency(office.rent, :locale => 'en_us', :precision => 0) %>
+                                          <% if office.rent_type == 1 %>/month
+                                          <% else %>
+                                              <% if office.rent_type == 2 %>/week
+                                              <% else %>
+                                                  <% if office.rent_type == 3 %>/day
+                                                  <% else %><span class="small-font">/month</span>
+                                                  <% end %>
+                                              <% end %>
+                                          <% end %>
+                                     <% else %>
+                                       Contact us for rent
+                                     <% end %>
+                                    </p>
+                                 
                                 </div>
                               </div>
                             </div>
-                          </li>
+                          </div>
 
                     <% end %>
-                  </ul>
-                </div>
+                 
 
                 <div class="pagemarker span9">
                   <div class="apple_pagination">
@@ -327,17 +107,39 @@
                   </div>
                   <div class="listing_footer">Haven't found your perfect space? <%= link_to "Sign up for alerts", "#addAlert", :data => {:toggle=>"modal"} %>, and we'll let you know when a new space is posted in your city.</div>
                 </div>
-
+              </div>
+              <% end %>
             </div>
         
         </div>
-
-    <% end %>
 
 
 <%= render 'alerts/form' %>
 
 <script type="text/javascript">
+
+  $("#eachoffice-container").mouseover(function() {
+    $("#eachoffice-container").addClass('contact-hover');
+  });
+  $("#eachoffice-container").mouseout(function() {
+    $("#eachoffice-container").removeClass('contact-hover');
+  });
+
+// function initialize() {
+//         var map;
+
+//         var mapOptions = {
+//             center: new google.maps.LatLng(-34.397, 150.644),
+//             zoom: 8,
+//             mapTypeId: google.maps.MapTypeId.ROADMAP,
+//             streetViewControl: false
+//         };
+//         var map = new google.maps.Map(document.getElementById("mapview"),
+//                 mapOptions);
+
+//     }
+
+//     google.maps.event.addDomListener(window, 'load', initialize);
 
   $(document).ready (function() {
       searchAutocomplete();

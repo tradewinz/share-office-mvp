@@ -24,7 +24,7 @@ class Office < ActiveRecord::Base
 
 
   # will_paginate query limit per page
-  self.per_page = 20
+  self.per_page = 24
 
   # make objects shows up in gmaps4rails
   acts_as_gmappable :process_geocoding => false
