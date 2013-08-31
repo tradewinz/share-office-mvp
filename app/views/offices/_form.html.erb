@@ -7,7 +7,7 @@
             <div class="control-group">
               <%= text_field_tag "address", "", :style => "height:40px; font-size:20px; padding-left: 15px; width:716px;", :placeholder => "e.g. 2000 Coast Ave, Mountain View, CA 94043", id: "address_field"%>
             </div>
-            <div class="hide" id="error-msg">Please enter a valid address.</div>
+            <div class="hide" id="error-msg">Please enter a valid address, with street name, city, and state.</div>
             
             <div class="hide">
               <%= f.text_field :loc_addr1, id: "street" %>

@@ -10,7 +10,7 @@
         <div class="control-group">
           <label class="control-label">Where is it located?*</label>
           <div class="controls"><%= text_field_tag "address", '', value: @office.address, :style => "width:468px;", id: "address_field" %>
-            <div class="hide" id="error-msg">Please enter a valid address.</div></div>
+            <div class="hide" id="error-msg">Please enter a valid address, with street name, city, and state.</div>
         </div>
         <div class="hide">
           <%= f.text_field :loc_addr1, id: "street" %>

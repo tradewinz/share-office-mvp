@@ -114,11 +114,7 @@ function addressAutocompleteOffice() {
             }
 
 
-            console.log(input.value);
-            console.log(street.value);
-            console.log(city.value);
-            console.log(state.value);
-            console.log(zip.value);
+    
         });
         // // get latitude and longitude
         //   geocoder.geocode( { 'address': place}, function(results, status) {
