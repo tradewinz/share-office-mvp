@@ -104,7 +104,8 @@ class OfficesController < ApplicationController
     @office.user = current_user
 
     respond_to do |format|
-      if @office.save
+      # allow form creation on 'what's the address' page
+      if @office.save(validate: false)
         track_event("Added Listing Address");
         format.html { redirect_to edit_office_path(:id => @office.id)}
         format.json { render json: @office, status: :created, location: @office }

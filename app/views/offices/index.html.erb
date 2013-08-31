@@ -28,14 +28,8 @@
         <div class="span7">
             <%= link_to office.address, office %> |
             <% if office.active_flag == 0 %>
-<<<<<<< HEAD
-              Draft
-            <% elsif office.active_flag == 1 %>
-              Disabled
-=======
-              Not Published
->>>>>>> a45e0b9b11709340898efe953f326553cd3e0a48
-            <% else %>
+              Not published
+              <% else %>
               Published
             <% end %>
         </div>

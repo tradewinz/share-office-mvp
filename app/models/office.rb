@@ -1,7 +1,7 @@
 class Office < ActiveRecord::Base
   attr_accessible :type_office, :accomodate, :size, :wifi, :confroom, :kitchen, :parking, :ac, :printer,
                   :loc_zip, :loc_addr1, :loc_addr2, :loc_city, :loc_state,
-                  :title, :description, :rent, :rent_type, :available,
+                  :title, :description, :rent, :available,
                   :user_id, :latitude, :longitude, :gmaps, :window, :featured,
                   :min_lease, :security, :cleaning, :active_flag
 
@@ -9,6 +9,12 @@ class Office < ActiveRecord::Base
   has_many :reserve, :dependent => :delete_all
 
   validates :loc_city, :presence => true
+  validates :loc_addr1, :presence => true
+  validates :active_flag, :presence => true
+
+  validates :type_office, :presence => true
+  validates :rent, :presence => true
+  validates :min_lease, :presence => true
 
   #change to simple form before adding error
   #validates :accomodate, :numericality => { :greater_than_or_equal_to => 0 }
