@@ -15,7 +15,7 @@
       <div class="row search_result">
 
         <div class="span2">
-          <a href= "<%= office_path(office)  %>" >
+          <a href= "<%= office_path(office) %>" >
             <% if (office.office_images.first != nil) %>
                 <%= cl_image_tag office.office_images.first.path, :size => '100x75', :crop => :fit, :class => "img-polaroid" %>
             <% else %>
@@ -25,27 +25,21 @@
           </a>
         </div>
 
-        <div class="span4">
-            <%= link_to office.title, office %>
+        <div class="span7">
+            <%= link_to office.address, office %> |
+            <% if office.active_flag == 0 %>
+              Not published
+              <% else %>
+              Published
+            <% end %>
         </div>
 
-        <div class="span2" id="city">
-          <%= office.loc_city %>
-        </div>
-
-        <div class="span1" id="state">
-          <%= office.loc_state %>
-        </div>
-
-        <div class="span1" id="zipcode">
-          <%= office.loc_zip %>
-        </div>
 
         <div class="span2">
           <!--%= link_to 'View', office %-->
 
           <% if can? :update, office %>
-            <%= link_to 'Update |', edit_office_path(office) %>
+            <%= link_to 'Update', edit_office_path(office), :class => 'btn btn-mini btn-primary' %> |
           <% end %>
           
           <% if can? :destroy, office %>

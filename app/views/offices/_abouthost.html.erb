@@ -1,31 +1,32 @@
+<h4 class="panel-header-gray">Contact host</h4>
 <% if @office.user.industry? or @office.user.location? or @office.user.website? %>
 <div class="row-fluid">
-  <div class="small-padding">
+  <div class="small-padding" style="height:80px;">
       <div class="span4"%>
         <% if @office.user.photo? %>
             <%= image_tag(@office.user.photo) %>
         <% else %>
-            <%= image_tag("default_person.png") %>
+            <%= image_tag("default_person.png", width: '75px')  %>
         <% end %>
       </div>
-   
+
     <div class="span8 text-left">
+      <% if @office.user.name? %>
+            <div class="officeicon accomodates about"></div>
+            <div style="margin-left:20px;"><b><%= @office.user.name %></b></div>
+        <% end %>
+
         <% if @office.user.industry? %>
             <div class="officeicon industry about"></div>
             <div style="margin-left:20px;"><b><%= @office.user.industry %></b></div>
         <% end %>
-
-          <% if @office.user.location? %>
-            <div class="officeicon experience about"></div>
-            <div style="margin-left:20px;"><b><%= @office.user.location %></b></div>
-          <% end %>
-        
-          <% if @office.user.website? %>
-            <div style="margin-top: 10px; margin-left:1px;"><b><%= link_to "&#8627; LinkedIn profile".html_safe, @office.user.website, :target => "_blank" %></b></div>
-          <% end %>
     </div>
+    <div style="position:absolute; bottom:0px; margin-left:94px;">
+      <% if @office.user.website? %>
+        <b><%= link_to "&#8627; LinkedIn profile".html_safe, @office.user.website, :target => "_blank" %></b>
+      <% end %>
+    </div>
+
   </div>
 </div>
 <% end %>
-
-

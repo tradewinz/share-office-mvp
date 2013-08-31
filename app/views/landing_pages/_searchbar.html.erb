@@ -1,0 +1,34 @@
+ <%= form_tag(listings_path, :method => "get", :id => "search_form") do %>
+
+    <div class = "span4">    
+        <%= text_field_tag 'city', @search_string, :class=> "l_input" ,:placeholder => "City, address, or zip code" %>
+    </div>
+    
+    <div class = "span padtoptiny" style="padding-left: 10px">
+       <%= label_tag(:rentfrom, "Rent from") %>
+    </div>
+
+    <div class="span1"> 
+          <%= text_field_tag 'rentfrom', @rentfrom, :class=> "l_input", :placeholder => "Min Rent" %>
+    </div>   
+    
+    <div class = "span padtoptiny" style="padding-left: 5px">
+       <%= label_tag(:rentto, "to") %>
+    </div>
+    
+    <div class="span1">
+          <%= text_field_tag 'rentto', @rentto, :class=> "l_input", :placeholder => "Max Rent" %>
+    </div>
+    
+    <div class="span2" id="search">
+        <%= submit_tag "SEARCH", :class => "l_button btn btn-primary", :id => "searchBtn", :style => "margin-top:5px; margin-left:35px; width:100%;" %>
+    </div>
+
+    <!--div class="span2" style="margin-top: 5px">
+      <div class="btn-group" data-toggle="buttons-radio">
+        <button class="btn btn-medium" type="button" id="showMapBtn">Map View</button>
+        <button class="btn btn-medium" type="button" id="showListBtn">List View</button>
+      </div>
+    </div-->
+
+<% end %>

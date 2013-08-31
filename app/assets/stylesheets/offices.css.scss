@@ -34,6 +34,8 @@
   padding: 5px 15px;
   margin-top: 0px;
   margin-bottom: 15px;
+  z-index:0;
+   position: relative;
 }
 
 .reserve-btn {
@@ -63,20 +65,43 @@
     padding-top: 30px;
 }
 
+.padtoptiny {
+    padding-top: 10px;
+}
+
 .padbottom {
   padding-bottom: 30px;
 }
 
+.padbottom_small {
+  padding-bottom: 15px;
+}
+
+.padtop_big {
+    padding-top: 50px;
+}
+
+.padbottom_big {
+  padding-bottom: 70px;
+}
+
 .control-label {
+    /*float: left;*/
+    padding-top: 5px;
+    /*text-align: right;*/
+    /*width: 140px;*/
+    font-weight: bold;
+}
+
+.control-label.address {
     float: left;
     padding-top: 5px;
-    text-align: right;
-    width: 140px;
-  font-weight: bold;
+    text-align: left;
+    font-weight: bold;
 }
 
 .controls {
-    margin-left: 160px;
+    /*margin-left: 160px;*/
 }
 
 textarea {
@@ -87,12 +112,6 @@ textarea {
 
 .submit-wrapper {
     padding: 15px 0 0;
-}
-
-.search_result {
-    border-bottom: 1px solid #D8D8D8;
-    padding: 10px 0px;
-    position: relative;
 }
 
 li {
@@ -123,10 +142,6 @@ a {
 
 }
 
-text-right{
-  text-align: right;
-}
-
 .officelocation {
  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -139,19 +154,22 @@ text-right{
   font-size: 14px;
   line-height: 20px;
   color: #505050;
-
 }
 
-officedetailstitle  {
+.listing-header {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: bold;
+  font-weight: lighter;
+  font-size: 32px;
+  text-align: center;
   color: #333333;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
-officedetailstext  {
+.officedetailstext  {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
+  line-height:20px;
   font-weight: normal;
   color: #505050;
 
@@ -165,6 +183,10 @@ officedetailstext  {
   background-color: white ;
   //float:none;
   // margin:0 auto;
+}
+
+.min_lease_dropdown {
+  width: 130px !important;
 }
 
 // Icons
@@ -351,7 +373,8 @@ paperPanel {
 
 .small-padding {
   padding-left:10px;
-  padding-right:10px;
+  padding-right:20px;
+  position:relative;
 }
 
 
@@ -360,8 +383,9 @@ paperPanel {
 .span-attachinary-input {
   position: relative;
   overflow: hidden;
-  width: 130px;
+  //width: 130px;
   margin-left: 0px;
+  margin-top: 10px;
 }
 .span-attachinary-input input {
   position: absolute;
@@ -432,4 +456,66 @@ paperPanel {
 
 .span15 {
   width:30px;
+}
+
+
+.table-borderless tbody + tbody,
+.table-borderless td,
+.table-borderless th {
+  border: 0;
+}
+
+.side-margins {
+  margin-left:100px;
+  margin-right:100px;
+}
+
+.address_input {
+
+  width: 100%;
+  font-size: 18;
+}
+.error-border {
+  border: 2px solid red !important; 
+}
+
+.checkbox-group {
+  margin-bottom:20px;
+}
+
+.form_headline {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #767676;
+  font-size: 18px;
+}
+
+.form_headline:before {
+    margin-bottom:20px;
+    content:' ';
+    display:block;
+}
+
+a:hover {
+  text-decoration:none !important;
+}
+
+.label-hover {
+  color: #0088cc;
+}
+
+.profile-hover {
+  border: 1px solid #A8A8A8;
+}
+
+.contact-hover {
+  -webkit-box-shadow: 0 1px 4px #0088cc;
+  -moz-box-shadow: 0 1px 4px #0088cc;
+  box-shadow: 0 1px 4px #0088cc;
+  z-index:-.5;
+  position: absolute;
+}
+
+.small-font {
+  font-size:20px; 
+  font-weight:lighter;
 }

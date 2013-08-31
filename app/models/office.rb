@@ -1,14 +1,20 @@
 class Office < ActiveRecord::Base
-  attr_accessible :office_type, :accomodate, :size, :wifi, :confroom, :kitchen, :parking, :ac, :printer,
+  attr_accessible :type_office, :accomodate, :size, :wifi, :confroom, :kitchen, :parking, :ac, :printer,
                   :loc_zip, :loc_addr1, :loc_addr2, :loc_city, :loc_state,
-                  :title, :description, :rent, :rent_type, :available,
-                  :user_id, :latitude, :longitude, :gmaps, :window, :featured
+                  :title, :description, :rent, :available,
+                  :user_id, :latitude, :longitude, :gmaps, :window, :featured,
+                  :min_lease, :security, :cleaning, :active_flag
 
   belongs_to :user
-  has_many :reserve
+  has_many :reserve, :dependent => :delete_all
 
-  validates :title, :presence => true
   validates :loc_city, :presence => true
+  validates :loc_addr1, :presence => true
+  validates :active_flag, :presence => true
+
+  validates :type_office, :presence => true
+  validates :rent, :presence => true
+  validates :min_lease, :presence => true
 
   #change to simple form before adding error
   #validates :accomodate, :numericality => { :greater_than_or_equal_to => 0 }
@@ -20,11 +26,11 @@ class Office < ActiveRecord::Base
   after_validation :geocode
 
   # attachinary
-  has_attachments :office_images, maximum: 4, accept: [:jpg, :png, :gif, :jpeg]
+  has_attachments :office_images, accept: [:jpg, :png, :gif, :jpeg]
 
 
   # will_paginate query limit per page
-  self.per_page = 20
+  self.per_page = 24
 
   # make objects shows up in gmaps4rails
   acts_as_gmappable :process_geocoding => false

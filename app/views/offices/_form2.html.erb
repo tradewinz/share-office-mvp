@@ -1,0 +1,391 @@
+<%= simple_form_for(@office, :html => { :id => "office_listing" }) do |f| %>
+
+  <div class="listing-header">Tell us about your space</div>
+  <div class="row panel panel-border">
+    <div id="pano" style="height:200px;"></div>   
+    <div class="padtop padbottom_big side-margins">   
+      <fieldset>
+        <div class="text-left"><legend class="form_headline">Location & Rent</legend></div>
+
+        <div class="control-group">
+          <label class="control-label">Where is it located?*</label>
+          <div class="controls"><%= text_field_tag "address", '', value: @office.address, :style => "width:468px;", id: "address_field" %>
+            <div class="hide" id="error-msg">Please enter a valid address, with street name, city, and state.</div>
+        </div>
+        <div class="hide">
+          <%= f.text_field :loc_addr1, id: "street" %>
+          <%= f.text_field :loc_city, id: "city" %>
+          <%= f.text_field :loc_state, id: "state" %>
+          <%= f.text_field :loc_zip, id: "zip" %>
+
+          <!-- is there a better way to set this flag? also change this flag if address is changed. -->
+          <% if @office.active_flag==1 %>
+              <%= f.text_field :active_flag, :value => 2 %>
+          <% end %>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" id="rent-label">How much is the rent per month?*</label>
+
+          <div class="controls">
+            <%= f.text_field :rent, :placeholder => "$", :style => "width: 130px"%>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">What is the minimum lease term?*</label>
+
+          <div class="controls">
+            <%= f.select :min_lease, (1..12), {}, :class => 'min_lease_dropdown' %> month(s)
+          </div>
+        </div>
+
+      </fieldset>
+
+       <fieldset>              
+        <div class="text-left"><legend class="form_headline">Additional Information</legend></div>
+
+         <div class="control-group checkbox-group">
+           <label class="control-label">What kind of space is it?</label>
+           <div class="row">
+             <div class="span" style="margin-right:100px">
+               <label class="checkbox">
+                 <%= f.radio_button(:type_office, 1) %>
+                 Private Office/Desk
+               </label>
+               <label class="checkbox">
+                 <%= f.radio_button(:type_office, 2) %>
+                 Design/Creative Space
+             </div>
+
+             <div>
+               <label class="checkbox">
+                 <%= f.radio_button(:type_office, 3) %>
+                 Counseling/Therapy Office
+               </label>
+               <label class="checkbox">
+                 <%= f.radio_button(:type_office, 4) %>
+                 Room for Bodywork/Treatment
+               </label>
+             </div>
+           </div>
+         </div>
+
+         <div class="control-group">
+           <label class="control-label">How big is it?</label>
+
+           <div class="controls"> <%= f.text_field :size, :style => "width: 10%" %> sq. ft.</div>
+         </div>
+
+
+         <% if false %>
+        <div class="control-group">
+          <label class="control-label">Accommodates</label>
+
+          <div class="controls">  <%= f.number_field :accomodate, :style => "width: 10%" %>  </div>
+        </div>
+        <% end %>
+
+        <div class="control-group checkbox-group">
+          <label class="control-label">What's included in the rent?</label>
+
+          <div class="row">
+            <div class="span1.5">
+              <label class="checkbox">
+                <%= f.check_box :wifi %>
+                <div class="officeicon wifi_on"></div>
+                Wi-Fi
+              </label>
+              <label class="checkbox">
+                <%= f.check_box :parking %>
+                <div class="officeicon park_on"></div>
+                Parking
+              </label>
+            </div>
+
+            <div class="span1.5">
+              <label class="checkbox ">
+                <%= f.check_box :confroom %>
+                <div class="officeicon conf_on"></div>
+                Conference Room
+              </label>
+              <label class="checkbox">
+                <%= f.check_box :ac %>
+                <div class="officeicon ac_on"></div>
+                Air Conditioning
+              </label>
+            </div>
+
+            <div class="span1.5">
+              <label class="checkbox">
+                <%= f.check_box :kitchen %>
+                <div class="officeicon kitchen_on"></div>
+                Kitchen
+              </label>
+              <label class="checkbox">
+                <%= f.check_box :printer %>
+                <div class="officeicon printer_on"></div>
+                Printer
+              </label>
+
+            </div>
+
+            <div class="span1.5">
+                <label class="checkbox">
+                  <%= f.check_box :window %>
+                  <div class="officeicon window_on"></div>
+                  Window Office
+                </label>
+            </div>
+          </div>
+         </div>
+
+        <div class="control-group">
+          <label class="control-label">What is it like working here?</label>
+
+          <div class="controls"> <%= f.text_area :description, :style => "width: 570px",
+                     :placeholder => "List availability, rental terms, house rules, additional amenities, etc.", :rows => 50 %>
+          </div>
+        </div>
+        </fieldset>
+
+        <fieldset>
+        <div class="text-left"><legend class="form_headline">Office Photos</legend></div>
+
+        <div class= " row control-group">
+              <label class="control-label">Adding interior and exterior photos of your office space makes it more likely you'll get a fast response!</label>
+              <div class="controls">
+                  <span class="btn btn-success span-attachinary-input controls ">
+                    <%= f.attachinary_file_field :office_images, :cloudinary => {
+                             :eager => [{:width => 600, :height => 400, :crop => :fill, :angle => :exif}]}%>
+                    <i class="icon-plus icon-white"> </i>
+                    <span> Add files.... </span>
+                  </span> 
+              </div>
+             </div>
+             <div class="row ">
+              <div class="offset2 span10 thumbs"> </div>
+                  <div class="progress">
+                   <div class="bar" style="width: 0%;"></div>
+                  </div>
+            </div>
+
+
+
+
+      </fieldset>
+
+      <% if current_user.admin? %>
+      <fieldset>
+        <div class="text-center"><legend class="form_headline">Admin</legend></div>
+          <div class="control-group">
+           <label class="control-label">Featured Listing:</label>
+           <div class="controls"> <%= f.check_box :featured %>  </div>
+         </div>
+       </fieldset>
+      <% end %>
+
+      <div class="text-center">
+        <% if @office.active_flag == 0 %>
+          <%= submit_tag "PREVIEW MY LISTING", :class => "btn btn-large btn-primary", :id => "saveListingBtn", onclick:"return validate();" %>
+        <% else %>
+          <%= submit_tag "SAVE MY LISTING", :class => "btn btn-large btn-primary", :id => "saveListingBtn", onclick:"return validate();" %>
+        <% end %>
+      </div>
+      <% end %> 
+  </div>
+</div>
+<%= tinymce_assets %>
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry,places&key=AIzaSyA63spoPlwAL-NcXhJaU7bOvJyZL2PuKQE">
+</script>
+<!-- other JS code -->
+<script type="text/javascript">
+    var correctInput = "<%=@office.address%>";
+    console.log("correct input: " +correctInput);
+
+    // validate address field separately to make sure city and street address (hidden fields) are included
+    function validate() {   
+        var currentInput = document.getElementById('address_field').value;
+        console.log(correctInput);
+        console.log(currentInput);
+        if (city.value == '' || street.value == '' || correctInput!=currentInput) {
+            $("#address_field").addClass('error-border');
+            $("#error-msg").show();
+            window.scroll(0,findPos(document.getElementById('address_field')));
+            return false;
+        }
+        $("#error-msg").hide();
+        $("#address_field").removeClass('error-border');
+        return true;
+    }
+
+    // validate rent and min_lease present
+    $("#saveListingBtn").click(function() {
+      $("#office_listing").validate({
+        rules: {
+          "office[rent]": {required: true},
+          "office[min_lease]": {required: true, range:[1,12]},
+          "office[accomodate]": {range:[1,20]}
+        },
+        messages: {
+          "office[rent]": "Providing a rent amount increase the chances of finding a match quickly!",
+          "office[min_lease]": {
+            required: "Please provide a minimum lease.",
+            range: "Minimum lease should be between 1 and 12 months."
+          },
+          "office[accomodate]": "We currrently only serve small offices. Please enter a value under 20.",
+        },
+        errorPlacement: function(error, element) {
+          element.after(error);
+          element.css('border', 'solid red 2px');
+        }
+      });
+    });
+
+    function showLoadingImage() {
+        $('#second').append('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %> </div>');
+    }
+
+    function hideLoadingImage() {
+        $('#loading-image').remove();
+    }
+
+
+    
+
+
+  var latlng;
+  geocoder = new google.maps.Geocoder();
+  var address = document.getElementById('address_field').value;
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      latlng = results[0].geometry.location;
+      var sv = new google.maps.StreetViewService();
+      sv.getPanoramaByLocation(latlng, 50, processSVData);
+    } else {
+      $('#pano').remove();
+    }
+  });
+
+  
+  function processSVData(data, status) {
+    if (status != google.maps.StreetViewStatus.OK) {
+      $('#pano').remove();
+    }
+  }
+
+
+  function initialize() {
+    var panoramaOptions = {
+      position: latlng,
+      addressControl: false,
+      zoom: .5,
+      pov: {
+        heading: 34,
+        pitch: 5
+      },
+       linksControl: false,
+        panControl: false,
+        zoomControlOptions: {
+          style: google.maps.ZoomControlStyle.SMALL
+        },
+        enableCloseButton: false
+    };
+    var pano = new google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
+
+    var move = true;
+    $("#pano").click(function () {
+        move = !move;
+    });
+
+    
+      window.setInterval(function() {
+        if (move) {
+          var pov = pano.getPov();
+          pano.setPov(pov);
+          pov.heading += 0.2;
+        }
+      }, 10);
+    
+  }
+    
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+
+    
+
+    tinyMCE.init({
+        selector: "textarea",
+        theme_advanced_toolbar_location: "top",
+        theme_advanced_toolbar_align: "center",
+        theme_advanced_buttons1 : "bold, italic, underline, numlist, bullist",
+        // theme_advanced_buttons2 : "",
+        // theme_advanced_buttons3 : "",
+        // theme_advanced_font_sizes: "10px,12px,13px,14px,16px,18px,20px",
+        // font_size_style_values: "12px,13px,14px,16px,18px,20px",
+        height: 250,
+        theme_advanced_statusbar_location : "none",
+        //content_css : "/tinymce_editor.css?" + new Date().getTime()
+        content_css: '<%= asset_path 'application.css' %>'
+    });
+
+
+<!-- file upload -->
+$(document).ready(function() {
+    addressAutocompleteOffice();
+
+    $('.attachinary-input').attachinary();
+
+    function showLoadingImage() {
+       $('.thumbs').prepend('<div id="loading-image"><%= image_tag("ajax-loader.gif", :alt => "loading") %></div>');
+
+    }
+
+    function hideLoadingImage() {
+        $('#loading-image').remove();
+    }
+
+    $('.attachinary-input').attachinary();
+
+    $('.attachinary-input').bind('fileuploadstart', function(e, data) {
+      //alert ("ok, start");
+       //$('#loading-image').show();
+       showLoadingImage();
+    });
+
+    /*
+    $('.attachinary-input').bind('fileuploadprogressall', function(e,data) {
+      alert ("progress " + data.loaded);
+      var prog = parseInt(data.loaded / data.total * 100, 10);
+
+      $('.progress').css('width', prog + '%');
+    });
+    */
+
+    $('.attachinary-input').bind('cloudinarydone', function() {
+    //alert ("done!");
+      //    hideLoadingImage();
+    });
+
+
+    $('.attachinary-input').bind('fileuploaddone', function() {
+    //alert ("done event!");
+    hideLoadingImage();
+    });
+
+
+    // move the attachinary container to a separate row (this is where the thumbnails show upf)
+    $('.thumbs').prepend($('.attachinary_container'));
+
+    //$('.attachinary-input').trigger('fileuploadstart');
+
+
+//    var input = document.getElementById('office_loc_addr1');
+//    var autocomplete = new google.maps.places.Autocomplete(input);
+//    autocomplete.setTypes(['geocode']);
+
+  
+  });
+
+</script>

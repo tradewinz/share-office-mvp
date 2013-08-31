@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130808173738) do
+ActiveRecord::Schema.define(:version => 20130826045910) do
 
   create_table "alerts", :force => true do |t|
     t.string   "city"
@@ -87,6 +87,16 @@ ActiveRecord::Schema.define(:version => 20130808173738) do
     t.integer  "rent_type"
     t.boolean  "window"
     t.boolean  "featured",    :default => false
+    t.string   "loc_address"
+    t.boolean  "private",     :default => false
+    t.boolean  "creative",    :default => false
+    t.boolean  "counseling",  :default => false
+    t.boolean  "treatment",   :default => false
+    t.integer  "type_office", :default => 1
+    t.integer  "min_lease",   :default => 1
+    t.boolean  "security"
+    t.boolean  "cleaning"
+    t.integer  "active_flag", :default => 2
   end
 
   create_table "rails_admin_histories", :force => true do |t|

@@ -1,0 +1,17 @@
+<p class="officecost text-right">
+     <% if @office.rent? %>
+          <strong><%= number_to_currency(@office.rent, :locale => 'en_us', :precision => 0) %></strong>
+          <% if @office.rent_type == 1 %>/month
+          <% else %>
+              <% if @office.rent_type == 2 %>/week
+              <% else %>
+                  <% if @office.rent_type == 3 %>/day
+                  <% else %><span class="small-font">/month</span>
+                  <% end %>
+              <% end %>
+          <% end %>
+     <% else %>
+       -- <span class="small-font">/month</span>
+     <% end %>
+    </p>
+    <div class="text-right" style="margin-top:-5px;"><% if @office.min_lease? %><%= pluralize @office.min_lease, 'month', 'months' %> minimum<% end %></div>
