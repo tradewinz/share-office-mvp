@@ -1,18 +1,5 @@
 <%= simple_form_for(@office, :html => { :id => "office_listing" }) do |f| %>
 
-  <% if @office.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@office.errors.count, "error") %> prohibited this listing from being saved:</h2>
-        <ul style="margin-left:10;">
-          <% @office.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-  <% end %>
-
-
-
   <div class="listing-header">Tell us about your space</div>
   <div class="row panel panel-border">
     <div id="pano" style="height:200px;"></div>   
