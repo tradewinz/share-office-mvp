@@ -1,7 +1,9 @@
-          <!--%= render 'listview' %-->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+<!--%= render 'listview' %-->
 
           <!------------------ MAP VIEW ------------------------>
             <div class="mapbar" id="mapview">
+              <% if false %>
               <% if @offices.count == 0 %>
                 <%= gmaps(
                   "map_options" =>  { "provider" => "google",
@@ -28,7 +30,7 @@
                     )
                 %>
             <% end %>    
-                              
+            <% end %>
               
           </div>
            
@@ -54,12 +56,13 @@
                 </p>
                             
                 <% else %>
-                       <% @offices.each do |office| %>
+                       <% @offices.each_with_index do |office, index| %>
 
                           <div class="span5 eachoffice-container" id="office<%=office.id%>">
                             <div class="thumbnail" style="padding:0px;">
                               <a href= "<%= office_path(office)  %>" >
-                                <div class="office-photo-container fade"> 
+                                <div class="office-photo-container fade">
+                                  <span class="label label-inverse index-label"><%=index+1%></span>
                                   <% if (office.office_images.first != nil) %>
                                       <%= cl_image_tag office.office_images.first.path, :size => '460x271', :crop => :fill %>
                                   <% else %>
@@ -127,6 +130,38 @@
 
 <script type="text/javascript">
 
+    // Enable the visual refresh
+    google.maps.visualRefresh = true;
+
+    var map;
+    function initialize_map() {
+        var mapOptions = {
+            zoom: 10,
+            center: new google.maps.LatLng(37.339386, -121.894955),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById('mapview'),
+                mapOptions);
+
+        //var image = 'images/beachflag.png';
+        var myLatLng, beachMarker;
+        var index = 1;
+        var bounds = new google.maps.LatLngBounds();
+        <% @offices.each do |office| %>
+            myLatLng = new google.maps.LatLng("<%=office.latitude%>", "<%=office.longitude%>");
+            beachMarker = new google.maps.Marker({
+                position: myLatLng,
+                animation: google.maps.Animation.DROP,
+                map: map,
+                icon: '/assets/mapicons/number_' + index + '.png'
+            });
+            bounds.extend(myLatLng);
+            index++;
+        <% end %>
+        map.fitBounds(bounds);
+    }
+
+
 //  $(".eachoffice-container").hover (
 //   function() {
 //     $(this).addClass('office-hover');
@@ -162,14 +197,14 @@
     function showmapview() {
         $('#listview').hide();
         $('#mapview').attr('class', 'mapfull');
-        Gmaps.loadMaps();
+        //Gmaps.loadMaps();
 
     }
 
     function showlistview() {
         $('#mapview').attr('class', 'mapbar');
         $('#listview').show();
-        Gmaps.loadMaps();
+        //Gmaps.loadMaps();
 
     }
 
@@ -198,4 +233,5 @@
         }
     });
 
+    google.maps.event.addDomListener(window, 'load', initialize_map);
 </script>
