@@ -26,7 +26,7 @@ class Office < ActiveRecord::Base
   after_validation :geocode
 
   # attachinary
-  has_attachments :office_images, accept: [:jpg, :png, :gif, :jpeg]
+  has_attachments :office_images, maximum: 20, accept: [:jpg, :png, :gif, :jpeg]
 
 
   # will_paginate query limit per page

@@ -421,3 +421,6 @@ right: 0;
   left: 0;
   float: left;
 }
+
+#mapview label { width: auto; display:inline; }
+#mapview img { max-width: none; }
