@@ -58,7 +58,7 @@
                 <% else %>
                        <% @offices.each_with_index do |office, index| %>
 
-                          <div class="span5 eachoffice-container" id="office<%=index+1%>">
+                          <div class="span5 eachoffice-container" id="<%=index+1%>">
                             <div class="thumbnail" style="padding:0px;">
                               <a href= "<%= office_path(office)  %>" >
                                 <div class="office-photo-container fade">
@@ -136,6 +136,7 @@
     google.maps.visualRefresh = true;
 
     var map;
+    var markers = [];
     function initialize_map() {
         var mapOptions = {
             zoom: 10,
@@ -158,7 +159,7 @@
         var bounds = new google.maps.LatLngBounds();
         <% @offices.each do |office| %>
             myLatLng = new google.maps.LatLng("<%=office.latitude%>", "<%=office.longitude%>");
-            beachMarker = new google.maps.Marker({
+            var beachMarker = new google.maps.Marker({
                 position: myLatLng,
                 animation: google.maps.Animation.DROP,
                 map: map,
@@ -174,14 +175,14 @@
 
             google.maps.event.addListener(beachMarker, 'mouseover', function() {
                 $("#office"+this.index).addClass('office-hover');
-                $("#photoview").scrollTop(findPos(document.getElementById("office"+this.index)) - 175);
+                $("#photoview").scrollTop(findPos(document.getElementById(this.index)) - 175);
             });
 
             google.maps.event.addListener(beachMarker, 'mouseout', function() {
                 $("#office"+this.index).removeClass('office-hover');
             });
 
-
+            markers.push(beachMarker);
             bounds.extend(myLatLng);
             index++;
 
@@ -190,14 +191,16 @@
     }
 
 
-//  $(".eachoffice-container").hover (
-//   function() {
-//     $(this).addClass('office-hover');
-//   },
-//   function() {
-//     $(this).removeClass('office-hover');
-//   }
-// )
+ $(".eachoffice-container").hover (
+  function() {
+    var index = $(this).attr('id') - 1;
+    markers[index].setAnimation(google.maps.Animation.BOUNCE);
+  },
+  function() {
+    var index = $(this).attr('id') - 1;
+    markers[index].setAnimation(google.maps.Animation.NONE);
+  }
+)
 
 
   $(document).ready (function() {
