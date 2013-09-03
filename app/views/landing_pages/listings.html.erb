@@ -179,7 +179,7 @@
             });
 
             google.maps.event.addListener(beachMarker, 'mouseout', function() {
-                $("#office"+this.index).removeClass('office-hover');
+                $("#"+this.index).removeClass('office-hover');
             });
 
             markers.push(beachMarker);
