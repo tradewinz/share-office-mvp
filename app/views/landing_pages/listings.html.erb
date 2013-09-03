@@ -174,7 +174,7 @@
             });
 
             google.maps.event.addListener(beachMarker, 'mouseover', function() {
-                $("#office"+this.index).addClass('office-hover');
+                $("#"+this.index).addClass('office-hover');
                 $("#photoview").scrollTop(findPos(document.getElementById(this.index)) - 175);
             });
 
