@@ -58,7 +58,7 @@
                 <% else %>
                        <% @offices.each_with_index do |office, index| %>
 
-                          <div class="span5 eachoffice-container" id="office<%=office.id%>">
+                          <div class="span5 eachoffice-container" id="office<%=index+1%>">
                             <div class="thumbnail" style="padding:0px;">
                               <a href= "<%= office_path(office)  %>" >
                                 <div class="office-photo-container fade">
@@ -126,6 +126,8 @@
         </div>
 
 
+
+
 <%= render 'alerts/form' %>
 
 <script type="text/javascript">
@@ -148,7 +150,7 @@
         map = new google.maps.Map(document.getElementById('mapview'),
                 mapOptions);
 
-        
+
 
         //var image = 'images/beachflag.png';
         var myLatLng, beachMarker;
@@ -161,11 +163,25 @@
                 animation: google.maps.Animation.DROP,
                 map: map,
                 icon: '/assets/mapicons/number_' + index + '.png',
-                url: '<%= office_path(office) %>'
+                url: '<%= office_path(office) %>',
+                index: index
             });
+            
+
             google.maps.event.addListener(beachMarker, 'click', function() {
                 window.location.href = this.url;
             });
+
+            google.maps.event.addListener(beachMarker, 'mouseover', function() {
+                $("#office"+this.index).addClass('office-hover');
+                $("#photoview").scrollTop(findPos(document.getElementById("office"+this.index)) - 175);
+            });
+
+            google.maps.event.addListener(beachMarker, 'mouseout', function() {
+                $("#office"+this.index).removeClass('office-hover');
+            });
+
+
             bounds.extend(myLatLng);
             index++;
 
