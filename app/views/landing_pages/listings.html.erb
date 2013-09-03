@@ -175,7 +175,11 @@
 
             google.maps.event.addListener(beachMarker, 'mouseover', function() {
                 $("#"+this.index).addClass('office-hover');
-                $("#photoview").scrollTop(findPos(document.getElementById(this.index)) - 175);
+                var offset = findPos(document.getElementById(this.index)) - 175;
+                var currTop = $("#photoview").scrollTop();
+                if(offset > currTop + window.innerHeight || offset < currTop) {
+                  $("#photoview").animate({scrollTop: offset}, 1000);
+                }
             });
 
             google.maps.event.addListener(beachMarker, 'mouseout', function() {
