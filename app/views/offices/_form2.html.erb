@@ -152,21 +152,21 @@
         <fieldset>
         <div class="text-left"><legend class="form_headline">Office Photos</legend></div>
 
-        <div class= " row control-group">
-              <label class="control-label">Adding interior and exterior photos of your office space makes it more likely you'll get a fast response!</label>
+          <div class= "row control-group" style="margin-left:0px">
+              <label class="control-label">We've seen spaces with interior and exterior photos get matches sooner.</label>
               <div class="controls">
                   <span class="btn btn-success span-attachinary-input controls ">
                     <%= f.attachinary_file_field :office_images, :cloudinary => {
                              :eager => [{:width => 600, :height => 400, :crop => :fill, :angle => :exif}]}%>
                     <i class="icon-plus icon-white"> </i>
-                    <span> Add files.... </span>
+                    <span> Add Photos (select multiple at once!) </span>
                   </span> 
               </div>
              </div>
-             <div class="row ">
-              <div class="offset2 span10 thumbs"> </div>
-                  <div class="progress">
-                   <div class="bar" style="width: 0%;"></div>
+             <div class="row-fluid">
+              <div class="span10 thumbs"> </div>
+                  <div class="progress hide">
+                   <div class="bar"></div>
                   </div>
             </div>
 
@@ -229,7 +229,7 @@
           "office[accomodate]": {range:[1,20]}
         },
         messages: {
-          "office[rent]": "Providing a rent amount increase the chances of finding a match quickly!",
+          "office[rent]": "Please provide a rent amount.",
           "office[min_lease]": {
             required: "Please provide a minimum lease.",
             range: "Minimum lease should be between 1 and 12 months."
@@ -333,6 +333,7 @@
 
 <!-- file upload -->
 $(document).ready(function() {
+
     addressAutocompleteOffice();
 
     $('.attachinary-input').attachinary();
