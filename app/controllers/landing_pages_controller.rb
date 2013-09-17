@@ -49,12 +49,15 @@ class LandingPagesController < ApplicationController
     session[:query] = @offices.map(&:id)
     session[:search_results] = request.url
 
-    @json = @offices.to_gmaps4rails do |office, marker|
-      marker.infowindow render_to_string(:partial => "/offices/infowindow", :locals => { :office => office})
-      marker.title "#{office.title}"
-      marker.picture({ :picture => "/assets/office-building.png", :width =>32, :height => 32})
-    end
 
+    #@json = @offices.to_gmaps4rails do |office, marker|
+    #  marker.infowindow render_to_string(:partial => "/offices/infowindow", :locals => { :office => office})
+    #  marker.title "#{office.title}"
+    #  marker.picture({ :picture => "/assets/office-building.png", :width =>32, :height => 32})
+    #end
+
+
+    
     track_event("Viewed Search Results")
     respond_to do |format|
       format.html # listings.html.erb

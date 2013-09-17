@@ -17,7 +17,9 @@
           <%= f.text_field :loc_city, id: "city" %>
           <%= f.text_field :loc_state, id: "state" %>
           <%= f.text_field :loc_zip, id: "zip" %>
-
+          <%= f.number_field :latitude, id: "latitude" %>
+          <%= f.number_field :longitude, id: "longitude" %>
+                
           <!-- is there a better way to set this flag? also change this flag if address is changed. -->
           <% if @office.active_flag==1 %>
               <%= f.text_field :active_flag, :value => 2 %>

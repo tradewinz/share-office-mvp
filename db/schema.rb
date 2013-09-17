@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130826045910) do
+ActiveRecord::Schema.define(:version => 20130917204154) do
 
   create_table "alerts", :force => true do |t|
     t.string   "city"
@@ -98,6 +98,8 @@ ActiveRecord::Schema.define(:version => 20130826045910) do
     t.boolean  "cleaning"
     t.integer  "active_flag", :default => 2
   end
+
+  add_index "offices", ["latitude", "longitude"], :name => "index_offices_on_latitude_and_longitude"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"

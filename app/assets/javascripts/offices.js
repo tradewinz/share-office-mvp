@@ -54,13 +54,19 @@ function addressAutocompleteOffice() {
                 var city = document.getElementById('city');
                 var state = document.getElementById('state');
                 var zip = document.getElementById('zip');
+                var latitude = document.getElementById('latitude');
+                var longitude = document.getElementById('longitude');
 
                 // reset fields
                 street.value = '';
                 city.value = '';
                 state.value = '';
                 zip.value = '';
-
+                
+                //get lat/long from clinet side to avoid server calls
+                latitude.value = place.geometry.location.lat();
+                longitude.value = place.geometry.location.lng();
+        
 
                 //street.value = place.address_components[0] && place.address_components[0].short_name || '';
                 //city.value = place.address_components[1] && place.address_components[1].short_name || '';

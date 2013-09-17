@@ -32,7 +32,7 @@ class OfficesController < ApplicationController
       session[:featured] = nil
     end 
 
-    @json = @office.to_gmaps4rails
+    # @json = @office.to_gmaps4rails
 
     track_event("Viewed Details");
 

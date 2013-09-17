@@ -2,7 +2,7 @@ class Office < ActiveRecord::Base
   attr_accessible :type_office, :accomodate, :size, :wifi, :confroom, :kitchen, :parking, :ac, :printer,
                   :loc_zip, :loc_addr1, :loc_addr2, :loc_city, :loc_state,
                   :title, :description, :rent, :available,
-                  :user_id, :latitude, :longitude, :gmaps, :window, :featured,
+                  :user_id, :latitude, :longitude, :window, :featured,
                   :min_lease, :security, :cleaning, :active_flag
 
   belongs_to :user
@@ -23,7 +23,7 @@ class Office < ActiveRecord::Base
   #geocode using geocoder
   geocoded_by :address
   #geocode on update
-  after_validation :geocode
+  #after_validation :geocode
 
   # attachinary
   has_attachments :office_images, maximum: 20, accept: [:jpg, :png, :gif, :jpeg]
@@ -33,12 +33,12 @@ class Office < ActiveRecord::Base
   self.per_page = 24
 
   # make objects shows up in gmaps4rails
-  acts_as_gmappable :process_geocoding => false
+  #acts_as_gmappable :process_geocoding => false
 
   #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
-  def gmaps4rails_address
-    "#{self.loc_addr1}, #{self.loc_city}, #{self.loc_state}, #{self.loc_zip}"
-  end
+  #def gmaps4rails_address
+  #  "#{self.loc_addr1}, #{self.loc_city}, #{self.loc_state}, #{self.loc_zip}"
+  #end
 
   def address
     if !loc_addr1.blank? && !loc_zip.blank?
